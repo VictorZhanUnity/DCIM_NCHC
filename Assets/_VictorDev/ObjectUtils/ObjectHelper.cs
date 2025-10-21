@@ -14,7 +14,8 @@ namespace VictorDev.DebugUtils
     /// GameObject物件處理
     public static class ObjectHelper
     {
-        public static void SetMatchSizeAndPosition(GameObject target, GameObject reference, float adjustScale = 1.01f)
+        /// 設定Target的Scale大小，等於reference的meshRenderer大小
+        public static void SetMatchSizeAndPosition(Transform target, Transform reference, float adjustScale = 1.01f)
         {
             Renderer targetRenderer;
             if (target.TryGetComponent(out targetRenderer) == false)
@@ -48,8 +49,8 @@ namespace VictorDev.DebugUtils
             );
 
             // 根據目前的 localScale 進行縮放
-            target.transform.localScale = Vector3.Scale(target.transform.localScale, scaleRatio) * adjustScale;
-            target.transform.position = refRenderer.bounds.center;
+            target.localScale = Vector3.Scale(target.localScale, scaleRatio) * adjustScale;
+            target.position = refRenderer.bounds.center;
         }
         
         

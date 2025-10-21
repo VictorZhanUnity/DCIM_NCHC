@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using Debug = VictorDev.DebugUtils.Debug;
 
@@ -9,6 +10,21 @@ namespace VictorDev.ApiExtensions
     /// [Extended] 原API類別功能擴充
     public static class TransformExtension
     {
+        /// 跟隨Target物件
+        public static void FollowTarget(this Transform transform, Transform target, float lerpDuration = 0f,
+            float delay = 0f, Ease ease = Ease.Linear)
+        {
+            if (target.TryGetComponent(out MeshRenderer targetMeshRenderer))
+            {
+                transform.DOMove(targetMeshRenderer.bounds.center, lerpDuration).SetEase(ease).SetDelay(delay);
+            }
+            else
+            {
+                Debug.LogError("Target doesn't have a MeshRenderer");
+            }
+        }
+        
+        
         /// [Extension] - Lerp移動
         public static Coroutine ToLerpMove(this Transform self, MonoBehaviour runner,
             Vector3 targetPosition, float duration, Func<float, float> easingFunction,

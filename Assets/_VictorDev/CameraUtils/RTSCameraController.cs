@@ -247,7 +247,7 @@ namespace VictorDev.CameraUtils
                 FlyToPosition(target.position);
         }
 
-        public void FlyToPosition(Vector3 position, float setDistance = 1.5f)
+        public void FlyToPosition(Vector3 position, float setDistance = 2f)
         {
             _movementDampTime = flyDampTime;
             SetTarget(position, setDistance);
