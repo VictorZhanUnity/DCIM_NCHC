@@ -25,7 +25,7 @@ namespace VictorDev.ColorUtils
             if (colors.Length < 2)
                 Debug.LogWarning($"Colors count is less than 2!", this);
             else
-                ChangeColor(isOn ? 0 : 1);
+                ChangeColor(isOn ? 1 : 0);
         }
 
         public void ChangeColor(int index)
