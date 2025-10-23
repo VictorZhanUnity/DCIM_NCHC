@@ -55,6 +55,8 @@ namespace VictorDev.CameraUtils
         private bool isRotating = false;
         private bool isShiftPressed = false;
 
+        public void SetZoomSpeedMultiplier(float multiplier) => zoomSpeedMultiplier = multiplier;
+        
         void Start()
         {
             Vector3 angles = transform.eulerAngles;
