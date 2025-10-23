@@ -5,7 +5,12 @@ namespace VictorDev.Configs
 {
     public class PlayerPrefParent : PlayerPrefParent<int>
     {
-        private void Start() => onValueLoaded?.Invoke(PlayerPrefs.GetInt(TagName, DefaultValue));
+        public override void LoadValue(bool notify = true)
+        {
+            var value = PlayerPrefs.GetInt(TagName, DefaultValue);
+            if(notify) onValueLoaded?.Invoke(value);
+        }
+
         public override void Receive(int value) => PlayerPrefs.SetInt(TagName, value);
     }
 }

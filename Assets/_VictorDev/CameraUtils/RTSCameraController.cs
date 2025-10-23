@@ -244,15 +244,18 @@ namespace VictorDev.CameraUtils
         public void FlyToPosition(Transform target)
         {
             if (target.TryGetComponent(out Renderer render))
-                FlyToPosition(render.bounds.center);
+                FlyToPosition(render.bounds.center, defaultFlyDistance);
             else
-                FlyToPosition(target.position);
+                FlyToPosition(target.position, defaultFlyDistance);
         }
 
-        public void FlyToPosition(Vector3 position, float setDistance = 2f)
+        public void FlyToPosition(Vector3 position, float? setDistance=null)
         {
             _movementDampTime = flyDampTime;
-            SetTarget(position, setDistance);
+            SetTarget(position, setDistance ?? defaultFlyDistance);
         }
+
+        [SerializeField]private float defaultFlyDistance = 2f;
+        public void SetDefaultFlyDistance(float distance) => defaultFlyDistance = distance;
     }
 }
