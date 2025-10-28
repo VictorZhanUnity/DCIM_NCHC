@@ -1,18 +1,15 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace VictorDev.DebugUtils
 {
-    /// <summary>
     /// 事件處理
-    /// </summary>
     public static class EventHelper
     {
-        /// <summary>
         /// 目前是否正在使用輸入框
-        /// </summary>
         public static bool IsUsingInputField
         {
             get
@@ -30,9 +27,20 @@ namespace VictorDev.DebugUtils
                 return false;
             }
         }
-        /// <summary>
+        
         /// 目前鼠標是否位於UI組件上
-        /// </summary>
         public static bool IsPointerOverUI() => EventSystem.current.IsPointerOverGameObject();
+
+        /// 是否有Event Invoke對像
+        public static bool IsHaveAnyEventListeners(params UnityEventBase[] unityEvents)
+        {
+            if (unityEvents == null || unityEvents.Length == 0) return false;
+            foreach (var evt in unityEvents)
+            {
+                if (evt != null && evt.GetPersistentEventCount() > 0)
+                    return true; // 只要有一個有綁定對象，就回傳 true
+            }
+            return false;
+        }
     }
 }
