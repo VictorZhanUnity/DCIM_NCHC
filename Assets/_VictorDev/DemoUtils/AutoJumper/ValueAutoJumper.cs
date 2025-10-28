@@ -3,6 +3,7 @@ using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 using VictorDev.DebugUtils;
+using Debug = UnityEngine.Debug;
 using Random = UnityEngine.Random;
 
 namespace _VictorDev.DemoUtils.AutoJumper
@@ -12,13 +13,14 @@ namespace _VictorDev.DemoUtils.AutoJumper
     {
         #region Variables
 
-        [Foldout("[Event] - Invoke字串型態")] public UnityEvent<string> onValueChangedString;
-        [Foldout("[Event] - Invoke數字型態")] public UnityEvent<int> onValueChangedInt;
-        [Foldout("[Event] - Invoke數字型態")] public UnityEvent<float> onValueChangedFloat;
+        [Foldout("[Event] - Invoke字串")] public UnityEvent<string> onValueChangedString;
+        [Foldout("[Event] - Invoke整數")] public UnityEvent<int> onValueChangedInt;
+        [Foldout("[Event] - Invoke浮點數")] public UnityEvent<float> onValueChangedFloat;
+        [Foldout("[Event] - Invoke浮點數01")] public UnityEvent<float> onValueChangedFloat01;
 
         [Foldout("[設定]"), SerializeField] private bool isStartInEnabled = true;
 
-        [Foldout("[設定]"), SerializeField, Label("更新時間間隔")]
+        [Foldout("[設定]"), SerializeField, Label("更新時間間隔(0=只改一次)")]
         private float intervalSec = 10f;
 
         [Foldout("[設定]"), SerializeField, Label("小數點後幾位")]
@@ -60,6 +62,7 @@ namespace _VictorDev.DemoUtils.AutoJumper
         {
             StopJump();
             
+            if(intervalSec == 0) return;
             coroutine = StartCoroutine(JumpValueCoroutine());
 
             IEnumerator JumpValueCoroutine()
@@ -83,6 +86,7 @@ namespace _VictorDev.DemoUtils.AutoJumper
             onValueChangedInt?.Invoke(Mathf.RoundToInt(value));
             onValueChangedFloat?.Invoke(Mathf.Round(value * multiplier) / multiplier);
             onValueChangedString?.Invoke(value.ToString($"0{DotFormat}"));
+            onValueChangedFloat01?.Invoke(value / maxValue);
         }
     }
 }

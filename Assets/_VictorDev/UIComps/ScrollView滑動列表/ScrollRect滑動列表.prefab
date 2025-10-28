@@ -1206,8 +1206,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "HPE-ProLiant DL380 Gen11(\u9762\u677F)"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: aea7587d457dbf74286a43054502e595, type: 2}
+  m_sharedMaterial: {fileID: 1196226701208737513, guid: aea7587d457dbf74286a43054502e595, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1420,7 +1420,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8663920597632111390}
-  - component: {fileID: 4207082133248367165}
   - component: {fileID: 7377304232410372461}
   m_Layer: 5
   m_Name: StockDeviceListItem
@@ -1449,21 +1448,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4207082133248367165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5608382474229018566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91453cd1eded37b45b4026a46f1711ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onToggleOnEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &7377304232410372461
 MonoBehaviour:
   m_ObjectHideFlags: 0

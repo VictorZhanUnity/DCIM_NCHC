@@ -4,6 +4,7 @@ using VictorDev.ColorUtils;
 using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.UI;
 using Image = UnityEngine.UI.Image;
 
 namespace VictorDev.Frameworks
@@ -12,15 +13,31 @@ namespace VictorDev.Frameworks
     [RequireComponent(typeof(Image))]
     public class ImageFillAmountHandler : MonoBehaviour
     {
-        public void DoFillAmount(float value)
+       public void DoFillAmount(float value)
         {
             receivePercentageValue = value / (isValueOf01? 1: 100f);
-            image.DOFillAmount(receivePercentageValue, duration).SetEase(Ease.OutQuad);
+            if (Application.isPlaying)
+            {
+                imageFillTarget.DOFillAmount(receivePercentageValue, duration).SetEase(Ease.OutQuad);
+            }
+            else
+            {
+                imageFillTarget.fillAmount = receivePercentageValue;
+            }
 
             if (isLerpColor)
             {
                 ColorSet colorResult = colorLevels.FirstOrDefault(colorSet=> receivePercentageValue <= colorSet.threshold);
-                image.DOColor(colorResult.color, duration).SetEase(Ease.OutQuad);
+                if (Application.isPlaying)
+                {
+                    imageFillTarget.DOColor(colorResult.color, duration).SetEase(Ease.OutQuad);
+                    doColorTargets.ForEach(target=> target.DOColor(colorResult.color, duration).SetEase(Ease.OutQuad));
+                }
+                else
+                {
+                    imageFillTarget.color = colorResult.color;
+                    doColorTargets.ForEach(target=> target.color = colorResult.color);
+                }
             }
         }
 
@@ -37,13 +54,16 @@ namespace VictorDev.Frameworks
             new ColorSet(0.8f, ColorHelper.HexToColor(0xEF701A)),
             new ColorSet(1f, ColorHelper.HexToColor(0x640000)),
         };
-        [Foldout("[設定]"), SerializeField] private Image image;
+        [Foldout("[設定]"), SerializeField] private Image imageFillTarget;
+        [Foldout("[設定]"), SerializeField] private List<Graphic> doColorTargets;
         #endregion
 
         private void OnValidate()
         {
-            image ??= GetComponent<Image>();
-            image.type = Image.Type.Filled;
+            imageFillTarget ??= GetComponent<Image>();
+            imageFillTarget.type = Image.Type.Filled;
+            
+            colorLevels = colorLevels?.OrderBy(colorSet=> colorSet.threshold).ToList();
         }
       
     }

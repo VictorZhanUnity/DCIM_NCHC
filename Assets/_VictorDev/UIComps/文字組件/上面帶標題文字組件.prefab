@@ -67,7 +67,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Rack Name:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 934547c9474dcdf42ba2c5168b8f25cb, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 25460ef9d5785f64b9a653713f079632, type: 2}
   m_sharedMaterial: {fileID: -4746718388196709884, guid: 934547c9474dcdf42ba2c5168b8f25cb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -204,7 +204,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: ATEN-PCEIII-4210060-19
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e9dc110342368684f991255eeccff3b2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b807ee04255154e4581bc12944062f00, type: 2}
   m_sharedMaterial: {fileID: -4068631382809446144, guid: e9dc110342368684f991255eeccff3b2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294944073
-  m_fontColor: {r: 0.28773582, g: 0.6476565, b: 1, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
