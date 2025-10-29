@@ -119,8 +119,9 @@ namespace VictorDev.DebugUtils
         public static void Destroy<T>(T obj) where T : Object
         {
             if (obj == null) return;
-            if (Application.isPlaying) Object.Destroy(obj.GameObject());
-            else Object.DestroyImmediate(obj.GameObject());
+            var comp = obj as Component;
+            if (Application.isPlaying) Object.Destroy(comp != null? comp: obj.GameObject());
+            else Object.DestroyImmediate(comp != null? comp: obj.GameObject());
         }
         
         /// 將子物件前後排序顛倒

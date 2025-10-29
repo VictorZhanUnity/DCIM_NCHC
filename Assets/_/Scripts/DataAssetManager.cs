@@ -4,6 +4,8 @@ using System.Linq;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.iOS;
+using VictorDev.DebugUtils;
 using VictorDev.Frameworks;
 using VictorDev.RevitUtils;
 
@@ -12,6 +14,9 @@ namespace VictorDev.TCIT
     /// 設備資料管理器
     public class DataAssetManager : JsonDataManagerParent<List<RackAssetData>>
     {
+        [Foldout("[Event] 點擊模型")] public UnityEvent<RackAssetData> onRackClickedEvent;
+        [Foldout("[Event] 點擊模型")] public UnityEvent<DeviceAssetData> onDeviceClickedEvent;
+        
         [Foldout("[模型]"), Label("\tRack"), SerializeField] private List<Transform> rackModels;
         [Foldout("[模型]"), Label("\tServer"), SerializeField] private List<Transform> serverModels;
         [Foldout("[模型]"), Label("\tRouter"), SerializeField] private List<Transform> routerModels;
@@ -59,6 +64,40 @@ namespace VictorDev.TCIT
             switchModels = ModelFilter("Switch");
             List<Transform> ModelFilter(string keyWords)
                 => targets.Where(target => target.name.Contains(keyWords, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+
+        /// 將模型移除AssetDataHolder
+        [Button]
+        private void RemoveAssetDataHolderFromModel()
+        {
+            AssetDataHolder assetDataHolder;
+            Data.ForEach(rack =>
+            {
+                //機櫃模型
+                if (rack.Model.TryGetComponent(out assetDataHolder))
+                {
+                    ObjectHelper.Destroy(assetDataHolder);
+                }
+               
+                //設備模型
+                rack.Containers.ForEach(device =>
+                {
+                    if (device.Model.TryGetComponent(out assetDataHolder))
+                    {
+                        ObjectHelper.Destroy(assetDataHolder);
+                    }
+                });
+            });
+        }
+
+        /// 接收目前點擊的模型
+        public void ReceiveOnClickedModel(Transform model)
+        {
+            if (model.TryGetComponent(out AssetDataHolder assetDataHolder))
+            {
+                if(assetDataHolder.IsRackAsset) onRackClickedEvent?.Invoke(assetDataHolder.RackData);
+                else onDeviceClickedEvent?.Invoke(assetDataHolder.DeviceData);
+            }
         }
     }
 }

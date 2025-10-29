@@ -2,8 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
+using Unity.VisualScripting;
 using UnityEngine;
+using VictorDev.DebugUtils;
 using VictorDev.RevitUtils;
+using Debug = UnityEngine.Debug;
 
 namespace VictorDev.TCIT
 {
@@ -39,7 +42,18 @@ namespace VictorDev.TCIT
         public void SetModelFromList(List<Transform> modelList)
         {
             Transform result = modelList.FirstOrDefault(model=>model.name.Contains(DeviceNameAndCode, StringComparison.OrdinalIgnoreCase));
-            if(result != null) Model = result;
+            if (result != null)
+            {
+                Model = result;
+                if (Model.TryGetComponent(out AssetDataHolder assetDataHolder))
+                {
+                    assetDataHolder.ReceiveAssetData(this);
+                }
+                else
+                {
+                    Model.AddComponent<AssetDataHolder>().ReceiveAssetData(this);
+                }
+            }
             else Debug.LogError($"{DeviceNameAndCode} not found.");
         }
     }

@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Debug = VictorDev.DebugUtils.Debug;
 
-namespace VictorDev.ApiExtensions
+namespace _VictorDev.ApiExtensions
 {
     /// 原API String類別功能擴充
     public static class StringExtension
