@@ -4,7 +4,6 @@ using System.Linq;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.iOS;
 using VictorDev.DebugUtils;
 using VictorDev.Frameworks;
 using VictorDev.RevitUtils;
@@ -14,15 +13,14 @@ namespace VictorDev.TCIT
     /// 設備資料管理器
     public class DataAssetManager : JsonDataManagerParent<List<RackAssetData>>
     {
-        [Foldout("[Event] 點擊模型")] public UnityEvent<RackAssetData> onRackClickedEvent;
-        [Foldout("[Event] 點擊模型")] public UnityEvent<DeviceAssetData> onDeviceClickedEvent;
-        
+        #region Variables
         [Foldout("[模型]"), Label("\tRack"), SerializeField] private List<Transform> rackModels;
         [Foldout("[模型]"), Label("\tServer"), SerializeField] private List<Transform> serverModels;
         [Foldout("[模型]"), Label("\tRouter"), SerializeField] private List<Transform> routerModels;
         [Foldout("[模型]"), Label("\tSwitch"), SerializeField] private List<Transform> switchModels;
         [Foldout("[Event] GetData")] public UnityEvent onGetDataEvent;
-
+        #endregion
+        
         [Button]
         public void GetData()
         {
@@ -88,16 +86,6 @@ namespace VictorDev.TCIT
                     }
                 });
             });
-        }
-
-        /// 接收目前點擊的模型
-        public void ReceiveOnClickedModel(Transform model)
-        {
-            if (model.TryGetComponent(out AssetDataHolder assetDataHolder))
-            {
-                if(assetDataHolder.IsRackAsset) onRackClickedEvent?.Invoke(assetDataHolder.RackData);
-                else onDeviceClickedEvent?.Invoke(assetDataHolder.DeviceData);
-            }
         }
     }
 }

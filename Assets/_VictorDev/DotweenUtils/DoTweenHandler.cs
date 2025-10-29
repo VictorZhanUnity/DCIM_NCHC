@@ -53,12 +53,7 @@ namespace _VictorDev.DotweenUtils
             StopDoTween();
             _sequence ??= DOTween.Sequence();
             DOTween.Kill(_sequence);
-            doTweenSets.ForEach(tweenSet =>
-            {
-                switch (tweenSet.doTweenType)
-                {
-                }
-            });
+            
         }
 
         public void StopDoTween()

@@ -10,32 +10,31 @@ namespace _VictorDev.DotweenUtils
     [RequireComponent(typeof(CanvasGroup))]
     public class DoTweenFader:MonoBehaviour
     {
-        [SerializeField] private CanvasGroup canvasGroup;
+        /*[SerializeField] private CanvasGroup canvasGroup;
         
         [Foldout("[Fade設定]"),  SerializeField] private bool isFade = true;
         [Foldout("[Fade設定]"), SerializeField, ShowIf(nameof(isFade))]
         private float fromAlpha, toAlpha = 1, duration = 0.5f,  delay;
         
         [Label("[DoTween設定]"),  SerializeField] private List<DoTweenSet> doTweenSets;
-        private Sequence  _sequence;
+        private Sequence  sequence;
 
         private void Awake() => SetupDoTween();
 
         private void SetupDoTween()
         {
-            _sequence ??= DOTween.Sequence();
+            sequence ??= DOTween.Sequence();
             doTweenSets.ForEach(tweenSet =>
             {
                 switch (tweenSet.sequenceType)
                 {
-                    case SequenceType.Join: _sequence.Join(tweenSet.GetTweenAction(transform)); break;
-                    case SequenceType.Append: _sequence.Append(tweenSet.GetTweenAction(transform)); break;
-                    default: break;
+                    case SequenceType.Join: sequence.Join(tweenSet.GetTweenAction(transform)); break;
+                    case SequenceType.Append: sequence.Append(tweenSet.GetTweenAction(transform)); break;
                 }
             });
-            _sequence.OnPlay(() => SetInteractive(false));
-            _sequence.OnComplete(() => SetInteractive(true));
-            _sequence.OnRewind(()=>gameObject.SetActive(false));
+            sequence.OnPlay(() => SetInteractive(false));
+            sequence.OnComplete(() => SetInteractive(true));
+            sequence.OnRewind(()=>gameObject.SetActive(false));
         }
 
         private void SetInteractive(bool isOn)
@@ -44,10 +43,10 @@ namespace _VictorDev.DotweenUtils
             canvasGroup.blocksRaycasts = isOn;
         }
         
-        private void OnEnable() => _sequence?.PlayForward();
-        public void ToDisable() => _sequence?.PlayBackwards();
+        private void OnEnable() => sequence?.PlayForward();
+        public void ToDisable() => sequence?.PlayBackwards();
 
-        private void OnValidate() => canvasGroup ??= GetComponent<CanvasGroup>();
+        private void OnValidate() => canvasGroup ??= GetComponent<CanvasGroup>();*/
     }
     
     [Serializable]
