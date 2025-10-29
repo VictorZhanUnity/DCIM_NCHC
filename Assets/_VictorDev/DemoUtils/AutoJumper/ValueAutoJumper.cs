@@ -3,7 +3,7 @@ using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 using VictorDev.DebugUtils;
-using Debug = UnityEngine.Debug;
+using Debug = VictorDev.DebugUtils.Debug;
 using Random = UnityEngine.Random;
 
 namespace _VictorDev.DemoUtils.AutoJumper
@@ -26,7 +26,9 @@ namespace _VictorDev.DemoUtils.AutoJumper
         [Foldout("[設定]"), SerializeField, Label("小數點後幾位")]
         private int afterDotNumber = 2;
 
-        [Foldout("[設定]")] [SerializeField] private float minValue, maxValue = 100f;
+        [Foldout("[設定]"), SerializeField] private float minValue, maxValue = 100f;
+        [Foldout("[設定]"), SerializeField] private bool isClamp;
+        [Foldout("[設定]"), SerializeField, ShowIf(nameof(isClamp))] private Vector2 clampRange;
         private Coroutine coroutine;
         private string DotFormat => (afterDotNumber > 0) ? "." + new string('#', afterDotNumber) : "";
 
@@ -61,8 +63,12 @@ namespace _VictorDev.DemoUtils.AutoJumper
         private void StartJump()
         {
             StopJump();
-            
-            if(intervalSec == 0) return;
+
+            if (intervalSec == 0)
+            {
+                ValueUpdate();
+                return;
+            }
             coroutine = StartCoroutine(JumpValueCoroutine());
 
             IEnumerator JumpValueCoroutine()
@@ -81,12 +87,13 @@ namespace _VictorDev.DemoUtils.AutoJumper
         [Button, ShowIf(nameof(IsHaveAnyEventListeners))]
         public void ValueUpdate()
         {
-            float value = Random.Range(minValue, maxValue);
+            float value = Random.Range(isClamp? clampRange.x : minValue, isClamp? clampRange.y : maxValue);
             float multiplier = Mathf.Pow(10f, afterDotNumber);
+            float percent01 = (value-minValue) / (maxValue-minValue);
             onValueChangedInt?.Invoke(Mathf.RoundToInt(value));
             onValueChangedFloat?.Invoke(Mathf.Round(value * multiplier) / multiplier);
             onValueChangedString?.Invoke(value.ToString($"0{DotFormat}"));
-            onValueChangedFloat01?.Invoke(value / maxValue);
+            onValueChangedFloat01?.Invoke(percent01);
         }
     }
 }

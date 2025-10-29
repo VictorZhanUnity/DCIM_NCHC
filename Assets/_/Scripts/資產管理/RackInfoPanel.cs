@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
+using VictorDev.DoTweenUtils;
 using VictorDev.TextUtils;
 
 namespace VictorDev.TCIT
@@ -11,7 +12,7 @@ namespace VictorDev.TCIT
     {
         [Label("[資料項]"), SerializeField] private RackAssetData rackAssetData;
 
-        [Foldout("[組件]"), SerializeField] private List<TextMeshProUGUI> txtComps;
+        [Foldout("[組件]"), SerializeField] private List<TextDotweener> txtComps;
 
         public void ReceiveData(RackAssetData data)
         {

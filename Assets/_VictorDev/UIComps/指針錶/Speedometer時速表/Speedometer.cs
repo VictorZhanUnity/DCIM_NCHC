@@ -7,6 +7,7 @@ namespace VictorDev.UIComps
 {
     public class Speedometer : MonoBehaviour
     {
+        #region Variables
         [ReadOnly, SerializeField] private float currentValue;
         public float CurrentValue => currentValue;
         
@@ -18,7 +19,9 @@ namespace VictorDev.UIComps
 
         [Foldout("[設定]"), SerializeField, Label("進度條(選填)")]
         private ImageFillAmountHandler imageProgressbar;
+        #endregion
 
+        
         public void SetValue(float value)
         {
             currentValue = value;
@@ -32,7 +35,14 @@ namespace VictorDev.UIComps
             imageProgressbar?.DoFillAmount(percentage);
 
             float dotAngle = minDotAngle + percentage * (maxDotAngle - minDotAngle);
-            needleDot.DORotate(new Vector3(0, 0, dotAngle), duration).SetEase(Ease.OutQuad);
+            if (Application.isPlaying)
+            {
+                needleDot.DORotate(new Vector3(0, 0, dotAngle), duration).SetEase(Ease.OutQuad);
+            }
+            else
+            {
+                needleDot.rotation = Quaternion.Euler(0, 0, dotAngle);
+            }
         }
     }
 }

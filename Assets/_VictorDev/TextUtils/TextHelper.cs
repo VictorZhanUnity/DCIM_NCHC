@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using TMPro;
+using VictorDev.DoTweenUtils;
 using Debug = VictorDev.DebugUtils.Debug;
 
 namespace VictorDev.TextUtils
@@ -18,7 +19,7 @@ namespace VictorDev.TextUtils
 
         
         /// 依T類別對像裡的變數名稱，丟給對應Comp名稱的text裡
-        public static void SetParamsToTxtComps<T>(T target, List<TextMeshProUGUI> txtComps, string compHeader="Txt")
+        public static void SetParamsToTxtComps<T>(T target, List<TextDotweener> txtComps, string compHeader="Txt")
         {
             if (target == null || txtComps == null || txtComps.Count == 0)
             {

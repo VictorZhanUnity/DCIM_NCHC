@@ -15,6 +15,7 @@ namespace _VictorDev.Frameworks
         [Foldout("[Event] - 當取消選取時")] public UnityEvent unSelectObjectEvent;
         [Foldout("[設定]"), SerializeField] private Transform selectionBorder;
         [Foldout("[設定]"), SerializeField] private bool isBorderFollowTarget = true;
+        [Foldout("[設定]"), SerializeField] private bool isSingleSelection = true;
 
         private Transform _currentSelectTarget;
         
@@ -23,6 +24,7 @@ namespace _VictorDev.Frameworks
         /// 選取物件
         public void SelectObject(Transform target)
         {
+            if(isSingleSelection && _currentSelectTarget != null) DeselectObject();
             _currentSelectTarget = target;
             ObjectHelper.SetMatchSizeAndPosition(selectionBorder, target);
             selectionBorder.gameObject.SetActive(true);

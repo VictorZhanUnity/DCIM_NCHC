@@ -1,17 +1,24 @@
-using System;
 using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
 
 namespace VictorDev.DoTweenUtils
 {
+    /// 文字特效
     public class TextDotweener : MonoBehaviour
     {
+        #region Variables
+        [Foldout("設定"), SerializeField] private float duration = 0.15f;
+        [Foldout("設定"), SerializeField] private float delay = 0.3f;
+        [Foldout("設定"), SerializeField] private bool isRandomDelay = true;
+        [Foldout("設定"), SerializeField] private TextMeshProUGUI txt;
+        #endregion
+
         public void SetText(string str)
         {
             str = str.Trim();
-            if(Application.isPlaying) DotweenHelper.ToBlink(TxtComp, str, duration, delay, isRandomDelay);
-            else TxtComp.text = str;
+            if (Application.isPlaying) DotweenHelper.ToBlink(txt, str, duration, delay, isRandomDelay);
+            else txt.text = str;
         }
 
         public string text
@@ -19,11 +26,7 @@ namespace VictorDev.DoTweenUtils
             set => SetText(value);
         }
 
-        [Foldout("設定")] [SerializeField] private float duration = 0.15f;
-        [Foldout("設定")] [SerializeField] private float delay = 0.3f;
-        [Foldout("設定")] [SerializeField] private bool isRandomDelay = true;
-        
-        private TextMeshProUGUI TxtComp => _txt ??= GetComponent<TextMeshProUGUI>();
-        [NonSerialized] private TextMeshProUGUI _txt;
+        private void Awake() => OnValidate();
+        private void OnValidate() => txt ??= GetComponent<TextMeshProUGUI>();
     }
 }

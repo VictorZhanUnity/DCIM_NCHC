@@ -10,6 +10,8 @@ namespace VictorDev.DoTweenUtils
     public class DotweenFade2DWithEnabled : MonoBehaviour
     {
         #region [Components]
+
+        [SerializeField] private bool isOnEnabled = true;
         [SerializeField] private float duration = 0.3f;
         [SerializeField] private bool isRandomDelay = true;
         [SerializeField] private float delay = 0.3f;
@@ -40,7 +42,7 @@ namespace VictorDev.DoTweenUtils
         private void OnEnable()
         {
             onEnabledEvent?.Invoke();
-            ToShow();
+            if(isOnEnabled) ToShow();
         }
 
         [ContextMenu("- 播放Dotween動畫")]
