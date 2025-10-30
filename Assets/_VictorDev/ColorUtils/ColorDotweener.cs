@@ -5,7 +5,7 @@ using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace VictorDev.ColorUtils
+namespace _VictorDev.ColorUtils
 {
     /// 對Graphic組件 (Image/TextmeshProUGUI) 進行DOColor
     public class ColorDotweener : MonoBehaviour

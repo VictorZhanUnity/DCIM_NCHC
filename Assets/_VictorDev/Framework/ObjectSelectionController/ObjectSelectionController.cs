@@ -1,8 +1,8 @@
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
-using VictorDev.ApiExtensions;
-using VictorDev.DebugUtils;
+using _VictorDev.ApiExtensions;
+using _VictorDev.DebugUtils;
 
 namespace _VictorDev.Frameworks
 {

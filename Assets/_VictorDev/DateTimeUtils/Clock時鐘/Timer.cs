@@ -1,13 +1,13 @@
 using System;
 using System.Collections;
 using System.Globalization;
+using _VictorDev.Configs;
 using _VictorDEV.DateTimeUtils;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
-using VictorDev.Configs;
 
-namespace VictorDev.DateTimeUtils
+namespace _VictorDev.DateTimeUtils
 {
     /// 計時器 (Coroutine制)
     public class Timer : MonoBehaviour

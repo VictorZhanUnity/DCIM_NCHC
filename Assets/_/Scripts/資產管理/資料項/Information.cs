@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using UnityEngine;
 
-namespace VictorDev.TCIT
+namespace _VictorDev.RevitUtils
 {
     /// 機櫃/設備 COBie資訊
     [Serializable]

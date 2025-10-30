@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace VictorDev.Configs
+namespace _VictorDev.Configs
 {
     public class PlayerPrefBoolHandler : PlayerPrefParent<bool>
     {

@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 
-namespace VictorDev.DebugUtils
+namespace _VictorDev.DebugUtils
 {
     /// GameObject物件處理
     public static class ObjectHelper
@@ -56,11 +56,29 @@ namespace VictorDev.DebugUtils
         
         /// 從子物件起開始尋找有實作T Class的Monobehaviour
         /// 通常會用於尋找實作Interface的對像
-        public static List<MonoBehaviour> FindChildrenByClass<T>(Transform parent, bool includeInactive = true)
-            => parent.GetComponentsInChildren<T>(includeInactive)
-                .Select(jumper=> jumper as MonoBehaviour)
-                .Where(jumper => jumper != null)
-                .ToList();
+        public static List<MonoBehaviour> FindChildrenByClass<TFind>(Transform parent, bool includeInactive = true, params string[] keywords)
+            where TFind : Component
+            => FindChildrenByClass<TFind, MonoBehaviour>(parent, includeInactive, keywords);
+        
+        public static List<TResult> FindChildrenByClass<TFind, TResult>(Transform parent, bool includeInactive = true, params string[] keywords)
+            where TFind : Component where TResult : class
+        {
+            TFind[] components = parent.GetComponentsInChildren<TFind>(includeInactive);
+            List<TResult> results = new List<TResult>(components.Length); // 預先分配容量
+            
+            // ⚡ 提前轉成 HashSet 提高查找效率
+            HashSet<string> keywordSet = keywords is { Length: > 0 }? new HashSet<string>(keywords) : null;
+            
+            foreach (var target in components)
+            {
+                // 如果目標不為TResult類型
+                if(target is not TResult result) continue;
+                // 如果有設定關鍵字，就做比對
+                if (keywordSet != null && keywordSet.Contains(target.gameObject.name) == false) continue;
+                results.Add(result);
+            }
+            return results;
+        }
         
         /// 依照環境 Runtime/Editor 來實例化對像物件T
         /// <para>+ 若container為null，則實例化在Scene根節點</para>
@@ -120,15 +138,15 @@ namespace VictorDev.DebugUtils
         {
             if (obj == null) return;
             var comp = obj as Component;
-            if (Application.isPlaying) Object.Destroy(comp != null? comp: obj.GameObject());
-            else Object.DestroyImmediate(comp != null? comp: obj.GameObject());
+            bool isRectTransform = obj is RectTransform ;
+            if (Application.isPlaying) Object.Destroy(isRectTransform? obj.GameObject(): comp);
+            else Object.DestroyImmediate(isRectTransform? obj.GameObject(): comp);
         }
         
         /// 將子物件前後排序顛倒
         public static void ReverseChildrenOrder(Transform parent)
         {
             List<Transform> children = parent.GetComponentsInChildren<Transform>().ToList();
-            
             children.ForEach(child=> child.SetAsFirstSibling());
         }
         

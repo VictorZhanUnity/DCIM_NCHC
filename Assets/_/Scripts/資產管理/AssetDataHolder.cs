@@ -1,8 +1,7 @@
 using NaughtyAttributes;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
-namespace VictorDev.TCIT
+namespace _VictorDev.RevitUtils
 {
     /// AssetData資料持有
     [DisallowMultipleComponent]

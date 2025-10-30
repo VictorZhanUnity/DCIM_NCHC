@@ -4,14 +4,14 @@ using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
+using _VictorDev.Configs;
 using _VictorDEV.DateTimeUtils;
 using JetBrains.Annotations;
 using SFB;
 using UnityEngine;
-using VictorDev.Configs;
-using Debug = VictorDev.DebugUtils.Debug;
+using Debug = _VictorDev.DebugUtils.Debug;
 
-namespace VictorDev.FileUtils
+namespace _VictorDev.FileUtils
 {
     public static class FileHelper
     {
@@ -39,7 +39,7 @@ namespace VictorDev.FileUtils
                 await File.WriteAllBytesAsync(filePath, fileBytes);
                 OpenFileOrFolder(filePath);
             }
-            else Debug.Log("User cancelled save dialog");
+            else DebugUtils.Debug.Log("User cancelled save dialog");
 
             return filePath;
         }
@@ -67,7 +67,7 @@ namespace VictorDev.FileUtils
             fileFullName ??= $"DownloadFile-{DateTime.Today.ToString(DateTimeHelper.FullDateFormat)}";
             string filePath = Path.Combine(folderPath, fileFullName);
             File.WriteAllBytes(filePath, fileData);
-            Debug.Log($"檔案已儲存至:{filePath}", typeof(FileHelper), EmojiEnum.Download);
+            DebugUtils.Debug.Log($"檔案已儲存至:{filePath}", typeof(FileHelper), EmojiEnum.Download);
 
             if (isAutoOpen)
             {
@@ -82,7 +82,7 @@ namespace VictorDev.FileUtils
                 }
                 catch (Exception e)
                 {
-                    Debug.LogError($"開啟{fileFullName}時發生錯誤: " + e.Message);
+                    DebugUtils.Debug.LogError($"開啟{fileFullName}時發生錯誤: " + e.Message);
                 }
             }
 
@@ -172,7 +172,7 @@ namespace VictorDev.FileUtils
             catch (Exception e)
             {
                 // 若寫檔失敗，別再用 File.AppendAllText (避免遞迴)；改用 Unity 的 console 提示
-                Debug.LogWarning($"寫入失敗: {e.Message}", "FileHelper");
+                DebugUtils.Debug.LogWarning($"寫入失敗: {e.Message}", "FileHelper");
             }
         }
     }

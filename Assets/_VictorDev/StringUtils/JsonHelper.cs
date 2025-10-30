@@ -2,10 +2,10 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using VictorDev.DebugUtils;
-using Debug = VictorDev.DebugUtils.Debug;
+using _VictorDev.DebugUtils;
+using Debug = _VictorDev.DebugUtils.Debug;
 
-namespace VictorDev.StringUtils
+namespace _VictorDev.StringUtils
 {
     /// <summary>
     /// JSON資料解析 (使用static)

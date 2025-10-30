@@ -1,7 +1,7 @@
 using NaughtyAttributes;
 using UnityEngine;
 
-namespace VictorDev.Common
+namespace _VictorDev.Common
 {
     /// App設定項目
     public class AppSetting : MonoBehaviour

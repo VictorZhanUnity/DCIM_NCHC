@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace VictorDev.MathUtils
+namespace _VictorDev.MathUtils
 {
     /// 數學工具
     public static class MathHelper

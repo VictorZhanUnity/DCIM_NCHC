@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using _VictorDEV.DateTimeUtils;
+using _VictorDev.DebugUtils;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-using VictorDev.DebugUtils;
 using Debug = UnityEngine.Debug;
 
-namespace VictorDev.DateTimeUtils
+namespace _VictorDev.DateTimeUtils
 {
     public class Clock : MonoBehaviour
     {

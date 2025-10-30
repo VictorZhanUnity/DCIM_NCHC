@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using UnityEngine;
-using VictorDev.Configs;
-using Debug = VictorDev.DebugUtils.Debug;
+using _VictorDev.Configs;
+using Debug = _VictorDev.DebugUtils.Debug;
 using Random = System.Random;
 
 namespace _VictorDEV.DateTimeUtils

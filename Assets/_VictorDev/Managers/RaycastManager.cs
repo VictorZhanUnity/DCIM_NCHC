@@ -1,13 +1,13 @@
 using System;
 using System.Linq;
+using _VictorDev.DebugUtils;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
-using VictorDev.ApiExtensions;
-using VictorDev.DebugUtils;
-using Debug = VictorDev.DebugUtils.Debug;
+using _VictorDev.ApiExtensions;
+using Debug = _VictorDev.DebugUtils.Debug;
 
-namespace VictorDev.Managers
+namespace _VictorDev.Managers
 {
     /// Raycast射線 互動處理
     public class RaycastManager : MonoBehaviour

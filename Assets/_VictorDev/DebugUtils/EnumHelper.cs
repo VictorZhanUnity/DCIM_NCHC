@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using _VictorDev.Configs;
 using UnityEngine;
-using VictorDev.Configs;
 
-namespace VictorDev.DebugUtils
+namespace _VictorDev.DebugUtils
 {
     public static class EnumHelper
     {

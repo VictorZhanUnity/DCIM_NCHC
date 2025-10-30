@@ -1,9 +1,9 @@
+using _VictorDev.Frameworks;
 using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
-using VictorDev.Frameworks;
 
-namespace VictorDev.UIComps
+namespace _VictorDev.UIComps
 {
     public class Speedometer : MonoBehaviour
     {

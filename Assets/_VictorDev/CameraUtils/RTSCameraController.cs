@@ -1,10 +1,10 @@
 using System.Linq;
+using _VictorDev.DebugUtils;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using VictorDev.DebugUtils;
 using Debug = UnityEngine.Debug;
 
-namespace VictorDev.CameraUtils
+namespace _VictorDev.CameraUtils
 {
     /// RTS攝影機控制器
     /// https://chatgpt.com/share/67fcb5ab-b03c-8012-b685-28ab8ee23da5

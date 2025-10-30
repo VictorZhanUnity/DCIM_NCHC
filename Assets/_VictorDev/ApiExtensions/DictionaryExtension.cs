@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using VictorDev.DebugUtils;
+using _VictorDev.DebugUtils;
 
-namespace VictorDev.ApiExtensions
+namespace _VictorDev.ApiExtensions
 {
     /// 原API類別功能擴充
     public static class DictionaryExtension

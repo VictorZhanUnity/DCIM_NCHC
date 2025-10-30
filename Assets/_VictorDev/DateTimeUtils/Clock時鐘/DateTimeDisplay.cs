@@ -2,16 +2,16 @@ using System;
 using _VictorDEV.DateTimeUtils;
 using TMPro;
 using UnityEngine;
-using VictorDev.DebugUtils;
-using static VictorDev.DateTimeUtils.Clock;
+using _VictorDev.DebugUtils;
+using static _VictorDev.DateTimeUtils.Clock;
 
-namespace VictorDev.DateTimeUtils
+namespace _VictorDev.DateTimeUtils
 {
     /// <summary>
     /// ����ɶ���ܾ�
     /// </summary>
 
-    public class DateTimeDisplay : MonoBehaviour, IClockReceiver
+    public class DateTimeDisplay : MonoBehaviour, Clock.IClockReceiver
     {
         [Header(">>> ����ɶ��r��榡 {MM/dd ddd} =>")]
         [SerializeField] private string format = "MM/dd ddd";

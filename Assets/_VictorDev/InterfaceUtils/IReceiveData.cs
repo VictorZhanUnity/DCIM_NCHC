@@ -1,4 +1,4 @@
-namespace VictorDev.InterfaceUtils
+namespace _VictorDev.InterfaceUtils
 {
     public interface IReceiveData<in T>
     {

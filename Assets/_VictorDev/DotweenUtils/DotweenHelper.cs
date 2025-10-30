@@ -5,9 +5,9 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
-using Debug = VictorDev.DebugUtils.Debug;
+using Debug = _VictorDev.DebugUtils.Debug;
 
-namespace VictorDev.DoTweenUtils
+namespace _VictorDev.DoTweenUtils
 {
     public static class DotweenHelper
     {
@@ -62,7 +62,7 @@ namespace VictorDev.DoTweenUtils
             }
             else
             {
-                Debug.LogWarning("Target does not have a renderer", typeof(This), EmojiEnum.Warning);
+                DebugUtils.Debug.LogWarning("Target does not have a renderer", typeof(This), EmojiEnum.Warning);
                 return null;
             }
         }

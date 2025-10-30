@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using UnityEngine;
 
-namespace VictorDev.TCIT
+namespace _VictorDev.RevitUtils
 {
     /// 機櫃資料
     [Serializable]

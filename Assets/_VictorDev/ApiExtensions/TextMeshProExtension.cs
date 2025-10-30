@@ -3,9 +3,9 @@ using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using TMPro;
-using Debug = VictorDev.DebugUtils.Debug;
+using Debug = _VictorDev.DebugUtils.Debug;
 
-namespace VictorDev.ApiExtensions
+namespace _VictorDev.ApiExtensions
 {
     /// 原API TextMeshProExtension類別功能擴充
     public static class TextMeshProExtension

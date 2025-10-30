@@ -1,7 +1,7 @@
 using UnityEngine;
-using Debug = VictorDev.DebugUtils.Debug;
+using Debug = _VictorDev.DebugUtils.Debug;
 
-namespace VictorDev.ApiExtensions
+namespace _VictorDev.ApiExtensions
 {
     /// 原API類別功能擴充
     public static class GameObjectExtension
@@ -13,7 +13,7 @@ namespace VictorDev.ApiExtensions
             #if UNITY_EDITOR
                 string selfName = self.name;
                 Object.DestroyImmediate(self, false);
-                if(isLogResult) Debug.Log($"GameObject: {selfName} is destroyed.", nameof(GameObjectExtension), EmojiEnum.Success);
+                if(isLogResult) DebugUtils.Debug.Log($"GameObject: {selfName} is destroyed.", nameof(GameObjectExtension), EmojiEnum.Success);
             #else
                 Object.Destroy(self);
             #endif

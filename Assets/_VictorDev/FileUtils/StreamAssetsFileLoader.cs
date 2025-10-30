@@ -2,13 +2,13 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Text;
+using _VictorDev.DebugUtils;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Networking;
-using VictorDev.DebugUtils;
-using Debug = VictorDev.DebugUtils.Debug;
+using Debug = _VictorDev.DebugUtils.Debug;
 
-namespace VictorDev.FileUtils
+namespace _VictorDev.FileUtils
 {
     ///  StreamAssets資料夾裡的檔案讀取
     ///  <para> + 資料是未打包的，適用於影片、JSON、文字檔</para>
@@ -26,7 +26,7 @@ namespace VictorDev.FileUtils
             {
                 // 建立新資料夾
                 AssetDatabase.CreateFolder(parentFolder, newFolderName);
-                Debug.Log("資料夾建立成功: " + fullPath);
+                UnityEngine.Debug.Log("資料夾建立成功: " + fullPath);
             }
 #endif
 
@@ -68,7 +68,7 @@ namespace VictorDev.FileUtils
                     else
                     {
                         onFailed?.Invoke();
-                        Debug.LogError($"讀取失敗: {request.error}");
+                        UnityEngine.Debug.LogError($"讀取失敗: {request.error}");
                         yield break;
                     }
                 }
@@ -94,7 +94,7 @@ namespace VictorDev.FileUtils
                         yield break;
                     }
                 }
-                Debug.Log("JSON 讀取完成");
+                UnityEngine.Debug.Log("JSON 讀取完成");
                 onSuccess?.Invoke(result);
             }
         }
@@ -124,7 +124,7 @@ namespace VictorDev.FileUtils
         {
             filePath = "Assets/StreamingAssets/" + filePath;
             var isExists = File.Exists(filePath);
-            if (isExists == false) Debug.LogError($"檔案不存在: {filePath}");
+            if (isExists == false) UnityEngine.Debug.LogError($"檔案不存在: {filePath}");
             return isExists;
         }
     }

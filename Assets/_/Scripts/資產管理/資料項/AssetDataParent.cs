@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using _VictorDev.RevitUtils;
 using Newtonsoft.Json;
 using Unity.VisualScripting;
 using UnityEngine;
-using VictorDev.DebugUtils;
-using VictorDev.RevitUtils;
+using _VictorDev.DebugUtils;
 using Debug = UnityEngine.Debug;
 
-namespace VictorDev.TCIT
+namespace _VictorDev.RevitUtils
 {
     /// 資產資料父類別
     public abstract class AssetDataParent
@@ -21,7 +21,7 @@ namespace VictorDev.TCIT
         [field: SerializeField]
         public Information Information { get; private set; }
 
-        /// 資產類型
+        /// 資產類型 Rack, Server, Router, Switch
         public EnumDeviceKind DeviceKind { get; private set; }
         
         /// 設備名稱

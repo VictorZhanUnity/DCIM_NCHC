@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
+using _VictorDev.DebugUtils;
+using _VictorDev.InterfaceUtils;
 using NaughtyAttributes;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Events;
-using VictorDev.ApiExtensions;
-using VictorDev.DebugUtils;
-using VictorDev.InterfaceUtils;
+using _VictorDev.ApiExtensions;
 
-namespace VictorDev.Frameworks
+namespace _VictorDev.Frameworks
 {
     /// JSON資料處理器
     public abstract class JsonDataManagerParent<TData> : MonoBehaviour

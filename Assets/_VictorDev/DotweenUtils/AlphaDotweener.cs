@@ -4,7 +4,7 @@ using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace VictorDev.DoTweenUtils
+namespace _VictorDev.DoTweenUtils
 {
     public class AlphaDotweener : MonoBehaviour
     {

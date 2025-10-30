@@ -3,7 +3,7 @@ using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace VictorDev.ColorUtils
+namespace _VictorDev.ColorUtils
 {
     /// 設定UI組件的Color切換
     public class UiColorChanger : MonoBehaviour

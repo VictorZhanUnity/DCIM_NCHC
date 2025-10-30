@@ -2,14 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using _VictorDev.DebugUtils;
+using _VictorDev.MathUtils;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
-using VictorDev.DebugUtils;
-using VictorDev.MathUtils;
-using Debug = VictorDev.DebugUtils.Debug;
+using Debug = _VictorDev.DebugUtils.Debug;
 
-namespace VictorDev.ColorUtils
+namespace _VictorDev.ColorUtils
 {
     public class ColorHelper : SingletonMonoBehaviour<ColorHelper>
     {

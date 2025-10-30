@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace VictorDev.DebugUtils
+namespace _VictorDev.DebugUtils
 {
     /// Log訊息處理 (僅在Editor環境下Log)
     public static class Debug

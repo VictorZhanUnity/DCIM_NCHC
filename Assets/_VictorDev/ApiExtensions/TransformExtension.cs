@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
-using Debug = VictorDev.DebugUtils.Debug;
+using Debug = _VictorDev.DebugUtils.Debug;
 
-namespace VictorDev.ApiExtensions
+namespace _VictorDev.ApiExtensions
 {
     /// [Extended] 原API類別功能擴充
     public static class TransformExtension
@@ -20,7 +20,7 @@ namespace VictorDev.ApiExtensions
             }
             else
             {
-                Debug.LogError("Target doesn't have a MeshRenderer");
+                DebugUtils.Debug.LogError("Target doesn't have a MeshRenderer");
             }
         }
         
@@ -73,7 +73,7 @@ namespace VictorDev.ApiExtensions
                 }
                 renderer.materials = newMaterials;
             }
-            else Debug.LogWarning($"{self.name} has no MeshRenderer component", nameof(TransformExtension), EmojiEnum.Warning);
+            else DebugUtils.Debug.LogWarning($"{self.name} has no MeshRenderer component", nameof(TransformExtension), EmojiEnum.Warning);
             return self;
         }
         /// [Extension] - 還原先前記錄的材質
@@ -87,7 +87,7 @@ namespace VictorDev.ApiExtensions
                     OriginalMaterials.Remove(self);
                 }
             }
-            else Debug.LogWarning($"{self.name} has no recorded original materials to restore.");
+            else DebugUtils.Debug.LogWarning($"{self.name} has no recorded original materials to restore.");
             return self;
         }
         #endregion        

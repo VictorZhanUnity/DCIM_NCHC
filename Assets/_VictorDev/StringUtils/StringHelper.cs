@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace VictorDev.StringUtils
+namespace _VictorDev.StringUtils
 {
     public static class StringHelper
     {

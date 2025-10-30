@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace VictorDev.ObjectUtils
+namespace _VictorDev.ObjectUtils
 {
     public class ObjectVisibleEventHandler : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace VictorDev.ColorUtils
+namespace _VictorDev.ColorUtils
 {
     [Serializable]
     public struct ColorSet

@@ -1,11 +1,11 @@
 using System.Collections.Generic;
+using _VictorDev.DoTweenUtils;
+using _VictorDev.TextUtils;
 using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
-using VictorDev.DoTweenUtils;
-using VictorDev.TextUtils;
 
-namespace VictorDev.TCIT
+namespace _VictorDev.RevitUtils
 {
     /// 機櫃資訊面板
     public class RackInfoPanel: MonoBehaviour

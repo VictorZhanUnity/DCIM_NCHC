@@ -422,13 +422,13 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9450981, g: 0.76470596, b: 0.31764707, a: 1}
     m_PressedColor: {r: 1, g: 0.818836, b: 0.514151, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.5512638, g: 0.63788885, b: 0.7169812, a: 0.9019608}
+    m_DisabledColor: {r: 0.495283, g: 0.99467486, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1554,7 +1554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.495283, g: 0.99467486, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2047,6 +2047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af1997f39d967294a9761c0ceeb950c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOnEnabled: 1
   duration: 0.3
   isRandomDelay: 1
   delay: 0.3

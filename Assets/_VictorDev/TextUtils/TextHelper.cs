@@ -2,11 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using _VictorDev.DebugUtils;
+using _VictorDev.DoTweenUtils;
 using TMPro;
-using VictorDev.DoTweenUtils;
-using Debug = VictorDev.DebugUtils.Debug;
+using Debug = _VictorDev.DebugUtils.Debug;
 
-namespace VictorDev.TextUtils
+namespace _VictorDev.TextUtils
 {
     public static class TextHelper
     {

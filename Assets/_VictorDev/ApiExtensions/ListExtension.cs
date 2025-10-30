@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
+using _VictorDev.InterfaceUtils;
 using UnityEngine;
-using VictorDev.Configs;
-using VictorDev.InterfaceUtils;
+using _VictorDev.Configs;
 
-namespace VictorDev.ApiExtensions
+namespace _VictorDev.ApiExtensions
 {
     /// 原API類別功能擴充
     public static class ListExtension

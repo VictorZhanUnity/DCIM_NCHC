@@ -1,9 +1,9 @@
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
-using Debug = VictorDev.DebugUtils.Debug;
+using Debug = _VictorDev.DebugUtils.Debug;
 
-namespace VictorDev.FileUtils
+namespace _VictorDev.FileUtils
 {
     /// [Editor] - 讀取StreamingAssets資料夾裡的機櫃Json檔
     public class JsonFileLoader : MonoBehaviour
@@ -12,9 +12,9 @@ namespace VictorDev.FileUtils
         [Button]
         private void CreateStreamingAssetsFolder()
         {
-            Debug.Log("CreateStreamingAssetsFolder...", this, EmojiEnum.Folder);
+            DebugUtils.Debug.Log("CreateStreamingAssetsFolder...", this, EmojiEnum.Folder);
             StreamAssetsFileLoader.CheckStreamingAssetsFolder();
-            Debug.Log("CreateStreamingAssetsFolder... OK!", this, EmojiEnum.Done);
+            DebugUtils.Debug.Log("CreateStreamingAssetsFolder... OK!", this, EmojiEnum.Done);
         }
 
         /// 讀取Json檔案
@@ -25,14 +25,14 @@ namespace VictorDev.FileUtils
             jsonString = string.Empty;
             if (string.IsNullOrEmpty(streamAssetfilePath)) streamAssetfilePath = path;
             streamAssetfilePath = streamAssetfilePath.Trim();
-            Debug.Log("LoadJsonFile...", this, EmojiEnum.Download);
+            DebugUtils.Debug.Log("LoadJsonFile...", this, EmojiEnum.Download);
             StreamAssetsFileLoader.LoadJsonFile(streamAssetfilePath, OnSuccessHandler);
         }
 
         private void OnSuccessHandler(string data)
         {
             jsonString = data;
-            Debug.Log($"LoadJsonFile... OK!\n{jsonString}", this, EmojiEnum.Done);
+            DebugUtils.Debug.Log($"LoadJsonFile... OK!\n{jsonString}", this, EmojiEnum.Done);
             InvokeJsonString();
         }
 

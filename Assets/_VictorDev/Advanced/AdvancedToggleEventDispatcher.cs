@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace VictorDev.Advanced
+namespace _VictorDev.Advanced
 {
     /// 在Inspector裡進階處理Toggle.OnValueChange事件
     /// <para>+ 直接掛在GameObject上即可</para>

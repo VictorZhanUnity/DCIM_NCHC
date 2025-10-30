@@ -3,7 +3,7 @@ using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
 
-namespace VictorDev.DoTweenUtils
+namespace _VictorDev.DoTweenUtils
 {
     /// CanvasGroup進行DOFade
     public class CanvasGroupDotweener : _DotweenerBase

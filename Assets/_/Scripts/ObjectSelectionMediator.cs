@@ -1,9 +1,9 @@
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
-using VictorDev.TCIT;
+using _VictorDev.RevitUtils;
 
-namespace _VictorDev.TCIT
+namespace _VictorDev.RevitUtils
 {
     /// 判斷點擊模型的類型，做相對應的資料Invoke
     public class ObjectSelectionMediator : MonoBehaviour

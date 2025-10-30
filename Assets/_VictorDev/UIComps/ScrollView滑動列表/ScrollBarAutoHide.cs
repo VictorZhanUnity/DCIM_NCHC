@@ -2,7 +2,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace VictorDev.Frameworks
+namespace _VictorDev.Frameworks
 {
     /// <summary>
     /// 直接掛載到ScrollView組件上就好

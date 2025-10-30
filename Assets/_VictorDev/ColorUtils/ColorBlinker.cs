@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace VictorDev.ColorUtils
+namespace _VictorDev.ColorUtils
 {
     public class ColorBlinker : MonoBehaviour
     {

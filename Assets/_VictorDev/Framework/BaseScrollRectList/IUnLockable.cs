@@ -1,4 +1,4 @@
-namespace VictorDev.ScrollRectUtils
+namespace _VictorDev.ScrollRectUtils
 {
     public interface IUnLockable
     {

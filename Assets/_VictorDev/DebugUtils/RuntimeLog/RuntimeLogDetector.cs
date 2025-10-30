@@ -4,7 +4,7 @@ using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace VictorDev.ApiExtensions
+namespace _VictorDev.ApiExtensions
 {
     /// 偵測LOG事件訊息 (Runtime)
     public class RuntimeLogDetector : MonoBehaviour

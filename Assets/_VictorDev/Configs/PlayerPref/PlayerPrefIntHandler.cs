@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace VictorDev.Configs
+namespace _VictorDev.Configs
 {
     public class PlayerPrefParent : PlayerPrefParent<int>
     {

@@ -2,7 +2,7 @@ using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
 
-namespace VictorDev.DoTweenUtils
+namespace _VictorDev.DoTweenUtils
 {
     /// 文字特效
     public class TextDotweener : MonoBehaviour

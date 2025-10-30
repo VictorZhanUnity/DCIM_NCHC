@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using _VictorDev.DebugUtils;
+using _VictorDev.Frameworks;
+using _VictorDev.RevitUtils;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
-using VictorDev.DebugUtils;
-using VictorDev.Frameworks;
-using VictorDev.RevitUtils;
 
-namespace VictorDev.TCIT
+namespace _VictorDev.RevitUtils
 {
     /// 設備資料管理器
     public class DataAssetManager : JsonDataManagerParent<List<RackAssetData>>

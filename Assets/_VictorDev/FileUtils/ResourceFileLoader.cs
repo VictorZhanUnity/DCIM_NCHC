@@ -1,12 +1,11 @@
 using System;
 using System.Collections;
 using _VictorDev.ApiExtensions;
+using _VictorDev.DebugUtils;
 using UnityEngine;
-using VictorDev.ApiExtensions;
-using VictorDev.DebugUtils;
-using Debug = VictorDev.DebugUtils.Debug;
+using Debug = _VictorDev.DebugUtils.Debug;
 
-namespace VictorDev.FileUtils
+namespace _VictorDev.FileUtils
 {
     public class ResourceFileLoader : SingletonMonoBehaviour<ResourceFileLoader>
     {

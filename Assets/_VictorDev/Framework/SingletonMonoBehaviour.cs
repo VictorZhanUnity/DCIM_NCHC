@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace VictorDev.DebugUtils
+namespace _VictorDev.DebugUtils
 {
     /// 單例模式，可static呼叫，可掛載於GameObject上
     /// <para>偵測Instance是否存在並自動新建於場景上</para>
