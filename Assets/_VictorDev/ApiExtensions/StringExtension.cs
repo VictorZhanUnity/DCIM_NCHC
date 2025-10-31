@@ -9,6 +9,13 @@ namespace _VictorDev.ApiExtensions
     /// 原API String類別功能擴充
     public static class StringExtension
     {
+        /// [Extended] - 依換行符號，分割成數行string
+        public static string[] SplitToLines(this string self, params char[] delimiter)
+        {
+            if(delimiter == null || delimiter.Length == 0) delimiter = new char[] { '\r', '\n' };
+            return self.Split(delimiter, StringSplitOptions.RemoveEmptyEntries);
+        }
+
         /// [Extended] - 首英文字大寫
         public static string ToCapitalizeFirstLetter(this string str)
         {

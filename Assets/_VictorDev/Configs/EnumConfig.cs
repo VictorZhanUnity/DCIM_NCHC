@@ -25,13 +25,6 @@ namespace _VictorDev.Configs
         Center,
         Back
     }
-    
-    ///  選擇語言 (中文或英文)
-    public enum EnumLanguage
-    {
-        en_US,
-        zh_CN
-    }
     #endregion
 
     #region Net

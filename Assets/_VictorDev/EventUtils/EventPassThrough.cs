@@ -16,7 +16,7 @@ namespace _VictorDev.EventUtils
 
         [InfoBox("需跟互動類型的UI組件放在一起\n例：Image / Toggle / Text / Dropdown / EventTrigger")]
         [SerializeField, Label("Click/PointerDownUp事件是否傳給上一層UI物件")] private bool isPassClickEventToParent = false;
-        [SerializeField, Label("是否額外增加事件控制")] private bool isAdditionEvent = false;
+        [SerializeField, Label("是否額外增加事件控制")] private bool isAdditionEvent;
 
         [Foldout("\t[Event] - onClick"), ShowIf(nameof(isAdditionEvent))]
         public UnityEvent<PointerEventData> onClick;

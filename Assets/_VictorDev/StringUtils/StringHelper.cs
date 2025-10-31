@@ -28,9 +28,7 @@ namespace _VictorDev.StringUtils
         /// 設置文字大小(HTML)
         public static string SetFontSizeString(string str, int fontSize) => $"<size='{fontSize}'>{str}</size>";
 
-        /// <summary>
         /// 解碼Base64 byte[] 轉成UTF8字串
-        /// </summary>
         public static string Base64ToString(byte[] data)
         {
             string base64String = JsonConvert.SerializeObject(data).Trim('\"');
@@ -40,11 +38,9 @@ namespace _VictorDev.StringUtils
         }
 
         private static StringBuilder sb = new StringBuilder();
-        /// <summary>
         /// 將多個字串組在一起
         /// <para> + 使用StringBuilder更有效率</para>
         /// <para> + 直接用原始值，故不進行Trim()</para>
-        /// </summary>
         public static string StringBuilderAppend(params string[] strValues)
         {
             sb.Clear();
@@ -54,9 +50,7 @@ namespace _VictorDev.StringUtils
             }
             return sb.ToString();
         }
-        /// <summary>
         /// 四捨五入到小數點後1位，若為0則不顯示小數點
-        /// </summary>
         public static string FormatFloat(float value, int numOfDecimal = 1)
         {
             float divide = Mathf.Pow(10f, numOfDecimal);

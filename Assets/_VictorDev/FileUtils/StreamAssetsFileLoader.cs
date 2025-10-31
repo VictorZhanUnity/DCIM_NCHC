@@ -35,7 +35,13 @@ namespace _VictorDev.FileUtils
         /// 讀取JSON
         public static Coroutine LoadJsonFile(string filePath, Action<string> onSuccess, Action onFailed = null)
         {
-            if(filePath.EndsWith(".json") == false) filePath += ".json";
+            //if(filePath.EndsWith(".json") == false) filePath += ".json";
+            filePath = filePath.Trim();
+            if (Path.HasExtension(filePath) == false)
+            {
+                Debug.LogError($"{filePath} is not a valid file path.");
+                return null;
+            }
             return LoadTextFile(filePath, onSuccess, onFailed);
         }
 
@@ -43,7 +49,7 @@ namespace _VictorDev.FileUtils
         public static Coroutine LoadTextFile(string filePath, Action<string> onSuccess, Action onFailed = null)
         {
             CheckStreamingAssetsFolder();
-            if(filePath.EndsWith(".json") == false && filePath.EndsWith(".txt") == false) filePath += ".txt";
+            //if(filePath.EndsWith(".json") == false && filePath.EndsWith(".txt") == false) filePath += ".txt";
             if (Application.isEditor)
             {
                 LoadTextFileInEditor(filePath, onSuccess, onFailed);
@@ -110,7 +116,7 @@ namespace _VictorDev.FileUtils
         public static void LoadTextFileInEditor(string filePath, Action<string> onSuccess, Action onFailed = null)
         {
             
-            if (filePath.EndsWith(".json") == false && filePath.EndsWith(".txt") == false) filePath += ".txt";
+            //if (filePath.EndsWith(".json") == false && filePath.EndsWith(".txt") == false) filePath += ".txt";
             if (CheckFileExistsInEditor(ref filePath))
             {
                 var data = File.ReadAllText(filePath);

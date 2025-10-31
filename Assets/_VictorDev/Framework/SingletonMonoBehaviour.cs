@@ -25,16 +25,13 @@ namespace _VictorDev.DebugUtils
                         instance.name = objName;
                     }
                 }
+
                 return instance;
             }
         }
 
-        private void Awake() => instance ??= this as T;
-        private void OnValidate()
-        {
-            name = objName;
-            OnValidateAfter();
-        }
-        protected virtual void OnValidateAfter() { }
-}
+        protected virtual void Awake() => instance ??= this as T;
+
+        protected virtual void OnValidate() => name = objName;
+    }
 }
