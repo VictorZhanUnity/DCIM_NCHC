@@ -9,7 +9,7 @@ using UnityEngine;
 namespace _VictorDev.TCIT.DCIM
 {
     /// DCIM App設定檔
-    public class DcimConfig : SingletonMonoBehaviour<DcimConfig>
+    public class DcimSysConfig : SingletonMonoBehaviour<DcimSysConfig>
     {
         [Label("[COBie語系設定]"), SerializeField] private List<LangConfig> cobieLangConfig;
         [Foldout("[設定]"), SerializeField] private TextFileLoader csvFileLoader;

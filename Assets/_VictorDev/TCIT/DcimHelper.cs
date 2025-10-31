@@ -10,7 +10,7 @@ namespace _VictorDev.TCIT.DCIM
     public static class DcimHelper
     {
         /// 機櫃單一RackUnit模型尺吋
-        public static Vector3 RackUnitSize => new (0.4826f, 0.044f, 0.9f);
+        public static Vector3 RackUnitSize => new (0.4826f, 0.0445f, 0.9f);
 
         #region 模型DevicePath相關處理
 
