@@ -11,7 +11,7 @@ using Debug = UnityEngine.Debug;
 namespace _VictorDev.TCIT.DCIM
 {
     /// 資產資料父類別
-    public abstract class AssetDataParent
+    public abstract class RevitAssetData
     {
         [JsonProperty] [field: SerializeField] public string DevicePath { get; private set; }
         [field: SerializeField] public Transform Model { get; private set; }
@@ -45,16 +45,26 @@ namespace _VictorDev.TCIT.DCIM
             if (result != null)
             {
                 Model = result;
-                if (Model.TryGetComponent(out AssetDataHolder assetDataHolder))
+                if (Model.TryGetComponent(out RevitAssetDataHolder assetDataHolder))
                 {
                     assetDataHolder.ReceiveAssetData(this);
                 }
                 else
                 {
-                    Model.AddComponent<AssetDataHolder>().ReceiveAssetData(this);
+                    Model.AddComponent<RevitAssetDataHolder>().ReceiveAssetData(this);
                 }
             }
             else Debug.LogError($"{DeviceNameAndCode} not found.");
+        }
+
+
+        public void ForDemo(Transform transform)
+        {
+            Model = transform;
+            DevicePath = DcimHelper.GetDevicePath(Model.name);
+            ParseDeviceNameAndCode();
+            Information = new Information();
+            transform.AddComponent<RevitAssetDataHolder>().ReceiveAssetData(this);
         }
     }
 }

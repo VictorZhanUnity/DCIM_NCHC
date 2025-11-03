@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using _VictorDev.ApiExtensions;
 using _VictorDev.Configs;
 using _VictorDev.DebugUtils;
@@ -13,6 +14,12 @@ namespace _VictorDev.TCIT.DCIM
     {
         [Label("[COBie語系設定]"), SerializeField] private List<LangConfig> cobieLangConfig;
         [Foldout("[設定]"), SerializeField] private TextFileLoader csvFileLoader;
+
+        public static string GetCobieColumnNames(string keyName)
+        {
+            keyName = keyName.Trim();
+            return Instance.cobieLangConfig.FirstOrDefault(set => set.KeyName == keyName)?.GetColumnName();
+        }
 
         [Button]
         private void LoadLangCsvFile() => csvFileLoader.LoadTextFile();

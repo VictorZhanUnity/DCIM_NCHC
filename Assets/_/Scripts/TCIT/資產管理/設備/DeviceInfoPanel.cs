@@ -8,15 +8,15 @@ using UnityEngine.UI;
 
 namespace _VictorDev.TCIT.DCIM
 {
-    /// 機櫃資訊面板
-    public class RackInfoPanel: MonoBehaviour
+    /// 設備資訊面板
+    public class DeviceInfoPanel: MonoBehaviour
     {
-        [Label("[資料項]"), SerializeField] private RackRevitAssetData rackRevitAssetData;
+        [Label("[資料項]"), SerializeField] private DeviceRevitAssetData deviceRevitAssetData;
         [Foldout("[組件]"), SerializeField] private List<TextDotweener> txtComps;
 
-        public void ReceiveData(RackRevitAssetData data)
+        public void ReceiveData(DeviceRevitAssetData data)
         {
-            rackRevitAssetData = data;
+            deviceRevitAssetData = data;
             ToClose();
             UpdateUI();
             gameObject.SetActive(true);
@@ -24,14 +24,14 @@ namespace _VictorDev.TCIT.DCIM
 
         private void UpdateUI()
         {
-            TextHelper.SetParamsToTxtComps(rackRevitAssetData, txtComps);
+            TextHelper.SetParamsToTxtComps(deviceRevitAssetData, txtComps);
         }
-        
+
         public void ToClose()
         {
-           gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
         
-        public void CameraToPosition() => RTSCameraController.CameraToPosition(rackRevitAssetData.Model);
+        public void CameraToPosition() => RTSCameraController.CameraToPosition(deviceRevitAssetData.Model);
     }
 }

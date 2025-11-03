@@ -8,7 +8,7 @@ namespace _VictorDev.CameraUtils
 {
     /// RTS攝影機控制器
     /// https://chatgpt.com/share/67fcb5ab-b03c-8012-b685-28ab8ee23da5
-    public class RTSCameraController : MonoBehaviour
+    public class RTSCameraController : SingletonMonoBehaviour<RTSCameraController>
     {
         [Header(">>> LookAt對像")] [SerializeField] private Transform lookAtTarget;
 
@@ -240,7 +240,8 @@ namespace _VictorDev.CameraUtils
         }
         /// 設定Zoom的調整速度
         public void SetZoomSpeedAdjust(float adjustValue) => zoomSpeedAdjust = adjustValue * zoomSpeed;
-
+        
+        public static void CameraToPosition(Transform target, float? setDistance=null) => Instance.FlyToPosition(target.position);
         public void FlyToPosition(Transform target)
         {
             if (target.TryGetComponent(out Renderer render))

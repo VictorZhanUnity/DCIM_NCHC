@@ -8,11 +8,11 @@ namespace _VictorDev.TCIT.DCIM
 {
     /// 機櫃資料
     [Serializable]
-    public class RackAssetData : AssetDataParent
+    public class RackRevitAssetData : RevitAssetData
     {
         /// 設備列表
         [JsonProperty]
-        [field: SerializeField] public List<DeviceAssetData> Containers { get; private set; }
+        [field: SerializeField] public List<DeviceRevitAssetData> Containers { get; private set; }
 
         /// 在JSON解析後處理 (需子類別自行解析，override函式需加上[OnDeserialized])
         [OnDeserialized]

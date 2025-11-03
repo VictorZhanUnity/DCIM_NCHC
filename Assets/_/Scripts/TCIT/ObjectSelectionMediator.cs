@@ -1,7 +1,9 @@
+using System;
+using _VictorDev.CameraUtils;
 using NaughtyAttributes;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
-using _VictorDev.TCIT.DCIM;
 
 namespace _VictorDev.TCIT.DCIM
 {
@@ -9,22 +11,33 @@ namespace _VictorDev.TCIT.DCIM
     public class ObjectSelectionMediator : MonoBehaviour
     {
         #region Variables
-        [Foldout("[Event] 點擊模型 - 機櫃")] public UnityEvent<RackAssetData> onRackClickedEvent;
-        [Foldout("[Event] 點擊模型 - 設備")] public UnityEvent<DeviceAssetData> onDeviceClickedEvent;
+        [Foldout("[Event] 點擊模型 - 機櫃")] public UnityEvent<RackRevitAssetData> onRackClickedEvent;
+        [Foldout("[Event] 點擊模型 - 設備")] public UnityEvent<DeviceRevitAssetData> onDeviceClickedEvent;
+        [Foldout("[設定]"), SerializeField] private float camDistanceToRack=4f, camDistanceToDevice = 1.5f;
+        private Transform targetModel;
+        
         #endregion
         
         /// 接收目前點擊的模型
         public void ReceiveOnClickedModel(Transform model)
         {
-            IsRackOrDeviceModel(model);
+            targetModel = model;
+            IsRackOrDeviceModel(targetModel);
         }
 
         private bool IsRackOrDeviceModel(Transform model)
         {
-            if (model.TryGetComponent(out AssetDataHolder assetDataHolder))
+            if (model.TryGetComponent(out RevitAssetDataHolder assetDataHolder))
             {
-                if(assetDataHolder.IsRackAsset) onRackClickedEvent?.Invoke(assetDataHolder.RackData);
-                else onDeviceClickedEvent?.Invoke(assetDataHolder.DeviceData);
+                if (assetDataHolder.IsRackAsset)
+                {
+                    onRackClickedEvent?.Invoke(assetDataHolder.RackRevitData);
+                }
+                else
+                {
+                    onDeviceClickedEvent?.Invoke(assetDataHolder.DeviceRevitData);
+                }
+                RTSCameraController.CameraToPosition(targetModel, assetDataHolder.IsRackAsset? camDistanceToRack: camDistanceToDevice);
                 return true;
             }
             return false;

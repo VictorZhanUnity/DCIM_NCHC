@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using IngameDebugConsole;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -14,6 +15,34 @@ namespace _VictorDev.DebugUtils
     /// GameObject物件處理
     public static class ObjectHelper
     {
+        /// 取得類別裡的所有變數名稱
+        public static List<string> GetFieldNames<T>(params string[] skipFiledName)
+        {
+            var type = typeof(T);
+            var fields = type.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+            var list = new List<string>();
+            foreach (var field in fields)
+            {
+                if(skipFiledName.Contains(field.Name)) continue;
+                list.Add(field.Name);
+            }
+            return list;
+        }
+        
+        /// 依字串取得目標類別實例的參數值
+        public static string GetValueByFiledName<T>(T target, string fieldName)
+        {
+            fieldName = fieldName.Trim();
+            // 取得欄位值
+            FieldInfo fieldInfo = typeof(T).GetField(fieldName);
+            if (fieldInfo != null)
+            {
+                object fieldValue = fieldInfo.GetValue(target);
+                return fieldValue?.ToString();
+            }
+            return null;
+        }
+        
         /// 設定Target的Scale大小，等於reference的meshRenderer大小
         public static void SetMatchSizeAndPosition(Transform target, Transform reference, float adjustScale = 1.01f)
         {
@@ -391,17 +420,5 @@ namespace _VictorDev.DebugUtils
             return boundObj;
         }
 
-        /// 依字串取得目標類別實例的參數值
-        public static string GetParameratorOfClass<T>(T target, string paramName)
-        {
-            // 取得欄位值
-            FieldInfo fieldInfo = typeof(T).GetField(paramName);
-            if (fieldInfo != null)
-            {
-                object fieldValue = fieldInfo.GetValue(target);
-                return fieldValue.ToString();
-            }
-            return null;
-        }
     }
 }

@@ -15,6 +15,7 @@ namespace _VictorDev.Configs
         [JsonProperty] [field:SerializeField]
         public string KeyName { get; private set; }
 
+        
         /// {語系，翻譯後文字}
         [field:SerializeField]
         public List<KeyValueData<EnumLanguage, string>> LangSet { get; private set; }
@@ -34,14 +35,19 @@ namespace _VictorDev.Configs
             {
                 findResult.Value = value;
             }
-        } 
+        }
+
+        /// 依語系取得欄位名稱
+        public string GetColumnName(EnumLanguage enumLang = EnumLanguage.zh_TW) 
+            => LangSet.FirstOrDefault(x => x.Key == enumLang)?.Value;
     }
 
     /// 語系選擇
     public enum EnumLanguage
     {
-        zh_TW = 0,
+        NonSelected = 0,
+        zh_TW = 1,
         zh_CN = 2,
-        en_US = 1,
+        en_US = 3,
     }
 }

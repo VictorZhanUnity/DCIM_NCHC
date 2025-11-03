@@ -17,19 +17,19 @@ namespace _VictorDev.TCIT.DCIM
         [Foldout("[Event]")] public UnityEvent<RackRuLayoutDeviceListItem> onItemSelectedEvent;
         
         [Foldout("[組件]"), SerializeField] private Toggle toggle;
-        [Foldout("[組件]"), SerializeField] private AssetDataHolder assetDataHolder;
+        [Foldout("[組件]"), SerializeField] private RevitAssetDataHolder revitAssetDataHolder;
         [Foldout("[組件]"), SerializeField] private List<TextDotweener> txtComps;
         #endregion
 
-        public DeviceAssetData DeviceData => assetDataHolder.DeviceData;
+        public DeviceRevitAssetData DeviceRevitData => revitAssetDataHolder.DeviceRevitData;
         
-        public void ReceiveAssetData(DeviceAssetData deviceAssetData)
+        public void ReceiveAssetData(DeviceRevitAssetData deviceRevitAssetData)
         {
-            assetDataHolder.ReceiveAssetData(deviceAssetData);
+            revitAssetDataHolder.ReceiveAssetData(deviceRevitAssetData);
             UpdateUI();
         }
 
-        private void UpdateUI() => TextHelper.SetParamsToTxtComps(assetDataHolder.DeviceData, txtComps);
+        private void UpdateUI() => TextHelper.SetParamsToTxtComps(revitAssetDataHolder.DeviceRevitData, txtComps);
 
         public void SetToggleIsOn(bool isOn) => toggle.isOn = isOn;
 
@@ -47,7 +47,7 @@ namespace _VictorDev.TCIT.DCIM
         {
             toggle ??= GetComponentInChildren<Toggle>(true);
             if(toggle != null) toggle.group = GetComponentInParent<ToggleGroup>(true);
-            assetDataHolder ??= GetComponent<AssetDataHolder>();
+            revitAssetDataHolder ??= GetComponent<RevitAssetDataHolder>();
             if(txtComps.Count == 0) txtComps = ObjectHelper.FindChildrenByClass<TextDotweener, TextDotweener>(transform, true
                 , "TxtDeviceName", "TxtDeviceCode", "TxtDeviceKind");
         }

@@ -11,7 +11,7 @@ using UnityEngine.Events;
 namespace _VictorDev.TCIT.DCIM
 {
     /// 設備資料管理器
-    public class DataAssetManager : JsonDataManagerParent<List<RackAssetData>>
+    public class DataAssetManager : JsonDataManagerParent<List<RackRevitAssetData>>
     {
         #region Variables
         [Foldout("[模型]"), Label("\tRack"), SerializeField] private List<Transform> rackModels;
@@ -68,21 +68,21 @@ namespace _VictorDev.TCIT.DCIM
         [Button]
         private void RemoveAssetDataHolderFromModel()
         {
-            AssetDataHolder assetDataHolder;
+            RevitAssetDataHolder revitAssetDataHolder;
             Data.ForEach(rack =>
             {
                 //機櫃模型
-                if (rack.Model.TryGetComponent(out assetDataHolder))
+                if (rack.Model.TryGetComponent(out revitAssetDataHolder))
                 {
-                    ObjectHelper.Destroy(assetDataHolder);
+                    ObjectHelper.Destroy(revitAssetDataHolder);
                 }
                
                 //設備模型
                 rack.Containers.ForEach(device =>
                 {
-                    if (device.Model.TryGetComponent(out assetDataHolder))
+                    if (device.Model.TryGetComponent(out revitAssetDataHolder))
                     {
-                        ObjectHelper.Destroy(assetDataHolder);
+                        ObjectHelper.Destroy(revitAssetDataHolder);
                     }
                 });
             });

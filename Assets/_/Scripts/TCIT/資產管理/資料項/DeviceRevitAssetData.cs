@@ -7,7 +7,7 @@ namespace _VictorDev.TCIT.DCIM
 {
     /// 設備資料
     [Serializable]
-    public class DeviceAssetData : AssetDataParent
+    public class DeviceRevitAssetData : RevitAssetData
     {
         #region Struct Variables
 
