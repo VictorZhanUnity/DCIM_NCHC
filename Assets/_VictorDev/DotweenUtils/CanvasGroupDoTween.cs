@@ -14,7 +14,7 @@ namespace _VictorDev.DoTweenUtils
 
         [Foldout("[Event] Tween時Invoke")] public UnityEvent<bool> isEnabledEvent;
         [Foldout("[Event] Tween時Invoke")] public UnityEvent onTweenStartEvent, onTweenEndEvent;
-        [Foldout("設定"), SerializeField] private float alphaOnEnabled = 1, alphaOnDisabled = 0.05f;
+        [Foldout("設定"), SerializeField] private float alphaOnEnabled = 1, alphaOnDisabled = 0f;
         [Foldout("設定"), SerializeField] private float duration = 0.5f, delay = 0f;
         [Foldout("設定"), SerializeField] private Ease ease = Ease.OutQuad;
         [Foldout("設定"), SerializeField] private CanvasGroup canvasGroup;

@@ -68592,7 +68592,7 @@ MonoBehaviour:
       m_Calls: []
   alphaOnEnabled: 1
   alphaOnDisabled: 0
-  duration: 0.15
+  duration: 0.3
   delay: 0
   ease: 6
   canvasGroup: {fileID: 771015312}
@@ -79712,7 +79712,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2489012985597330665, guid: b7585b113f5fead4a90fa98d539b0b01, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3838148652921794243, guid: b7585b113f5fead4a90fa98d539b0b01, type: 3}
       propertyPath: m_Color.a
@@ -79813,13 +79813,13 @@ PrefabInstance:
       addedObject: {fileID: 899797766}
     - targetCorrespondingSourceObject: {fileID: 2489012985597330665, guid: b7585b113f5fead4a90fa98d539b0b01, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 899797771}
+      addedObject: {fileID: 2064604690}
     - targetCorrespondingSourceObject: {fileID: 2489012985597330665, guid: b7585b113f5fead4a90fa98d539b0b01, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 899797770}
+      addedObject: {fileID: 2064604689}
     - targetCorrespondingSourceObject: {fileID: 2489012985597330665, guid: b7585b113f5fead4a90fa98d539b0b01, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 899797769}
+      addedObject: {fileID: 2064604688}
     - targetCorrespondingSourceObject: {fileID: 8882326496923481390, guid: b7585b113f5fead4a90fa98d539b0b01, type: 3}
       insertIndex: -1
       addedObject: {fileID: 899797768}
@@ -79907,84 +79907,6 @@ MonoBehaviour:
   onDisabledEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &899797769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 899797765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d55d9a7de9147f24581ebe0254e17b91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.Frameworks.LifeCycleEventDispatcher
-  onEnableDisabledEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onEnableDisabledReverseEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onEnableEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 899797766}
-        m_TargetAssemblyTypeName: UnityEngine.UI.ToggleGroup, UnityEngine.UI
-        m_MethodName: SetAllTogglesOff
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  onDisableEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onStartEvent:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &899797770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 899797765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ad1ae63227874743a6d5e19833b763a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.DoTweenUtils.CanvasGroupDoTween
-  isEnabledEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onTweenStartEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onTweenEndEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  alphaOnEnabled: 1
-  alphaOnDisabled: 0.05
-  duration: 0.5
-  delay: 0
-  ease: 6
-  canvasGroup: {fileID: 899797771}
---- !u!225 &899797771
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 899797765}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1001 &899957926
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -87252,8 +87174,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  camDistanceToRack: 4
-  camDistanceToDevice: 1.5
+  camDistanceToRack: 5
+  camDistanceToDevice: 1.3
 --- !u!1 &992291325
 GameObject:
   m_ObjectHideFlags: 0
@@ -95736,7 +95658,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 899797770}
+        - m_Target: {fileID: 2064604689}
           m_TargetAssemblyTypeName: _VictorDev.DoTweenUtils.CanvasGroupDoTween, Assembly-CSharp
           m_MethodName: SetEnabled
           m_Mode: 6
@@ -95752,7 +95674,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 899797770}
+        - m_Target: {fileID: 2064604689}
           m_TargetAssemblyTypeName: _VictorDev.DoTweenUtils.CanvasGroupDoTween, Assembly-CSharp
           m_MethodName: SetEnabled
           m_Mode: 6
@@ -192367,6 +192289,84 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5f3a5f94325f5604bb6d3f67e91c48d9, type: 3}
   m_PrefabInstance: {fileID: 2064491639}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2064604688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899797765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d55d9a7de9147f24581ebe0254e17b91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.Frameworks.LifeCycleEventDispatcher
+  onEnableDisabledEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onEnableDisabledReverseEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onEnableEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 899797766}
+        m_TargetAssemblyTypeName: UnityEngine.UI.ToggleGroup, UnityEngine.UI
+        m_MethodName: SetAllTogglesOff
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  onDisableEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &2064604689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899797765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad1ae63227874743a6d5e19833b763a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.DoTweenUtils.CanvasGroupDoTween
+  isEnabledEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onTweenStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onTweenEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  alphaOnEnabled: 1
+  alphaOnDisabled: 0
+  duration: 0.3
+  delay: 0
+  ease: 6
+  canvasGroup: {fileID: 2064604690}
+--- !u!225 &2064604690
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899797765}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2064891596
 GameObject:
   m_ObjectHideFlags: 0
