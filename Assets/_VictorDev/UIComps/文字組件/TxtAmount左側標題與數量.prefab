@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4203514664756954194}
   - component: {fileID: 6538984302635097205}
   m_Layer: 5
-  m_Name: TxtTitle
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_text: "\u6A5F\u6AC3"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: aea7587d457dbf74286a43054502e595, type: 2}
-  m_sharedMaterial: {fileID: 3188860092847080831, guid: b807ee04255154e4581bc12944062f00, type: 2}
+  m_sharedMaterial: {fileID: 1196226701208737513, guid: aea7587d457dbf74286a43054502e595, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 826899893690181167}
   - component: {fileID: 1090374217110825208}
   m_Layer: 5
-  m_Name: TxtUnit
+  m_Name: Unit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -417,7 +417,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: '{value}'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e55482919441f9e48b26ed0285e90f8f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f8875d3a4d2edf9429ed681d0755609c, type: 2}
   m_sharedMaterial: {fileID: 3867853783474116889, guid: e55482919441f9e48b26ed0285e90f8f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

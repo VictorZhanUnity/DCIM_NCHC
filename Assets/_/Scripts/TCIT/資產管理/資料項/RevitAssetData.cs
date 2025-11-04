@@ -24,16 +24,22 @@ namespace _VictorDev.TCIT.DCIM
         /// 資產類型 Rack, Server, Router, Switch
         public EnumDeviceKind DeviceKind { get; private set; }
         
+        /// 資產類型 中文
+        public string DeviceKindZh { get; private set; }
+        
         /// 設備名稱
         public string DeviceName { get; private set; }
 
         /// 設備名稱與流水號
         public string DeviceNameAndCode { get; private set; }
 
+        public string HeightU => $"{Information.heightU}U";
+        
         /// 取得設備名稱與流水號
         protected void ParseDeviceNameAndCode()
         {
             DeviceKind = DcimHelper.GetDeviceKind(DevicePath);
+            DeviceKindZh = DcimHelper.GetDeviceKindZh(DeviceKind);
             DeviceName = DcimHelper.GetDeviceName(DevicePath);
             DeviceNameAndCode = DcimHelper.GetDeviceName(DevicePath, true);
         }

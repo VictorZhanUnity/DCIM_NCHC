@@ -18,14 +18,21 @@ namespace _VictorDev.DoTweenUtils
         [Foldout("設定"), SerializeField] private float duration = 0.5f, delay = 0f;
         [Foldout("設定"), SerializeField] private Ease ease = Ease.OutQuad;
         [Foldout("設定"), SerializeField] private CanvasGroup canvasGroup;
+        [Foldout("設定"), SerializeField] private bool inInteractiveInTween = false;
         public bool IsOn { get; private set; }
 
         #endregion
 
-        private void Awake() => OnDisable();
+        private void Awake() => ForceEnabled(false);
 
-        private void OnDisable() => SetEnabled(false);
-
+        public void ForceEnabled(bool isEnabled)
+        {
+            IsOn = isEnabled;
+            canvasGroup.alpha = IsOn ? alphaOnEnabled : alphaOnDisabled;
+            OnUpdateHandler();
+            OnCompleteHandler();
+        }
+        
         public void SetEnabled(bool isEnabled)
         {
             onTweenStartEvent?.Invoke();
@@ -43,8 +50,8 @@ namespace _VictorDev.DoTweenUtils
         private void OnUpdateHandler()
         {
             bool isInteractable = Mathf.Approximately(canvasGroup.alpha, 1f);
-            canvasGroup.interactable = isInteractable;
-            canvasGroup.blocksRaycasts = isInteractable;
+            canvasGroup.interactable = isInteractable || inInteractiveInTween;
+            canvasGroup.blocksRaycasts = isInteractable || inInteractiveInTween;
         }
 
         private void OnValidate() => canvasGroup ??= GetComponent<CanvasGroup>();

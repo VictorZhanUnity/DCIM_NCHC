@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Name: UniversalBlurFeature
   m_EditorClassIdentifier: Unified.Universal.Blur::Unified.UniversalBlur.Runtime.UniversalBlurFeature
   m_Active: 1
-  iterations: 8
+  iterations: 6
   downsample: 4
   enableMipMaps: 0
   scale: 4

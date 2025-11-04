@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using _VictorDev.DebugUtils;
 using UnityEngine;
 
@@ -53,8 +54,23 @@ namespace _VictorDev.TCIT.DCIM
         /// 從DevicePath 取得設備類型 (Rack、Server、Router、Switch)
         public static EnumDeviceKind GetDeviceKind(string devicePath)
             => EnumHelper.GetEnumByString<EnumDeviceKind>(devicePath);
-
+        
+        /// 從DevicePath 取得設備類型 中文
+        public static string GetDeviceKindZh(string devicePath)
+            => GetDeviceKindZh(EnumHelper.GetEnumByString<EnumDeviceKind>(devicePath));
+        /// 從DevicePath 取得設備類型 中文
+        public static string GetDeviceKindZh(EnumDeviceKind deviceKind)
+            => deviceKind switch
+            {
+                EnumDeviceKind.Rack => "機櫃",
+                EnumDeviceKind.Server => "伺服主機",
+                EnumDeviceKind.Router => "網路路由器",
+                EnumDeviceKind.Switch => "網路交換機",
+                _=> "未知"
+            };
         #endregion
+
+       
     }
 
     #region Enum

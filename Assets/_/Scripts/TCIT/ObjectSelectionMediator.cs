@@ -1,7 +1,5 @@
-using System;
 using _VictorDev.CameraUtils;
 using NaughtyAttributes;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
