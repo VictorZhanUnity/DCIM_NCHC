@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VictorDev.TCIT.DCIM.RackUnitGridGizmoVisualizer
   totalRu: 42
   isAlwaysDisplayGizmo: 0
-  rackUnitSize: {x: 0.4826, y: 0.0445, z: 0.9}
+  rackUnitSize: {x: 0.72, y: 0.0445, z: 1}
   gridGizmoColor: {r: 1, g: 0.6470588, b: 0, a: 1}
   offsetDisplayU: {x: -0.6, y: 0, z: -0.35}
   grid: {fileID: 411968763010436580}

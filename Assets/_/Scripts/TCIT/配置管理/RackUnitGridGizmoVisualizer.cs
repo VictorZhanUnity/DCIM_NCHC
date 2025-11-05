@@ -1,10 +1,8 @@
-using System;
 using _VictorDev.DebugUtils;
 using _VictorDev.TCIT.DCIM;
 using NaughtyAttributes;
 using UnityEditor;
 using UnityEngine;
-using Debug = UnityEngine.Debug;
 
 namespace VictorDev.TCIT.DCIM
 {
@@ -13,28 +11,30 @@ namespace VictorDev.TCIT.DCIM
     public class RackUnitGridGizmoVisualizer : MonoBehaviour
     {
         #region Variables
-        [Label("RackUnit層數"), SerializeField, Range(1, 46)] private int totalRu = 42;
+
+        [Label("RackUnit層數"), SerializeField, Range(1, 46)]
+        private int totalRu = 42;
 
         [Foldout("[Gizmo設定]"), SerializeField] private bool isAlwaysDisplayGizmo;
         [Foldout("[Gizmo設定]"), SerializeField] private Vector3 rackUnitSize = DcimHelper.RackUnitSize;
         [Foldout("[Gizmo設定]"), SerializeField] private Color gridGizmoColor = Color.orange;
-        [Foldout("[Gizmo設定]"), SerializeField, Label("顯示文字位置Offset")] private Vector3 offsetDisplayU = new (-0.6f, 0, -0.35f);
+
+        [Foldout("[Gizmo設定]"), SerializeField, Label("顯示文字位置Offset")]
+        private Vector3 offsetDisplayU = new(-0.6f, 0, -0.35f);
 
         [Foldout("[組件]"), SerializeField] private Grid grid;
         [Foldout("[組件]"), SerializeField] private BoxCollider boxCollider;
 
-        private bool isDelayCall;
-        
         #endregion
 
-        private void Awake() => AlignToParentBottomMesh();
+        private void Awake() => OnValidate();
 
         /// 向下對齊父類別的Collider
-        public void AlignToParentBottomMesh()
+        private void AlignToParentBottomMesh()
         {
             transform.position = transform.parent.GetComponent<MeshRenderer>().bounds.center;
             LayerMask parentLayerMask = LayerMaskHelper.GetLayerMask(transform.parent);
-            
+
             Ray ray = new Ray(transform.position, Vector3.down);
             if (Physics.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity, parentLayerMask))
             {
@@ -45,28 +45,27 @@ namespace VictorDev.TCIT.DCIM
                 );
             }
         }
-        
+
         private void OnValidate()
         {
             gameObject.layer = 0;
             grid ??= GetComponent<Grid>();
             boxCollider ??= GetComponent<BoxCollider>();
-            
-            if(transform.parent == null) return;
-            
+
+            if (transform.parent == null) return;
+
             AdjustBoxCollider();
 #if UNITY_EDITOR
-            if (isDelayCall == false)
+            //等待Transform最後成形
+            EditorApplication.delayCall += () =>
             {
-                isDelayCall = true;
-                //等待Transform最後成形
-                EditorApplication.delayCall += () =>
-                {
-                    if (this == null) return; // 避免物件被刪除
-                    AdjustGrid();
-                    AlignToParentBottomMesh();
-                };
-            }
+                if (this == null) return; // 避免物件被刪除
+                AdjustGrid();
+                AlignToParentBottomMesh();
+            };
+#else
+                AdjustGrid();
+                AlignToParentBottomMesh();
 #endif
         }
 
@@ -82,18 +81,21 @@ namespace VictorDev.TCIT.DCIM
                 boxCollider.center.z
             );
         }
-        
+
         #region 調整Grid與BoxCollider尺吋
+
         //調整Grid尺吋
         private void AdjustGrid()
         {
             float parentY = Mathf.Round(transform.parent.eulerAngles.y); // 取父物件Y角
             //XY軸對調
             grid.cellSize = Mathf.Approximately(parentY, 270f) || Mathf.Approximately(parentY, 90f)
-                ? new Vector3(rackUnitSize.z, rackUnitSize.y, rackUnitSize.x) : rackUnitSize;
+                ? new Vector3(rackUnitSize.z, rackUnitSize.y, rackUnitSize.x)
+                : rackUnitSize;
         }
+
         #endregion
-                
+
 #if UNITY_EDITOR
         private void OnDrawGizmos()
         {
@@ -101,14 +103,15 @@ namespace VictorDev.TCIT.DCIM
             {
                 Color sourceGizmosColor = Gizmos.color;
                 Gizmos.color = gridGizmoColor;
-            
+
                 for (int i = 0; i < totalRu; i++)
                 {
                     Vector3 pos = transform.position;
                     pos.y += grid.cellSize.y * i;
                     Gizmos.DrawWireCube(pos, grid.cellSize);
-                    Handles.Label(pos+ offsetDisplayU, $"{i+1}U");
+                    Handles.Label(pos + offsetDisplayU, $"{i + 1}U");
                 }
+
                 Gizmos.color = sourceGizmosColor;
             }
         }
