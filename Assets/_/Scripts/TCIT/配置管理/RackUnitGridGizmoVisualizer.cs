@@ -1,8 +1,10 @@
+using System;
 using _VictorDev.DebugUtils;
 using _VictorDev.TCIT.DCIM;
 using NaughtyAttributes;
 using UnityEditor;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace VictorDev.TCIT.DCIM
 {
@@ -21,10 +23,14 @@ namespace VictorDev.TCIT.DCIM
         [Foldout("[組件]"), SerializeField] private Grid grid;
         [Foldout("[組件]"), SerializeField] private BoxCollider boxCollider;
 
-        #endregion
+        private bool isDelayCall;
         
+        #endregion
+
+        private void Awake() => AlignToParentBottomMesh();
+
         /// 向下對齊父類別的Collider
-        private void AlignToParentBottomMesh()
+        public void AlignToParentBottomMesh()
         {
             transform.position = transform.parent.GetComponent<MeshRenderer>().bounds.center;
             LayerMask parentLayerMask = LayerMaskHelper.GetLayerMask(transform.parent);
@@ -39,33 +45,29 @@ namespace VictorDev.TCIT.DCIM
                 );
             }
         }
-
+        
         private void OnValidate()
         {
             gameObject.layer = 0;
             grid ??= GetComponent<Grid>();
             boxCollider ??= GetComponent<BoxCollider>();
             
-#if UNITY_EDITOR
-            EditorApplication.delayCall += () =>
-            {
-                if (this == null) return; // 避免物件被刪除
-                AdjustGrid();
-            };
-#endif
+            if(transform.parent == null) return;
+            
             AdjustBoxCollider();
-
-            AlignToParentBottomMesh();
-        }
-
-        #region 調整Grid與BoxCollider尺吋
-        //調整Grid尺吋
-        private void AdjustGrid()
-        {
-            float parentY = Mathf.Round(transform.parent.eulerAngles.y); // 取父物件Y角
-            //XY軸對調
-            grid.cellSize = Mathf.Approximately(parentY, 270f) || Mathf.Approximately(parentY, 90f)
-                ? new Vector3(rackUnitSize.z, rackUnitSize.y, rackUnitSize.x) : rackUnitSize;
+#if UNITY_EDITOR
+            if (isDelayCall == false)
+            {
+                isDelayCall = true;
+                //等待Transform最後成形
+                EditorApplication.delayCall += () =>
+                {
+                    if (this == null) return; // 避免物件被刪除
+                    AdjustGrid();
+                    AlignToParentBottomMesh();
+                };
+            }
+#endif
         }
 
         //調整BoxCollider尺吋
@@ -79,6 +81,16 @@ namespace VictorDev.TCIT.DCIM
                 boxCollider.size.y / 2f - (boxCollider.size.y / (totalRu)) / 2f,
                 boxCollider.center.z
             );
+        }
+        
+        #region 調整Grid與BoxCollider尺吋
+        //調整Grid尺吋
+        private void AdjustGrid()
+        {
+            float parentY = Mathf.Round(transform.parent.eulerAngles.y); // 取父物件Y角
+            //XY軸對調
+            grid.cellSize = Mathf.Approximately(parentY, 270f) || Mathf.Approximately(parentY, 90f)
+                ? new Vector3(rackUnitSize.z, rackUnitSize.y, rackUnitSize.x) : rackUnitSize;
         }
         #endregion
                 
