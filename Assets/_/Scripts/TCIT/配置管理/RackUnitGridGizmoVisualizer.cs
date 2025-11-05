@@ -3,6 +3,8 @@ using _VictorDev.TCIT.DCIM;
 using NaughtyAttributes;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
+using Debug = _VictorDev.DebugUtils.Debug;
 
 namespace VictorDev.TCIT.DCIM
 {
@@ -12,9 +14,9 @@ namespace VictorDev.TCIT.DCIM
     {
         #region Variables
 
-        [Label("RackUnit層數"), SerializeField, Range(1, 46)]
-        private int totalRu = 42;
+        [Label("RackUnit層數"), SerializeField, Range(1, 46)] private int totalRu = 42;
 
+        [Foldout("[Event] 換算Grid座標")] public UnityEvent<Vector3> toGridPositionEvent;
         [Foldout("[Gizmo設定]"), SerializeField] private bool isAlwaysDisplayGizmo;
         [Foldout("[Gizmo設定]"), SerializeField] private Vector3 rackUnitSize = DcimHelper.RackUnitSize;
         [Foldout("[Gizmo設定]"), SerializeField] private Color gridGizmoColor = Color.orange;
@@ -24,15 +26,30 @@ namespace VictorDev.TCIT.DCIM
 
         [Foldout("[組件]"), SerializeField] private Grid grid;
         [Foldout("[組件]"), SerializeField] private BoxCollider boxCollider;
+        [Foldout("[組件]"), SerializeField] private MeshRenderer parentMeshRenderer;
 
         #endregion
 
+        /// 以世界座標換算Grid位置座標
+        public void ToGridPosition(Vector3 worldPosition)
+        {
+            // 格子座標
+            Vector3Int posOfGrid = grid.WorldToCell(worldPosition);
+            //posOfGrid.y = Mathf.Clamp(posOfGrid.y, 1, totalRu);
+            Debug.Log($"posOfGrid: {posOfGrid}");
+            
+            Vector3 posOfWorld = grid.GetCellCenterWorld(posOfGrid);
+            posOfWorld.x = parentMeshRenderer.bounds.center.x;
+            posOfWorld.z = parentMeshRenderer.bounds.center.z;
+            toGridPositionEvent?.Invoke(posOfWorld);
+        }
+        
         private void Awake() => OnValidate();
 
         /// 向下對齊父類別的Collider
         private void AlignToParentBottomMesh()
         {
-            transform.position = transform.parent.GetComponent<MeshRenderer>().bounds.center;
+            transform.position = parentMeshRenderer.bounds.center;
             LayerMask parentLayerMask = LayerMaskHelper.GetLayerMask(transform.parent);
 
             Ray ray = new Ray(transform.position, Vector3.down);
@@ -48,11 +65,10 @@ namespace VictorDev.TCIT.DCIM
 
         private void OnValidate()
         {
-            gameObject.layer = 0;
             grid ??= GetComponent<Grid>();
             boxCollider ??= GetComponent<BoxCollider>();
-
             if (transform.parent == null) return;
+            
 
             AdjustBoxCollider();
 #if UNITY_EDITOR
@@ -60,15 +76,19 @@ namespace VictorDev.TCIT.DCIM
             EditorApplication.delayCall += () =>
             {
                 if (this == null) return; // 避免物件被刪除
+                parentMeshRenderer = GetComponentInParent<MeshRenderer>();
                 AdjustGrid();
                 AlignToParentBottomMesh();
             };
 #else
+                parentMeshRenderer ??= GetComponentInParent<MeshRenderer>();
                 AdjustGrid();
                 AlignToParentBottomMesh();
 #endif
         }
+       
 
+        #region 調整Grid與BoxCollider尺吋
         //調整BoxCollider尺吋
         private void AdjustBoxCollider()
         {
@@ -81,9 +101,6 @@ namespace VictorDev.TCIT.DCIM
                 boxCollider.center.z
             );
         }
-
-        #region 調整Grid與BoxCollider尺吋
-
         //調整Grid尺吋
         private void AdjustGrid()
         {
@@ -93,7 +110,6 @@ namespace VictorDev.TCIT.DCIM
                 ? new Vector3(rackUnitSize.z, rackUnitSize.y, rackUnitSize.x)
                 : rackUnitSize;
         }
-
         #endregion
 
 #if UNITY_EDITOR

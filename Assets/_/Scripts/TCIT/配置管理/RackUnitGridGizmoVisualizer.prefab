@@ -47,12 +47,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VictorDev.TCIT.DCIM.RackUnitGridGizmoVisualizer
   totalRu: 42
+  toGridPositionEvent:
+    m_PersistentCalls:
+      m_Calls: []
   isAlwaysDisplayGizmo: 0
   rackUnitSize: {x: 0.72, y: 0.0445, z: 1}
   gridGizmoColor: {r: 1, g: 0.6470588, b: 0, a: 1}
   offsetDisplayU: {x: -0.6, y: 0, z: -0.35}
   grid: {fileID: 411968763010436580}
   boxCollider: {fileID: 7882484155193279770}
+  parentMeshRenderer: {fileID: 0}
 --- !u!156049354 &411968763010436580
 Grid:
   m_ObjectHideFlags: 0
