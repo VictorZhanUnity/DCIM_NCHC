@@ -5,20 +5,23 @@ using UnityEngine;
 namespace _VictorDev.GimzoUtils
 {
     /// 依照Grid的CellSize，繪制Gizmo格數
+    /// <para> + 目前僅支援Rectangle型態的Grid </para>
     [ExecuteAlways]
     [RequireComponent(typeof(Grid))]
-    public class BoxGridGizmoDrawer : MonoBehaviour
+    public class GridGizmoDrawer : MonoBehaviour
     {
         #region Variables
 
         [Label("繪製Grid數量"), MinValue(1), SerializeField]
         private Vector3Int amountOfGrids = new(3, 3, 3);
+        
+        public Vector3Int AmountOfGrids => amountOfGrids;
 
         [Foldout("[Gizmo設定]"), Label("是否始終顯示Gizmo"), SerializeField]
         private bool isAlwaysDisplayGizmo;
 
         [Foldout("[Gizmo設定]"), Label("是否顯示GridIndex(較耗資源)"), SerializeField]
-        private bool isShowGridIndex;
+        private bool isShowGridIndex = true;
 
         [Foldout("[Gizmo設定]"), SerializeField, Label("Offset顯示Grid指標")]
         private Vector3 offsetDisplayGridIndex = Vector3.zero;
@@ -34,24 +37,31 @@ namespace _VictorDev.GimzoUtils
         private void OnValidate()
         {
             if (grid == null) grid = GetComponent<Grid>();
+            grid.cellLayout = GridLayout.CellLayout.Rectangle;
         }
 
         #region 畫Gizmos
 
         private void OnDrawGizmos()
         {
-            if (isAlwaysDisplayGizmo || Selection.activeGameObject == gameObject) DrawGridLine();
+            if (isAlwaysDisplayGizmo || Selection.activeGameObject == gameObject) DrawGrid();
         }
 
         /// 畫Grid格線
-        private void DrawGridLine()
+        private void DrawGrid()
         {
             if (grid == null) grid = GetComponent<Grid>();
             grid.cellLayout = GridLayout.CellLayout.Rectangle;
 
             Gizmos.color = lineColor;
 
-            // 從Cell(0,0,0)開始畫，逐格生成邊線
+            // 暫存舊的矩陣
+            Matrix4x4 oldMatrix = Gizmos.matrix;
+            // 設定為該物件的本地轉換矩陣
+            Gizmos.matrix = transform.localToWorldMatrix;
+
+            Vector3 cellSize = grid.cellSize;
+
             for (int x = 0; x < amountOfGrids.x; x++)
             {
                 for (int y = 0; y < amountOfGrids.y; y++)
@@ -59,16 +69,20 @@ namespace _VictorDev.GimzoUtils
                     for (int z = 0; z < amountOfGrids.z; z++)
                     {
                         Vector3Int cellPos = new Vector3Int(x, y, z);
-                        Vector3 worldPos = grid.GetCellCenterWorld(cellPos);
-                        Vector3 cellSize = grid.cellSize;
-                        // 畫出格子的框線
-                        Gizmos.DrawWireCube(worldPos, cellSize);
-                        if (isShowGridIndex) Handles.Label(worldPos + offsetDisplayGridIndex, $"X:{x}\tY:{y}\tZ:{z}");
+                        // 使用本地座標，不要用 GetCellCenterWorld
+                        Vector3 localPos = grid.CellToLocalInterpolated(cellPos + Vector3.one * 0.5f);
+
+                        Gizmos.DrawWireCube(localPos, cellSize);
+
+                        if (isShowGridIndex)
+                            Handles.Label(transform.TransformPoint(localPos + offsetDisplayGridIndex), $"X:{x}\tY:{y}\tZ:{z}");
                     }
                 }
             }
-        }
 
+            // 恢復矩陣
+            Gizmos.matrix = oldMatrix;
+        }
         #endregion
     }
 }
