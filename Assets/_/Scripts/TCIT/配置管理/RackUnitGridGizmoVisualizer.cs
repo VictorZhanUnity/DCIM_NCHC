@@ -50,7 +50,7 @@ namespace VictorDev.TCIT.DCIM
         private void AlignToParentBottomMesh()
         {
             transform.position = parentMeshRenderer.bounds.center;
-            LayerMask parentLayerMask = LayerMaskHelper.GetLayerMask(transform.parent);
+            LayerMask parentLayerMask = LayerMaskHelper.IndexLayerMask(transform.parent);
 
             Ray ray = new Ray(transform.position, Vector3.down);
             if (Physics.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity, parentLayerMask))

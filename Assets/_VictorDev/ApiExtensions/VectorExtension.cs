@@ -7,6 +7,9 @@ namespace _VictorDev.ApiExtensions
     {
         #region Vector3
 
+        /// 轉換成整數值
+        public static Vector3 ToVectorInt(this Vector3 self) => new(Mathf.Round(self.x), Mathf.Round(self.y), Mathf.Round(self.z));
+        
         /// [Extended] 設定 X 值
         public static Vector3 SetX(this Vector3 self, float x) => new Vector3(x, self.y, self.z);
 
@@ -55,7 +58,10 @@ namespace _VictorDev.ApiExtensions
         #endregion
 
         #region Vector2
-        
+
+        /// 轉換成整數值
+        public static Vector2 ToVectorInt(this Vector2 self) => new(Mathf.Round(self.x), Mathf.Round(self.y));
+
         /// 尺吋
         public static Vector2 SizeData(this Texture2D texture)
         {

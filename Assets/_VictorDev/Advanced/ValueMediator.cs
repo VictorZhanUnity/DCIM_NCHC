@@ -21,6 +21,8 @@ namespace _VictorDev.Frameworks
             }
         }
 
+        public void SetValue(int value) => SetValue((float)value);
+        
         public void SetValue(float value)
         {
             _value = value;
