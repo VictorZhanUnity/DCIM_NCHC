@@ -111,7 +111,7 @@ namespace _VictorDev.GimzoUtils
         }
 
         #region 畫Gizmos
-
+#if UNITY_EDITOR
         private void OnDrawGizmos()
         {
             if (isAlwaysDisplayGizmo || Selection.activeGameObject == gameObject) DrawGrid();
@@ -153,7 +153,7 @@ namespace _VictorDev.GimzoUtils
             // 恢復矩陣
             Gizmos.matrix = oldMatrix;
         }
-
+#endif
         #endregion
     }
 }
