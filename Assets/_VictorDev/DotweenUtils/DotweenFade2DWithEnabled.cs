@@ -66,7 +66,7 @@ namespace _VictorDev.DoTweenUtils
 
             if (isDoMove) targetTrans.DOLocalMove(originalPos ?? Vector3.zero, duration).From(fromPos).SetEase(ease).SetDelay(targetDelay);
             if (isDoScale) targetTrans.DOScale(originalScale ?? Vector3.zero, duration).From(new Vector3(fromScaleValue, fromScaleValue, fromScaleValue)).SetEase(ease).SetDelay(targetDelay);
-
+            
             gameObject.SetActive(true);
         }
         private void OnDisable() => onDisabledEvent?.Invoke();
