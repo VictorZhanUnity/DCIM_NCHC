@@ -8,7 +8,7 @@ namespace _VictorDev.TCIT
     /// 計算GridIndex與世界座標
     [RequireComponent(typeof(Grid), typeof(GridGizmoDrawer), typeof(BoxCollider))]
     public class GridPositionCounter : MonoBehaviour
-    {
+    {/*
         #region Variables
 
         [Foldout("[Event] 換算Grid的世界座標")] public UnityEvent<Vector3> toGridWorldPositionEvent;
@@ -59,6 +59,6 @@ namespace _VictorDev.TCIT
             if (gridGizmoDrawer == null) gridGizmoDrawer = GetComponent<GridGizmoDrawer>();
             if (boxCollider == null) boxCollider = GetComponent<BoxCollider>();
             boxCollider.isTrigger = true;
-        }
+        }*/
     }
 }

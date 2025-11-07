@@ -1,21 +1,31 @@
 using NaughtyAttributes;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace _VictorDev.GimzoUtils
 {
-    /// 依照Grid的CellSize，繪制Gizmo格數
+    /// 依照Grid的CellSize，繪制Gizmo格數以改變BoxCollider尺吋，並提供GridIndex換算世界座標
     /// <para> + 目前僅支援Rectangle型態的Grid </para>
     [ExecuteAlways]
-    [RequireComponent(typeof(Grid))]
+    [RequireComponent(typeof(Grid), typeof(BoxCollider))]
     public class GridGizmoDrawer : MonoBehaviour
     {
         #region Variables
 
         [Label("繪製Grid數量"), MinValue(1), SerializeField]
         private Vector3Int amountOfGrids = new(3, 3, 3);
-        
-        public Vector3Int AmountOfGrids => amountOfGrids;
+
+        [Label("單一Grid尺吋"), MinValue(0.0001f), SerializeField]
+        private Vector3 gridCellSize = Vector3.one;
+
+        [Foldout("[Event] 換算Grid的世界座標")] public UnityEvent<Vector3> toGridWorldPositionEvent;
+
+        [Foldout("[Event] 目前Grid的Index(Vector3Int)")]
+        public UnityEvent<Vector3Int> currentGridIndexEvent;
+
+        [Foldout("[Event] 目前Grid的Index(string)")]
+        public UnityEvent<string> currentGridIndexStringEvent;
 
         [Foldout("[Gizmo設定]"), Label("是否始終顯示Gizmo"), SerializeField]
         private bool isAlwaysDisplayGizmo;
@@ -28,16 +38,76 @@ namespace _VictorDev.GimzoUtils
 
         [Foldout("[Gizmo設定]"), SerializeField] private Color lineColor = Color.orange;
         [Foldout("[組件]"), SerializeField] private Grid grid;
+        [Foldout("[組件]"), SerializeField] private BoxCollider boxCollider;
 
         #endregion
 
         /// 設置繪製Grid數量 (X, Y, Z)軸
-        public void SetAmountOfGrids(Vector3Int value) => amountOfGrids = value;
+        public void SetAmountOfGrids(Vector3Int amount) => amountOfGrids = amount;
+
+#if UNITY_EDITOR
+        private bool pendingUpdate;
+        private void ApplyGridCellSize()
+        {
+            if (!pendingUpdate) return;
+            pendingUpdate = false;
+            EditorApplication.update -= ApplyGridCellSize;
+            grid.cellSize = gridCellSize;
+        }
+#endif
+        /// 設置單一Grid尺吋
+        public void SetCellSizeOfGrid(Vector3 size)
+        {
+            gridCellSize = size;
+#if !UNITY_EDITOR
+             grid.cellSize = gridCellSize;
+#else
+            // 記錄要更新
+            pendingUpdate = true;
+
+            // 確保不重複註冊
+            EditorApplication.update -= ApplyGridCellSize;
+            EditorApplication.update += ApplyGridCellSize;
+#endif
+        }
+
+        /// 以座標換算Grid世界座標
+        public void ToGridWorldPosition(Vector3 worldPosition)
+        {
+            // 格子座標
+            Vector3Int posOfGridIndex = grid.WorldToCell(worldPosition);
+
+            posOfGridIndex.x = Mathf.Clamp(posOfGridIndex.x, 0, amountOfGrids.x - 1);
+            posOfGridIndex.y = Mathf.Clamp(posOfGridIndex.y, 0, amountOfGrids.y - 1);
+            posOfGridIndex.z = Mathf.Clamp(posOfGridIndex.z, 0, amountOfGrids.z - 1);
+
+            Vector3 posOfWorld = grid.GetCellCenterWorld(posOfGridIndex);
+            toGridWorldPositionEvent?.Invoke(posOfWorld);
+            currentGridIndexEvent?.Invoke(posOfGridIndex);
+            currentGridIndexStringEvent?.Invoke(posOfGridIndex.ToString());
+        }
+
+        /// 調整BoxCollider尺吋與位置，對齊Grid
+        private void FixColliderToGrid()
+        {
+            // 計算整體大小, 會以BoxCollider表面的位置計算Grid指標而會計算到43，所以要讓高度減一個高度
+            Vector3 totalSize = new Vector3(
+                grid.cellSize.x * amountOfGrids.x
+                , grid.cellSize.y * amountOfGrids.y
+                , grid.cellSize.z * amountOfGrids.z);
+            // 設定 BoxCollider 大小
+            boxCollider.size = totalSize;
+            // 因為 BoxCollider 的中心在中間，所以要讓它往 Grid 的一半方向偏移
+            boxCollider.center = new Vector3(totalSize.x * 0.5f, totalSize.y * 0.5f, totalSize.z * 0.5f);
+        }
 
         private void OnValidate()
         {
             if (grid == null) grid = GetComponent<Grid>();
             grid.cellLayout = GridLayout.CellLayout.Rectangle;
+            SetCellSizeOfGrid(gridCellSize);
+            if (boxCollider == null) boxCollider = GetComponent<BoxCollider>();
+            boxCollider.isTrigger = true;
         }
 
         #region 畫Gizmos
@@ -45,6 +115,7 @@ namespace _VictorDev.GimzoUtils
         private void OnDrawGizmos()
         {
             if (isAlwaysDisplayGizmo || Selection.activeGameObject == gameObject) DrawGrid();
+            FixColliderToGrid();
         }
 
         /// 畫Grid格線
@@ -60,8 +131,6 @@ namespace _VictorDev.GimzoUtils
             // 設定為該物件的本地轉換矩陣
             Gizmos.matrix = transform.localToWorldMatrix;
 
-            Vector3 cellSize = grid.cellSize;
-
             for (int x = 0; x < amountOfGrids.x; x++)
             {
                 for (int y = 0; y < amountOfGrids.y; y++)
@@ -72,10 +141,11 @@ namespace _VictorDev.GimzoUtils
                         // 使用本地座標，不要用 GetCellCenterWorld
                         Vector3 localPos = grid.CellToLocalInterpolated(cellPos + Vector3.one * 0.5f);
 
-                        Gizmos.DrawWireCube(localPos, cellSize);
+                        Gizmos.DrawWireCube(localPos, gridCellSize);
 
                         if (isShowGridIndex)
-                            Handles.Label(transform.TransformPoint(localPos + offsetDisplayGridIndex), $"X:{x}\tY:{y}\tZ:{z}");
+                            Handles.Label(transform.TransformPoint(localPos + offsetDisplayGridIndex),
+                                $"X:{x}\tY:{y}\tZ:{z}");
                     }
                 }
             }
@@ -83,6 +153,7 @@ namespace _VictorDev.GimzoUtils
             // 恢復矩陣
             Gizmos.matrix = oldMatrix;
         }
+
         #endregion
     }
 }

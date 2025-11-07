@@ -4705,11 +4705,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoxGridGizmoDrawer
   amountOfGrids: {x: 1, y: 42, z: 1}
+  gridCellSize: {x: 0.4826, y: 0.0445, z: 0.9}
+  toGridWorldPositionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  currentGridIndexEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  currentGridIndexStringEvent:
+    m_PersistentCalls:
+      m_Calls: []
   isAlwaysDisplayGizmo: 1
   isShowGridIndex: 1
   offsetDisplayGridIndex: {x: 0, y: 0, z: 0}
   lineColor: {r: 1, g: 0.6470588, b: 0, a: 1}
   grid: {fileID: 101306575}
+  boxCollider: {fileID: 101306573}
 --- !u!156049354 &101306575
 Grid:
   m_ObjectHideFlags: 0
@@ -4718,7 +4729,7 @@ Grid:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 101306572}
   m_Enabled: 1
-  m_CellSize: {x: 0.54, y: 0.0445, z: 0.9}
+  m_CellSize: {x: 0.4826, y: 0.0445, z: 0.9}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
@@ -4753,11 +4764,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  rackUnitSize: {x: 0.54, y: 0.0445, z: 0.9}
+  rackUnitHeight: 0.0445
+  rackUnitWidthDepth: {x: 0.4826, y: 0.9}
   amountOfWidthDepth: {x: 1, y: 1}
-  gridPositionCounter: {fileID: 101306578}
   gridGizmoDrawer: {fileID: 101306574}
-  grid: {fileID: 101306575}
 --- !u!4 &101306577
 Transform:
   m_ObjectHideFlags: 0
@@ -4786,15 +4796,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fa148510c499b4a9241828f58664ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.GridPositionCounter
-  toGridWorldPositionEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  currentGridIndexEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  grid: {fileID: 101306575}
-  gridGizmoDrawer: {fileID: 101306574}
-  boxCollider: {fileID: 101306573}
 --- !u!114 &101932943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17254,9 +17255,9 @@ MonoBehaviour:
   onRaycastHitPoint:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1930280971}
-        m_TargetAssemblyTypeName: _VictorDev.TCIT.GridPositionCounter, Assembly-CSharp
-        m_MethodName: ToGridWorldPosition
+      - m_Target: {fileID: 1930280976}
+        m_TargetAssemblyTypeName: _VictorDev.TCIT.RackUnitGrid, Assembly-CSharp
+        m_MethodName: ReceiveInteractWorldPosition
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -101744,7 +101745,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1930280975}
   - component: {fileID: 1930280976}
-  - component: {fileID: 1930280971}
   - component: {fileID: 1930280973}
   - component: {fileID: 1930280974}
   - component: {fileID: 1930280972}
@@ -101755,51 +101755,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1930280971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1930280970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34fa148510c499b4a9241828f58664ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.GridPositionCounter
-  toGridWorldPositionEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1930280976}
-        m_TargetAssemblyTypeName: _VictorDev.TCIT.RackUnitGrid, Assembly-CSharp
-        m_MethodName: ReceiveGridWorldPosition
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  currentGridIndexEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1930280976}
-        m_TargetAssemblyTypeName: _VictorDev.TCIT.RackUnitGrid, Assembly-CSharp
-        m_MethodName: ReceiveCurrentGridIndexHandler
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  grid: {fileID: 1930280974}
-  gridGizmoDrawer: {fileID: 1930280973}
-  boxCollider: {fileID: 1930280972}
 --- !u!65 &1930280972
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -101834,11 +101789,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.GimzoUtils.GridGizmoDrawer
   amountOfGrids: {x: 1, y: 42, z: 1}
+  gridCellSize: {x: 0.4826, y: 0.0445, z: 0.9}
+  toGridWorldPositionEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1930280976}
+        m_TargetAssemblyTypeName: _VictorDev.TCIT.RackUnitGrid, Assembly-CSharp
+        m_MethodName: ReceiveGridWorldPosition
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  currentGridIndexEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1930280976}
+        m_TargetAssemblyTypeName: _VictorDev.TCIT.RackUnitGrid, Assembly-CSharp
+        m_MethodName: ReceiveCurrentGridIndexHandler
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  currentGridIndexStringEvent:
+    m_PersistentCalls:
+      m_Calls: []
   isAlwaysDisplayGizmo: 0
   isShowGridIndex: 1
   offsetDisplayGridIndex: {x: 0, y: 0, z: 0}
   lineColor: {r: 1, g: 0.6470588, b: 0, a: 1}
   grid: {fileID: 1930280974}
+  boxCollider: {fileID: 1930280972}
 --- !u!156049354 &1930280974
 Grid:
   m_ObjectHideFlags: 0
@@ -101882,39 +101872,14 @@ MonoBehaviour:
   rackUnits: 42
   toGridWorldPositionEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1064800451}
-        m_TargetAssemblyTypeName: _VictorDev.Advanced.FixedModelPivot, Assembly-CSharp
-        m_MethodName: SetPosition
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   currentHeightUEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1442166246}
-        m_TargetAssemblyTypeName: _VictorDev.Frameworks.ValueMediator, Assembly-CSharp
-        m_MethodName: SetValue
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  rackUnitSize: {x: 0.4826, y: 0.0445, z: 0.9}
+      m_Calls: []
+  rackUnitHeight: 0.0445
+  rackUnitWidthDepth: {x: 0.4826, y: 0.9}
   amountOfWidthDepth: {x: 1, y: 1}
-  gridPositionCounter: {fileID: 1930280971}
   gridGizmoDrawer: {fileID: 1930280973}
-  grid: {fileID: 1930280974}
 --- !u!1001 &1934318651
 PrefabInstance:
   m_ObjectHideFlags: 0
