@@ -82,6 +82,7 @@ namespace _VictorDev.Managers
                             onRaycastHitTarget?.Invoke(firstHitObject);
                             onRaycastHitObjects?.Invoke(raycastHitObjects);
                             onRaycastHitPoint?.Invoke(_hitPoint);
+                            onRaycastHitTargetAndPoint?.Invoke(firstHitObject, _hitPoint);
                         }
 
                         _lastHoveredObject = firstHitObject;
@@ -93,6 +94,7 @@ namespace _VictorDev.Managers
                         onRaycastHitTargetWithClick?.Invoke(firstHitObject);
                         onRaycastHitObjectsWithClick?.Invoke(raycastHitObjects);
                         onRaycastHitPointWithClick?.Invoke(_hitPoint);
+                        onRaycastHitTargetAndPoint?.Invoke(firstHitObject, _hitPoint);
                     }
                 }
                 else
@@ -140,6 +142,9 @@ namespace _VictorDev.Managers
         public UnityEvent<Transform> onRaycastHitTarget = new();
         [Foldout("[Event] - RayCast目標物件/Hit點坐標(MouseOver)"), ShowIf(nameof(isSimulateMouseOverExit))]
         public UnityEvent<Vector3> onRaycastHitPoint = new();
+        [Foldout("[Event] - RayCast目標物件/Hit點坐標(MouseOver)"), ShowIf(nameof(isSimulateMouseOverExit))]
+        public UnityEvent<Transform, Vector3> onRaycastHitTargetAndPoint = new();
+
      
         [Foldout("[Event] - RayCast經過物件群(MouseOver/Click)"), ShowIf(nameof(isSimulateMouseOverExit))]
         public UnityEvent<Transform[]> onRaycastHitObjects, onRaycastHitObjectsWithClick = new();

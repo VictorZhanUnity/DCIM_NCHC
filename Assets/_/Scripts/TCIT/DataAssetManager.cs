@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using _VictorDev.DebugUtils;
 using _VictorDev.Frameworks;
-using _VictorDev.TCIT.DCIM;
 using NaughtyAttributes;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,22 +14,32 @@ namespace _VictorDev.TCIT.DCIM
     public class DataAssetManager : JsonDataManagerParent<List<RackRevitAssetData>>
     {
         #region Variables
-        [Foldout("[模型]"), Label("\tRack"), SerializeField] private List<Transform> rackModels;
-        [Foldout("[模型]"), Label("\tServer"), SerializeField] private List<Transform> serverModels;
-        [Foldout("[模型]"), Label("\tRouter"), SerializeField] private List<Transform> routerModels;
-        [Foldout("[模型]"), Label("\tSwitch"), SerializeField] private List<Transform> switchModels;
-        [Foldout("[Event] GetData")] public UnityEvent onGetDataEvent;
+
+        [Foldout("[Event] 在此設定擷取資料的觸發")] public UnityEvent toGetDataEvent;
+        [Foldout("[模型]"), Label("\tRack"), SerializeField]
+        private List<Transform> rackModels;
+
+        [Foldout("[模型]"), Label("\tServer"), SerializeField]
+        private List<Transform> serverModels;
+
+        [Foldout("[模型]"), Label("\tRouter"), SerializeField]
+        private List<Transform> routerModels;
+
+        [Foldout("[模型]"), Label("\tSwitch"), SerializeField]
+        private List<Transform> switchModels;
+
         #endregion
-        
+
         [Button]
-        public void GetData()
+        public void ToGetData()
         {
             isLoadingEvent?.Invoke(true);
-            onGetDataEvent?.Invoke();
+            toGetDataEvent?.Invoke();
         }
 
         protected override void BeforeInvokeData() => CombineDataAndModels();
 
+        #region 設定資料與模型
         /// 處理資料集與對應3D模型
         private void CombineDataAndModels()
         {
@@ -37,46 +47,33 @@ namespace _VictorDev.TCIT.DCIM
             {
                 //機櫃模型
                 rack.SetModelFromList(rackModels);
-               
-               //設備模型
-               rack.Containers.ForEach(device =>
-               {
-                   List<Transform> modelList = device.DeviceKind switch
-                   {
-                       EnumDeviceKind.Server => serverModels,
-                       EnumDeviceKind.Router => routerModels,
-                       EnumDeviceKind.Switch => switchModels,
-                       _ => null
-                   };
-                   if (modelList != null) device.SetModelFromList(modelList);
-               });
+
+                //設備模型
+                rack.Containers.ForEach(device =>
+                {
+                    List<Transform> modelList = device.DeviceKind switch
+                    {
+                        EnumDeviceKind.Server => serverModels,
+                        EnumDeviceKind.Router => routerModels,
+                        EnumDeviceKind.Switch => switchModels,
+                        _ => null
+                    };
+                    if (modelList != null) device.SetModelFromList(modelList);
+                });
             });
         }
-
-        /// 接收機房模型，並進行分類
-        public void ReceiveModels(List<Transform> targets)
-        {
-            rackModels = ModelFilter("Rack");
-            serverModels = ModelFilter("Server");
-            routerModels = ModelFilter("Router");
-            switchModels = ModelFilter("Switch");
-            List<Transform> ModelFilter(string keyWords)
-                => targets.Where(target => target.name.Contains(keyWords, StringComparison.OrdinalIgnoreCase)).ToList();
-        }
-
         /// 將模型移除AssetDataHolder
         [Button]
         private void RemoveAssetDataHolderFromModel()
         {
-            RevitAssetDataHolder revitAssetDataHolder;
             Data.ForEach(rack =>
             {
                 //機櫃模型
-                if (rack.Model.TryGetComponent(out revitAssetDataHolder))
+                if (rack.Model.TryGetComponent(out RevitAssetDataHolder revitAssetDataHolder))
                 {
                     ObjectHelper.Destroy(revitAssetDataHolder);
                 }
-               
+
                 //設備模型
                 rack.Containers.ForEach(device =>
                 {
@@ -86,6 +83,19 @@ namespace _VictorDev.TCIT.DCIM
                     }
                 });
             });
+        }
+        #endregion
+
+        /// 接收機房模型，並進行分類
+        public void ReceiveModels(List<Transform> targets)
+        {
+            rackModels = ModelFilter("Rack");
+            serverModels = ModelFilter("Server");
+            routerModels = ModelFilter("Router");
+            switchModels = ModelFilter("Switch");
+
+            List<Transform> ModelFilter(string keyWords)
+                => targets.Where(target => target.name.Contains(keyWords, StringComparison.OrdinalIgnoreCase)).ToList();
         }
     }
 }

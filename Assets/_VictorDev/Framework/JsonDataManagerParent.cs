@@ -10,7 +10,9 @@ using _VictorDev.ApiExtensions;
 
 namespace _VictorDev.Frameworks
 {
-    /// JSON資料處理器
+    /// JSON解析資料接收器
+    /// <para>+ 僅接收解析後的JSON資料</para>
+    /// <para>+ 再透過Event方式傳遞出去，以及傳給每一個註冊的Receiver</para>
     public abstract class JsonDataManagerParent<TData> : MonoBehaviour
     {
         #region Variables

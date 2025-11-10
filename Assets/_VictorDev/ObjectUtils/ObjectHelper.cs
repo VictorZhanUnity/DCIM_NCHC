@@ -223,7 +223,7 @@ namespace _VictorDev.DebugUtils
 
         /// [泛型] 新增Collider型別到目標物件上
         /// <para>+ 泛型Collider只需傳入隨意一個實例化即可，例如: new BoxCollider()</para>
-        public static void AddColliderToObjects<T>(List<Transform> targetObjects, T collider,
+        public static void AddColliderToObjects<T>(List<Transform> targetObjects,
             bool removeExisting = true) where T : Collider
         {
             if (removeExisting) RemoveColliderFromObjects(targetObjects);

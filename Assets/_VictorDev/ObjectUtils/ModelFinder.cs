@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using _VictorDev.DebugUtils;
 using NaughtyAttributes;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -20,6 +22,7 @@ namespace _VictorDev.ObjectUtils
         public UnityEvent<List<Transform>> onFoundModelEvent;
 
         [Foldout("[設定]"), SerializeField] private Transform targetModelsParent;
+        [Foldout("[設定]"), SerializeField] private EnumColliderType enumColliderType = EnumColliderType.Box;
 
         #endregion
 
@@ -33,7 +36,18 @@ namespace _VictorDev.ObjectUtils
         }
 
         [Button]
-        public void AddColliderToObjects() => ObjectHelper.AddColliderToObjects(foundModels, new BoxCollider());
+        public void AddColliderToObjects()
+        {
+            switch (enumColliderType)
+            {
+                case EnumColliderType.Box: 
+                    ObjectHelper.AddColliderToObjects<BoxCollider>(foundModels);
+                    break;
+                case EnumColliderType.Mesh: 
+                    ObjectHelper.AddColliderToObjects<MeshCollider>(foundModels);
+                    break;
+            };
+        }
 
         [Button]
         public void RemoveColliderFromObjects() => ObjectHelper.RemoveColliderFromObjects(foundModels);
@@ -42,5 +56,10 @@ namespace _VictorDev.ObjectUtils
         [Button]
         public void SelectObjects() => Selection.objects = foundModels.Select(t => t.gameObject).ToArray();
 #endif
+
+        public enum EnumColliderType
+        {
+            Box, Mesh
+        }
     }
 }

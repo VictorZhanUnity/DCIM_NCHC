@@ -1,7 +1,10 @@
+using _VictorDev.ApiExtensions;
+using _VictorDev.DebugUtils;
 using NaughtyAttributes;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using Debug = _VictorDev.DebugUtils.Debug;
 
 namespace _VictorDev.GimzoUtils
 {
@@ -45,22 +48,12 @@ namespace _VictorDev.GimzoUtils
         /// 設置繪製Grid數量 (X, Y, Z)軸
         public void SetAmountOfGrids(Vector3Int amount) => amountOfGrids = amount;
 
-#if UNITY_EDITOR
-        private bool pendingUpdate;
-        private void ApplyGridCellSize()
-        {
-            if (!pendingUpdate) return;
-            pendingUpdate = false;
-            EditorApplication.update -= ApplyGridCellSize;
-            grid.cellSize = gridCellSize;
-        }
-#endif
         /// 設置單一Grid尺吋
         public void SetCellSizeOfGrid(Vector3 size)
         {
             gridCellSize = size;
 #if !UNITY_EDITOR
-             grid.cellSize = gridCellSize;
+            grid.cellSize = gridCellSize;
 #else
             // 記錄要更新
             pendingUpdate = true;
@@ -81,12 +74,55 @@ namespace _VictorDev.GimzoUtils
             posOfGridIndex.y = Mathf.Clamp(posOfGridIndex.y, 0, amountOfGrids.y - 1);
             posOfGridIndex.z = Mathf.Clamp(posOfGridIndex.z, 0, amountOfGrids.z - 1);
 
-            Vector3 posOfWorld = grid.GetCellCenterWorld(posOfGridIndex);
+            Vector3 posOfWorld = grid.GetCellCenterWorld(posOfGridIndex); //抓Grid中間座標
             toGridWorldPositionEvent?.Invoke(posOfWorld);
             currentGridIndexEvent?.Invoke(posOfGridIndex);
             currentGridIndexStringEvent?.Invoke(posOfGridIndex.ToString());
         }
 
+        /// 向下對齊父類別的Collider
+        [Button]
+        public void AlignToParentBottomMesh()
+        {
+            transform.position = transform.parent.GetComponent<MeshRenderer>().bounds.center;
+            LayerMask parentLayerMask = LayerMaskHelper.IndexToLayerMask(transform.parent);
+
+            if (parentLayerMask == LayerMaskHelper.IndexToLayerMask(transform))
+            {
+                Debug.LogError($"LayerMask of Parent and Child are the same.", this);
+                return;
+            }
+            
+            Ray ray = new Ray(transform.position, Vector3.down);
+            
+            float parentY = Mathf.Round(transform.parent.eulerAngles.y); // 取父物件Y角
+            //XY軸對調
+            Vector2 sizeAdjust = new Vector2(-gridCellSize.x, gridCellSize.z);
+            if (Mathf.Approximately(parentY, 270f) || Mathf.Approximately(parentY, 90f)) sizeAdjust = sizeAdjust.SwapXY();
+                
+            if (Physics.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity, parentLayerMask))
+            {
+                transform.position = new Vector3(
+                    transform.position.x-sizeAdjust.x*value.x,
+                    hitInfo.point.y,
+                    transform.position.z-sizeAdjust.y*value.y
+                );
+            }
+        }
+
+        public Vector2 value;
+        
+#if UNITY_EDITOR
+        private bool pendingUpdate;
+        private void ApplyGridCellSize()
+        {
+            if (!pendingUpdate) return;
+            pendingUpdate = false;
+            EditorApplication.update -= ApplyGridCellSize;
+            grid.cellSize = gridCellSize;
+        }
+#endif
+        
         /// 調整BoxCollider尺吋與位置，對齊Grid
         private void FixColliderToGrid()
         {
@@ -108,6 +144,8 @@ namespace _VictorDev.GimzoUtils
             SetCellSizeOfGrid(gridCellSize);
             if (boxCollider == null) boxCollider = GetComponent<BoxCollider>();
             boxCollider.isTrigger = true;
+
+            AlignToParentBottomMesh();
         }
 
         #region 畫Gizmos

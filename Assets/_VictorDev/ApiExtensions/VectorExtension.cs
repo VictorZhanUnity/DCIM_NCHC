@@ -6,6 +6,10 @@ namespace _VictorDev.ApiExtensions
     public static class VectorExtension
     {
         #region Vector3
+        
+        /// XY值對調
+        public static Vector3 SwapXZ(this Vector3 self) => new(self.z, self.y, self.x);
+        
 
         /// 轉換成整數值
         public static Vector3 ToVectorInt(this Vector3 self) => new(Mathf.Round(self.x), Mathf.Round(self.y), Mathf.Round(self.z));
@@ -59,6 +63,9 @@ namespace _VictorDev.ApiExtensions
 
         #region Vector2
 
+        /// XY值對調
+        public static Vector2 SwapXY(this Vector2 self) => new(self.y, self.x);
+        
         /// 轉換成整數值
         public static Vector2 ToVectorInt(this Vector2 self) => new(Mathf.Round(self.x), Mathf.Round(self.y));
 

@@ -4898,6 +4898,7 @@ MonoBehaviour:
   lineColor: {r: 1, g: 0.6470588, b: 0, a: 1}
   grid: {fileID: 101306575}
   boxCollider: {fileID: 101306573}
+  value: {x: 0, y: 0}
 --- !u!156049354 &101306575
 Grid:
   m_ObjectHideFlags: 0
@@ -6526,6 +6527,7 @@ MonoBehaviour:
   lineColor: {r: 1, g: 0.6470588, b: 0, a: 1}
   grid: {fileID: 122478381}
   boxCollider: {fileID: 122478380}
+  value: {x: 0, y: 0}
 --- !u!114 &122478383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114077,6 +114079,7 @@ MonoBehaviour:
   lineColor: {r: 1, g: 0.6470588, b: 0, a: 1}
   grid: {fileID: 1930280974}
   boxCollider: {fileID: 1930280972}
+  value: {x: -0.5, y: 0.5}
 --- !u!156049354 &1930280974
 Grid:
   m_ObjectHideFlags: 0
@@ -114098,7 +114101,7 @@ Transform:
   m_GameObject: {fileID: 1930280970}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.03, y: 0.1421, z: 0.244}
+  m_LocalPosition: {x: 0.03999986, y: 0.14199162, z: 0.15641214}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

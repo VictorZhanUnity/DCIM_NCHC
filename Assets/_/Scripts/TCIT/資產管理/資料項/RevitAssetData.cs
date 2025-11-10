@@ -44,7 +44,7 @@ namespace _VictorDev.TCIT.DCIM
             DeviceNameAndCode = DcimHelper.GetDeviceName(DevicePath, true);
         }
 
-        /// 從Transform列表裡設定模型
+        /// 從Transform列表裡設定模型，與設定RevitAssetDataHolder
         public void SetModelFromList(List<Transform> modelList)
         {
             Transform result = modelList.FirstOrDefault(model=>model.name.Contains(DeviceNameAndCode, StringComparison.OrdinalIgnoreCase));
