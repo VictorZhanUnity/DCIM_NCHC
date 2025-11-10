@@ -10,6 +10,38 @@ namespace _VictorDev.ApiExtensions
     /// [Extended] 原API類別功能擴充
     public static class TransformExtension
     {
+        public static Vector3 GetMeshCenter(this Transform target)
+        {
+            var renderers = target.GetComponentsInChildren<Renderer>();
+            if (renderers.Length == 0)
+                return target.position;
+
+            Bounds bounds = renderers[0].bounds;
+            foreach (var r in renderers)
+                bounds.Encapsulate(r.bounds);
+
+            return bounds.center;
+        }
+        
+        /// 以模型中心點設置Position
+        public static void SetCenterPosition(this Transform target, Vector3 newCenterPos)
+        {
+            Vector3 meshCenter = target.GetMeshCenter();
+            Vector3 offset = target.position - meshCenter;
+            target.position = newCenterPos + offset;
+        }
+
+        /// 以模型中心點設置Rotation
+        public static void SetCenterRotation(this Transform target, Quaternion newRotation)
+        {
+            Vector3 center = target.GetMeshCenter();
+            Vector3 pivotOffset = target.position - center;
+
+            // 以幾何中心為基準旋轉
+            target.rotation = newRotation;
+            target.position = center + target.rotation * pivotOffset;
+        }
+        
         /// 跟隨Target物件
         public static void FollowTarget(this Transform transform, Transform target, float lerpDuration = 0f,
             float delay = 0f, Ease ease = Ease.Linear)
@@ -20,7 +52,7 @@ namespace _VictorDev.ApiExtensions
             }
             else
             {
-                DebugUtils.Debug.LogError("Target doesn't have a MeshRenderer");
+                Debug.LogError("Target doesn't have a MeshRenderer");
             }
         }
         

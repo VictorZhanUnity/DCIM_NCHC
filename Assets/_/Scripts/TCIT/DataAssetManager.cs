@@ -4,7 +4,6 @@ using System.Linq;
 using _VictorDev.DebugUtils;
 using _VictorDev.Frameworks;
 using NaughtyAttributes;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -66,23 +65,18 @@ namespace _VictorDev.TCIT.DCIM
         [Button]
         private void RemoveAssetDataHolderFromModel()
         {
-            Data.ForEach(rack =>
+            rackModels.ForEach(RemoveRevitAssetDataHolderComponent);
+            serverModels.ForEach(RemoveRevitAssetDataHolderComponent);
+            routerModels.ForEach(RemoveRevitAssetDataHolderComponent);
+            switchModels.ForEach(RemoveRevitAssetDataHolderComponent);
+
+            void RemoveRevitAssetDataHolderComponent(Transform target)
             {
-                //機櫃模型
-                if (rack.Model.TryGetComponent(out RevitAssetDataHolder revitAssetDataHolder))
+                if (target.TryGetComponent(out RevitAssetDataHolder revitAssetDataHolder))
                 {
                     ObjectHelper.Destroy(revitAssetDataHolder);
                 }
-
-                //設備模型
-                rack.Containers.ForEach(device =>
-                {
-                    if (device.Model.TryGetComponent(out revitAssetDataHolder))
-                    {
-                        ObjectHelper.Destroy(revitAssetDataHolder);
-                    }
-                });
-            });
+            }
         }
         #endregion
 

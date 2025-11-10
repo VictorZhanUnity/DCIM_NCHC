@@ -65,7 +65,7 @@ namespace _VictorDev.GimzoUtils
         }
 
         /// 以座標換算Grid世界座標
-        public void ToGridWorldPosition(Vector3 worldPosition)
+        public Vector3 ToGridWorldPosition(Vector3 worldPosition)
         {
             // 格子座標
             Vector3Int posOfGridIndex = grid.WorldToCell(worldPosition);
@@ -78,13 +78,21 @@ namespace _VictorDev.GimzoUtils
             toGridWorldPositionEvent?.Invoke(posOfWorld);
             currentGridIndexEvent?.Invoke(posOfGridIndex);
             currentGridIndexStringEvent?.Invoke(posOfGridIndex.ToString());
+            
+            return posOfWorld;
         }
 
         /// 向下對齊父類別的Collider
         [Button]
         public void AlignToParentBottomMesh()
         {
+            if (transform.parent == null)
+            {
+                Debug.LogError($"Parent is null,", this);
+                return;
+            }
             transform.position = transform.parent.GetComponent<MeshRenderer>().bounds.center;
+            
             LayerMask parentLayerMask = LayerMaskHelper.IndexToLayerMask(transform.parent);
 
             if (parentLayerMask == LayerMaskHelper.IndexToLayerMask(transform))
@@ -93,25 +101,26 @@ namespace _VictorDev.GimzoUtils
                 return;
             }
             
-            Ray ray = new Ray(transform.position, Vector3.down);
+            //從Y軸+1為起點，開始Racast
+            Ray ray = new Ray(transform.position.AddY(1f), Vector3.down);
             
-            float parentY = Mathf.Round(transform.parent.eulerAngles.y); // 取父物件Y角
-            //XY軸對調
-            Vector2 sizeAdjust = new Vector2(-gridCellSize.x, gridCellSize.z);
-            if (Mathf.Approximately(parentY, 270f) || Mathf.Approximately(parentY, 90f)) sizeAdjust = sizeAdjust.SwapXY();
-                
             if (Physics.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity, parentLayerMask))
             {
-                transform.position = new Vector3(
-                    transform.position.x-sizeAdjust.x*value.x,
+                //設定XZ相對座標
+                transform.localPosition = new Vector3(
+                    transform.localPosition.x-gridCellSize.x*0.5f,
                     hitInfo.point.y,
-                    transform.position.z-sizeAdjust.y*value.y
+                    transform.localPosition.z-gridCellSize.z*0.5f
                 );
+                // 設定Y高度座標
+                transform.position = new Vector3(transform.position.x, hitInfo.point.y, transform.position.z);
+            }
+            else
+            {
+                Debug.LogError($"Didn't hit Objects.", this);
             }
         }
 
-        public Vector2 value;
-        
 #if UNITY_EDITOR
         private bool pendingUpdate;
         private void ApplyGridCellSize()
@@ -119,7 +128,7 @@ namespace _VictorDev.GimzoUtils
             if (!pendingUpdate) return;
             pendingUpdate = false;
             EditorApplication.update -= ApplyGridCellSize;
-            grid.cellSize = gridCellSize;
+            if(grid != null) grid.cellSize = gridCellSize;
         }
 #endif
         
@@ -144,8 +153,6 @@ namespace _VictorDev.GimzoUtils
             SetCellSizeOfGrid(gridCellSize);
             if (boxCollider == null) boxCollider = GetComponent<BoxCollider>();
             boxCollider.isTrigger = true;
-
-            AlignToParentBottomMesh();
         }
 
         #region 畫Gizmos

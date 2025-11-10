@@ -167,7 +167,7 @@ namespace _VictorDev.DebugUtils
         {
             if (obj == null) return;
             var comp = obj as Component;
-            bool isRectTransform = obj is RectTransform ;
+            bool isRectTransform = obj is RectTransform || obj is GameObject;
             if (Application.isPlaying) Object.Destroy(isRectTransform? obj.GameObject(): comp);
             else Object.DestroyImmediate(isRectTransform? obj.GameObject(): comp);
         }

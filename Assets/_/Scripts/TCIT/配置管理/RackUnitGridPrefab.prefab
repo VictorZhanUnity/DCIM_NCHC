@@ -1,0 +1,134 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &499699127940850404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 278182982233267809}
+  - component: {fileID: 3660517094649572312}
+  - component: {fileID: 2379956610458762810}
+  - component: {fileID: 3423762964646314885}
+  - component: {fileID: 6742617142778211959}
+  m_Layer: 11
+  m_Name: RackUnitGridPrefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &278182982233267809
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499699127940850404}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.15870023, y: 0.14199162, z: 0.15641215}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!156049354 &3660517094649572312
+Grid:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499699127940850404}
+  m_Enabled: 1
+  m_CellSize: {x: 0.4826, y: 0.0445, z: 0.9}
+  m_CellGap: {x: 0, y: 0, z: 0}
+  m_CellLayout: 0
+  m_CellSwizzle: 0
+--- !u!65 &2379956610458762810
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499699127940850404}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.4826, y: 1.8690001, z: 0.9}
+  m_Center: {x: 0.2413, y: 0.93450004, z: 0.45}
+--- !u!114 &3423762964646314885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499699127940850404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6c14da13447ffe45b87acf8caff7d6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.GimzoUtils.GridGizmoDrawer
+  amountOfGrids: {x: 1, y: 42, z: 1}
+  gridCellSize: {x: 0.4826, y: 0.0445, z: 0.9}
+  toGridWorldPositionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  currentGridIndexEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6742617142778211959}
+        m_TargetAssemblyTypeName: _VictorDev.TCIT.RackUnitGrid, Assembly-CSharp
+        m_MethodName: ReceiveCurrentGridIndexHandler
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  currentGridIndexStringEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  isAlwaysDisplayGizmo: 0
+  isShowGridIndex: 1
+  offsetDisplayGridIndex: {x: 0, y: 0, z: 0}
+  lineColor: {r: 1, g: 0.6470588, b: 0, a: 1}
+  grid: {fileID: 3660517094649572312}
+  boxCollider: {fileID: 2379956610458762810}
+--- !u!114 &6742617142778211959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499699127940850404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3de0fbf2beb787249bb2db60a9fed542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.RackUnitGrid
+  rackUnits: 42
+  toGridWorldPositionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  currentHeightUEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  rackUnitHeight: 0.0445
+  rackUnitWidthDepth: {x: 0.4826, y: 0.9}
+  amountOfWidthDepth: {x: 1, y: 1}
+  gridGizmoDrawer: {fileID: 3423762964646314885}

@@ -24,5 +24,10 @@ namespace _VictorDev.Advanced
         {
             if (meshRenderer == null) meshRenderer = GetComponent<MeshRenderer>();
         }
+
+        public void SetRotation(Vector3 zero)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -34,15 +34,21 @@ namespace _VictorDev.TCIT
         #endregion
 
         /// 接收鼠標WorldPosition
-        public void ReceiveInteractWorldPosition(Vector3 worldPosition) =>
+        public Vector3 ReceiveInteractWorldPosition(Vector3 worldPosition) =>
             gridGizmoDrawer.ToGridWorldPosition(worldPosition);
 
         /// 接收GridGizmoDrawer換算後Grid世界座標
-        public void ReceiveGridWorldPosition(Vector3 worldPosition) => toGridWorldPositionEvent?.Invoke(worldPosition);
+        public void ReceiveGridWorldPosition(Vector3 worldPosition)
+        {
+            toGridWorldPositionEvent?.Invoke(worldPosition);
+        }
 
         /// 接收GridGizmoDrawer目前的GridIndex
-        public void ReceiveCurrentGridIndexHandler(Vector3Int gridIndex) =>
-            currentHeightUEvent?.Invoke(gridIndex.y + 1);
+        public void ReceiveCurrentGridIndexHandler(Vector3Int gridIndex)
+        {
+            int posU = gridIndex.y + 1;
+            currentHeightUEvent?.Invoke(posU);
+        }
 
         private void OnValidate()
         {
