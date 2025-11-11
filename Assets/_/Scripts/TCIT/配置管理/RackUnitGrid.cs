@@ -21,7 +21,7 @@ namespace _VictorDev.TCIT.DCIM
         private float rackUnitHeight = DcimHelper.RackUnitSize.y;
 
         [Foldout("[設定]"), SerializeField, Min(0.0001f), Label("單一U層寬度/深度")]
-        private Vector2 rackUnitWidthDepth = new(DcimHelper.RackUnitSize.x, DcimHelper.RackUnitSize.z);
+        private Vector2 rackUnitWidthDepth;
 
         [Foldout("[設定]"), SerializeField, Min(1), Label("寬度/深度格數")]
         private Vector2 amountOfWidthDepth = Vector2.one;
@@ -55,6 +55,8 @@ namespace _VictorDev.TCIT.DCIM
         private void OnValidate()
         {
             amountOfWidthDepth = amountOfWidthDepth.ToVectorInt();
+            if (rackUnitWidthDepth == Vector2.zero)
+                rackUnitWidthDepth = new (DcimHelper.RackUnitSize.x, DcimHelper.RackUnitSize.z);
             if (gridGizmoDrawer == null) gridGizmoDrawer = GetComponent<GridGizmoDrawer>();
             gridGizmoDrawer.SetAmountOfGrids(new Vector3Int(amountOfWidthDepth.x.ToInt(), rackUnits,
                 amountOfWidthDepth.y.ToInt()));

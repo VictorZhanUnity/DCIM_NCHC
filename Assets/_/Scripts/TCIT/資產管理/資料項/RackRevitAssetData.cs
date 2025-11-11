@@ -14,6 +14,9 @@ namespace _VictorDev.TCIT.DCIM
         [JsonProperty]
         [field: SerializeField] public List<DeviceRevitAssetData> Containers { get; private set; }
 
+        public float AvailablePower => Information.watt;
+        public float AvailableWeight => Information.weight;
+        
         /// 在JSON解析後處理 (需子類別自行解析，override函式需加上[OnDeserialized])
         [OnDeserialized]
         protected void OnDeserialized(StreamingContext context)

@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 499699127940850404}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.15870023, y: 0.14199162, z: 0.15641215}
+  m_LocalPosition: {x: 0.024999637, y: 0.14199162, z: 0.15641214}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43,7 +43,7 @@ Grid:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 499699127940850404}
   m_Enabled: 1
-  m_CellSize: {x: 0.4826, y: 0.0445, z: 0.9}
+  m_CellSize: {x: 0.76, y: 0.0445, z: 0.9}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.GimzoUtils.GridGizmoDrawer
   amountOfGrids: {x: 1, y: 42, z: 1}
-  gridCellSize: {x: 0.4826, y: 0.0445, z: 0.9}
+  gridCellSize: {x: 0.76, y: 0.0445, z: 0.9}
   onGetGridWorldPositionEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -111,6 +111,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.RackUnitGrid
   rackUnits: 42
   rackUnitHeight: 0.0445
-  rackUnitWidthDepth: {x: 0.4826, y: 0.9}
+  rackUnitWidthDepth: {x: 0.76, y: 0.9}
   amountOfWidthDepth: {x: 1, y: 1}
   gridGizmoDrawer: {fileID: 3423762964646314885}

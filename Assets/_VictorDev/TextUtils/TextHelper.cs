@@ -5,6 +5,7 @@ using System.Reflection;
 using _VictorDev.DebugUtils;
 using _VictorDev.DoTweenUtils;
 using TMPro;
+using UnityEngine;
 using Debug = _VictorDev.DebugUtils.Debug;
 
 namespace _VictorDev.TextUtils
@@ -20,7 +21,7 @@ namespace _VictorDev.TextUtils
 
         
         /// 依T類別對像裡的變數名稱，丟給對應Comp名稱的text裡
-        public static void SetParamsToTxtComps<T>(T target, List<TextDotweener> txtComps, string compHeader="Txt")
+        public static void SetParamsToTxtCompsOLD<T>(T target, List<TextDotweener> txtComps, string compHeader="Txt")
         {
             if (target == null || txtComps == null || txtComps.Count == 0)
             {
@@ -68,5 +69,47 @@ namespace _VictorDev.TextUtils
                 }
             }
         }
+        
+        
+        public static void SetParamsToTxtComps<T, TText>(T target, List<TText> txtComps, string compHeader = "Txt")
+        {
+            if (target == null || txtComps == null || txtComps.Count == 0)
+            {
+                Debug.LogWarning("SetParamsToTxtComps: target 或 txtComps 為空。");
+                return;
+            }
+
+            var type = target.GetType();
+            var textType = typeof(TText);
+
+            var nameProp = textType.GetProperty("name");
+            var textProp = textType.GetProperty("text");
+
+            if (nameProp == null || textProp == null)
+            {
+                Debug.LogError($"SetParamsToTxtComps: {textType.Name} 缺少 name 或 text 屬性。");
+                return;
+            }
+
+            void ApplyValue(string name, object value)
+            {
+                var comp = txtComps.FirstOrDefault(c => (string)nameProp.GetValue(c) == name);
+                if (comp != null)
+                    textProp.SetValue(comp, value?.ToString() ?? string.Empty);
+            }
+
+            // --- Fields ---
+            foreach (var field in type.GetFields(BindingFlags.Public | BindingFlags.Instance))
+                ApplyValue(compHeader + field.Name, field.GetValue(target));
+
+            // --- Properties ---
+            foreach (var prop in type.GetProperties(BindingFlags.Public | BindingFlags.Instance))
+            {
+                if (!prop.CanRead || prop.GetGetMethod(false) == null)
+                    continue;
+                ApplyValue(compHeader + prop.Name, prop.GetValue(target));
+            }
+        }
+
     }
 }

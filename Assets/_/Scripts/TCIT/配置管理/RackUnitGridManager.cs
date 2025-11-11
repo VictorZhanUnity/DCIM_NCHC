@@ -51,7 +51,7 @@ namespace _VictorDev.TCIT.DCIM
         public void ReceiveMouseOverRackUnitGrid(Transform hitObject, Vector3 worldPosition)
         {
             if (selectedDevice == null || isSelectedRackU) return; //若無選取設備上架時則return
-
+            
             if (hitObject.TryGetComponentInChildren(out RackUnitGrid rackUnitGrid))
                 rackUnitGrid.ReceiveInteractWorldPosition(worldPosition);
             else
@@ -66,15 +66,20 @@ namespace _VictorDev.TCIT.DCIM
                 .ToList();
         }
 
+        private int currentPositionU;
+        private RackRevitAssetData currentRackRevitAssetData;
+        
         /// 取得RackUnitGrid資訊
         private void OnGetCurrentGridInfo(Vector3 gridWorldPosition, int positionU,
             RevitAssetDataHolder rackAssetDataHolder)
         {
+            if(currentPositionU == positionU && currentRackRevitAssetData == rackAssetDataHolder.RackRevitData) return;
+            currentPositionU = positionU;
+            currentRackRevitAssetData = rackAssetDataHolder.RackRevitData;
+            
             selectedDevice.position = gridWorldPosition;
             selectedDevice.rotation = rackAssetDataHolder.transform.rotation;
             onGetCurrentGridInfoEvent?.Invoke(positionU, rackAssetDataHolder, selectedDevice);
-            Debug.Log(
-                $"positionU: {positionU} / rackAssetDataHolder: {rackAssetDataHolder.RackRevitData.DeviceNameAndCode} /{selectedDevice.gameObject.name}");
         }
 
         #region Initialized
