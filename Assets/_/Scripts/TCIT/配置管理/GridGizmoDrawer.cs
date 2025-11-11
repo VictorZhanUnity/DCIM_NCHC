@@ -22,26 +22,25 @@ namespace _VictorDev.GimzoUtils
         [Label("單一Grid尺吋"), MinValue(0.0001f), SerializeField]
         private Vector3 gridCellSize = Vector3.one;
 
-        [Foldout("[Event] 換算Grid的世界座標")] public UnityEvent<Vector3> toGridWorldPositionEvent;
+        [Foldout("[Event] 換算Grid的世界座標")] public UnityEvent<Vector3> onGetGridWorldPositionEvent;
 
         [Foldout("[Event] 目前Grid的Index(Vector3Int)")]
-        public UnityEvent<Vector3Int> currentGridIndexEvent;
-
+        public UnityEvent<Vector3Int> onGetCurrentGridIndexEvent;
         [Foldout("[Event] 目前Grid的Index(string)")]
-        public UnityEvent<string> currentGridIndexStringEvent;
+        public UnityEvent<string> onGetCurrentGridIndexStringEvent;
 
         [Foldout("[Gizmo設定]"), Label("是否始終顯示Gizmo"), SerializeField]
         private bool isAlwaysDisplayGizmo;
-
         [Foldout("[Gizmo設定]"), Label("是否顯示GridIndex(較耗資源)"), SerializeField]
         private bool isShowGridIndex = true;
-
         [Foldout("[Gizmo設定]"), SerializeField, Label("Offset顯示Grid指標")]
         private Vector3 offsetDisplayGridIndex = Vector3.zero;
-
         [Foldout("[Gizmo設定]"), SerializeField] private Color lineColor = Color.orange;
         [Foldout("[組件]"), SerializeField] private Grid grid;
         [Foldout("[組件]"), SerializeField] private BoxCollider boxCollider;
+
+        /// 換算Grid的世界座標 / 目前Grid的Index(Vector3Int)
+        public UnityEvent<Vector3, Vector3Int> OnGetCurrentGridInfoEvent { get; } = new();
 
         #endregion
 
@@ -75,10 +74,10 @@ namespace _VictorDev.GimzoUtils
             posOfGridIndex.z = Mathf.Clamp(posOfGridIndex.z, 0, amountOfGrids.z - 1);
 
             Vector3 posOfWorld = grid.GetCellCenterWorld(posOfGridIndex); //抓Grid中間座標
-            toGridWorldPositionEvent?.Invoke(posOfWorld);
-            currentGridIndexEvent?.Invoke(posOfGridIndex);
-            currentGridIndexStringEvent?.Invoke(posOfGridIndex.ToString());
-            
+            onGetGridWorldPositionEvent?.Invoke(posOfWorld);
+            onGetCurrentGridIndexEvent?.Invoke(posOfGridIndex);
+            OnGetCurrentGridInfoEvent?.Invoke(posOfWorld, posOfGridIndex);
+            onGetCurrentGridIndexStringEvent?.Invoke(posOfGridIndex.ToString());
             return posOfWorld;
         }
 

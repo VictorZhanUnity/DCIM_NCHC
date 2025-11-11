@@ -82,25 +82,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.GimzoUtils.GridGizmoDrawer
   amountOfGrids: {x: 1, y: 42, z: 1}
   gridCellSize: {x: 0.4826, y: 0.0445, z: 0.9}
-  toGridWorldPositionEvent:
+  onGetGridWorldPositionEvent:
     m_PersistentCalls:
       m_Calls: []
-  currentGridIndexEvent:
+  onGetCurrentGridIndexEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6742617142778211959}
-        m_TargetAssemblyTypeName: _VictorDev.TCIT.RackUnitGrid, Assembly-CSharp
-        m_MethodName: ReceiveCurrentGridIndexHandler
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  currentGridIndexStringEvent:
+      m_Calls: []
+  onGetCurrentGridIndexStringEvent:
     m_PersistentCalls:
       m_Calls: []
   isAlwaysDisplayGizmo: 0
@@ -122,12 +110,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.RackUnitGrid
   rackUnits: 42
-  toGridWorldPositionEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  currentHeightUEvent:
-    m_PersistentCalls:
-      m_Calls: []
   rackUnitHeight: 0.0445
   rackUnitWidthDepth: {x: 0.4826, y: 0.9}
   amountOfWidthDepth: {x: 1, y: 1}

@@ -46,17 +46,17 @@ namespace _VictorDev.DebugUtils
             {
                 case EnumLogType.Log:
                     colorCode = "#b7ffbf";
-                    msg = $"<color='{colorCode}'>{msg}</color>";
+                    //msg = $"<color='{colorCode}'>{msg}</color>";
                     action = () => UnityEngine.Debug.Log(msg);
                     break;
                 case EnumLogType.LogWarning:
                     colorCode = "#ffad00";
-                    msg = $"<color='{colorCode}'>{msg}</color>";
+                    //msg = $"<color='{colorCode}'>{msg}</color>";
                     action = () => UnityEngine.Debug.LogWarning(msg);
                     break;
                 case EnumLogType.LogError:
                     colorCode = "#ff9c9c";
-                    msg = $"<color='{colorCode}'>{msg}</color>";
+                    //msg = $"<color='{colorCode}'>{msg}</color>";
                     action = () => UnityEngine.Debug.LogError(msg);
                     break;
             }

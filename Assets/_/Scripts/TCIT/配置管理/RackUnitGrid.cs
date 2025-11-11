@@ -1,12 +1,12 @@
 using _VictorDev.ApiExtensions;
 using _VictorDev.GimzoUtils;
-using _VictorDev.TCIT.DCIM;
 using NaughtyAttributes;
 using Tayx.Graphy.Utils.NumString;
 using UnityEngine;
 using UnityEngine.Events;
+using Debug = _VictorDev.DebugUtils.Debug;
 
-namespace _VictorDev.TCIT
+namespace _VictorDev.TCIT.DCIM
 {
     /// [配置管理] - 機櫃空間Grid, 當作GridGizmoDrawer的仲介Mediator
     [RequireComponent(typeof(GridGizmoDrawer))]
@@ -16,9 +16,6 @@ namespace _VictorDev.TCIT
 
         [SerializeField, Range(1, 49), Label("機櫃U層數")]
         private int rackUnits = 42;
-
-        [Foldout("[Event] 換算Grid座標")] public UnityEvent<Vector3> toGridWorldPositionEvent;
-        [Foldout("[Event] 目前第幾U")] public UnityEvent<int> currentHeightUEvent;
 
         [Foldout("[設定]"), SerializeField, ReadOnly, Label("單一U層高度")]
         private float rackUnitHeight = DcimHelper.RackUnitSize.y;
@@ -31,24 +28,29 @@ namespace _VictorDev.TCIT
 
         [Foldout("[組件]"), SerializeField] private GridGizmoDrawer gridGizmoDrawer;
 
+        /// 換算Grid的世界座標 / 所選的U層 / 機櫃資訊
+        public UnityEvent<Vector3, int, RevitAssetDataHolder> OnGetCurrentGridInfoEvent { get; } = new();
+
         #endregion
 
         /// 接收鼠標WorldPosition
         public Vector3 ReceiveInteractWorldPosition(Vector3 worldPosition) =>
             gridGizmoDrawer.ToGridWorldPosition(worldPosition);
-
-        /// 接收GridGizmoDrawer換算後Grid世界座標
-        public void ReceiveGridWorldPosition(Vector3 worldPosition)
+       
+       
+        /// 從GridGizmoDrawer送來的Grid世界座標與Grid指標
+        private void OnGetCurrentGridInfo(Vector3 gridWorldPosition, Vector3Int gridIndex)
         {
-            toGridWorldPositionEvent?.Invoke(worldPosition);
+            int positionU = gridIndex.y + 1;
+            if (transform.TryGetComponentInParent(out RevitAssetDataHolder rackAssetDataHolder))
+                OnGetCurrentGridInfoEvent?.Invoke(gridWorldPosition, positionU, rackAssetDataHolder);
+            else
+                Debug.LogError($"Parent dont have RevitAssetDataHolder.", this);
         }
 
-        /// 接收GridGizmoDrawer目前的GridIndex
-        public void ReceiveCurrentGridIndexHandler(Vector3Int gridIndex)
-        {
-            int posU = gridIndex.y + 1;
-            currentHeightUEvent?.Invoke(posU);
-        }
+        #region Initialized
+        private void OnEnable() => gridGizmoDrawer.OnGetCurrentGridInfoEvent.AddListener(OnGetCurrentGridInfo);
+        private void OnDisable() => gridGizmoDrawer.OnGetCurrentGridInfoEvent.RemoveListener(OnGetCurrentGridInfo);
 
         private void OnValidate()
         {
@@ -59,10 +61,6 @@ namespace _VictorDev.TCIT
 
             gridGizmoDrawer.SetCellSizeOfGrid(new Vector3(rackUnitWidthDepth.x, rackUnitHeight, rackUnitWidthDepth.y));
         }
-
-        private void Reset()
-        {
-            OnValidate();
-        }
+        #endregion
     }
 }

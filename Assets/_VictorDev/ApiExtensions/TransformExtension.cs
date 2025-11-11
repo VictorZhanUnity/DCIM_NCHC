@@ -10,6 +10,39 @@ namespace _VictorDev.ApiExtensions
     /// [Extended] 原API類別功能擴充
     public static class TransformExtension
     {
+        #region 從父物件中TryGetComponent
+        
+        /// 嘗試從父物件中取得指定型別的元件（適用於 Component 呼叫）。(若持續往上抓到根物件為止)
+        public static bool TryGetComponentInParent<T>(this Component componentRoot, out T component, bool includeInactive = false)
+            where T : Component =>
+            TryGetComponentInParent(componentRoot.gameObject, out component, includeInactive);
+        
+        /// 嘗試從父物件中取得指定型別的元件。(若持續往上抓到根物件為止)
+        public static bool TryGetComponentInParent<T>(this GameObject gameObject, out T component, bool includeInactive = false)
+            where T : Component
+        {
+            component = gameObject.GetComponentInParent<T>(includeInactive);
+            return component != null;
+        }
+      
+        #endregion
+
+        #region 從子物件中TryGetComponent
+        /// 嘗試從子物件中取得指定型別的元件（適用於 Component 呼叫）。(若持續往上抓到根物件為止)
+        public static bool TryGetComponentInChildren<T>(this Component componentRoot, out T component, bool includeInactive = false)
+            where T : Component =>
+            TryGetComponentInChildren(componentRoot.gameObject, out component, includeInactive);
+        /// 嘗試從子物件中取得指定型別的元件。(若持續往上抓到根物件為止)
+        public static bool TryGetComponentInChildren<T>(this GameObject gameObject, out T component, bool includeInactive = false)
+            where T : Component
+        {
+            component = gameObject.GetComponentInChildren<T>(includeInactive);
+            return component != null;
+        }
+        #endregion
+
+        #region 將Pivot設為模型中心點的相關處理
+        /// 取得模型物件所有Mesh結合起來的正中心點
         public static Vector3 GetMeshCenter(this Transform target)
         {
             var renderers = target.GetComponentsInChildren<Renderer>();
@@ -36,11 +69,11 @@ namespace _VictorDev.ApiExtensions
         {
             Vector3 center = target.GetMeshCenter();
             Vector3 pivotOffset = target.position - center;
-
             // 以幾何中心為基準旋轉
             target.rotation = newRotation;
             target.position = center + target.rotation * pivotOffset;
         }
+        #endregion
         
         /// 跟隨Target物件
         public static void FollowTarget(this Transform transform, Transform target, float lerpDuration = 0f,
