@@ -1,15 +1,12 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using _VictorDev.DoTweenUtils;
 using _VictorDev.TCIT.DCIM;
 using _VictorDev.TextUtils;
+using _VictorDev.UIComps;
 using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using Debug = _VictorDev.DebugUtils.Debug;
 
 public class ToolTip_RackUnitGridInfo : MonoBehaviour
 {
@@ -17,6 +14,7 @@ public class ToolTip_RackUnitGridInfo : MonoBehaviour
 
     [Foldout("[組件]"), SerializeField] private List<TextMeshProUGUI> txtComps;
     [Foldout("[組件]"), SerializeField] private TextMeshProUGUI txtPositionU;
+    [Foldout("[組件]"), SerializeField] private Speedometer speedometer;
 
     #endregion
 
@@ -24,19 +22,22 @@ public class ToolTip_RackUnitGridInfo : MonoBehaviour
     {
         txtPositionU.SetText(positionU.ToString());
         TextHelper.SetParamsToTxtComps(rackDataHolder.RackRevitData, txtComps);
+        speedometer.SetMaxValue(rackDataHolder.RackRevitData.MaxWatt);
+        speedometer.SetValue(rackDataHolder.RackRevitData.UsageWatt);
         gameObject.SetActive(true);
     }
 
     public void OnNonSelectRackUnitGrid()
-    {
-        if (EventSystem.current.IsPointerOverGameObject()) return;
-        if (gameObject.activeSelf==false) return;
+    { 
+        if (gameObject.activeSelf == false) return;
         gameObject.SetActive(false);
-        txtComps.ForEach(txt=> txt.SetText(""));
+        txtComps.ForEach(txt => txt.SetText(""));
+        speedometer.SetValue(0);
     }
 
     private void OnValidate()
     {
         txtComps ??= transform.GetComponentsInChildren<TextMeshProUGUI>().ToList();
+        speedometer ??= transform.GetComponentInChildren<Speedometer>();
     }
 }

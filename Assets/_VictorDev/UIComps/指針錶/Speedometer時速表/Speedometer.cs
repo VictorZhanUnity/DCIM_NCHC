@@ -1,3 +1,4 @@
+using System;
 using _VictorDev.Frameworks;
 using DG.Tweening;
 using NaughtyAttributes;
@@ -14,17 +15,27 @@ namespace _VictorDev.UIComps
         [Foldout("[設定]"), SerializeField] private float maxValue = 100f; // 錶盤最大值
         [Foldout("[設定]"), SerializeField] private float minDotAngle = 0f; // 指針對應0值的角度
         [Foldout("[設定]"), SerializeField] private float maxDotAngle = -180f; // 指針對應最大值的角度
-        [Foldout("[設定]"), SerializeField] private float duration = 0.5f; // 指針對應最大值的角度
+        [Foldout("[設定]"), SerializeField] private float duration = 0.5f, delay=0; // 指針對應最大值的角度
         [Foldout("[設定]"), SerializeField] private RectTransform needleDot; // 指針
 
         [Foldout("[設定]"), SerializeField, Label("進度條(選填)")]
         private ImageFillAmountHandler imageProgressbar;
         #endregion
 
-        
+
+        private void OnValidate()
+        {
+            imageProgressbar.SetDuration(duration, delay);
+        }
+
         public void SetValue(float value)
         {
             currentValue = value;
+            UpdateUI();
+        }
+        public void SetMaxValue(float value)
+        {
+            maxValue = value;
             UpdateUI();
         }
 
@@ -37,7 +48,7 @@ namespace _VictorDev.UIComps
             float dotAngle = minDotAngle + percentage * (maxDotAngle - minDotAngle);
             if (Application.isPlaying)
             {
-                needleDot.DORotate(new Vector3(0, 0, dotAngle), duration).SetEase(Ease.OutQuad);
+                needleDot.DORotate(new Vector3(0, 0, dotAngle), duration).SetEase(Ease.OutQuad).SetDelay(delay);
             }
             else
             {

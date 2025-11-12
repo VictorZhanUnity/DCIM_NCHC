@@ -10,9 +10,9 @@ namespace _VictorDev.TCIT.DCIM
     public class Information
     {
         public float height;
-        public float heightU;
-        public float watt;
-        public float weight;
+        public int heightU;
+        public int watt;
+        public int weight;
         public string component_description;
         public string component_assetIdentifier;
         public string component_installationDate;

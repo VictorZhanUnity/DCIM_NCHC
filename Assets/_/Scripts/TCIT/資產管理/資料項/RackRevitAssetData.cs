@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace _VictorDev.TCIT.DCIM
 {
@@ -14,8 +15,31 @@ namespace _VictorDev.TCIT.DCIM
         [JsonProperty]
         [field: SerializeField] public List<DeviceRevitAssetData> Containers { get; private set; }
 
-        public float AvailablePower => Information.watt;
-        public float AvailableWeight => Information.weight;
+        #region 額外增加的變數
+
+        public int UsageWatt
+        {
+            get
+            {
+                if (usageWatt == 0) usageWatt = (int)Random.Range(Information.watt*0.1f,Information.watt*0.5f);
+                return usageWatt;
+            }
+        }
+        public int UsageWeight
+        {
+            get
+            {
+                if (usageWeight == 0) usageWeight = (int)Random.Range(Information.weight*0.1f,Information.weight*0.5f);
+                return usageWeight;
+            }
+        }
+        private int usageWatt, usageWeight;
+
+        public int MaxWatt => Information.watt;
+        public int MaxWeight => Information.weight;
+        public int MaxHeightU => Information.heightU;
+        #endregion
+        
         
         /// 在JSON解析後處理 (需子類別自行解析，override函式需加上[OnDeserialized])
         [OnDeserialized]

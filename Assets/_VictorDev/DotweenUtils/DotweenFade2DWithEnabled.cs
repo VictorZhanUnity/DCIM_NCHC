@@ -62,13 +62,17 @@ namespace _VictorDev.DoTweenUtils
             cg.alpha = 0;
             void CheckAlpha() => cg.interactable = cg.blocksRaycasts = cg.alpha == 1;
             CheckAlpha();
-            cg.DOFade(1, duration).From(0).SetEase(ease).SetDelay(targetDelay).OnUpdate(CheckAlpha).OnComplete(()=>onAnimateFinished?.Invoke());
+            cg.DOFade(1, duration).From(0).SetEase(ease).SetDelay(targetDelay).OnUpdate(CheckAlpha).OnComplete(()=>onAnimateFinished?.Invoke()).SetTarget(targetTrans);
 
-            if (isDoMove) targetTrans.DOLocalMove(originalPos ?? Vector3.zero, duration).From(fromPos).SetEase(ease).SetDelay(targetDelay);
-            if (isDoScale) targetTrans.DOScale(originalScale ?? Vector3.zero, duration).From(new Vector3(fromScaleValue, fromScaleValue, fromScaleValue)).SetEase(ease).SetDelay(targetDelay);
+            if (isDoMove) targetTrans.DOLocalMove(originalPos ?? Vector3.zero, duration).From(fromPos).SetEase(ease).SetDelay(targetDelay).SetTarget(targetTrans);
+            if (isDoScale) targetTrans.DOScale(originalScale ?? Vector3.zero, duration).From(new Vector3(fromScaleValue, fromScaleValue, fromScaleValue)).SetEase(ease).SetDelay(targetDelay).SetTarget(targetTrans);
             
             gameObject.SetActive(true);
         }
-        private void OnDisable() => onDisabledEvent?.Invoke();
+        private void OnDisable()
+        {
+            DOTween.Kill(targetTrans);
+            onDisabledEvent?.Invoke();
+        }
     }
 }

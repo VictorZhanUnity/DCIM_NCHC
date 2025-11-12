@@ -18,7 +18,7 @@ namespace _VictorDev.Frameworks
             receivePercentageValue = value / (isValueOf01? 1: 100f);
             if (Application.isPlaying)
             {
-                imageFillTarget.DOFillAmount(receivePercentageValue, duration).SetEase(Ease.OutQuad);
+                imageFillTarget.DOFillAmount(receivePercentageValue, duration).SetEase(Ease.OutQuad).SetDelay(delay);
             }
             else
             {
@@ -30,8 +30,8 @@ namespace _VictorDev.Frameworks
                 ColorSet colorResult = colorLevels.FirstOrDefault(colorSet=> receivePercentageValue <= colorSet.threshold);
                 if (Application.isPlaying)
                 {
-                    imageFillTarget.DOColor(colorResult.color, duration).SetEase(Ease.OutQuad);
-                    doColorTargets.ForEach(target=> target.DOColor(colorResult.color, duration).SetEase(Ease.OutQuad));
+                    imageFillTarget.DOColor(colorResult.color, duration).SetEase(Ease.OutQuad).SetDelay(delay);
+                    doColorTargets.ForEach(target=> target.DOColor(colorResult.color, duration).SetEase(Ease.OutQuad).SetDelay(delay));
                 }
                 else
                 {
@@ -40,11 +40,17 @@ namespace _VictorDev.Frameworks
                 }
             }
         }
+       
+       public void SetDuration(float durationValue, float delayValue=0)
+       {
+           duration = durationValue;
+           delay = delayValue;
+       }
 
-        #region Variables
+       #region Variables
         [Label("[資料項] - 接收到的數值"), ReadOnly, SerializeField] private float receivePercentageValue;
         [Foldout("[設定]"), SerializeField] private bool isValueOf01 = true;
-        [Foldout("[設定]"), SerializeField] private float duration = 0.5f;
+        [Foldout("[設定]"), SerializeField] private float duration = 0.5f, delay = 0;
         [Foldout("[設定]"), SerializeField] private bool isLerpColor = true;
         [Foldout("[設定]"), SerializeField, ShowIf(nameof(isLerpColor))]
         private List<ColorSet> colorLevels = new ()

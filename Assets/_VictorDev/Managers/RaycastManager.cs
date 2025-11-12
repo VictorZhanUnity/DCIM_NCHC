@@ -5,6 +5,7 @@ using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 using _VictorDev.ApiExtensions;
+using UnityEngine.EventSystems;
 using Debug = _VictorDev.DebugUtils.Debug;
 
 namespace _VictorDev.Managers
@@ -79,6 +80,7 @@ namespace _VictorDev.Managers
 
                         if (firstHitObject != null)
                         {
+
                             onRaycastHitTarget?.Invoke(firstHitObject);
                             onRaycastHitObjects?.Invoke(raycastHitObjects);
                             onRaycastHitPoint?.Invoke(_hitPoint);
