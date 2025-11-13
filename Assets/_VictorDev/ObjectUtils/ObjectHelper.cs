@@ -15,6 +15,24 @@ namespace _VictorDev.DebugUtils
     /// GameObject物件處理
     public static class ObjectHelper
     {
+        /// 容器下實作TComponent的對像依照Name進行排序
+        public static void SortTargetsByObjectName<TComponent>(Transform container, bool isDescending = false) where TComponent:Component
+        {
+            // 取得所有子物件中有 ClassA 的項目
+            List<Transform> itemList = container.GetComponentsInChildren<TComponent>(includeInactive: false)
+                .Select(item => item.transform).ToList();
+
+            // 排序
+            if (isDescending)
+                itemList = itemList.OrderByDescending(target => target.name, System.StringComparer.OrdinalIgnoreCase).ToList();
+            else
+                itemList = itemList.OrderBy(t => t.name, System.StringComparer.OrdinalIgnoreCase).ToList();
+            
+            // 根據排序結果重新設定 Hierarchy 順序
+            for (int i = 0; i < itemList.Count; i++)
+                itemList[i].SetSiblingIndex(i);
+        }
+        
         /// 取得類別裡的所有變數名稱
         public static List<string> GetFieldNames<T>(params string[] skipFiledName)
         {

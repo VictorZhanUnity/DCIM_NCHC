@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Debug = _VictorDev.DebugUtils.Debug;
 
-namespace _VictorDev.Frameworks
+namespace _VictorDev.Framework
 {
     /// [Mediator] - 數值轉接器
     public class ValueMediator : MonoBehaviour

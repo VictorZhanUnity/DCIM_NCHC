@@ -1,63 +1,100 @@
+
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using _VictorDev.DebugUtils;
 using _VictorDev.InterfaceUtils;
+using _VictorDev.TCIT.DCIM;
 using NaughtyAttributes;
-using TMPro;
+using UnityEditor.U2D.Sprites;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using _VictorDev.Configs;
+using Object = UnityEngine.Object;
 
-namespace _VictorDev.ScrollRectUtils
+namespace _VictorDev.Framework.ScrollRectUtils
 {
-    /// 樣版：ScrollRect
-    public abstract class BaseScrollRectList<TData, TItem> : MonoBehaviour, IReceiveData<List<TData>>
-        where TData : class where TItem : BaseListItemPrefab<TData>
+    /// [框架：ScrollRect列表] ScrollList 
+    public abstract class BaseScrollRectList<TData> : MonoBehaviour, IReceiveData<List<TData>>
     {
-        [Foldout("Event"), SerializeField] private UnityEvent<TItem> onItemSelected;
+        #region Variables
+
+        [Foldout("[Event] - SelectedItem")] public UnityEvent<TData> onSelectedUploadDeviceEvent;
+        [Foldout("[Event] - OnTogglesValueChanged")] public UnityEvent<bool> onTogglesValueChangedEvent;
+        [Foldout("[Event] - MouseOver")] public UnityEvent<TData> onPointerEnterEvent;
+        [Foldout("[Event] - MouseExit")] public UnityEvent onPointerExitEvent;
+        
+        [Foldout("[組件]"), SerializeField] private BaseScrollRectListItem<TData> listItemPrefab;
         [Foldout("[組件]"), SerializeField] private ScrollRect scrollRect;
-        [Foldout("[組件]"), SerializeField] private TItem itemPrefab;
         [Foldout("[組件]"), SerializeField] private ToggleGroup toggleGroup;
-        [Foldout("[組件]"), SerializeField] private TextMeshProUGUI txtAmount;
 
-        private List<TData> _dataList;
-        private TItem _selectedItem;
+        /// Data列表
+        public List<TData> DataList { get; protected set; }
 
-        public void ReceiveData(List<TData> dataList)
+        #endregion
+        
+        /// 設定Data列表
+        public void ReceiveData(List<TData> data)
         {
-            _dataList = dataList;
+            DataList = data;
             ClearList();
             UpdateUI();
         }
-
-        private void UpdateUI()
+        
+        protected virtual void UpdateUI()
         {
-            _dataList.ForEach(data =>
+            DataList.ForEach(data =>
             {
-                TItem item = Instantiate(itemPrefab, scrollRect.content);
-                item.ReceiveData(data);
+                BaseScrollRectListItem<TData> item = Instantiate(listItemPrefab, scrollRect.content);
+                item.SetData(data);
                 item.SetToggleGroup(toggleGroup);
-                item.onClickEvent.AddListener((data) =>
-                {
-                    _selectedItem = item;
-                    onItemSelected?.Invoke(item);
-                });
+                item.OnSelectedItemEvent.AddListener(OnSelectedItemEvent);
+                item.OnToggleValueChangedEvent.AddListener(OnTogglesValueChangedEvent);
+                item.OnPointerEnterEvent.AddListener(OnPointerEnterEvent);
+                item.OnPointerExitEvent.AddListener(OnPointerExitEvent);
             });
-
-            if (txtAmount != null) txtAmount.SetText(_dataList.Count.ToString());
-        }
-
-        private void ClearList()
-        {
-            List<GameObject> childrenToDestroy = new List<GameObject>();
-            foreach (Transform child in scrollRect.content)
-            {
-                childrenToDestroy.Add(child.gameObject);
-            }
-
-            childrenToDestroy.ForEach(Destroy);
             scrollRect.verticalNormalizedPosition = 1;
         }
 
-        public void CancelSelection() => _selectedItem.SetToggleOn(false);
+        /// 列表排序
+        public void OrderByName(bool isDescending = false) 
+            => ObjectHelper.SortTargetsByObjectName<BaseScrollRectListItem<TData>>(scrollRect.content, isDescending);
+
+        #region Event Listener
+
+        private void OnSelectedItemEvent(TData data) => onSelectedUploadDeviceEvent?.Invoke(data);
+        private void OnTogglesValueChangedEvent(bool isOn) => onTogglesValueChangedEvent?.Invoke(toggleGroup.AnyTogglesOn());
+        private void OnPointerEnterEvent(TData data) => onPointerEnterEvent?.Invoke(data);
+        private void OnPointerExitEvent() => onPointerExitEvent?.Invoke();
+
+        #endregion
+
+        /// 清空列表 
+        public void ClearList()
+        {
+            UploadDeviceListItem[] listItems = scrollRect.content.GetComponentsInChildren<UploadDeviceListItem>();
+            Array.ForEach(listItems, child =>
+            {
+                child.OnSelectedItemEvent.RemoveAllListeners();
+                child.OnToggleValueChangedEvent.RemoveAllListeners();
+                child.OnPointerEnterEvent.RemoveAllListeners();
+                child.OnPointerExitEvent.RemoveAllListeners();
+                ObjectHelper.Destroy(child.gameObject);
+            });
+            scrollRect.verticalNormalizedPosition = 1;
+        }
+
+
+        private void OnEnable()
+        {
+            scrollRect.verticalNormalizedPosition = 1;
+        }
+
+        protected void OnValidate()
+        {
+            scrollRect ??= GetComponentInChildren<ScrollRect>();
+            toggleGroup ??= GetComponent<ToggleGroup>();
+            toggleGroup ??= GetComponentInChildren<ToggleGroup>();
+        }
     }
 }

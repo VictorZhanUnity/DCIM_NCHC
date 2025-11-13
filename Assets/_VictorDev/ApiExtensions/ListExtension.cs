@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using _VictorDev.InterfaceUtils;
@@ -9,6 +10,16 @@ namespace _VictorDev.ApiExtensions
     /// 原API類別功能擴充
     public static class ListExtension
     {
+        #region 依關鍵字進行過濾
+
+        /// [Extended] -  取得Name包含關鍵字的對像
+        public static List<TComponent> FilterByNameForKeywords<TComponent>(this List<TComponent> self, bool isInclude = true, params string[] keyWords) 
+            where TComponent : Component
+            => self.Where(target => keyWords.Any(word=>target.name.Contains(word, StringComparison.OrdinalIgnoreCase) == isInclude)).ToList();
+
+        #endregion
+       
+
         /// [Extended] - List是否為Null或Empty
         public static bool IsNullOrEmpty<T>(this List<T> self) => self == null || self.Count == 0;
 

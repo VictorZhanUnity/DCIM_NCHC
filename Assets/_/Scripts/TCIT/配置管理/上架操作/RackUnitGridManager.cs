@@ -37,9 +37,10 @@ namespace _VictorDev.TCIT.DCIM
         #endregion
 
         /// 設定欲上架的設備
-        public void SetSelectedDevice(Transform device)
+        public void SetSelectedDevice(UploadDeviceRevitAssetData uploadDeviceRevitAssetData)
         {
-            selectedDevice = device;
+            if(selectedDevice != null) ObjectHelper.Destroy(selectedDevice.gameObject);
+            selectedDevice = ObjectHelper.Instantiate(uploadDeviceRevitAssetData.Model, transform);
         }
 
         public void SetIsSelectedRackU(bool isSelected)

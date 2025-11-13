@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using _VictorDev.DebugUtils;
-using _VictorDev.Frameworks;
+using _VictorDev.Framework;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,7 +10,7 @@ using UnityEngine.Events;
 namespace _VictorDev.TCIT.DCIM
 {
     /// 設備資料管理器
-    public class DataAssetManager : JsonDataManagerParent<List<RackRevitAssetData>>
+    public class RevitAssetDataManager : JsonDataManagerParent<List<RackRevitAssetData>>
     {
         #region Variables
 

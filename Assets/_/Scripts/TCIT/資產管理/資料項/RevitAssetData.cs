@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using _VictorDev.DebugUtils;
 using Debug = UnityEngine.Debug;
+using Object = UnityEngine.Object;
 
 namespace _VictorDev.TCIT.DCIM
 {
@@ -22,21 +23,24 @@ namespace _VictorDev.TCIT.DCIM
         public Information Information { get; private set; }
 
         /// 資產類型 Rack, Server, Router, Switch
-        public EnumDeviceKind DeviceKind { get; private set; }
+        public EnumDeviceKind DeviceKind { get; protected set; }
         
         /// 資產類型 中文
-        public string DeviceKindZh { get; private set; }
+        public string DeviceKindZh { get; protected set; }
         
         /// 設備名稱
-        public string DeviceName { get; private set; }
+        public string DeviceName { get; protected set; }
 
         /// 設備名稱與流水號
-        public string DeviceNameAndCode { get; private set; }
+        public string DeviceNameAndCode { get; protected set; }
 
-        public string HeightU => $"{Information.heightU}U";
+        public string Manufacturer => Information.type_manufacturer;
+        public int Watt => Information.watt;
+        public int Weight => Information.weight;
+        public int HeightU => Information.heightU;
         
         /// 取得設備名稱與流水號
-        protected void ParseDeviceNameAndCode()
+        protected virtual void ParseDeviceNameAndCode()
         {
             DeviceKind = DcimHelper.GetDeviceKind(DevicePath);
             DeviceKindZh = DcimHelper.GetDeviceKindZh(DeviceKind);
@@ -44,13 +48,13 @@ namespace _VictorDev.TCIT.DCIM
             DeviceNameAndCode = DcimHelper.GetDeviceName(DevicePath, true);
         }
 
-        /// 從Transform列表裡設定模型，與設定RevitAssetDataHolder
+        /// 從Transform列表裡依照name設定模型，與設定RevitAssetDataHolder
         public void SetModelFromList(List<Transform> modelList)
         {
             Transform result = modelList.FirstOrDefault(model=>model.name.Contains(DeviceNameAndCode, StringComparison.OrdinalIgnoreCase));
             if (result != null)
             {
-                Model = result;
+                SetModel(result);
                 if (Model.TryGetComponent(out RevitAssetDataHolder assetDataHolder))
                 {
                     assetDataHolder.ReceiveAssetData(this);
@@ -62,6 +66,7 @@ namespace _VictorDev.TCIT.DCIM
             }
             else Debug.LogError($"{DeviceNameAndCode} not found.");
         }
+        public void SetModel(Transform model) => Model = model;
 
 
         public void ForDemo(Transform transform)
