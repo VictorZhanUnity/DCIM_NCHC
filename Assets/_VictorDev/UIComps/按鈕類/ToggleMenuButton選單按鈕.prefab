@@ -331,26 +331,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7640264835517794031}
     m_Modifications:
-    - target: {fileID: 232255502313609606, guid: 9cd3ef0aebeba4c47b82a6f446f86966, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 232255502313609606, guid: 9cd3ef0aebeba4c47b82a6f446f86966, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 232255502313609606, guid: 9cd3ef0aebeba4c47b82a6f446f86966, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 232255502313609606, guid: 9cd3ef0aebeba4c47b82a6f446f86966, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.000001527369
-      objectReference: {fileID: 0}
-    - target: {fileID: 232255502313609606, guid: 9cd3ef0aebeba4c47b82a6f446f86966, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2196540059175040169, guid: 9cd3ef0aebeba4c47b82a6f446f86966, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -378,6 +358,10 @@ PrefabInstance:
     - target: {fileID: 3211812070494263468, guid: 9cd3ef0aebeba4c47b82a6f446f86966, type: 3}
       propertyPath: m_Name
       value: "ToolTip\u63D0\u793A\u6587\u5B57"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211812070494263468, guid: 9cd3ef0aebeba4c47b82a6f446f86966, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5194704546602904289, guid: 9cd3ef0aebeba4c47b82a6f446f86966, type: 3}
       propertyPath: m_Pivot.x
@@ -467,33 +451,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8922656881876301959, guid: 9cd3ef0aebeba4c47b82a6f446f86966, type: 3}
-      propertyPath: m_text
-      value: "\u641C\u5C0B\u8A2D\u5099"
-      objectReference: {fileID: 0}
-    - target: {fileID: 8922656881876301959, guid: 9cd3ef0aebeba4c47b82a6f446f86966, type: 3}
-      propertyPath: m_fontSize
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 8922656881876301959, guid: 9cd3ef0aebeba4c47b82a6f446f86966, type: 3}
-      propertyPath: m_fontStyle
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8922656881876301959, guid: 9cd3ef0aebeba4c47b82a6f446f86966, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 8922656881876301959, guid: 9cd3ef0aebeba4c47b82a6f446f86966, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3211812070494263468, guid: 9cd3ef0aebeba4c47b82a6f446f86966, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7627429842254135127}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cd3ef0aebeba4c47b82a6f446f86966, type: 3}
 --- !u!224 &3509675594600723143 stripped
 RectTransform:
@@ -505,42 +466,3 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3211812070494263468, guid: 9cd3ef0aebeba4c47b82a6f446f86966, type: 3}
   m_PrefabInstance: {fileID: 8692953439599581222}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7627429842254135127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6066688546805678218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d55d9a7de9147f24581ebe0254e17b91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::VictorDev.Frameworks.LifeCycleEventDispatcher
-  onEnableDisabledEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onEnableDisabledReverseEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onEnableEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onDisableEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onStartEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6066688546805678218}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
