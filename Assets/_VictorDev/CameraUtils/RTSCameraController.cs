@@ -1,5 +1,7 @@
+using System;
 using System.Linq;
 using _VictorDev.DebugUtils;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Debug = UnityEngine.Debug;
@@ -55,6 +57,10 @@ namespace _VictorDev.CameraUtils
         private bool isRotating = false;
         private bool isShiftPressed = false;
 
+        [field: SerializeField, ReadOnly, Label("是否可移動")] public bool IsMovable { get; private set; } = true;
+
+        public void SetMovable(bool isMovable) => IsMovable = isMovable;
+        
         public void SetZoomSpeedMultiplier(float multiplier) => zoomSpeedMultiplier = multiplier;
         
         void Start()
@@ -91,6 +97,8 @@ namespace _VictorDev.CameraUtils
 
         void HandleMovementInput()
         {
+            if (IsMovable == false) return;
+            
             Vector3 input = Vector3.zero;
             var kb = Keyboard.current;
 

@@ -1,29 +1,29 @@
 using System.Collections.Generic;
 using System.Linq;
+using _VictorDev.ApiExtensions;
+using _VictorDev.DoTweenUtils;
 using _VictorDev.TCIT.DCIM;
 using _VictorDev.TextUtils;
 using _VictorDev.UIComps;
 using NaughtyAttributes;
-using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class ToolTip_RackUnitGridInfo : MonoBehaviour
 {
     #region Variables
 
-    [Foldout("[組件]"), SerializeField] private List<TextMeshProUGUI> txtComps;
-    [Foldout("[組件]"), SerializeField] private TextMeshProUGUI txtPositionU;
+    [Foldout("[組件]"), SerializeField] private List<TextDotweener> txtComps;
+    [Foldout("[組件]"), SerializeField] private TextDotweener txtPositionU;
     [Foldout("[組件]"), SerializeField] private Speedometer speedometer;
 
     #endregion
 
-    public void ReceiveRackUnitGridInfo(int positionU, RevitAssetDataHolder rackDataHolder, Transform uploadDevice)
+    public void ReceiveRackUnitGridInfo(int positionU, RackRevitAssetData rackRevitAssetData)
     {
         txtPositionU.SetText(positionU.ToString());
-        TextHelper.SetParamsToTxtComps(rackDataHolder.RackRevitData, txtComps);
-        speedometer.SetMaxValue(rackDataHolder.RackRevitData.MaxWatt);
-        speedometer.SetValue(rackDataHolder.RackRevitData.UsageWatt);
+        TextHelper.SetParamsToTxtComps(rackRevitAssetData, txtComps);
+        speedometer.SetMaxValue(rackRevitAssetData.MaxWatt);
+        speedometer.SetValue(rackRevitAssetData.UsageWatt);
         gameObject.SetActive(true);
     }
 
@@ -35,9 +35,11 @@ public class ToolTip_RackUnitGridInfo : MonoBehaviour
         speedometer.SetValue(0);
     }
 
-    private void OnValidate()
+    [Button]
+    private void Reset()
     {
-        txtComps ??= transform.GetComponentsInChildren<TextMeshProUGUI>().ToList();
-        speedometer ??= transform.GetComponentInChildren<Speedometer>();
+        txtComps = transform.GetComponentsInChildren<TextDotweener>().ToList();
+        txtComps = txtComps.FilterByNameForKeywords(true, "Txt");
+        speedometer = transform.GetComponentInChildren<Speedometer>();
     }
 }

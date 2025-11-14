@@ -21,6 +21,7 @@ namespace _VictorDev.Framework.ScrollRectUtils
 
         [Foldout("[Event] - SelectedItem")] public UnityEvent<TData> onSelectedUploadDeviceEvent;
         [Foldout("[Event] - OnTogglesValueChanged")] public UnityEvent<bool> onTogglesValueChangedEvent;
+        [Foldout("[Event] - OnTogglesValueChanged")] public UnityEvent invokeTogglesIsOnEvent, invokeTogglesIsOffEvent;
         [Foldout("[Event] - MouseOver")] public UnityEvent<TData> onPointerEnterEvent;
         [Foldout("[Event] - MouseExit")] public UnityEvent onPointerExitEvent;
         
@@ -63,7 +64,13 @@ namespace _VictorDev.Framework.ScrollRectUtils
         #region Event Listener
 
         private void OnSelectedItemEvent(TData data) => onSelectedUploadDeviceEvent?.Invoke(data);
-        private void OnTogglesValueChangedEvent(bool isOn) => onTogglesValueChangedEvent?.Invoke(toggleGroup.AnyTogglesOn());
+        private void OnTogglesValueChangedEvent(bool isOn)
+        {
+            bool isHaveToggleOn = toggleGroup.AnyTogglesOn();
+            (isHaveToggleOn? invokeTogglesIsOnEvent: invokeTogglesIsOffEvent)?.Invoke();
+            onTogglesValueChangedEvent?.Invoke(isHaveToggleOn);
+        }
+
         private void OnPointerEnterEvent(TData data) => onPointerEnterEvent?.Invoke(data);
         private void OnPointerExitEvent() => onPointerExitEvent?.Invoke();
 
