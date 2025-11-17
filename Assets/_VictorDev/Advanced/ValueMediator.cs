@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Debug = _VictorDev.DebugUtils.Debug;
 
-namespace _VictorDev.Framework
+namespace _VictorDev.DebugUtils
 {
     /// [Mediator] - 數值轉接器
     public class ValueMediator : MonoBehaviour
@@ -17,7 +17,7 @@ namespace _VictorDev.Framework
             }
             else
             {
-                DebugUtils.Debug.Log($"字串[{stringValue}]無法轉成float值");
+                global::_VictorDev.DebugUtils.Debug.Log($"字串[{stringValue}]無法轉成float值");
             }
         }
 

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEditor;
 #endif
 
-namespace Framework
+namespace _VictorDev.DebugUtils
 {
 	namespace Utils
 	{

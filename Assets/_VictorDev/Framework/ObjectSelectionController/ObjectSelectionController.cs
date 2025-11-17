@@ -4,7 +4,7 @@ using UnityEngine.Events;
 using _VictorDev.ApiExtensions;
 using _VictorDev.DebugUtils;
 
-namespace _VictorDev.Framework
+namespace _VictorDev.DebugUtils
 {
     /// 物件選取外框
     public class ObjectSelectionController : MonoBehaviour

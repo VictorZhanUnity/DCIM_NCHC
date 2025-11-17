@@ -12,6 +12,7 @@ namespace _VictorDev.ColorUtils
         [Label("[Color設定]")] [SerializeField] private Color[] colors;
         [Label("[Image/TextmeshProUGUI]")] [SerializeField]
         private List<Graphic> targets;
+
         [Foldout("[設定]"), Label("[可選] - 自動綁定Toggle.isOn判斷")] [SerializeField]
         private Toggle toggleTarget;
         #endregion

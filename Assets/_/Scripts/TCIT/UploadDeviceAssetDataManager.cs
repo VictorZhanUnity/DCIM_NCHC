@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using _VictorDev.ApiExtensions;
-using _VictorDev.Framework;
+using _VictorDev.DebugUtils;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;

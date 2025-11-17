@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using _VictorDev.ApiExtensions;
 
-namespace _VictorDev.Framework
+namespace _VictorDev.DebugUtils
 {
     /// JSON解析資料接收器
     /// <para>+ 僅接收解析後的JSON資料</para>

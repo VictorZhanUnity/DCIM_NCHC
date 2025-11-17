@@ -139,7 +139,7 @@ namespace _VictorDev.ApiExtensions
                 }
                 renderer.materials = newMaterials;
             }
-            else DebugUtils.Debug.LogWarning($"{self.name} has no MeshRenderer component", nameof(TransformExtension), EmojiEnum.Warning);
+            else global::_VictorDev.DebugUtils.Debug.LogWarning($"{self.name} has no MeshRenderer component", nameof(TransformExtension), EmojiEnum.Warning);
             return self;
         }
         /// [Extension] - 還原先前記錄的材質
@@ -153,7 +153,7 @@ namespace _VictorDev.ApiExtensions
                     OriginalMaterials.Remove(self);
                 }
             }
-            else DebugUtils.Debug.LogWarning($"{self.name} has no recorded original materials to restore.");
+            else global::_VictorDev.DebugUtils.Debug.LogWarning($"{self.name} has no recorded original materials to restore.");
             return self;
         }
         #endregion        

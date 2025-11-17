@@ -13,7 +13,7 @@ namespace _VictorDev.ApiExtensions
             #if UNITY_EDITOR
                 string selfName = self.name;
                 Object.DestroyImmediate(self, false);
-                if(isLogResult) DebugUtils.Debug.Log($"GameObject: {selfName} is destroyed.", nameof(GameObjectExtension), EmojiEnum.Success);
+                if(isLogResult) global::_VictorDev.DebugUtils.Debug.Log($"GameObject: {selfName} is destroyed.", nameof(GameObjectExtension), EmojiEnum.Success);
             #else
                 Object.Destroy(self);
             #endif

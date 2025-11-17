@@ -39,7 +39,7 @@ namespace _VictorDev.FileUtils
                 await File.WriteAllBytesAsync(filePath, fileBytes);
                 OpenFileOrFolder(filePath);
             }
-            else DebugUtils.Debug.Log("User cancelled save dialog");
+            else global::_VictorDev.DebugUtils.Debug.Log("User cancelled save dialog");
 
             return filePath;
         }
@@ -67,7 +67,7 @@ namespace _VictorDev.FileUtils
             fileFullName ??= $"DownloadFile-{DateTime.Today.ToString(DateTimeHelper.FullDateFormat)}";
             string filePath = Path.Combine(folderPath, fileFullName);
             File.WriteAllBytes(filePath, fileData);
-            DebugUtils.Debug.Log($"檔案已儲存至:{filePath}", typeof(FileHelper), EmojiEnum.Download);
+            global::_VictorDev.DebugUtils.Debug.Log($"檔案已儲存至:{filePath}", typeof(FileHelper), EmojiEnum.Download);
 
             if (isAutoOpen)
             {
@@ -82,7 +82,7 @@ namespace _VictorDev.FileUtils
                 }
                 catch (Exception e)
                 {
-                    DebugUtils.Debug.LogError($"開啟{fileFullName}時發生錯誤: " + e.Message);
+                    global::_VictorDev.DebugUtils.Debug.LogError($"開啟{fileFullName}時發生錯誤: " + e.Message);
                 }
             }
 
@@ -172,7 +172,7 @@ namespace _VictorDev.FileUtils
             catch (Exception e)
             {
                 // 若寫檔失敗，別再用 File.AppendAllText (避免遞迴)；改用 Unity 的 console 提示
-                DebugUtils.Debug.LogWarning($"寫入失敗: {e.Message}", "FileHelper");
+                global::_VictorDev.DebugUtils.Debug.LogWarning($"寫入失敗: {e.Message}", "FileHelper");
             }
         }
     }

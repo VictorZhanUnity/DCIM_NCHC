@@ -1,5 +1,5 @@
 using System;
-using _VictorDev.Framework;
+using _VictorDev.DebugUtils;
 using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;

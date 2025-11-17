@@ -5,6 +5,7 @@ using NaughtyAttributes;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using Debug = _VictorDev.DebugUtils.Debug;
 
 namespace _VictorDev.ObjectUtils
 {
@@ -20,6 +21,7 @@ namespace _VictorDev.ObjectUtils
         public UnityEvent<List<Transform>> onFoundModelEvent;
 
         [Foldout("[設定]"), SerializeField] private Transform targetModelsParent;
+        [Foldout("[設定]"), SerializeField] private bool isExceptKeywords = false;
 
         #endregion
 
@@ -27,9 +29,10 @@ namespace _VictorDev.ObjectUtils
         [Button]
         public void FindTargetObjects()
         {
-            foundModels = ObjectHelper.FindObjectsByKeywords(targetModelsParent, keyWords);
+            foundModels = ObjectHelper.FindObjectsByKeywords(targetModelsParent, keyWords, isExceptKeywords);
             foundModels = foundModels.OrderBy(model => model.name).ToList();
             onFoundModelEvent?.Invoke(foundModels);
+            Debug.Log($"Found {foundModels.Count} target objects.");
         }
 
 #if UNITY_EDITOR

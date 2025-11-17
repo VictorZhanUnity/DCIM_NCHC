@@ -89,8 +89,8 @@ namespace _VictorDev.DateTimeUtils
         [Foldout("[設定]"), SerializeField] private EnumTimeFormat invokeTimeFormat = EnumTimeFormat.時分秒_12小時制;
         [Foldout("[設定]"), SerializeField, Min(0f), Label("偏移值(小時)]")] private float offsetHour;
 
-        [Foldout("[設定]"), Label("迴圈次數"), SerializeField, ShowIf(nameof(IsNotInfiniteLoop))]
-        private int maxCount = 3;
+        [Foldout("[設定]"), Label("迴圈次數"), SerializeField, ShowIf(nameof(IsNotInfiniteLoop)), Min(1)]
+        private int maxCount = 1;
 
         [Foldout("[Event] - Timer結束時Invoke (DateTime.now)"), ShowIf(nameof(IsNotInfiniteLoop))]
         public UnityEvent<string> onTimeFinished;

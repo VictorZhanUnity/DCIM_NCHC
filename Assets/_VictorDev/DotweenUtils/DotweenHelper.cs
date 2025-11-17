@@ -62,7 +62,7 @@ namespace _VictorDev.DoTweenUtils
             }
             else
             {
-                DebugUtils.Debug.LogWarning("Target does not have a renderer", typeof(This), EmojiEnum.Warning);
+                global::_VictorDev.DebugUtils.Debug.LogWarning("Target does not have a renderer", typeof(This), EmojiEnum.Warning);
                 return null;
             }
         }
