@@ -3,6 +3,7 @@ using System.Linq;
 using _VictorDev.DebugUtils;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using Debug = UnityEngine.Debug;
 
@@ -23,17 +24,12 @@ namespace _VictorDev.CameraUtils
         public float zoomSpeedMultiplier = 7f;
         public float zoomDampTime = 0.2f;
 
-        [Header("Zoom Control")] // 🔄
-        public bool enableZoom = true; // 🔄 Zoom 開關
 
         [Header("Rotation")] public float xSpeed = 7f;
         public float ySpeed = 7f;
         public float yMinLimit = -10f;
         public float yMaxLimit = 90f;
         public float rotationDampTime = 0.2f;
-
-        [Header("Rotation Control")] // 🔄
-        public bool enableRotation = true; // 🔄 Rotation 開關
 
         [Header("Movement")] public float moveSpeed = 3f;
         public float moveDampTime = 0.2f;
@@ -57,9 +53,16 @@ namespace _VictorDev.CameraUtils
         private bool isRotating = false;
         private bool isShiftPressed = false;
 
-        [field: SerializeField, ReadOnly, Label("是否可移動")] public bool IsMovable { get; private set; } = true;
+        [field: SerializeField, ReadOnly, Label("是否可移動")] public bool IsEnableMove { get; private set; } = true;
+        [field: SerializeField, ReadOnly, Label("是否可旋轉角度")] public bool IsEnableRotate { get; private set; } = true;
+        [field: SerializeField, ReadOnly, Label("是否可拉近拉遠")] public bool IsEnableZoom { get; private set; } = true;
 
-        public void SetMovable(bool isMovable) => IsMovable = isMovable;
+        /// 設定是否可移動鏡頭
+        public void SetIsEnableMove(bool isEnableMove) => this.IsEnableMove = isEnableMove;
+        /// 設定是否可旋轉鏡頭
+        public void SetIsEnableRotate(bool isEnableRotate) => IsEnableRotate = isEnableRotate;
+        /// 設定是否可拉近拉遠
+        public void SetIsEnableZoom(bool isEnableZoom) => IsEnableZoom = isEnableZoom;
         
         public void SetZoomSpeedMultiplier(float multiplier) => zoomSpeedMultiplier = multiplier;
         
@@ -89,15 +92,15 @@ namespace _VictorDev.CameraUtils
             
             HandleMovementInput();
             if (!isRotating) HandleEdgeMovement();
-            if (enableZoom) HandleZoom(); // 🔄 Zoom 開關
-            if (enableRotation) HandleRotation(); // 🔄 Rotation 開關
+            if (IsEnableZoom) HandleZoom(); // 🔄 Zoom 開關
+            if (IsEnableRotate) HandleRotation(); // 🔄 Rotation 開關
 
             ApplyPosition();
         }
 
         void HandleMovementInput()
         {
-            if (IsMovable == false) return;
+            if (IsEnableMove == false) return;
             
             Vector3 input = Vector3.zero;
             var kb = Keyboard.current;
