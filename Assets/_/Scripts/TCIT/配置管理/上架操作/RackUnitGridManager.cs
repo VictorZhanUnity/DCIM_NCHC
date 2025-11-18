@@ -25,6 +25,7 @@ namespace _VictorDev.TCIT.DCIM
         [Foldout("[Event] 目前MouseOver的機櫃資訊")] public UnityEvent<int, RackRevitAssetData> onMouseOverEvent;
         [Foldout("[Event] 目前MouseClick的機櫃資訊")] public UnityEvent<int, RackRevitAssetData> onMouseClickEvent;
         [Foldout("[Event] 目前MouseClick的機櫃資訊")] public UnityEvent<Transform> toFocusDeviceModelEvent;
+        [Foldout("[Event] 目前MouseClick的機櫃資訊")] public UnityEvent<Transform> onClickRackModelEvent;
         [Foldout("[Event] 取消選擇機櫃(Invoke False)")] public UnityEvent<bool> cancelSelectedRackEvent;
 
         [Foldout("[設定]"), SerializeField] private string rackKeyWord;
@@ -60,6 +61,7 @@ namespace _VictorDev.TCIT.DCIM
             isSelectedRackUnitGrid = true;
             onMouseClickEvent?.Invoke(currentPositionU, currentRackRevitAssetData);
             toFocusDeviceModelEvent?.Invoke(selectedDevice);
+            onClickRackModelEvent?.Invoke(currentRackRevitAssetData.Model);
         }
 
         /// 取消RackUnitGrid的選取狀態

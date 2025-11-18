@@ -2,45 +2,41 @@ using NaughtyAttributes;
 using UnityEngine;
 using VictorDev.MaterialUtils;
 
-public class ModelMaterialManager : MonoBehaviour
+namespace _VictorDev.TCIT.DCIM
 {
-    #region Variables
-
-    [Foldout("[組件]"), SerializeField] private MaterialReplacer
-        materialReplacerRack, materialReplacerDevice, materialReplacerOthers;
-    #endregion
-
-
-    [Button]
-    public void ShowRackAndDevice()
+    public class ModelMaterialManager : MonoBehaviour
     {
-        materialReplacerRack.RestoreModelsMaterial();
-        materialReplacerDevice.RestoreModelsMaterial();
-        materialReplacerOthers.ReplaceModelsMaterial();
-    }
+        #region Variables
 
-    /// 僅顯示目標物件
-    public void ShowTargetModel(Transform target)
-    {
-        materialReplacerRack.ReplaceModelsMaterial();
-        materialReplacerDevice.ReplaceModelsMaterial();
-        materialReplacerOthers.ReplaceModelsMaterial();
-        MaterialHelper.RestoreMaterial(target);
-    }
-    /// 僅顯示目標物件(包含同層物件與父物件)
-    public void ShowTargetModelIncludeParent(Transform target)
-    {
-        materialReplacerRack.ReplaceModelsMaterial();
-        materialReplacerDevice.ReplaceModelsMaterial();
-        materialReplacerOthers.ReplaceModelsMaterial();
-        MaterialHelper.RestoreMaterial(target);
-    }
+        [Foldout("[組件]"), SerializeField] private MaterialReplacer
+            materialReplacerRack, materialReplacerDevice, materialReplacerOthers;
 
-    [Button]
-    public void RestoreAllModelsMaterial()
-    {
-        materialReplacerRack.RestoreModelsMaterial();
-        materialReplacerDevice.RestoreModelsMaterial();
-        materialReplacerOthers.RestoreModelsMaterial();
+        #endregion
+
+
+        [Button]
+        public void ShowRackAndDevice()
+        {
+            materialReplacerRack.RestoreModelsMaterial();
+            materialReplacerDevice.RestoreModelsMaterial();
+            materialReplacerOthers.ReplaceModelsMaterial();
+        }
+
+        /// 僅顯示目標物件(包含子物件)
+        public void ShowTargetModel(Transform target)
+        {
+            materialReplacerRack.ReplaceModelsMaterial();
+            materialReplacerDevice.ReplaceModelsMaterial();
+            materialReplacerOthers.ReplaceModelsMaterial();
+            MaterialHelper.RestoreMaterial(target);
+        }
+
+        [Button]
+        public void RestoreAllModelsMaterial()
+        {
+            materialReplacerRack.RestoreModelsMaterial();
+            materialReplacerDevice.RestoreModelsMaterial();
+            materialReplacerOthers.RestoreModelsMaterial();
+        }
     }
 }

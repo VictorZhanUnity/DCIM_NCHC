@@ -45,25 +45,30 @@ namespace VictorDev.MaterialUtils
         public static void ReplaceMaterial(List<Transform> targets, Material replaceMaterial) =>
             targets.ForEach(target => ReplaceMaterial(target, replaceMaterial));
 
-        /// 將目前模型的材質，替換為指定材質(子物件不替換)
+        /// 將目前模型的材質，替換為指定材質
         public static void ReplaceMaterial(Transform target, Material replaceMaterial)
         {
-            if (target.TryGetComponent(out Renderer render))
-            {
-                // 如果尚未保存原始材質，將它的材質陣列存儲到字典中
-                originalMaterials.TryAdd(target, render.sharedMaterials);
+            // 尋找所有子物件身上的 Renderer（包含 inactive）
+            Renderer[] result = target.GetComponentsInChildren<Renderer>(includeInactive: true);
 
-                if (render.sharedMaterials.Length > 1)
+            foreach (Renderer childRenderer in result)
+            {
+                Transform childTrans = childRenderer.transform;
+                // 若沒有存過原始材質，才存（避免重複覆蓋）
+                originalMaterials.TryAdd(childTrans, childRenderer.sharedMaterials);
+                
+                if (childRenderer.sharedMaterials.Length > 1)
                 {
-                    Material[] newMaterials = new Material[render.sharedMaterials.Length];
+                    //若有多個Material
+                    Material[] newMaterials = new Material[childRenderer.sharedMaterials.Length];
                     for (int i = 0; i < newMaterials.Length; i++)
                     {
                         newMaterials[i] = replaceMaterial;
                     }
-                    render.materials = newMaterials;
+                    childRenderer.materials = newMaterials;
                 }
                 else
-                    render.material = replaceMaterial;
+                    childRenderer.material = replaceMaterial;
             }
         }
 
@@ -81,17 +86,22 @@ namespace VictorDev.MaterialUtils
         }
 
         /// 復原對像(陣列)的原始材質，並從Dictionary裡移除
-        public static void RestoreMaterial(List<Transform> targets) =>
-            targets.ForEach(target => RestoreMaterial(target));
+        public static void RestoreMaterial(List<Transform> targets) => targets.ForEach(RestoreMaterial);
 
         /// 復原對像的原始材質，並從Dictionary裡移除
         public static void RestoreMaterial(Transform target)
         {
-            if (originalMaterials.TryGetValue(target, out Material[] materials))
+            // 尋找所有子物件身上的 Renderer（包含 inactive）
+            Renderer[] childRenderer = target.GetComponentsInChildren<Renderer>(includeInactive: true);
+
+            foreach (Renderer child in childRenderer)
             {
-                if (target.TryGetComponent(out Renderer render))
+                Transform childTrans = child.transform;
+
+                if (originalMaterials.TryGetValue(childTrans, out Material[] mats))
                 {
-                    render.materials = materials;
+                    child.materials = mats;
+                    originalMaterials.Remove(childTrans);   // 若要記憶體乾淨，也可以移除
                 }
             }
         }

@@ -2574,6 +2574,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 252699100}
+        m_TargetAssemblyTypeName: _VictorDev.TCIT.DCIM.RackUnitGridManager, Assembly-CSharp
+        m_MethodName: CancelSelectRackUnitGrid
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   invokeTogglesIsOnEvent:
     m_PersistentCalls:
       m_Calls:
@@ -23657,6 +23669,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onClickRackModelEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1655076847}
+        m_TargetAssemblyTypeName: _VictorDev.TCIT.DCIM.ModelMaterialManager, Assembly-CSharp
+        m_MethodName: ShowTargetModel
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   cancelSelectedRackEvent:
     m_PersistentCalls:
       m_Calls:
@@ -23676,6 +23703,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: _VictorDev.CameraUtils.RTSCameraController, Assembly-CSharp
         m_MethodName: SetIsEnableMove
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1655076847}
+        m_TargetAssemblyTypeName: _VictorDev.TCIT.DCIM.ModelMaterialManager, Assembly-CSharp
+        m_MethodName: ShowRackAndDevice
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -46611,10 +46650,34 @@ MonoBehaviour:
       m_Calls: []
   onValueToTrue:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1655076847}
+        m_TargetAssemblyTypeName: _VictorDev.TCIT.DCIM.ModelMaterialManager, Assembly-CSharp
+        m_MethodName: ShowRackAndDevice
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onValueToFalse:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1655076847}
+        m_TargetAssemblyTypeName: _VictorDev.TCIT.DCIM.ModelMaterialManager, Assembly-CSharp
+        m_MethodName: RestoreAllModelsMaterial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   isInvokeInStart: 1
 --- !u!1 &473981524
 GameObject:
@@ -116762,7 +116825,12 @@ MonoBehaviour:
   - Server
   - Router
   - Switch
-  foundModels: []
+  foundModels:
+  - {fileID: 615509797}
+  - {fileID: 385745482}
+  - {fileID: 1175640309}
+  - {fileID: 106164806}
+  - {fileID: 620948527}
   onFoundModelEvent:
     m_PersistentCalls:
       m_Calls:
@@ -116792,7 +116860,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48ef1036b669dcb4b8a74e68243aa020, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VictorDev.MaterialUtils.MaterialReplacer
-  targetModels: []
+  targetModels:
+  - {fileID: 615509797}
+  - {fileID: 385745482}
+  - {fileID: 1175640309}
+  - {fileID: 106164806}
+  - {fileID: 620948527}
   replaceMaterial: {fileID: 2100000, guid: dc00ae5ff046d8a43ba94a9815b3c831, type: 2}
 --- !u!1 &1176563997 stripped
 GameObject:
