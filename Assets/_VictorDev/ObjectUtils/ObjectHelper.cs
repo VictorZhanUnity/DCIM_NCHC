@@ -24,7 +24,7 @@ namespace _VictorDev.DebugUtils
             {
                 foreach (Transform child in parent)
                 {
-                    //if(isNeedMeshRenderer && child.TryGetComponent(out MeshRenderer meshRenderer) == false) continue;
+                   // if(isNeedMeshRenderer && child.TryGetComponent(out MeshRenderer meshRenderer) == false) continue;
                     // 檢查名稱是否包含任意關鍵字
                     foreach (string keyword in keywords)
                     {

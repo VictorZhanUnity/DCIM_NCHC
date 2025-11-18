@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using Debug = _VictorDev.DebugUtils.Debug;
 
 namespace VictorDev.MaterialUtils
 {
@@ -9,7 +10,7 @@ namespace VictorDev.MaterialUtils
         #region Replace Material
 
         /// 存儲每個物件及其原始材質的字典 {物件Transform, 材質陣列}
-        private static Dictionary<Transform, Material[]> _originalMaterials = new();
+        private static readonly Dictionary<Transform, Material[]> originalMaterials = new();
 
         /// 替換物件及其底下每層所有子物件的材質 {排除的對像(選填)}
         public static void ReplaceMaterialRecursively(Transform target, Material material,
@@ -30,7 +31,7 @@ namespace VictorDev.MaterialUtils
             }
             else
             {
-                //當沒有排除名單時，直接替換
+                //當沒有排除名單時，直接替換 
                 ReplaceMaterial(target, material);
                 // 遞迴處理所有子物件
                 foreach (Transform child in target)
@@ -44,33 +45,25 @@ namespace VictorDev.MaterialUtils
         public static void ReplaceMaterial(List<Transform> targets, Material replaceMaterial) =>
             targets.ForEach(target => ReplaceMaterial(target, replaceMaterial));
 
-        /// 替換Targets(陣列)為指定材質
+        /// 將目前模型的材質，替換為指定材質(子物件不替換)
         public static void ReplaceMaterial(Transform target, Material replaceMaterial)
         {
             if (target.TryGetComponent(out Renderer render))
             {
                 // 如果尚未保存原始材質，將它的材質陣列存儲到字典中
-                _originalMaterials.TryAdd(target, render.sharedMaterials);
+                originalMaterials.TryAdd(target, render.sharedMaterials);
 
-                // 進行材質替換
                 if (render.sharedMaterials.Length > 1)
                 {
-                    // 如果有多個材質，建立新的材質陣列
                     Material[] newMaterials = new Material[render.sharedMaterials.Length];
                     for (int i = 0; i < newMaterials.Length; i++)
                     {
-                        // 替換為指定的材質
                         newMaterials[i] = replaceMaterial;
                     }
-
-                    // 套用新的材質陣列
                     render.materials = newMaterials;
                 }
                 else
-                {
-                    // 如果只有一個材質，直接替換
                     render.material = replaceMaterial;
-                }
             }
         }
 
@@ -81,7 +74,7 @@ namespace VictorDev.MaterialUtils
         /// 復原全部對像的原始材質
         public static void RestoreAllMaterials()
         {
-            foreach (var kvp in _originalMaterials)
+            foreach (var kvp in originalMaterials)
             {
                 RestoreMaterial(kvp.Key);
             }
@@ -94,7 +87,7 @@ namespace VictorDev.MaterialUtils
         /// 復原對像的原始材質，並從Dictionary裡移除
         public static void RestoreMaterial(Transform target)
         {
-            if (_originalMaterials.TryGetValue(target, out Material[] materials))
+            if (originalMaterials.TryGetValue(target, out Material[] materials))
             {
                 if (target.TryGetComponent(out Renderer render))
                 {

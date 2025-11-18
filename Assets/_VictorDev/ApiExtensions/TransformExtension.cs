@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using _VictorDev.Configs;
 using DG.Tweening;
 using UnityEngine;
 using Debug = _VictorDev.DebugUtils.Debug;
@@ -11,6 +12,35 @@ namespace _VictorDev.ApiExtensions
     /// [Extended] 原API類別功能擴充
     public static class TransformExtension
     {
+        #region 搜尋子物件
+        /// 搜尋子物件(有實作MeshRenderer)，名稱(包含/不包含)關鍵字
+        public static List<Transform> FindChildrenByKeywords(this Transform self, EnumSearchType searchType = EnumSearchType.Include, params string[] keywords) 
+            => FindChildrenByKeywords<MeshRenderer>(self, searchType, keywords);
+        /// 搜尋子物件(有實作T類別)，名稱(包含/不包含)關鍵字
+        public static List<Transform> FindChildrenByKeywords<T>(this Transform self, EnumSearchType searchType = EnumSearchType.Include, params string[] keywords)
+         where T : Component
+        {
+            return self.GetComponentsInChildren<Transform>(includeInactive: true).Where(t =>
+                    t != self && t.GetComponent<T>() != null && IsMatch(t.name, searchType, keywords)).ToList();
+        }
+        
+        private static bool IsMatch(string name, EnumSearchType searchType, string[] keywords)
+        {
+            bool containsAny = keywords.Any(key =>
+                name.Contains(key, StringComparison.OrdinalIgnoreCase));
+
+            return searchType switch
+            {
+                EnumSearchType.Include => containsAny,      // 只要包含任一關鍵字即可
+                EnumSearchType.Exclude => !containsAny,     // 不得包含任何關鍵字
+                _ => false
+            };
+        }
+        
+
+        #endregion
+        
+        
         #region 從父物件中TryGetComponent
         
         /// 嘗試從父物件中取得指定型別的元件（適用於 Component 呼叫）。(若持續往上抓到根物件為止)
@@ -139,7 +169,7 @@ namespace _VictorDev.ApiExtensions
                 }
                 renderer.materials = newMaterials;
             }
-            else global::_VictorDev.DebugUtils.Debug.LogWarning($"{self.name} has no MeshRenderer component", nameof(TransformExtension), EmojiEnum.Warning);
+            else Debug.LogWarning($"{self.name} has no MeshRenderer component", nameof(TransformExtension), EmojiEnum.Warning);
             return self;
         }
         /// [Extension] - 還原先前記錄的材質
@@ -153,7 +183,7 @@ namespace _VictorDev.ApiExtensions
                     OriginalMaterials.Remove(self);
                 }
             }
-            else global::_VictorDev.DebugUtils.Debug.LogWarning($"{self.name} has no recorded original materials to restore.");
+            else Debug.LogWarning($"{self.name} has no recorded original materials to restore.");
             return self;
         }
         #endregion        

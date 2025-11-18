@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using _VictorDev.ApiExtensions;
+using _VictorDev.Configs;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -9,29 +11,49 @@ namespace VictorDev.MaterialUtils
     {
         #region Variables
 
-        [Label("[組件]"), SerializeField] private List<Transform> targetModels;
+        [Label("[設備模型]"), SerializeField] private List<Transform> rackModels;
+        [Label("[機櫃模型]"), SerializeField] private List<Transform> deviceModels;
+        [Label("[其它模型]"), SerializeField] private List<Transform> otherModels;
+        [Foldout("[設定]"), Label("[機櫃關鍵字]"), SerializeField] private string[] rackKeywords = new []{"Rack"};
+        [Foldout("[設定]"), Label("[設備關鍵字]"), SerializeField] private string[] deviceKeywords = new []{"Server", "Router", "Switch"};
         [Foldout("[設定]"), SerializeField] private Material replaceMaterial;
+        [Foldout("[設定]"), SerializeField] private Transform targetModel;
         
         #endregion
 
+        #region For Editor
+        [Button]
+        private void FindRackModels() => rackModels = targetModel.FindChildrenByKeywords(EnumSearchType.Include, rackKeywords);
+        [Button]
+        private void FindDeviceModels() => deviceModels = targetModel.FindChildrenByKeywords(EnumSearchType.Include, deviceKeywords);
+        [Button]
+        private void FindOtherModels() => otherModels = targetModel.FindChildrenByKeywords(EnumSearchType.Exclude
+            , rackKeywords.Combine(deviceKeywords));
+        #endregion
 
-        public void SetTargetModels(List<Transform> targets)
+        [Button]
+        public void ShowRackAndDevice()
         {
-            targetModels = targets; 
+            MaterialHelper.RestoreMaterial(rackModels);
+            MaterialHelper.RestoreMaterial(deviceModels);
+            MaterialHelper.ReplaceMaterial(otherModels, replaceMaterial);
         }
         
-        [Button]
-        private void ReplaceMaterial()
+        /// 僅顯示目標物件
+        public void ShowTargetModel(Transform target)
         {
-            MaterialHelper.ReplaceMaterial(targetModels, replaceMaterial);
+            MaterialHelper.ReplaceMaterial(rackModels, replaceMaterial);
+            MaterialHelper.ReplaceMaterial(deviceModels, replaceMaterial);
+            MaterialHelper.ReplaceMaterial(otherModels, replaceMaterial);
+            MaterialHelper.RestoreMaterial(new List<Transform>() { target });
         }
 
         [Button]
-        private void RestoreMaterial()
+        public void RestoreAllModelsMaterial()
         {
-            MaterialHelper.RestoreMaterial(targetModels);
+            MaterialHelper.RestoreMaterial(rackModels);
+            MaterialHelper.RestoreMaterial(deviceModels);
+            MaterialHelper.RestoreMaterial(otherModels);
         }
-
-       
     }
 }

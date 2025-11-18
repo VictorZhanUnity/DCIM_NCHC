@@ -84,4 +84,10 @@ namespace _VictorDev.Configs
         時, 分, 秒
     }
     #endregion
+
+    /// 搜尋類型
+    public enum EnumSearchType
+    {
+        Include, Exclude
+    }
 }
