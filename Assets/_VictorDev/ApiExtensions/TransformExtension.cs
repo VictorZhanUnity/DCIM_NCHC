@@ -20,8 +20,9 @@ namespace _VictorDev.ApiExtensions
         public static List<Transform> FindChildrenByKeywords<T>(this Transform self, EnumSearchType searchType = EnumSearchType.Include, params string[] keywords)
          where T : Component
         {
-            return self.GetComponentsInChildren<Transform>(includeInactive: true).Where(t =>
-                    t != self && t.GetComponent<T>() != null && IsMatch(t.name, searchType, keywords)).ToList();
+            return self.GetComponentsInChildren<Transform>(includeInactive: true).Where(t => 
+                    t != self && t.GetComponent<T>() != null && IsMatch(t.name, searchType, keywords))
+                    .OrderBy(t=> t.name).ToList();
         }
         
         private static bool IsMatch(string name, EnumSearchType searchType, string[] keywords)

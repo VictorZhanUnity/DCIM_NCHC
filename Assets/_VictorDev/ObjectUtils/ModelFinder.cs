@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
-using _VictorDev.DebugUtils;
+using _VictorDev.ApiExtensions;
+using _VictorDev.Configs;
 using NaughtyAttributes;
 using UnityEditor;
 using UnityEngine;
@@ -14,32 +15,29 @@ namespace _VictorDev.ObjectUtils
     {
         #region Variables
 
-        [Label("名稱關鍵字"), SerializeField] private List<string> keyWords;
+        [Label("名稱關鍵字"), SerializeField] private string[] keyWords;
         [Label("尋獲的模型"), SerializeField] private List<Transform> foundModels;
 
         [Foldout("[Event] 發送尋找到的模型"), SerializeField]
         public UnityEvent<List<Transform>> onFoundModelEvent;
 
+        [Foldout("[設定]"), SerializeField] private EnumSearchType searchType = EnumSearchType.Include;
         [Foldout("[設定]"), SerializeField] private Transform targetModelsParent;
-        [Foldout("[設定]"), SerializeField] private bool isExceptKeywords = false;
 
         #endregion
 
 
         [Button]
-        public void FindTargetObjects()
+        public void FindModelsByKeywords()
         {
-            foundModels = ObjectHelper.FindObjectsByKeywords(targetModelsParent, keyWords, isExceptKeywords);
-            foundModels = foundModels.OrderBy(model => model.name).ToList();
+            foundModels = targetModelsParent.FindChildrenByKeywords(searchType, keyWords);
             onFoundModelEvent?.Invoke(foundModels);
-            Debug.Log($"Found {foundModels.Count} target objects.");
+            Debug.Log($"Found {foundModels.Count} target objects.", this);
         }
 
 #if UNITY_EDITOR
         [Button]
-        public void SelectObjects() => Selection.objects = foundModels.Select(t => t.gameObject).ToArray();
+        public void SelectObjects() => Selection.objects = foundModels.Select(t => t.gameObject).ToArray<Object>();
 #endif
-
-        
     }
 }
