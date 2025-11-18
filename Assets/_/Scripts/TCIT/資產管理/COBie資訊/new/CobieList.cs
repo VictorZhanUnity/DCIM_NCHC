@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using _VictorDev.DebugUtils;
 using _VictorDev.TextUtils;
+using _VictorDev.TextUtils.EditableTextComponent;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.UI;

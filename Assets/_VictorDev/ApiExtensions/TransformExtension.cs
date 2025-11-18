@@ -12,6 +12,18 @@ namespace _VictorDev.ApiExtensions
     /// [Extended] 原API類別功能擴充
     public static class TransformExtension
     {
+        /// 目標物件的階層路徑
+        public static string GetHierarchyPath(this Transform self)
+        {
+            string path = self.name;
+            while (self.parent != null)
+            {
+                self = self.parent;
+                path = self.name + "/" + path;
+            }
+            return path;
+        }
+        
         #region 搜尋子物件
         /// 搜尋子物件(有實作MeshRenderer)，名稱(包含/不包含)關鍵字
         public static List<Transform> FindChildrenByKeywords(this Transform self, EnumSearchType searchType = EnumSearchType.Include, params string[] keywords) 
@@ -40,7 +52,6 @@ namespace _VictorDev.ApiExtensions
         
 
         #endregion
-        
         
         #region 從父物件中TryGetComponent
         
