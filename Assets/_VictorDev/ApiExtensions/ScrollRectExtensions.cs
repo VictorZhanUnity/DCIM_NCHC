@@ -1,12 +1,11 @@
-using DG.Tweening;
 using UnityEngine;
-using UnityEngine.ProBuilder;
 using UnityEngine.UI;
 
 namespace _VictorDev.ApiExtensions
 {
     public static class ScrollRectExtensions
     {
+        /// ScrollBar移動到子項目所在位置
         public static void ScrollToChild(this ScrollRect scrollRect, RectTransform target)
         {
             if (scrollRect == null || scrollRect.content == null || target == null)
@@ -38,46 +37,6 @@ namespace _VictorDev.ApiExtensions
             normalized = Mathf.Clamp01(normalized - 0.08f); //位移4行
 
             scrollRect.verticalNormalizedPosition = 1 - normalized;
-            Debug.Log($"normalized: {1-normalized} / {normalized}");
-        }
-        public static void ScrollToChild1(this ScrollRect scrollRect, RectTransform target)
-        {
-            Canvas.ForceUpdateCanvases(); // 確保 layout 更新完成
-
-            RectTransform content = scrollRect.content;
-            RectTransform viewport = scrollRect.viewport;
-
-            // 取得 target 在 content 座標中的位置
-            Vector2 childLocalPos = content.InverseTransformPoint(target.position);
-            Vector2 viewportLocalPos = content.InverseTransformPoint(viewport.position);
-
-            float contentHeight = content.rect.height;
-            float viewportHeight = viewport.rect.height;
-
-            float childY = childLocalPos.y;
-            float vpY = viewportLocalPos.y;
-
-            // child 高度
-            float childHeight = target.rect.height;
-
-            // child 相對於 viewport 的位置
-            float offset = childY - vpY;
-
-            // 若 child 在 viewport 下方 -> 捲上去
-            if (offset < -childHeight * 0.2f)
-            {
-                float normalized =  Mathf.Abs(childLocalPos.y - (viewportHeight * 0.5f)) / (contentHeight - viewportHeight);
-                scrollRect.verticalNormalizedPosition =  Mathf.Clamp01(1 -normalized);
-            Debug.Log($"scrollRect.verticalNormalizedPosition: {scrollRect.verticalNormalizedPosition} / {normalized}");
-            }
-            // 若 child 在 viewport 上方 -> 捲下來
-            else if (offset > viewportHeight - childHeight * 0.8f)
-            {
-                float normalized =   Mathf.Abs (childLocalPos.y - (viewportHeight * 0.5f)) / (contentHeight - viewportHeight);
-                scrollRect.verticalNormalizedPosition =Mathf.Clamp01(1 -normalized);
-            Debug.Log($"scrollRect.verticalNormalizedPosition: {scrollRect.verticalNormalizedPosition} / {normalized}");
-            }
-            
         }
     }
 }

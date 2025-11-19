@@ -57,6 +57,8 @@ namespace _VictorDev.DebugUtils.ScrollRectUtils
             scrollRect.verticalNormalizedPosition = 1;
         }
 
+        public void CancelSelection() => toggleGroup.SetAllTogglesOff(true);
+        
         /// 列表排序
         public void OrderByName(bool isDescending = false) 
             => ObjectHelper.SortTargetsByObjectName<BaseScrollRectListItem<TData>>(scrollRect.content, isDescending);

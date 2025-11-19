@@ -35,7 +35,7 @@ namespace _VictorDev.TCIT.DCIM
         /// 欲上架的設備資訊
         private UploadDeviceRevitAssetData uploadDeviceRevitAssetData;
         /// 欲上架的設備模型
-        public Transform selectedDevice;
+        private Transform selectedDevice;
 
         /// 目前選的機櫃
         private RackRevitAssetData currentRackRevitAssetData;
@@ -71,6 +71,12 @@ namespace _VictorDev.TCIT.DCIM
             currentPositionU = -1;
             currentRackRevitAssetData = null;
             cancelSelectedRackEvent?.Invoke(isSelectedRackUnitGrid);
+        }
+
+        public void ConfirmSelectedDeviceModel()
+        {
+            selectedDevice = null;
+            CancelSelectRackUnitGrid();
         }
 
         /// 從RaycastManager接收目前Hit到的RackUnitGrid與其座標

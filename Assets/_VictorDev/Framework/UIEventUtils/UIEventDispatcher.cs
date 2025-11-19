@@ -1,19 +1,23 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace _VictorDev.DebugUtils.UIEventUtils
+namespace _VictorDev.Framework.UIEventUtils
 {
     public class UIEventDispatcher : MonoBehaviour
     {
-        public string eventName;
+        #region Variables
 
+        [SerializeField] private string eventName;
+
+        public string EventName => eventName.Trim();
+        
         private Button btn;
         private Toggle toggle;
 
+        #endregion
+        
         private void Awake()
         {
-            eventName = UIEventManager.GetFormatEventName(eventName);
             TryGetComponent(out btn);
             TryGetComponent(out toggle);
         }
@@ -30,6 +34,6 @@ namespace _VictorDev.DebugUtils.UIEventUtils
         }
         private void SubscribeEventButton() => UIEventManager.SubscribeEvent(eventName);
         private void SubscribeEventToggle(bool isOn) => UIEventManager.SubscribeEvent(eventName, isOn);
-        private void OnValidate() => eventName = UIEventManager.GetFormatEventName(eventName);
+        private void OnValidate() => eventName = eventName.Trim();
     }
 }

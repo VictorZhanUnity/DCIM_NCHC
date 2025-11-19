@@ -1,12 +1,15 @@
-using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
-using TMPro;
 using System.Collections.Generic;
 using System.Linq;
 using _VictorDev.ApiExtensions;
 using NaughtyAttributes;
+using TMPro;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
+namespace _VictorDev.TextUtils
+{
+    
 public class TabNavigationManager : MonoBehaviour
 {
     public List<Selectable> inputs;
@@ -33,7 +36,7 @@ public class TabNavigationManager : MonoBehaviour
         // Tab
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            bool shift = Input.GetKey(KeyCode.LeftShift);
+            bool shift = Input.GetKeyDown(KeyCode.LeftShift);
             MoveFocus(shift ? -1 : 1);
         }
 
@@ -76,3 +79,5 @@ public class TabNavigationManager : MonoBehaviour
 
     public ScrollRect scrollRect;
 }
+}
+

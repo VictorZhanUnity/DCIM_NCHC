@@ -1,66 +1,124 @@
+using System;
 using System.Collections.Generic;
 using _VictorDev.ApiExtensions;
+using _VictorDev.DebugUtils;
+using NaughtyAttributes;
+using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
+using Debug = _VictorDev.DebugUtils.Debug;
 
-namespace _VictorDev.DebugUtils.UIEventUtils
+namespace _VictorDev.Framework.UIEventUtils
 {
+    /// UI組件事件管理器
+    /// <para>+ 管理關鍵按鈕所觸發的行為事件</para>
     public class UIEventManager : SingletonMonoBehaviour<UIEventManager>
     {
-        public List<KeyValueData<string, UnityEvent>> btnEvents;
-        public List<KeyValueData<string, UnityEvent<bool>>> toggleEvents;
-        
-        private readonly Dictionary<string, UnityEvent> dictionaryBtnEvents = new();
-        private readonly Dictionary<string, UnityEvent<bool>> dictionaryToggleEvents = new();
+        #region Variables
+
+        public List<KeyValueData<string, UIEventButtonSet>> uiBtnEvents;
+        public List<KeyValueData<string, UIEventToggleSet>> uiToggleEvents;
+
+        private readonly Dictionary<string, UIEventButtonSet> dictionaryBtnEvents =
+            new(StringComparer.OrdinalIgnoreCase);
+
+        private readonly Dictionary<string, UIEventToggleSet> dictionaryToggleEvents =
+            new(StringComparer.OrdinalIgnoreCase);
+
+        #endregion
 
         protected override void Awake()
         {
             base.Awake();
-            btnEvents.ForEach(keyValueData =>
+            uiBtnEvents.ForEach(keyValueData =>
             {
-                string key = GetFormatEventName(keyValueData.Key);
-                if (!dictionaryBtnEvents.ContainsKey(key))
-                    dictionaryBtnEvents.Add(key, keyValueData.Value);
-                else
-                    Debug.LogError($"Duplicate button event key: {key}", this);
+                if (!dictionaryBtnEvents.TryAdd(keyValueData.Key, keyValueData.Value))
+                    Debug.LogError($"Duplicate button event key: {keyValueData.Key}", this);
             });
-            toggleEvents.ForEach(keyValueData =>
+            uiToggleEvents.ForEach(keyValueData =>
             {
-                string key = GetFormatEventName(keyValueData.Key);
-                if (!dictionaryToggleEvents.ContainsKey(key))
-                    dictionaryToggleEvents.Add(key, keyValueData.Value);
-                else
-                    Debug.LogError($"Duplicate toggle event key: {key}", this);
+                if (!dictionaryToggleEvents.TryAdd(keyValueData.Key, keyValueData.Value))
+                    Debug.LogError($"Duplicate toggle event key: {keyValueData.Key}", this);
             });
         }
 
+        /// 註冊行為事件Key eventName (Button)
         public static void SubscribeEvent(string eventName)
         {
-            eventName = GetFormatEventName(eventName);
-
-            if (Instance.dictionaryBtnEvents.TryGetValue(eventName, out UnityEvent evt))
-                evt?.Invoke();
+            if (Instance.dictionaryBtnEvents.TryGetValue(eventName, out UIEventButtonSet eventButtonSet))
+                eventButtonSet.unityEvent?.Invoke();
             else
                 Debug.LogError($"{eventName} is not registered in the UI event manager", Instance);
         }
-        
+
+        /// 註冊行為事件Key eventName (Toggle)
         public static void SubscribeEvent(string eventName, bool isOn)
         {
-            eventName = GetFormatEventName(eventName);
-            
-            if (Instance.dictionaryToggleEvents.TryGetValue(eventName, out UnityEvent<bool> evt))
-                evt?.Invoke(isOn);
+            if (Instance.dictionaryToggleEvents.TryGetValue(eventName, out UIEventToggleSet eventToggleSet))
+                eventToggleSet.unityEvent?.Invoke(isOn);
             else
                 Debug.LogError($"{eventName} is not registered in the UI event manager", Instance);
+        }
+
+        /// 尋找所有的UIEventDispatchers
+        [Button]
+        private void FindUIEventDispatchers()
+        {
+            uiBtnEvents?.Clear();
+            uiToggleEvents?.Clear();
+            UIEventDispatcher[] result =
+                FindObjectsByType<UIEventDispatcher>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+
+            Array.ForEach(result, dispatcher =>
+            {
+                if (dispatcher.TryGetComponent(out Button _) == false) return;
+                if (uiBtnEvents.TyrGetValue(dispatcher.EventName, out UIEventButtonSet eventButtonSet))
+                    eventButtonSet.uiEventDispatchers.Add(dispatcher);
+                else
+                {
+                    uiBtnEvents.Add(new KeyValueData<string, UIEventButtonSet>(
+                        dispatcher.EventName, new(new() { dispatcher })));
+                }
+            });
+
+            Array.ForEach(result, dispatcher =>
+            {
+                if (dispatcher.TryGetComponent(out Toggle _) == false) return;
+                if (uiToggleEvents.TyrGetValue(dispatcher.EventName, out UIEventToggleSet eventButtonSet))
+                    eventButtonSet.uiEventDispatchers.Add(dispatcher);
+                else
+                {
+                    uiToggleEvents.Add(new KeyValueData<string, UIEventToggleSet>(
+                        dispatcher.EventName, new(new() { dispatcher })));
+                }
+            });
         }
 
         protected override void OnValidate()
         {
             base.OnValidate();
-            btnEvents.ForEach(keyValueData => keyValueData.Key = GetFormatEventName(keyValueData.Key));
-            toggleEvents.ForEach(keyValueData => keyValueData.Key = GetFormatEventName(keyValueData.Key));
+            uiBtnEvents.ForEach(keyValueData => keyValueData.Key = keyValueData.Key.Trim());
+            uiToggleEvents.ForEach(keyValueData => keyValueData.Key = keyValueData.Key.Trim());
         }
-        
-        /// 事件名稱統一格式化
-        public static string GetFormatEventName(string eventName) => eventName.Trim().ToLowerInvariant();
+
+        private void Reset() => FindUIEventDispatchers();
+
+
+        [Serializable]
+        public class UIEventButtonSet
+        {
+            public List<UIEventDispatcher> uiEventDispatchers;
+            public UnityEvent unityEvent;
+
+            public UIEventButtonSet(List<UIEventDispatcher> dispatchers) => uiEventDispatchers = dispatchers;
+        }
+
+        [Serializable]
+        public class UIEventToggleSet
+        {
+            public List<UIEventDispatcher> uiEventDispatchers;
+            public UnityEvent<bool> unityEvent;
+            public UIEventToggleSet(List<UIEventDispatcher> dispatchers) => uiEventDispatchers = dispatchers;
+        }
     }
 }
