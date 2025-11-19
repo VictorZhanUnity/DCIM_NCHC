@@ -2,67 +2,70 @@ using _VictorDev.MathUtils;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
-using Debug = _VictorDev.DebugUtils.Debug;
 
 namespace _VictorDev.DebugUtils
 {
     /// [Mediator] - 數值轉接器
     public class ValueMediator : MonoBehaviour
     {
-        public void SetString(string stringValue)
-        {
-            if (float.TryParse(stringValue, out float floatResult))
-            {
-                SetValue(floatResult);
-            }
-            else
-            {
-                global::_VictorDev.DebugUtils.Debug.Log($"字串[{stringValue}]無法轉成float值");
-            }
-        }
-
-        public void SetValue(int value) => SetValue((float)value);
-        
-        public void SetValue(float value)
-        {
-            _value = value;
-            InvokeValueHandler();
-        }
-
-        public void SetValueWithMultiply(float value) => SetValue(value * mutiplyValue);
-
-        private void InvokeValueHandler()
-        {
-            invokeString?.Invoke(MathHelper.ToDotNumberString(_value, dotNumber));
-            invokeFloat?.Invoke(MathHelper.ToDotNumberFloat(_value, dotNumber));
-            invokeFloat01?.Invoke(MathHelper.ToPercent01(_value, maxValue, dotNumber));
-            invokeInteger?.Invoke(Mathf.RoundToInt(_value));
-        }
-
         #region Variabls
 
         [Foldout("發送字串")] public UnityEvent<string> invokeString;
         [Foldout("發送float")] public UnityEvent<float> invokeFloat;
         [Foldout("發送float01")] public UnityEvent<float> invokeFloat01;
         [Foldout("發送Integer")] public UnityEvent<float> invokeInteger;
+        [Foldout("發送Bool")] public UnityEvent<bool> invokeBool;
 
-        [Foldout("[設定]")] [SerializeField] private int dotNumber;
-        [Foldout("[設定]")] [SerializeField] private int maxValue;
-        [Foldout("[設定]")] [SerializeField] private int mutiplyValue = 1;
-        private float _value;
+        [Foldout("[設定]"), SerializeField, Label("小數點後幾位")]
+        private int dotNumber;
 
-        #endregion
+        [Foldout("[設定]"), SerializeField, Label("最小值(01計算)")]
+        private int minValue;
 
+        [Foldout("[設定]"), SerializeField, Label("最大值(01計算)")]
+        private int maxValue;
 
-        #region 測試
+        [Foldout("[設定]"), SerializeField, Label("門檻值(bool判斷)")]
+        private float thresholdValue = 60;
 
-        [Foldout("[測試]")] [SerializeField] private float testValue;
-
-        [Button]
-        private void TestValue() => SetValue(testValue);
-        [Button]
-        private void TestRandomValue() => SetValue(Random.Range(1, testValue));
+        private float currentValue;
 
         #endregion
+
+        #region Setter
+        public void SetDotNumber(int dot) => dotNumber = dot;
+        public void SetMinValue(int value) => minValue = value;
+        public void SetMaxValue(int value) => maxValue = value;
+        public void SetThresholdValue(float value) => thresholdValue = value;
+        #endregion
+
+        /// 設定字串
+        public void SetString(string stringValue)
+        {
+            if (float.TryParse(stringValue, out float floatResult))
+                SetValue(floatResult);
+            else
+                Debug.Log($"字串[{stringValue}]無法轉成float值", this);
+        }
+
+        /// 設定值(int)
+        public void SetValue(int value) => SetValue((float)value);
+
+        /// 設定值(float)
+        public void SetValue(float value)
+        {
+            this.currentValue = value;
+            InvokeValueHandler();
+        }
+
+        /// 統一發送事件
+        private void InvokeValueHandler()
+        {
+            invokeString?.Invoke(MathHelper.ToDotNumberString(currentValue, dotNumber));
+            invokeFloat?.Invoke(MathHelper.ToDotNumberFloat(currentValue, dotNumber));
+            invokeFloat01?.Invoke(MathHelper.ToPercent01(currentValue, maxValue, dotNumber));
+            invokeInteger?.Invoke(Mathf.RoundToInt(currentValue));
+            invokeBool?.Invoke(currentValue >= thresholdValue);
+        }
     }
 }
