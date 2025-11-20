@@ -14,7 +14,8 @@ namespace _VictorDev.DebugUtils
         [Foldout("發送float")] public UnityEvent<float> invokeFloat;
         [Foldout("發送float01")] public UnityEvent<float> invokeFloat01;
         [Foldout("發送Integer")] public UnityEvent<float> invokeInteger;
-        [Foldout("發送Bool")] public UnityEvent<bool> invokeBool;
+        [Foldout("發送Bool")] public UnityEvent<bool> invokeBool, invokeBoolReverse;
+        [Foldout("發送By狀態")] public UnityEvent invokeInNormal, invokeOverThreshold, invokeInMax;
 
         [Foldout("[設定]"), SerializeField, Label("小數點後幾位")]
         private int dotNumber;
@@ -65,7 +66,14 @@ namespace _VictorDev.DebugUtils
             invokeFloat?.Invoke(MathHelper.ToDotNumberFloat(currentValue, dotNumber));
             invokeFloat01?.Invoke(MathHelper.ToPercent01(currentValue, maxValue, dotNumber));
             invokeInteger?.Invoke(Mathf.RoundToInt(currentValue));
-            invokeBool?.Invoke(currentValue >= thresholdValue);
+
+            bool isOverThreshold = currentValue >= thresholdValue;
+            invokeBool?.Invoke(isOverThreshold);
+            invokeBoolReverse?.Invoke(!isOverThreshold);
+            
+            if(Mathf.Approximately(currentValue, maxValue)) invokeInMax?.Invoke();
+            else if(isOverThreshold) invokeOverThreshold?.Invoke();
+            else invokeInNormal?.Invoke();
         }
     }
 }

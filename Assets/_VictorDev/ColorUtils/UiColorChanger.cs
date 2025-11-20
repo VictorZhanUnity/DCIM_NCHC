@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,12 +10,18 @@ namespace _VictorDev.ColorUtils
     public class UiColorChanger : MonoBehaviour
     {
         #region Variables
+
         [Label("[Color設定]")] [SerializeField] private Color[] colors;
+
         [Label("[Image/TextmeshProUGUI]")] [SerializeField]
         private List<Graphic> targets;
 
-        [Foldout("[設定]"), Label("[可選] - 自動綁定Toggle.isOn判斷")] [SerializeField]
+        [Foldout("[設定]"), SerializeField] private float duration = 0.2f, delay;
+        [Foldout("[設定]"), SerializeField] private Ease ease = Ease.OutQuad;
+
+        [Foldout("[設定]"), Label("[可選] - 自動綁定Toggle.isOn判斷"), SerializeField]
         private Toggle toggleTarget;
+
         #endregion
 
         private void OnEnable() => toggleTarget?.onValueChanged.AddListener(ChangeColor);
@@ -32,7 +39,13 @@ namespace _VictorDev.ColorUtils
         public void ChangeColor(int index)
         {
             if (toggleTarget != null && toggleTarget.isOn) return;
-            targets.ForEach(target => target.color = colors[index]);
+            targets.ForEach(target =>
+            {
+                if (Application.isPlaying)
+                    target.DOColor(colors[index], duration).SetEase(ease).SetDelay(delay);
+                else
+                    target.color = colors[index];
+            });
         }
     }
 }
