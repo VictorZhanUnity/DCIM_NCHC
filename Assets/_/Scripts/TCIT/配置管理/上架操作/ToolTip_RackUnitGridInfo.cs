@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using _VictorDev.ApiExtensions;
+using _VictorDev.Configs;
 using _VictorDev.DoTweenUtils;
 using _VictorDev.TCIT.DCIM;
 using _VictorDev.TextUtils;
@@ -39,7 +40,7 @@ public class ToolTip_RackUnitGridInfo : MonoBehaviour
     private void Reset()
     {
         txtComps = transform.GetComponentsInChildren<TextDotweener>().ToList();
-        txtComps = txtComps.FilterByNameForKeywords(true, "Txt");
+        txtComps = txtComps.FilterByNameForKeywords(EnumSearchType.Include, "Txt");
         speedometer = transform.GetComponentInChildren<Speedometer>();
     }
 }

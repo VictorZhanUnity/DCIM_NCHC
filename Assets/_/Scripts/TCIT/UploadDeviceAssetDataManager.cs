@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using _VictorDev.ApiExtensions;
+using _VictorDev.Configs;
 using _VictorDev.DebugUtils;
 using NaughtyAttributes;
 using UnityEngine;
@@ -58,9 +59,9 @@ namespace _VictorDev.TCIT.DCIM
         /// 接收機房模型，並進行分類
         public void ReceiveModels(List<Transform> targets)
         {
-            serverModels = targets.FilterByNameForKeywords(true, "Server");
-            routerModels = targets.FilterByNameForKeywords(true, "Router");
-            switchModels = targets.FilterByNameForKeywords(true, "Switch");
+            serverModels = targets.FilterByNameForKeywords(EnumSearchType.Include, "Server");
+            routerModels = targets.FilterByNameForKeywords(EnumSearchType.Include, "Router");
+            switchModels = targets.FilterByNameForKeywords(EnumSearchType.Include, "Switch");
         }
     }
 }

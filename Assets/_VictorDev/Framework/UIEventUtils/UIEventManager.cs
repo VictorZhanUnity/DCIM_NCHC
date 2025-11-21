@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using _VictorDev.ApiExtensions;
 using _VictorDev.DebugUtils;
 using NaughtyAttributes;
@@ -42,6 +43,7 @@ namespace _VictorDev.Framework.UIEventUtils
             });
         }
 
+        #region 註冊行為事件Key eventName
         /// 註冊行為事件Key eventName (Button)
         public static void SubscribeEvent(string eventName)
         {
@@ -59,6 +61,7 @@ namespace _VictorDev.Framework.UIEventUtils
             else
                 Debug.LogError($"{eventName} is not registered in the UI event manager", Instance);
         }
+        #endregion
 
         /// 尋找所有的UIEventDispatchers
         [Button]
@@ -67,7 +70,8 @@ namespace _VictorDev.Framework.UIEventUtils
             uiBtnEvents?.Clear();
             uiToggleEvents?.Clear();
             UIEventDispatcher[] result =
-                FindObjectsByType<UIEventDispatcher>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+                FindObjectsByType<UIEventDispatcher>(FindObjectsInactive.Include, FindObjectsSortMode.None)
+                    .OrderBy(dispatcher => dispatcher.name).ToArray();
 
             Array.ForEach(result, dispatcher =>
             {
@@ -93,7 +97,7 @@ namespace _VictorDev.Framework.UIEventUtils
                 }
             });
         }
-
+        
         protected override void OnValidate()
         {
             base.OnValidate();
@@ -107,8 +111,8 @@ namespace _VictorDev.Framework.UIEventUtils
         [Serializable]
         public class UIEventButtonSet
         {
-            public List<UIEventDispatcher> uiEventDispatchers;
             public UnityEvent unityEvent;
+            public List<UIEventDispatcher> uiEventDispatchers;
 
             public UIEventButtonSet(List<UIEventDispatcher> dispatchers) => uiEventDispatchers = dispatchers;
         }
@@ -116,8 +120,8 @@ namespace _VictorDev.Framework.UIEventUtils
         [Serializable]
         public class UIEventToggleSet
         {
-            public List<UIEventDispatcher> uiEventDispatchers;
             public UnityEvent<bool> unityEvent;
+            public List<UIEventDispatcher> uiEventDispatchers;
             public UIEventToggleSet(List<UIEventDispatcher> dispatchers) => uiEventDispatchers = dispatchers;
         }
     }

@@ -32,7 +32,7 @@ namespace _VictorDev.TCIT.DCIM
         }
 
         [Button]
-        public void RestoreAllModelsMaterial()
+        public void ShowAllModels()
         {
             materialReplacerRack.RestoreModelsMaterial();
             materialReplacerDevice.RestoreModelsMaterial();

@@ -9,8 +9,10 @@ namespace _VictorDev.TCIT.DCIM
     public class ObjectSelectionMediator : MonoBehaviour
     {
         #region Variables
-        [Foldout("[Event] 點擊模型 - 機櫃")] public UnityEvent<RackRevitAssetData> onRackClickedEvent;
-        [Foldout("[Event] 點擊模型 - 設備")] public UnityEvent<DeviceRevitAssetData> onDeviceClickedEvent;
+        [Foldout("[Event] 點擊模型 - 機櫃")] public UnityEvent<RackRevitAssetData> onRackClickedDataEvent;
+        [Foldout("[Event] 點擊模型 - 機櫃")] public UnityEvent<Transform> onRackClickedModelEvent;
+        [Foldout("[Event] 點擊模型 - 設備")] public UnityEvent<DeviceRevitAssetData> onDeviceClickedDataEvent;
+        [Foldout("[Event] 點擊模型 - 設備")] public UnityEvent<Transform> onDeviceClickedRackModelEvent;
         [Foldout("[設定]"), SerializeField] private float camDistanceToRack=4f, camDistanceToDevice = 1.5f;
         private Transform targetModel;
         
@@ -29,11 +31,13 @@ namespace _VictorDev.TCIT.DCIM
             {
                 if (assetDataHolder.IsRackAsset)
                 {
-                    onRackClickedEvent?.Invoke(assetDataHolder.RackRevitData);
+                    onRackClickedDataEvent?.Invoke(assetDataHolder.RackRevitData);
+                    onRackClickedModelEvent?.Invoke(assetDataHolder.RackRevitData.Model);
                 }
                 else
                 {
-                    onDeviceClickedEvent?.Invoke(assetDataHolder.DeviceRevitData);
+                    onDeviceClickedDataEvent?.Invoke(assetDataHolder.DeviceRevitData);
+                    onDeviceClickedRackModelEvent?.Invoke(assetDataHolder.DeviceRevitData.Model.parent); //Invoke機櫃模型，以顯示全機櫃
                 }
                 RTSCameraController.CameraToPosition(targetModel, assetDataHolder.IsRackAsset? camDistanceToRack: camDistanceToDevice);
                 return true;

@@ -24,7 +24,7 @@ namespace _VictorDev.ApiExtensions
             return path;
         }
         
-        #region 搜尋子物件
+        #region 依關鍵字搜尋子物件
         /// 搜尋子物件(有實作MeshRenderer)，名稱(包含/不包含)關鍵字
         public static List<Transform> FindChildrenByKeywords(this Transform self, EnumSearchType searchType = EnumSearchType.Include, params string[] keywords) 
             => FindChildrenByKeywords<MeshRenderer>(self, searchType, keywords);
@@ -49,8 +49,6 @@ namespace _VictorDev.ApiExtensions
                 _ => false
             };
         }
-        
-
         #endregion
         
         #region 從父物件中TryGetComponent

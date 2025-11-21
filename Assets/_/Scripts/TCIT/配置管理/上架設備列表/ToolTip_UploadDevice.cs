@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using _VictorDev.ApiExtensions;
+using _VictorDev.Configs;
 using _VictorDev.TextUtils;
 using NaughtyAttributes;
 using TMPro;
@@ -34,7 +35,7 @@ namespace _VictorDev.TCIT.DCIM
         private void Reset()
         {
             txtComps = transform.GetComponentsInChildren<TextMeshProUGUI>().ToList()
-                .FilterByNameForKeywords(true, "Txt");
+                .FilterByNameForKeywords(EnumSearchType.Include, "Txt");
         }
     }
 }

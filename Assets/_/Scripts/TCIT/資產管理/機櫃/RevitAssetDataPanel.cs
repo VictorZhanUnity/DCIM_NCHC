@@ -18,7 +18,6 @@ namespace _VictorDev.TCIT.DCIM
         private bool isRackRevitData, isDeviceRevitData;
 
         [Foldout("[Event] - ReceiveData")] public UnityEvent onReceiveDataEvent;
-        [Foldout("[Event] - OnClose")] public UnityEvent onCloseEvent;
         [Foldout("[Event] - 收到RackRevitAssetData")] public UnityEvent onReceiveRackRevitDataEvent;
         [Foldout("[Event] - 收到DeviceRevitAssetData")] public UnityEvent onReceiveDeviceRevitDataEvent;
         [Foldout("[組件]"), SerializeField] private List<TextDotweener> txtComps;
@@ -36,19 +35,13 @@ namespace _VictorDev.TCIT.DCIM
             (isRackRevitData? onReceiveRackRevitDataEvent: onReceiveDeviceRevitDataEvent)?.Invoke();
             
             UpdateUI();
-            gameObject.SetActive(true);
+            transform.parent.gameObject.SetActive(true);
         }
 
         private void UpdateUI()
         {
             if(isRackRevitData) TextHelper.SetParamsToTxtComps(rackRevitAssetData, txtComps);
             else TextHelper.SetParamsToTxtComps(deviceRevitAssetData, txtComps);
-        }
-
-        public void ToClose()
-        {
-            onCloseEvent?.Invoke();
-            gameObject.SetActive(false);
         }
 
         public void CameraToPosition() => RTSCameraController.CameraToPosition(isRackRevitData? rackRevitAssetData.Model: deviceRevitAssetData.Model);
