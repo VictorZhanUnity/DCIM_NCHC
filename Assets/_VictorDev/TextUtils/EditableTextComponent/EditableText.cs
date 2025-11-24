@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
@@ -13,6 +15,7 @@ namespace _VictorDev.TextUtils.EditableTextComponent
 
         [Foldout("[組件]"), SerializeField] private TextMeshProUGUI txtTitle;
         [Foldout("[組件]"), SerializeField] private TMP_InputField inputField;
+        [Foldout("[組件]"), SerializeField] private TextMeshProUGUI placeHolder;
 
         public string Title => txtTitle.text.Trim();
         public string Text => inputField.text.Trim();
@@ -23,20 +26,27 @@ namespace _VictorDev.TextUtils.EditableTextComponent
         public void SetTitle(string title) => txtTitle.text = title.Trim();
         /// 設定內容
         public void SetText(string txt) => inputField.text = txt.Trim();
+        /// 設定內容
+        public void SetPlaceHolder(string txt) => placeHolder.text = txt.Trim();
+        
         /// 設定可編輯
         public void SetIsEnableEdit(bool isEnableEdit)
         {
             IsEditable = isEnableEdit;
             inputField.interactable = IsEditable;
         }
-
+         
+        [Button]
+        private void FindComponents()
+        {
+            var result = GetComponentsInChildren<TextMeshProUGUI>();
+            txtTitle = result.FirstOrDefault(target=> target.name.Equals("Title", StringComparison.OrdinalIgnoreCase));
+            inputField = GetComponentInChildren<TMP_InputField>();
+            placeHolder = result.FirstOrDefault(target=> target.name.Equals("PlaceHolder", StringComparison.OrdinalIgnoreCase));
+        }
+        
         private void OnValidate() => SetIsEnableEdit(IsEditable);
 
-        [Button]
-        private void Reset()
-        {
-            txtTitle = GetComponentInChildren<TextMeshProUGUI>();
-            inputField = GetComponentInChildren<TMP_InputField>();
-        }
+        private void Reset() => FindComponents();
     }
 }

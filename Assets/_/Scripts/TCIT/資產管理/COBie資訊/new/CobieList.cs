@@ -1,26 +1,28 @@
-using System;
 using System.Collections.Generic;
 using _VictorDev.DebugUtils;
-using _VictorDev.TextUtils;
 using _VictorDev.TextUtils.EditableTextComponent;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace _VictorDev.TCIT.DCIM
 {
     public class CobieList : MonoBehaviour
     {
+        #region Variables
+
+        [Foldout("[Event]")] public UnityEvent onUpdateUIFinishEvent;
         [Foldout("[組件]"), SerializeField] private ScrollRect scrollRect;
         [Foldout("[組件]"), SerializeField] private EditableText listItemPrefab;
         [Foldout("[組件]"), SerializeField] private List<EditableText> editableTexts;
 
-        private Information _informationData;
-
+        private Information informationData;
+        #endregion
         
         public void ReceiveData(RevitAssetData data)
         {
-            _informationData = data.Information;
+            informationData = data.Information;
             UpdateUI();
         }
 
@@ -34,12 +36,13 @@ namespace _VictorDev.TCIT.DCIM
             {
                 EditableText listItem = ObjectHelper.Instantiate(listItemPrefab, scrollRect.content);
                 string columnName = DcimSysConfig.GetCobieColumnNames(fieldName);
-                string value = ObjectHelper.GetValueByFiledName(_informationData, fieldName);
+                string value = informationData != null? ObjectHelper.GetValueByFiledName(informationData, fieldName):string.Empty;
                 listItem.SetTitle(columnName);
                 listItem.SetText(value);
                 editableTexts.Add(listItem);
             }
             scrollRect.verticalNormalizedPosition = 1;
+            onUpdateUIFinishEvent?.Invoke();
         }
 
         [Button]
@@ -49,8 +52,10 @@ namespace _VictorDev.TCIT.DCIM
             editableTexts.Clear();
             scrollRect.verticalNormalizedPosition = 1;
         }
-
+        
         [Button]
-        private void Reset() => scrollRect = GetComponentInChildren<ScrollRect>();
+        private void FindComponents() => scrollRect = GetComponentInChildren<ScrollRect>();
+        
+        private void Reset() => FindComponents();
     }
 }

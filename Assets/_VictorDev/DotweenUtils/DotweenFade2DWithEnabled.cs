@@ -39,6 +39,8 @@ namespace _VictorDev.DoTweenUtils
         [Header(">>> [Event] OnDisabled時Invoke")]
         public UnityEvent onDisabledEvent = new UnityEvent();
 
+        private RectTransform targetRectTrans;
+        
         private void OnEnable()
         {
             onEnabledEvent?.Invoke();
@@ -48,24 +50,27 @@ namespace _VictorDev.DoTweenUtils
         [ContextMenu("- 播放Dotween動畫")]
         public void ToShow()
         {
-            DOTween.Kill(targetTrans);
+            DOTween.Kill(targetRectTrans);
 
             if (targetTrans == null) targetTrans = transform;
-            originalPos ??= targetTrans.localPosition;
-            originalScale ??= targetTrans.localScale;
-            if (targetTrans.TryGetComponent(out CanvasGroup cg) == false)
+            targetRectTrans = targetTrans as RectTransform;
+
+            originalPos ??= targetRectTrans.localPosition;
+            originalScale ??= targetRectTrans.localScale;
+            if (targetRectTrans.TryGetComponent(out CanvasGroup cg) == false)
             {
-                cg = targetTrans.gameObject.AddComponent<CanvasGroup>();
+                cg = targetRectTrans.gameObject.AddComponent<CanvasGroup>();
             }
             Vector3 fromPos = (originalPos ?? Vector3.zero) + fromPosValue;
             float targetDelay = delay_Start + (isRandomDelay ? Random.Range(0, delay) : delay);
             cg.alpha = 0;
             void CheckAlpha() => cg.interactable = cg.blocksRaycasts = cg.alpha == 1;
             CheckAlpha();
-            cg.DOFade(1, duration).From(0).SetEase(ease).SetDelay(targetDelay).OnUpdate(CheckAlpha).OnComplete(()=>onAnimateFinished?.Invoke()).SetTarget(targetTrans);
+            cg.DOFade(1, duration).From(0).SetEase(ease).SetDelay(targetDelay).OnUpdate(CheckAlpha).OnComplete(()=>onAnimateFinished?.Invoke()).SetTarget(targetRectTrans);
 
-            if (isDoMove) targetTrans.DOLocalMove(originalPos ?? Vector3.zero, duration).From(fromPos).SetEase(ease).SetDelay(targetDelay).SetTarget(targetTrans);
-            if (isDoScale) targetTrans.DOScale(originalScale ?? Vector3.zero, duration).From(new Vector3(fromScaleValue, fromScaleValue, fromScaleValue)).SetEase(ease).SetDelay(targetDelay).SetTarget(targetTrans);
+            if (isDoMove) targetRectTrans.DOLocalMove(originalPos ?? Vector3.zero, duration).From(fromPos).SetEase(ease).SetDelay(targetDelay).SetTarget(targetRectTrans);
+           // if (isDoMove) targetRectTrans.DOAnchorPos(originalPos ?? Vector3.zero, duration).From(fromPos).SetEase(ease).SetDelay(targetDelay).SetTarget(targetRectTrans);
+            if (isDoScale) targetRectTrans.DOScale(originalScale ?? Vector3.zero, duration).From(new Vector3(fromScaleValue, fromScaleValue, fromScaleValue)).SetEase(ease).SetDelay(targetDelay).SetTarget(targetRectTrans);
             
             gameObject.SetActive(true);
         }

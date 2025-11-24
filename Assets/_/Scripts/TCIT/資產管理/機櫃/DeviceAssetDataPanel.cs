@@ -9,19 +9,19 @@ using UnityEngine;
 
 namespace _VictorDev.TCIT.DCIM
 {
-    /// 機櫃 資訊面板
-    public class RackAssetDataPanel : MonoBehaviour
+    /// 設備 資訊面板
+    public class DeviceAssetDataPanel : MonoBehaviour
     {
         #region Variables
 
-        [Label("[資料項 - RackRevitAssetData]"), SerializeField] private RackRevitAssetData rackRevitAssetData;
+        [Label("[資料項 - DeviceRevitAssetData]"), SerializeField] private DeviceRevitAssetData deviceRevitAssetData;
         [Label("[Txt組件]"), SerializeField] private List<TextDotweener> txtComps;
 
         #endregion
 
-        public void SetRackRevitAssetData(RackRevitAssetData data)
+        public void SetDeviceRevitAssetData(DeviceRevitAssetData data)
         {
-            rackRevitAssetData = data;
+            deviceRevitAssetData = data;
             UpdateUI();
             gameObject.SetActive(false);
             gameObject.SetActive(true);
@@ -29,7 +29,7 @@ namespace _VictorDev.TCIT.DCIM
 
         private void UpdateUI()
         {
-            TextHelper.SetParamsToTxtComps(rackRevitAssetData, txtComps);
+            TextHelper.SetParamsToTxtComps(deviceRevitAssetData, txtComps);
         }
 
         [Button]

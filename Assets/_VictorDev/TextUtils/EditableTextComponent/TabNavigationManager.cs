@@ -21,7 +21,7 @@ namespace _VictorDev.TextUtils
         #endregion
 
         [Button]
-        private void FindComponents()
+        public void FindComponents()
         {
             // 抓出所有 InputField 與 TMP_InputField
             inputs = GetComponentsInChildren<Selectable>(true)
