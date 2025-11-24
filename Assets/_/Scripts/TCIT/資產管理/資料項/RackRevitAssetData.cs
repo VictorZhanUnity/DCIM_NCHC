@@ -38,8 +38,12 @@ namespace _VictorDev.TCIT.DCIM
         public int MaxWatt => Information.watt;
         public int MaxWeight => Information.weight;
         public int MaxHeightU => Information.heightU;
+
+        /// 即時溫度
+        public float RT => Random.Range(14f, 30f);
+        /// 即時濕度
+        public float RH => Random.Range(55f, 85f);
         #endregion
-        
         
         /// 在JSON解析後處理 (需子類別自行解析，override函式需加上[OnDeserialized])
         [OnDeserialized]

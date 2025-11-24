@@ -12,52 +12,6 @@ namespace _VictorDev.DateTimeUtils
     /// 計時器 (Coroutine制)
     public class Timer : MonoBehaviour
     {
-        private IEnumerator UpdateTimer()
-        {
-            int count = 0;
-
-            while (isInfiniteLoop || count < maxCount)
-            {
-                int totalIntervalSeconds = DateTimeHelper.CalculatedToTotalSeconds(
-                    IsTimeIntervalHour ? intervalHour : 0,
-                    IsTimeIntervalMin ? intervalMinute : 0,
-                    IsTimeIntervalSec ? intervalSecond : 0
-                );
-                yield return new WaitForSeconds(totalIntervalSeconds);
-                onTimeUpdated?.Invoke(GetNowDateTimeString());
-                count++;
-            }
-
-            if (!isInfiniteLoop) onTimeFinished?.Invoke(GetNowDateTimeString());
-        }
-
-        /// 開始時鐘
-        [Button]
-        public void StartTimer()
-        {
-            StopTimer(false);
-            if (!IsTimerRunning) _timerCoroutine = StartCoroutine(UpdateTimer());
-        }
-
-        /// 停止時鐘
-        [Button]
-        public void StopTimer(bool isInvokeEvent = true)
-        {
-            if (_timerCoroutine != null)
-            {
-                StopCoroutine(_timerCoroutine);
-                _timerCoroutine = null;
-            }
-
-            if (isInvokeEvent) onTimeFinished?.Invoke(GetNowDateTimeString());
-        }
-
-        private void Start()
-        {
-            if (!Application.isPlaying) return; //防止編輯器場景中重新載入時意外觸發計時器（特別是做 editor tool 時）。
-            if (isActiveInStart) StartTimer();
-        }
-
         #region Variables
 
         [Label("是否在Start自動執行"), SerializeField]
@@ -104,5 +58,54 @@ namespace _VictorDev.DateTimeUtils
         private Coroutine _timerCoroutine;
 
         #endregion
+        
+        private IEnumerator UpdateTimer()
+        {
+            int count = 0;
+
+            while (isInfiniteLoop || count < maxCount)
+            {
+                int totalIntervalSeconds = DateTimeHelper.CalculatedToTotalSeconds(
+                    IsTimeIntervalHour ? intervalHour : 0,
+                    IsTimeIntervalMin ? intervalMinute : 0,
+                    IsTimeIntervalSec ? intervalSecond : 0
+                );
+                yield return new WaitForSeconds(totalIntervalSeconds);
+                onTimeUpdated?.Invoke(GetNowDateTimeString());
+                count++;
+            }
+
+            if (!isInfiniteLoop) onTimeFinished?.Invoke(GetNowDateTimeString());
+        }
+
+        /// 開始時鐘
+        [Button]
+        public void StartTimer()
+        {
+            StopTimer(false);
+            if (!IsTimerRunning) _timerCoroutine = StartCoroutine(UpdateTimer());
+        }
+
+        /// 停止時鐘
+        [Button]
+        public void StopTimer(bool isInvokeEvent = true)
+        {
+            if (_timerCoroutine != null)
+            {
+                StopCoroutine(_timerCoroutine);
+                _timerCoroutine = null;
+            }
+
+            if (isInvokeEvent) onTimeFinished?.Invoke(GetNowDateTimeString());
+        }
+
+        private void Start()
+        {
+            if (!Application.isPlaying) return; //防止編輯器場景中重新載入時意外觸發計時器（特別是做 editor tool 時）。
+            if (isActiveInStart) StartTimer();
+        }
+
+        private void OnEnable() => StartTimer();
+        private void OnDisable() => StopTimer(false);
     }
 }

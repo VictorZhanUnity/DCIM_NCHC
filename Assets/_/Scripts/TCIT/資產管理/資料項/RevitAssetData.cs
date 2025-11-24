@@ -14,6 +14,7 @@ namespace _VictorDev.TCIT.DCIM
     /// 資產資料父類別
     public abstract class RevitAssetData
     {
+        #region 固定欄位
         [JsonProperty] [field: SerializeField] public string DevicePath { get; private set; }
         [field: SerializeField] public Transform Model { get; private set; }
 
@@ -21,6 +22,7 @@ namespace _VictorDev.TCIT.DCIM
         [JsonProperty]
         [field: SerializeField]
         public Information Information { get; private set; }
+        #endregion
 
         /// 資產類型 Rack, Server, Router, Switch
         public EnumDeviceKind DeviceKind { get; protected set; }
@@ -68,9 +70,9 @@ namespace _VictorDev.TCIT.DCIM
         }
         public void SetModel(Transform model) => Model = model;
 
-
         public void ForDemo(Transform transform)
         {
+            return;
             Model = transform;
             DevicePath = DcimHelper.GetDevicePath(Model.name);
             ParseDeviceNameAndCode();

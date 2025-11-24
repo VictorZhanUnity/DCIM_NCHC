@@ -14,7 +14,7 @@ namespace _VictorDev.DebugUtils
         [Foldout("發送float")] public UnityEvent<float> invokeFloat;
         [Foldout("發送float01")] public UnityEvent<float> invokeFloat01;
         [Foldout("發送Integer")] public UnityEvent<float> invokeInteger;
-        [Foldout("發送Bool")] public UnityEvent<bool> invokeBool, invokeBoolReverse;
+        [Foldout("發送Bool(isOverThreshold)")] public UnityEvent<bool> invokeBool, invokeBoolReverse;
         [Foldout("發送By狀態")] public UnityEvent invokeInNormal, invokeOverThreshold, invokeInMax;
 
         [Foldout("[設定]"), SerializeField, Label("小數點後幾位")]
