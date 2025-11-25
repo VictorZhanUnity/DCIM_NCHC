@@ -1,16 +1,9 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Forms;
-using _VictorDev.ApiExtensions;
-using _VictorDev.Configs;
-using _VictorDev.DebugUtils;
+using _VictorDev.MediatorUtils;
 using _VictorDev.Framework;
 using NaughtyAttributes;
-using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace _VictorDev.TCIT.DCIM
 {
@@ -20,18 +13,19 @@ namespace _VictorDev.TCIT.DCIM
 
         [Foldout("[組件]"), SerializeField] private ValueMediator txtRT, txtRH;
         [Foldout("[組件]"), SerializeField] private PositionTo2DPoint positionTo2DPoint;
+
         #endregion
 
         public void SetTargetModel(Transform target) => positionTo2DPoint.SetTargetObject(target);
         public void SetRtValue(float value) => txtRT.SetValue(value);
         public void SetRhValue(float value) => txtRH.SetValue(value);
-
+        
         [Button]
         public void FindComponents()
         {
             var result = GetComponentsInChildren<ValueMediator>(true);
-            txtRT = result.FirstOrDefault(target=> target.name.Equals("TxtRT", StringComparison.OrdinalIgnoreCase));
-            txtRH = result.FirstOrDefault(target=> target.name.Equals("TxtRH", StringComparison.OrdinalIgnoreCase));
+            txtRT = result.FirstOrDefault(target => target.name.Equals("TxtRT", StringComparison.OrdinalIgnoreCase));
+            txtRH = result.FirstOrDefault(target => target.name.Equals("TxtRH", StringComparison.OrdinalIgnoreCase));
             positionTo2DPoint = GetComponent<PositionTo2DPoint>();
         }
 

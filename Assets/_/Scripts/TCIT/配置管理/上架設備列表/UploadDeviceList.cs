@@ -1,5 +1,5 @@
 using System.Linq;
-using _VictorDev.DebugUtils.ScrollRectUtils;
+using _VictorDev.MediatorUtils.ScrollRectUtils;
 
 namespace _VictorDev.TCIT.DCIM
 {

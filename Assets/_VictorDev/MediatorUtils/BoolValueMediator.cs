@@ -19,14 +19,20 @@ namespace _VictorDev.MediatorUtils
 
         #endregion
 
-        public void ReceiveBoolValue(bool value)
+        public void SetValue01(int value)
+        {
+            value = Mathf.Clamp(value, 0, 1);
+            SetBoolValue(value == 1);
+        }
+        
+        public void SetBoolValue(bool value)
         {
             boolToReverseEvent?.Invoke(!value);
             (value? invokeInTrueEvent: invokeInFalseEvent)?.Invoke(true);
         }
         
-        private void OnEnable() => toggle?.onValueChanged.AddListener(ReceiveBoolValue);
-        private void OnDisable() => toggle?.onValueChanged.RemoveListener(ReceiveBoolValue);
+        private void OnEnable() => toggle?.onValueChanged.AddListener(SetBoolValue);
+        private void OnDisable() => toggle?.onValueChanged.RemoveListener(SetBoolValue);
 
         [Button]
         private void FindComponents() => toggle = GetComponent<Toggle>();

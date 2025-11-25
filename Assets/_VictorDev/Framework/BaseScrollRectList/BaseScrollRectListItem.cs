@@ -8,7 +8,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace _VictorDev.DebugUtils.ScrollRectUtils
+namespace _VictorDev.MediatorUtils.ScrollRectUtils
 {
     /// [框架：ScrollRect列表] ScrollList ListItem
     public abstract class BaseScrollRectListItem<TData> : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler

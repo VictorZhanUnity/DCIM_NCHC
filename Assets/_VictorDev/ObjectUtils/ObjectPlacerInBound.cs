@@ -5,7 +5,7 @@ using System.Linq;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
-using _VictorDev.DebugUtils;
+using _VictorDev.MediatorUtils;
 
 public class ObjectPlacerInBound : MonoBehaviour
 {

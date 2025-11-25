@@ -5,7 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
-using Debug = _VictorDev.DebugUtils.Debug;
+using Debug = _VictorDev.MediatorUtils.Debug;
 
 namespace _VictorDev.DoTweenUtils
 {
@@ -62,7 +62,7 @@ namespace _VictorDev.DoTweenUtils
             }
             else
             {
-                global::_VictorDev.DebugUtils.Debug.LogWarning("Target does not have a renderer", typeof(This), EmojiEnum.Warning);
+                global::_VictorDev.MediatorUtils.Debug.LogWarning("Target does not have a renderer", typeof(This), EmojiEnum.Warning);
                 return null;
             }
         }

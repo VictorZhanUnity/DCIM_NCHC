@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Image = UnityEngine.UI.Image;
 
-namespace _VictorDev.DebugUtils
+namespace _VictorDev.MediatorUtils
 {
     /// 設定Image Fill Amount與階級變色
     [RequireComponent(typeof(Image))]

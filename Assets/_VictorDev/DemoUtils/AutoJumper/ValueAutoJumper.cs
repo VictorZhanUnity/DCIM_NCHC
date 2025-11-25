@@ -2,8 +2,8 @@ using System.Collections;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
-using _VictorDev.DebugUtils;
-using Debug = _VictorDev.DebugUtils.Debug;
+using _VictorDev.MediatorUtils;
+using Debug = _VictorDev.MediatorUtils.Debug;
 using Random = UnityEngine.Random;
 
 namespace _VictorDev.DemoUtils.AutoJumper

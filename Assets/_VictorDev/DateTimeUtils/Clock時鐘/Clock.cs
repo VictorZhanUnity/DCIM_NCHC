@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using _VictorDEV.DateTimeUtils;
-using _VictorDev.DebugUtils;
+using _VictorDev.MediatorUtils;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;

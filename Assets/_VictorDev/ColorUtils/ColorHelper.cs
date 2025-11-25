@@ -2,12 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using _VictorDev.DebugUtils;
+using _VictorDev.MediatorUtils;
 using _VictorDev.MathUtils;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
-using Debug = _VictorDev.DebugUtils.Debug;
+using Debug = _VictorDev.MediatorUtils.Debug;
 
 namespace _VictorDev.ColorUtils
 {

@@ -2,8 +2,8 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using _VictorDev.DebugUtils;
-using Debug = _VictorDev.DebugUtils.Debug;
+using _VictorDev.MediatorUtils;
+using Debug = _VictorDev.MediatorUtils.Debug;
 
 namespace _VictorDev.StringUtils
 {

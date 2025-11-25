@@ -1,5 +1,5 @@
 using System;
-using _VictorDev.DebugUtils;
+using _VictorDev.MediatorUtils;
 using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
@@ -27,6 +27,8 @@ namespace _VictorDev.UIComps
         {
             imageProgressbar.SetDuration(duration, delay);
         }
+
+        private void OnDisable() => SetValue(0);
 
         public void SetValue(float value)
         {

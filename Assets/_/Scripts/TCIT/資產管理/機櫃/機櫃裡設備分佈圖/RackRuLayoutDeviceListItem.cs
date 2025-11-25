@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using _VictorDev.DebugUtils;
+using _VictorDev.MediatorUtils;
 using _VictorDev.DoTweenUtils;
 using _VictorDev.TextUtils;
 using NaughtyAttributes;

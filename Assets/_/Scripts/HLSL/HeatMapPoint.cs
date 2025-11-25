@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
-using Debug = _VictorDev.DebugUtils.Debug;
+using Debug = _VictorDev.MediatorUtils.Debug;
 
 namespace VictorDev.HeatMapUtiils
 {

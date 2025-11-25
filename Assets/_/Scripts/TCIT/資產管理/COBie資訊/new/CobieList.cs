@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using _VictorDev.DebugUtils;
+using _VictorDev.MediatorUtils;
 using _VictorDev.TextUtils.EditableTextComponent;
 using NaughtyAttributes;
 using UnityEngine;

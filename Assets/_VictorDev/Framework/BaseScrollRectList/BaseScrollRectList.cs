@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using _VictorDev.DebugUtils;
+using _VictorDev.MediatorUtils;
 using _VictorDev.InterfaceUtils;
 using _VictorDev.TCIT.DCIM;
 using NaughtyAttributes;
@@ -12,7 +12,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
-namespace _VictorDev.DebugUtils.ScrollRectUtils
+namespace _VictorDev.MediatorUtils.ScrollRectUtils
 {
     /// [框架：ScrollRect列表] ScrollList 
     public abstract class BaseScrollRectList<TData> : MonoBehaviour, IReceiveData<List<TData>>

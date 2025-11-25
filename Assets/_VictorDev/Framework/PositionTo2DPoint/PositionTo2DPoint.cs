@@ -1,5 +1,5 @@
 using _VictorDev.Configs;
-using _VictorDev.DebugUtils;
+using _VictorDev.MediatorUtils;
 using NaughtyAttributes;
 using UnityEngine;
 

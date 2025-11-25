@@ -1,4 +1,4 @@
-using _VictorDev.DebugUtils;
+using _VictorDev.MediatorUtils;
 using NaughtyAttributes;
 using TMPro;
 using Unity.VisualScripting;

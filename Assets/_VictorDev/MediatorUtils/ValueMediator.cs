@@ -3,7 +3,7 @@ using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace _VictorDev.DebugUtils
+namespace _VictorDev.MediatorUtils
 {
     /// [Mediator] - 數值轉接器
     public class ValueMediator : MonoBehaviour

@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-using _VictorDev.DebugUtils;
+using _VictorDev.MediatorUtils;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.EventSystems;

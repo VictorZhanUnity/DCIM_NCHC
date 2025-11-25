@@ -10,7 +10,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 
-namespace _VictorDev.DebugUtils
+namespace _VictorDev.MediatorUtils
 {
     /// GameObject物件處理
     public static class ObjectHelper
