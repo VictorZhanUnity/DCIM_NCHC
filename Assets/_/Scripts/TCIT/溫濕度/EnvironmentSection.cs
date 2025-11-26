@@ -6,6 +6,7 @@ using _VictorDev.Configs;
 using _VictorDev.MediatorUtils;
 using _VictorDev.TCIT.DCIM.EnvironmentModule.Old;
 using NaughtyAttributes;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,8 +22,9 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule
         [Foldout("[組件]"), SerializeField] private ToggleGroup toggleGroup;
         [Label("[項目設定]"), SerializeField] private List<EnvironmentItem> environmentItems;
 
-        private float averageRt, averageRh;
-
+        public float AverageRt { get; private set; }
+        public float AverageRh { get; private set; }
+        
         #endregion
 
         [Button][ContextMenu("CreateLandmark")]
@@ -41,14 +43,11 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule
         [Button][ContextMenu("GetAverageRtRhFromRacks")]
         public void GetAverageRtRhFromRacks()
         {
-            averageRt = dataHolders.Average(holder => holder.RackRevitData.RT);
-            averageRh = dataHolders.Average(holder => holder.RackRevitData.RH);
-            environmentItems[0].landmark.SetValue(averageRt);
-            environmentItems[1].landmark.SetValue(averageRh);
+            AverageRt = dataHolders.Average(holder => holder.RackRevitData.RT);
+            AverageRh = dataHolders.Average(holder => holder.RackRevitData.RH);
+            environmentItems[0].landmark.SetValue(AverageRt);
+            environmentItems[1].landmark.SetValue(AverageRh);
         }
-        
-        private void OnEnable() => GetAverageRtRhFromRacks();
-
         
         /// 尋找Collider範圍裡的Rack模型
         [Button][ContextMenu("FindRacksInArea")]
@@ -68,6 +67,11 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule
         }
 
         private void Reset() => FindComponents();
+        
+        private void OnEnable()
+        {
+            GetAverageRtRhFromRacks();
+        }
     }
 
     /// 環境監控項目 - 溫度 / 濕度
@@ -78,6 +82,8 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule
         public EnvironmentLandmark landmark;
         public EnvironmentLandmark landmarkPrefab;
 
+        public Toggle ToggleComp => landmark.ToggleComp;
+        
         public EnvironmentLandmark Instantiate(string sectionName)
         {
             if (landmark != null && container.Contain(landmark)) return landmark;
@@ -86,4 +92,5 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule
             return landmark;
         }
     }
+  
 }

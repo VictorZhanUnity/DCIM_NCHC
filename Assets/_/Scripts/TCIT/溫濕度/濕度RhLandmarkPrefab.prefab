@@ -92,6 +92,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: ecf7aecc3db555849a4380af27f03367, type: 3}
+    - target: {fileID: 2813876761469323258, guid: 7a832e0aa8495474eac2df492be0de3f, type: 3}
+      propertyPath: maxValue
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813876761469323258, guid: 7a832e0aa8495474eac2df492be0de3f, type: 3}
+      propertyPath: thresholdValue
+      value: 78
+      objectReference: {fileID: 0}
     - target: {fileID: 3317586185020210390, guid: 7a832e0aa8495474eac2df492be0de3f, type: 3}
       propertyPath: m_text
       value: 23.8
@@ -112,27 +120,8 @@ PrefabInstance:
       propertyPath: m_IsOn
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7562072931012911165, guid: 7a832e0aa8495474eac2df492be0de3f, type: 3}
-      propertyPath: graphic
-      value: 
-      objectReference: {fileID: 1119114948217212554}
-    - target: {fileID: 7562072931012911165, guid: 7a832e0aa8495474eac2df492be0de3f, type: 3}
-      propertyPath: m_Interactable
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a832e0aa8495474eac2df492be0de3f, type: 3}
---- !u!114 &1119114948217212554 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5571018952869641678, guid: 7a832e0aa8495474eac2df492be0de3f, type: 3}
-  m_PrefabInstance: {fileID: 4816557080197624644}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image

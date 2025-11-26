@@ -24,6 +24,7 @@ namespace _VictorDev.Framework
         [Foldout("[組件]"), SerializeField] private RectTransform rectTrans, canvasRect;
         [Foldout("[組件]"), SerializeField] private GameObject container;
 
+        public Transform Target3DObject => target3DObject;
         public float DistanceFromCamera => Vector3.Distance(mainCamera.transform.position, target3DObject.position);
 
         #endregion

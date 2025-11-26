@@ -1,7 +1,9 @@
+using System;
 using _VictorDev.MediatorUtils;
 using _VictorDev.Framework;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace _VictorDev.TCIT.DCIM.EnvironmentModule.Old
@@ -15,6 +17,8 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule.Old
         [Foldout("[組件]"), SerializeField] private PositionTo2DPoint positionTo2DPoint;
         [Foldout("[組件]"), SerializeField] private Toggle toggle;
 
+        public Toggle ToggleComp => toggle;
+        
         #endregion
 
         public void SetToggleGroup(ToggleGroup group) => toggle.group = group;
@@ -23,7 +27,7 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule.Old
         public void SetTargetModel(Transform target) => positionTo2DPoint.SetTargetObject(target);
         /// 設定值
         public void SetValue(float value) => txtValue.SetValue(value);
-        
+
         [Button]
         public void FindComponents()
         {
@@ -32,7 +36,7 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule.Old
             positionTo2DPoint.FindComponents();
             toggle = GetComponent<Toggle>();
         }
-
+        
         private void Reset() => FindComponents();
     }
 }
