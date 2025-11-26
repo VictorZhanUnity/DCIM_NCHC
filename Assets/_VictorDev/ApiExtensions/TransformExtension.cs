@@ -12,6 +12,20 @@ namespace _VictorDev.ApiExtensions
     /// [Extended] 原API類別功能擴充
     public static class TransformExtension
     {
+        /// 是否包含子物件
+        public static bool Contain<T>(this Transform self, T target) where T : Component
+        {
+            int count = self.childCount;
+            Transform targetTransform = target.transform;
+            
+            for (int i = 0; i < count; i++)
+            {
+                if (self.GetChild(i) == targetTransform)
+                    return true;
+            }
+            return false;
+        }
+        
         /// 目標物件的階層路徑
         public static string GetHierarchyPath(this Transform self)
         {
@@ -53,16 +67,16 @@ namespace _VictorDev.ApiExtensions
         
         #region 從父物件中TryGetComponent
         
-        /// 嘗試從父物件中取得指定型別的元件（適用於 Component 呼叫）。(若持續往上抓到根物件為止)
-        public static bool TryGetComponentInParent<T>(this Component componentRoot, out T component, bool includeInactive = false)
+        /// 嘗試從父物件中取得指定型別的元件（適用於 Transform 呼叫）。(若持續往上抓到根物件為止)
+        public static bool TryGetComponentInParent<T>(this Transform self, out T component, bool includeInactive = true)
             where T : Component =>
-            TryGetComponentInParent(componentRoot.gameObject, out component, includeInactive);
+            TryGetComponentInParent(self.gameObject, out component, includeInactive);
         
         /// 嘗試從父物件中取得指定型別的元件。(若持續往上抓到根物件為止)
-        public static bool TryGetComponentInParent<T>(this GameObject gameObject, out T component, bool includeInactive = false)
+        public static bool TryGetComponentInParent<T>(this GameObject self, out T component, bool includeInactive = true)
             where T : Component
         {
-            component = gameObject.GetComponentInParent<T>(includeInactive);
+            component = self.GetComponentInParent<T>(includeInactive);
             return component != null;
         }
       

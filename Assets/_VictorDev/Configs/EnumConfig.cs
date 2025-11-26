@@ -91,8 +91,8 @@ namespace _VictorDev.Configs
         Include, Exclude
     }
     /// 設備資訊狀態 (Good / Warning / Overload / Missing)
-    public enum EnumRealtimeDataStatus
+    public enum EnumIndicatorStatus
     {
-        Good , Warning , Overload , MissingData
+        Normal , Warning , Overload , MissingData
     }
 }

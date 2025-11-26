@@ -5,7 +5,7 @@ using _VictorDev.Framework;
 using NaughtyAttributes;
 using UnityEngine;
 
-namespace _VictorDev.TCIT.DCIM
+namespace _VictorDev.TCIT.DCIM.EnvironmentModule.Old.Old
 {
     public class RtRhLandmark : MonoBehaviour
     {

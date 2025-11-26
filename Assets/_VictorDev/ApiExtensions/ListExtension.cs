@@ -10,6 +10,22 @@ namespace _VictorDev.ApiExtensions
     /// 原API類別功能擴充
     public static class ListExtension
     {
+        
+        /// [Extended] - 移除Missing項目
+        public static List<T> ClearMissingTargets<T>(this List<T> self) where T : Component
+        {
+            self.RemoveAll(item => item == null);
+            return self;
+        }
+        
+        /// [Extended] - 判斷是否已有值，若無才新增
+        public static bool TryAdd<T>(this List<T> self, T target) where T : Component
+        {
+            bool result = self.Contains(target);
+            if (result == false) self.Add(target);
+            return result;
+        }
+        
         /// [Extended] - 依照Key值取得Value
         public static bool TyrGetValue<T>(this List<KeyValueData<string, T>> self, string key, out T value)
         {
@@ -17,7 +33,6 @@ namespace _VictorDev.ApiExtensions
             value = result != null ? result.Value : default(T);
             return result != null;
         }
-
 
         #region 依關鍵字進行過濾
         /// [Extended] -  取得Name包含關鍵字的對像

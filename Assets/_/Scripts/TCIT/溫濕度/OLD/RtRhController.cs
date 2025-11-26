@@ -1,13 +1,13 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using _VictorDev.ApiExtensions;
 using _VictorDev.Configs;
 using _VictorDev.MediatorUtils;
+using _VictorDev.TCIT.DCIM.EnvironmentModule.Old.Old;
 using NaughtyAttributes;
 using UnityEngine;
 
-namespace _VictorDev.TCIT.DCIM
+namespace _VictorDev.TCIT.DCIM.EnvironmentModule.Old
 {
     public class RtRhController : MonoBehaviour
     {
@@ -15,7 +15,7 @@ namespace _VictorDev.TCIT.DCIM
 
         [Label("[機櫃群]"), SerializeField] private List<RevitAssetDataHolder> dataHolders;
         [Foldout("[組件]"), SerializeField] private BoxCollider area;
-        [Foldout("[地標組件]"), SerializeField] private RtRhLandmark rtRhLandmarkPrefab;
+        [Foldout("[地標組件]"), SerializeField] private RtRhLandmark environmentLandmarkPrefab;
         [Foldout("[地標組件]"), SerializeField] private Transform rtRhLandmarkContainer;
 
         private float averageRt, averageRh;
@@ -25,9 +25,9 @@ namespace _VictorDev.TCIT.DCIM
         [Button]
         private void CreateLandmark()
         {
-            rtRhLandmarkPrefab = ObjectHelper.Instantiate(rtRhLandmarkPrefab, rtRhLandmarkContainer);
-            rtRhLandmarkPrefab.name += $" - {name}";
-            rtRhLandmarkPrefab.SetTargetModel(transform);
+            environmentLandmarkPrefab = ObjectHelper.Instantiate(environmentLandmarkPrefab, rtRhLandmarkContainer);
+            environmentLandmarkPrefab.name += $" - {name}";
+            environmentLandmarkPrefab.SetTargetModel(transform);
         }
 
         [Button]
@@ -35,8 +35,8 @@ namespace _VictorDev.TCIT.DCIM
         {
             averageRt = dataHolders.Average(holder => holder.RackRevitData.RT);
             averageRh = dataHolders.Average(holder => holder.RackRevitData.RH);
-            rtRhLandmarkPrefab.SetRtValue(averageRt);
-            rtRhLandmarkPrefab.SetRhValue(averageRh);
+            environmentLandmarkPrefab.SetRtValue(averageRt);
+            environmentLandmarkPrefab.SetRhValue(averageRh);
         }
         
         private void OnEnable() => GetRtRhValue();

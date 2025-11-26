@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using _VictorDev.ApiExtensions;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -19,6 +20,9 @@ namespace _VictorDev.Framework
                 posTo2DPointList[i].transform.SetSiblingIndex(i);
             }
         }
+        
+        public void AddToSortList(PositionTo2DPoint positionTo2DPoint) 
+            => posTo2DPointList.ClearMissingTargets().TryAdd(positionTo2DPoint);
         
         [Button]
         private void GetLandmarksFromThisContainer() => posTo2DPointList = GetComponentsInChildren<PositionTo2DPoint>(true).ToList();

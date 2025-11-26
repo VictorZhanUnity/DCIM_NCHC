@@ -9,28 +9,28 @@ namespace _VictorDev.UIComps
     {
         #region Variables
 
-        [SerializeField] private EnumRealtimeDataStatus realtimeDataStatus = EnumRealtimeDataStatus.Good;
+        [SerializeField] private EnumIndicatorStatus indicatorStatus = EnumIndicatorStatus.Normal;
         [Foldout("[組件]"), SerializeField] private Image imgGood, imgWarning, imgOverload, imgMissingData;
 
         #endregion
         
-        public void SetStatusGood() => SetStatus(EnumRealtimeDataStatus.Good);
-        public void SetStatusWarning() => SetStatus(EnumRealtimeDataStatus.Warning);
-        public void SetStatusOverload() => SetStatus(EnumRealtimeDataStatus.Overload);
-        public void SetStatusMissingData() => SetStatus(EnumRealtimeDataStatus.MissingData);
+        public void SetStatusGood() => SetStatus(EnumIndicatorStatus.Normal);
+        public void SetStatusWarning() => SetStatus(EnumIndicatorStatus.Warning);
+        public void SetStatusOverload() => SetStatus(EnumIndicatorStatus.Overload);
+        public void SetStatusMissingData() => SetStatus(EnumIndicatorStatus.MissingData);
 
-        private void SetStatus(EnumRealtimeDataStatus status)
+        private void SetStatus(EnumIndicatorStatus status)
         {
-            realtimeDataStatus = status;
+            indicatorStatus = status;
             UpdateUI();
         }
 
         private void UpdateUI()
         {
-            imgGood.gameObject.SetActive(realtimeDataStatus == EnumRealtimeDataStatus.Good);
-            imgWarning.gameObject.SetActive(realtimeDataStatus == EnumRealtimeDataStatus.Warning);
-            imgOverload.gameObject.SetActive(realtimeDataStatus == EnumRealtimeDataStatus.Overload);
-            imgMissingData.gameObject.SetActive(realtimeDataStatus == EnumRealtimeDataStatus.MissingData);
+            imgGood.gameObject.SetActive(indicatorStatus == EnumIndicatorStatus.Normal);
+            imgWarning.gameObject.SetActive(indicatorStatus == EnumIndicatorStatus.Warning);
+            imgOverload.gameObject.SetActive(indicatorStatus == EnumIndicatorStatus.Overload);
+            imgMissingData.gameObject.SetActive(indicatorStatus == EnumIndicatorStatus.MissingData);
         }
 
         [Button]
