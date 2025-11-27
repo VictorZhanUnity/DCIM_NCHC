@@ -13,6 +13,7 @@ namespace _VictorDev.TCIT.DCIM
         [Foldout("[Event] 點擊模型 - 機櫃")] public UnityEvent<Transform> onRackClickedModelEvent;
         [Foldout("[Event] 點擊模型 - 設備")] public UnityEvent<DeviceRevitAssetData> onDeviceClickedDataEvent;
         [Foldout("[Event] 點擊模型 - 設備")] public UnityEvent<Transform> onDeviceClickedRackModelEvent;
+        [Foldout("[Event] 取消選取模型時")] public UnityEvent unSelectObjectEvent;
         [Foldout("[設定]"), SerializeField] private float camDistanceToRack=4f, camDistanceToDevice = 1.5f;
         private Transform targetModel;
         
@@ -23,6 +24,11 @@ namespace _VictorDev.TCIT.DCIM
         {
             targetModel = model;
             IsRackOrDeviceModel(targetModel);
+        }
+
+        public void UnSelectObject()
+        {
+            unSelectObjectEvent?.Invoke();
         }
 
         private bool IsRackOrDeviceModel(Transform model)

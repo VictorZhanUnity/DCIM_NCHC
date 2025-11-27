@@ -4478,9 +4478,6 @@ MonoBehaviour:
   - {fileID: 919695975}
   - {fileID: 2116828886}
   - {fileID: 612988209}
-  area: {fileID: 42307230}
-  meshRenderer: {fileID: 42307231}
-  toggleGroup: {fileID: 680918731}
   environmentItems:
   - container: {fileID: 1066875569}
     landmark: {fileID: 2048290784}
@@ -4488,6 +4485,14 @@ MonoBehaviour:
   - container: {fileID: 779225385}
     landmark: {fileID: 1070698354}
     landmarkPrefab: {fileID: 8365636453548192275, guid: 083b88cd9e137654db04b30689b8cd4b, type: 3}
+  onClickSectionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onCancelSectionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  area: {fileID: 42307230}
+  toggleGroup: {fileID: 680918731}
 --- !u!114 &42531367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12545,9 +12550,6 @@ MonoBehaviour:
   - {fileID: 5530320166687321649}
   - {fileID: 695253723}
   - {fileID: 2098921}
-  area: {fileID: 114426612}
-  meshRenderer: {fileID: 114426613}
-  toggleGroup: {fileID: 680918731}
   environmentItems:
   - container: {fileID: 1066875569}
     landmark: {fileID: 905542124}
@@ -12555,6 +12557,14 @@ MonoBehaviour:
   - container: {fileID: 779225385}
     landmark: {fileID: 1410332919}
     landmarkPrefab: {fileID: 8365636453548192275, guid: 083b88cd9e137654db04b30689b8cd4b, type: 3}
+  onClickSectionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onCancelSectionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  area: {fileID: 114426612}
+  toggleGroup: {fileID: 680918731}
 --- !u!4 &114741914 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 556145291345710108, guid: a6add569adc04c64db511268a37455a3, type: 3}
@@ -16437,9 +16447,6 @@ MonoBehaviour:
   - {fileID: 1034698053}
   - {fileID: 1397523206}
   - {fileID: 1390672597}
-  area: {fileID: 156080267}
-  meshRenderer: {fileID: 156080268}
-  toggleGroup: {fileID: 680918731}
   environmentItems:
   - container: {fileID: 1066875569}
     landmark: {fileID: 313022616}
@@ -16447,6 +16454,14 @@ MonoBehaviour:
   - container: {fileID: 779225385}
     landmark: {fileID: 31891327}
     landmarkPrefab: {fileID: 8365636453548192275, guid: 083b88cd9e137654db04b30689b8cd4b, type: 3}
+  onClickSectionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onCancelSectionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  area: {fileID: 156080267}
+  toggleGroup: {fileID: 680918731}
 --- !u!1 &156390852 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 327139127513261104, guid: 4ad1496f1f2bd3e4cbf899f8694abc7a, type: 3}
@@ -20486,9 +20501,6 @@ MonoBehaviour:
   - {fileID: 448105986}
   - {fileID: 1631467701}
   - {fileID: 355418133}
-  area: {fileID: 188043429}
-  meshRenderer: {fileID: 188043430}
-  toggleGroup: {fileID: 680918731}
   environmentItems:
   - container: {fileID: 1066875569}
     landmark: {fileID: 719464888}
@@ -20496,6 +20508,14 @@ MonoBehaviour:
   - container: {fileID: 779225385}
     landmark: {fileID: 1269485220}
     landmarkPrefab: {fileID: 8365636453548192275, guid: 083b88cd9e137654db04b30689b8cd4b, type: 3}
+  onClickSectionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onCancelSectionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  area: {fileID: 188043429}
+  toggleGroup: {fileID: 680918731}
 --- !u!4 &188816212 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8321991823594962219, guid: a6add569adc04c64db511268a37455a3, type: 3}
@@ -39121,7 +39141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfed7e2af8913eb44b6a74acc71afb81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VictorDev.Managers.RaycastManager
-  isShowRaycastHitObjects: 1
+  isShowRaycastHitObjects: 0
   raycastHitObjects: []
   onRaycastHitTargetWithClick:
     m_PersistentCalls:
@@ -68692,9 +68712,6 @@ MonoBehaviour:
   - {fileID: 1847541914}
   - {fileID: 974774154}
   - {fileID: 1327930074}
-  area: {fileID: 627760697}
-  meshRenderer: {fileID: 627760698}
-  toggleGroup: {fileID: 680918731}
   environmentItems:
   - container: {fileID: 1066875569}
     landmark: {fileID: 1692760238}
@@ -68702,6 +68719,14 @@ MonoBehaviour:
   - container: {fileID: 779225385}
     landmark: {fileID: 310220203}
     landmarkPrefab: {fileID: 8365636453548192275, guid: 083b88cd9e137654db04b30689b8cd4b, type: 3}
+  onClickSectionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onCancelSectionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  area: {fileID: 627760697}
+  toggleGroup: {fileID: 680918731}
 --- !u!1 &628216522
 GameObject:
   m_ObjectHideFlags: 0
@@ -75026,6 +75051,54 @@ MonoBehaviour:
   invokeAverageRhEvent:
     m_PersistentCalls:
       m_Calls: []
+  invokeClickSectionBodyEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 330585548}
+        m_TargetAssemblyTypeName: _VictorDev.CameraUtils.RTSCameraController, Assembly-CSharp
+        m_MethodName: FlyToPosition
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  invokeClickSectionRacksEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1655076847}
+        m_TargetAssemblyTypeName: _VictorDev.TCIT.DCIM.ModelMaterialManager, Assembly-CSharp
+        m_MethodName: ShowSectionRacks
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  invokeClickSectionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  invokeOnCancelAllSectionEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1655076847}
+        m_TargetAssemblyTypeName: _VictorDev.TCIT.DCIM.ModelMaterialManager, Assembly-CSharp
+        m_MethodName: ShowRackAndDevice
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &681319778 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1755171010697330972, guid: a6add569adc04c64db511268a37455a3, type: 3}
@@ -123620,9 +123693,6 @@ MonoBehaviour:
   - {fileID: 338033308}
   - {fileID: 5530320166687321542}
   - {fileID: 725641930}
-  area: {fileID: 1109807410}
-  meshRenderer: {fileID: 1109807411}
-  toggleGroup: {fileID: 680918731}
   environmentItems:
   - container: {fileID: 1066875569}
     landmark: {fileID: 1851340287}
@@ -123630,6 +123700,14 @@ MonoBehaviour:
   - container: {fileID: 779225385}
     landmark: {fileID: 1978910917}
     landmarkPrefab: {fileID: 8365636453548192275, guid: 083b88cd9e137654db04b30689b8cd4b, type: 3}
+  onClickSectionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onCancelSectionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  area: {fileID: 1109807410}
+  toggleGroup: {fileID: 680918731}
 --- !u!1 &1109880412 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4287937699039184491, guid: a6add569adc04c64db511268a37455a3, type: 3}
@@ -138116,9 +138194,6 @@ MonoBehaviour:
   - {fileID: 242320825}
   - {fileID: 1774153041}
   - {fileID: 339544600}
-  area: {fileID: 1247442973}
-  meshRenderer: {fileID: 1247442974}
-  toggleGroup: {fileID: 680918731}
   environmentItems:
   - container: {fileID: 1066875569}
     landmark: {fileID: 918673021}
@@ -138126,6 +138201,14 @@ MonoBehaviour:
   - container: {fileID: 779225385}
     landmark: {fileID: 643251640}
     landmarkPrefab: {fileID: 8365636453548192275, guid: 083b88cd9e137654db04b30689b8cd4b, type: 3}
+  onClickSectionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onCancelSectionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  area: {fileID: 1247442973}
+  toggleGroup: {fileID: 680918731}
 --- !u!4 &1249060318 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1568194758099435118, guid: a6add569adc04c64db511268a37455a3, type: 3}
@@ -157605,9 +157688,6 @@ MonoBehaviour:
   - {fileID: 151901331}
   - {fileID: 1451648304}
   - {fileID: 912342083}
-  area: {fileID: 1456660538}
-  meshRenderer: {fileID: 1456660539}
-  toggleGroup: {fileID: 680918731}
   environmentItems:
   - container: {fileID: 1066875569}
     landmark: {fileID: 57259017}
@@ -157615,6 +157695,14 @@ MonoBehaviour:
   - container: {fileID: 779225385}
     landmark: {fileID: 1878449940}
     landmarkPrefab: {fileID: 8365636453548192275, guid: 083b88cd9e137654db04b30689b8cd4b, type: 3}
+  onClickSectionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onCancelSectionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  area: {fileID: 1456660538}
+  toggleGroup: {fileID: 680918731}
 --- !u!4 &1456795230 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6516082228101165671, guid: a6add569adc04c64db511268a37455a3, type: 3}
@@ -178118,6 +178206,7 @@ Transform:
   - {fileID: 372466359}
   - {fileID: 1175951655}
   - {fileID: 2034576947}
+  - {fileID: 2099812216}
   m_Father: {fileID: 480855691}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1655076847
@@ -178135,6 +178224,7 @@ MonoBehaviour:
   materialReplacerRack: {fileID: 372466361}
   materialReplacerDevice: {fileID: 1175951657}
   materialReplacerOthers: {fileID: 2034576949}
+  materialReplacerSectionRacks: {fileID: 2099812215}
 --- !u!4 &1655116788 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8214023145577774746, guid: a6add569adc04c64db511268a37455a3, type: 3}
@@ -181017,9 +181107,6 @@ MonoBehaviour:
   - {fileID: 557558953}
   - {fileID: 2144193009}
   - {fileID: 1141320439}
-  area: {fileID: 1685596548}
-  meshRenderer: {fileID: 1685596549}
-  toggleGroup: {fileID: 680918731}
   environmentItems:
   - container: {fileID: 1066875569}
     landmark: {fileID: 50407149}
@@ -181027,6 +181114,14 @@ MonoBehaviour:
   - container: {fileID: 779225385}
     landmark: {fileID: 297720577}
     landmarkPrefab: {fileID: 8365636453548192275, guid: 083b88cd9e137654db04b30689b8cd4b, type: 3}
+  onClickSectionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onCancelSectionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  area: {fileID: 1685596548}
+  toggleGroup: {fileID: 680918731}
 --- !u!1001 &1685661118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -203511,9 +203606,6 @@ MonoBehaviour:
   - {fileID: 1197800551}
   - {fileID: 1782845838}
   - {fileID: 1727143758}
-  area: {fileID: 1859720227}
-  meshRenderer: {fileID: 1859720228}
-  toggleGroup: {fileID: 680918731}
   environmentItems:
   - container: {fileID: 1066875569}
     landmark: {fileID: 120323454}
@@ -203521,6 +203613,14 @@ MonoBehaviour:
   - container: {fileID: 779225385}
     landmark: {fileID: 1099058862}
     landmarkPrefab: {fileID: 8365636453548192275, guid: 083b88cd9e137654db04b30689b8cd4b, type: 3}
+  onClickSectionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onCancelSectionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  area: {fileID: 1859720227}
+  toggleGroup: {fileID: 680918731}
 --- !u!4 &1859800004 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7810585550407522826, guid: a6add569adc04c64db511268a37455a3, type: 3}
@@ -238937,6 +239037,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4980153857607041051, guid: a6add569adc04c64db511268a37455a3, type: 3}
   m_PrefabInstance: {fileID: 5530320166687321537}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2099812214
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2099812216}
+  - component: {fileID: 2099812215}
+  m_Layer: 0
+  m_Name: "MaterialReplacer_\u6307\u5B9ASection\u6A5F\u6AC3\u7FA4"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2099812215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099812214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ef1036b669dcb4b8a74e68243aa020, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VictorDev.MaterialUtils.MaterialReplacer
+  targetModels: []
+  replaceMaterial: {fileID: 2100000, guid: dc00ae5ff046d8a43ba94a9815b3c831, type: 2}
+--- !u!4 &2099812216
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099812214}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1655076846}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2099871266 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7622490174816969859, guid: 13fe539b84c104445abc2ca50cb8da44, type: 3}

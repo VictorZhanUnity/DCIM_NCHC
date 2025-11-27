@@ -254,6 +254,7 @@ namespace _VictorDev.CameraUtils
         public void SetZoomSpeedAdjust(float adjustValue) => zoomSpeedAdjust = adjustValue * zoomSpeed;
         
         public static void CameraToPosition(Transform target, float? setDistance=null) => Instance.FlyToPosition(target.position, setDistance);
+
         public void FlyToPosition(Transform target)
         {
             if (target.TryGetComponent(out Renderer render))

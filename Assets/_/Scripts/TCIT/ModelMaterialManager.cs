@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
 using VictorDev.MaterialUtils;
@@ -9,10 +10,19 @@ namespace _VictorDev.TCIT.DCIM
         #region Variables
 
         [Foldout("[組件]"), SerializeField] private MaterialReplacer
-            materialReplacerRack, materialReplacerDevice, materialReplacerOthers;
+            materialReplacerRack, materialReplacerDevice, materialReplacerOthers, materialReplacerSectionRacks;
 
         #endregion
 
+        /// 指定顯示Section機櫃群
+        public void ShowSectionRacks(List<Transform> rackModels)
+        {
+            materialReplacerRack.ReplaceModelsMaterial();
+            materialReplacerDevice.ReplaceModelsMaterial();
+            materialReplacerOthers.ReplaceModelsMaterial();
+            materialReplacerSectionRacks.SetTargetModels(rackModels);
+            materialReplacerSectionRacks.RestoreModelsMaterial();
+        }
 
         [Button]
         public void ShowRackAndDevice()

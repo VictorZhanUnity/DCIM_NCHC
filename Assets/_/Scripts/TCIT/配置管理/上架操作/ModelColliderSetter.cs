@@ -25,6 +25,8 @@ namespace _VictorDev.ObjectUtils
         [Button]
         public void AddColliderToModels()
         {
+            RemoveColliderFromModels();
+            
             modelList.ForEach(model =>
             {
                 var match = colliderSets.FirstOrDefault(sets =>

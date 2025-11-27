@@ -8,6 +8,7 @@ using _VictorDev.TCIT.DCIM.EnvironmentModule.Old;
 using NaughtyAttributes;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace _VictorDev.TCIT.DCIM.EnvironmentModule
@@ -16,18 +17,26 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule
     public class EnvironmentSection : MonoBehaviour
     {
         #region Vairalbes
-
-        [Label("[機櫃群]"), SerializeField] private List<RevitAssetDataHolder> dataHolders;
+        [Label("[機櫃群 - 資料]"), SerializeField] private List<RevitAssetDataHolder> dataHolders;
+        [Label("[項目設定]"), SerializeField] private List<EnvironmentItem> environmentItems;
+        /// 點選Section時Invoke Section本身與所屬機櫃群
+        [HideInInspector] public UnityEvent<EnvironmentSection> onClickSectionEvent;
+        [HideInInspector] public UnityEvent onCancelSectionEvent;
         [Foldout("[組件]"), SerializeField] private BoxCollider area;
         [Foldout("[組件]"), SerializeField] private ToggleGroup toggleGroup;
-        [Label("[項目設定]"), SerializeField] private List<EnvironmentItem> environmentItems;
 
         public float AverageRt { get; private set; }
         public float AverageRh { get; private set; }
-        
+
+        public bool IsSelected => environmentItems.Any(item => item.ToggleComp.isOn);
+
+        ///機櫃群模型
+        public List<Transform> RackModels { get; private set; }
+
         #endregion
 
-        [Button][ContextMenu("CreateLandmark")]
+
+        [ContextMenu("CreateLandmark")]
         public void CreateLandmark()
         {
             environmentItems.ForEach(item =>
@@ -40,7 +49,7 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule
             GetAverageRtRhFromRacks();
         }
 
-        [Button][ContextMenu("GetAverageRtRhFromRacks")]
+        [ContextMenu("GetAverageRtRhFromRacks")]
         public void GetAverageRtRhFromRacks()
         {
             AverageRt = dataHolders.Average(holder => holder.RackRevitData.RT);
@@ -50,7 +59,7 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule
         }
         
         /// 尋找Collider範圍裡的Rack模型
-        [Button][ContextMenu("FindRacksInArea")]
+        [ContextMenu("FindRacksInArea")]
         private void FindRacksInArea()
         {
             dataHolders = Physics.OverlapBox(area.bounds.center, area.bounds.extents, transform.rotation).ToList()
@@ -59,7 +68,7 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule
                 .Select(target => target.GetComponent<RevitAssetDataHolder>()).ToList();
         }
 
-        [Button][ContextMenu("FindComponents")]
+        [ContextMenu("FindComponents")]
         private void FindComponents()
         {
             area = GetComponent<BoxCollider>();
@@ -67,11 +76,24 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule
         }
 
         private void Reset() => FindComponents();
-        
+
+        #region EventListener
+
         private void OnEnable()
         {
             GetAverageRtRhFromRacks();
+            environmentItems.ForEach(item=> item.ToggleComp.onValueChanged.AddListener(OnToggleClicked));
         }
+
+        private void OnDisable() => environmentItems.ForEach(item=> item.ToggleComp.onValueChanged.RemoveListener(OnToggleClicked));
+        private void OnToggleClicked(bool isOn)
+        {
+            RackModels ??= dataHolders.Select(data=> data.transform).ToList();
+            if(isOn) onClickSectionEvent?.Invoke(this);
+            else onCancelSectionEvent?.Invoke();
+        } 
+
+        #endregion
     }
 
     /// 環境監控項目 - 溫度 / 濕度

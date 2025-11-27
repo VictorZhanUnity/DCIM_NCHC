@@ -17,6 +17,9 @@ namespace _VictorDev.TCIT.DCIM
 
         #region 額外增加的變數
 
+        /// 機櫃編號
+        public string RackNo => DeviceNameAndCode.Split("+")[1];
+        
         public int UsageWatt
         {
             get
