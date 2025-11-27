@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
-using Debug = _VictorDev.MediatorUtils.Debug;
+using Debug = _VictorDev.DebugUtils.Debug;
 
 namespace VictorDev.MaterialUtils
 {

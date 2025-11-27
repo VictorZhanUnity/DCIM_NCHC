@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using _VictorDev.MediatorUtils;
+using _VictorDev.InterfaceUtils;
+using _VictorDev.DebugUtils;
 using NaughtyAttributes;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -9,17 +10,17 @@ using UnityEngine;
 namespace _VictorDev.ObjectUtils
 {
     /// 模型Collider設置
-    public class ModelColliderSetter : MonoBehaviour
+    public class ModelColliderSetter : MonoBehaviour, IReceiveData<List<Transform>>
     {
         #region Variables
 
-        [Label("關鍵字與Collider類型"), SerializeField] private List<ColliderSet> colliderSets;
         [Label("模型資料"), SerializeField] private List<Transform> modelList;
+        [Label("關鍵字與Collider類型"), SerializeField] private List<ColliderSet> colliderSets;
         
         #endregion
 
         /// 接收模型
-        public void ReceiveModels(List<Transform> models) => modelList = models;
+        public void ReceiveData(List<Transform> models) => modelList = models;
 
         /// 新增Collider
         [Button]

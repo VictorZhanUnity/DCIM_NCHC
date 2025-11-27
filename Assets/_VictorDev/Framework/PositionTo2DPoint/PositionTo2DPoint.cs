@@ -1,9 +1,9 @@
 using _VictorDev.ApiExtensions;
 using _VictorDev.Configs;
-using _VictorDev.MediatorUtils;
+using _VictorDev.DebugUtils;
 using NaughtyAttributes;
 using UnityEngine;
-using Debug = _VictorDev.MediatorUtils.Debug;
+using Debug = _VictorDev.DebugUtils.Debug;
 
 namespace _VictorDev.Framework
 {

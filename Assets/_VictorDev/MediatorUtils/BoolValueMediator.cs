@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
-namespace _VictorDev.MediatorUtils
+namespace _VictorDev.DebugUtils
 {
     /// Bool值處理仲介
     public class BoolValueMediator : MonoBehaviour

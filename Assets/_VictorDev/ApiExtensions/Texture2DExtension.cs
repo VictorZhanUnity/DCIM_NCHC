@@ -1,5 +1,5 @@
 using UnityEngine;
-using Debug = _VictorDev.MediatorUtils.Debug;
+using Debug = _VictorDev.DebugUtils.Debug;
 
 namespace _VictorDev.ApiExtensions
 {
@@ -11,7 +11,7 @@ namespace _VictorDev.ApiExtensions
         {
             if(self == null)
             {
-                global::_VictorDev.MediatorUtils.Debug.LogError("❌ Texture2D is null!");
+                global::_VictorDev.DebugUtils.Debug.LogError("❌ Texture2D is null!");
                 return null;
             }
             return Sprite.Create(self, new Rect(0,0,self.width,self.height), new Vector2(pivotX, pivotY));

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using _VictorDev.MediatorUtils;
+using _VictorDev.DebugUtils;
 
 namespace _VictorDev.ApiExtensions
 {

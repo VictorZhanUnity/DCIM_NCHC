@@ -4,7 +4,7 @@ using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace _VictorDev.MediatorUtils
+namespace _VictorDev.DebugUtils
 {
     /// Index值處理事件仲介
     public class IndexValueMediator : MonoBehaviour

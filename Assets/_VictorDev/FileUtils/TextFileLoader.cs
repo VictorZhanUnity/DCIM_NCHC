@@ -1,7 +1,7 @@
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
-using Debug = _VictorDev.MediatorUtils.Debug;
+using Debug = _VictorDev.DebugUtils.Debug;
 
 namespace _VictorDev.FileUtils
 {

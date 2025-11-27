@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using _VictorDev.MediatorUtils;
+using _VictorDev.DebugUtils;
 using _VictorDev.DoTweenUtils;
 using TMPro;
 using UnityEngine;
-using Debug = _VictorDev.MediatorUtils.Debug;
+using Debug = _VictorDev.DebugUtils.Debug;
 
 namespace _VictorDev.TextUtils
 {

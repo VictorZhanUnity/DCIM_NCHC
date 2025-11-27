@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEditor;
 #endif
 
-namespace _VictorDev.MediatorUtils
+namespace _VictorDev.DebugUtils
 {
 	namespace Utils
 	{

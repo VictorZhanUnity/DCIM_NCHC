@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Linq;
 using UnityEngine;
 using _VictorDev.Configs;
-using Debug = _VictorDev.MediatorUtils.Debug;
+using Debug = _VictorDev.DebugUtils.Debug;
 using Random = System.Random;
 
 namespace _VictorDEV.DateTimeUtils

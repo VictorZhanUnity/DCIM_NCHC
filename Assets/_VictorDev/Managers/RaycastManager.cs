@@ -1,12 +1,12 @@
 using System;
 using System.Linq;
-using _VictorDev.MediatorUtils;
+using _VictorDev.DebugUtils;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 using _VictorDev.ApiExtensions;
 using UnityEngine.EventSystems;
-using Debug = _VictorDev.MediatorUtils.Debug;
+using Debug = _VictorDev.DebugUtils.Debug;
 
 namespace _VictorDev.Managers
 {

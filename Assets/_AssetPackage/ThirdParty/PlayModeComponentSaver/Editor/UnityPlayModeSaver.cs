@@ -12,7 +12,7 @@ using System;
 
 using Object = UnityEngine.Object;
 
-namespace _VictorDev.MediatorUtils
+namespace _VictorDev.DebugUtils
 {
 	namespace Utils
 	{

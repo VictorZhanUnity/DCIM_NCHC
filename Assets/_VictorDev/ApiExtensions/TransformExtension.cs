@@ -5,7 +5,7 @@ using System.Linq;
 using _VictorDev.Configs;
 using DG.Tweening;
 using UnityEngine;
-using Debug = _VictorDev.MediatorUtils.Debug;
+using Debug = _VictorDev.DebugUtils.Debug;
 
 namespace _VictorDev.ApiExtensions
 {

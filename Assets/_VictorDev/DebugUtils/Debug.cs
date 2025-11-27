@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace _VictorDev.MediatorUtils
+namespace _VictorDev.DebugUtils
 {
     /// Log訊息處理 (僅在Editor環境下Log)
     public static class Debug

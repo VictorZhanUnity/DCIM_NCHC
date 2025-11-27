@@ -1,9 +1,9 @@
 using System;
 using System.Collections;
 using _VictorDev.ApiExtensions;
-using _VictorDev.MediatorUtils;
+using _VictorDev.DebugUtils;
 using UnityEngine;
-using Debug = _VictorDev.MediatorUtils.Debug;
+using Debug = _VictorDev.DebugUtils.Debug;
 
 namespace _VictorDev.FileUtils
 {

@@ -2,7 +2,7 @@ using System;
 using _VictorDEV.DateTimeUtils;
 using TMPro;
 using UnityEngine;
-using _VictorDev.MediatorUtils;
+using _VictorDev.DebugUtils;
 using static _VictorDev.DateTimeUtils.Clock;
 
 namespace _VictorDev.DateTimeUtils

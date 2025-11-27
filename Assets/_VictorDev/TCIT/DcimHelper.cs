@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using _VictorDev.MediatorUtils;
+using _VictorDev.DebugUtils;
 using UnityEngine;
 
 namespace _VictorDev.TCIT.DCIM

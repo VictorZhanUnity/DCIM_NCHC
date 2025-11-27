@@ -2,9 +2,9 @@ using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 using _VictorDev.ApiExtensions;
-using _VictorDev.MediatorUtils;
+using _VictorDev.DebugUtils;
 
-namespace _VictorDev.MediatorUtils
+namespace _VictorDev.DebugUtils
 {
     /// 物件選取外框
     public class ObjectSelectionController : MonoBehaviour

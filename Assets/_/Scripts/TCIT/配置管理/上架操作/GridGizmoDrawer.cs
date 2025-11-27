@@ -1,10 +1,10 @@
 using _VictorDev.ApiExtensions;
-using _VictorDev.MediatorUtils;
+using _VictorDev.DebugUtils;
 using NaughtyAttributes;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
-using Debug = _VictorDev.MediatorUtils.Debug;
+using Debug = _VictorDev.DebugUtils.Debug;
 
 namespace _VictorDev.GimzoUtils
 {
