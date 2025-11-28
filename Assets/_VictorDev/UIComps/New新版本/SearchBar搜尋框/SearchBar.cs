@@ -66,7 +66,7 @@ namespace _VictorDev.UIComps
 
         private void Reset()
         {
-            inputField = GetComponentInChildren<TMP_InputField>();
+            inputField = GetComponentInChildren<TMP_InputField>(true);
             OnValidate();
         }
 

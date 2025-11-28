@@ -18,7 +18,6 @@ namespace _VictorDev.TCIT.DCIM
 
         protected override void ParseDeviceNameAndCode()
         {
-            RevitAssetKind = DcimHelper.GetDeviceKind(DevicePath);
             DeviceKindZh = DcimHelper.GetDeviceKindZh(RevitAssetKind);
             DeviceName = DevicePath.Split("+")[2];
             DeviceNameAndCode = "";

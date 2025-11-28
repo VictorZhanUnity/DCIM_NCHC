@@ -38,26 +38,20 @@ namespace _VictorDev.TCIT.DCIM
         }
 
         /// 資產類型 Rack, Server, Router, Switch
-        public EnumRevitAssetKind RevitAssetKind { get; protected set; }
-        
+        public EnumRevitAssetKind RevitAssetKind;
+
         /// 資產類型 中文
-        public string DeviceKindZh { get; protected set; }
-        
+        public string DeviceKindZh;
+
         /// 設備名稱
-        public string DeviceName { get; protected set; }
+        public string DeviceName;
 
         /// 設備名稱與流水號
-        public string DeviceNameAndCode { get; protected set; }
+        public string DeviceNameAndCode;
 
         /// 製作商 / 品牌
-        public string Manufacturer
-        {
-            get
-            {
-                bool isHaveValue = !string.IsNullOrEmpty(Information.type_manufacturer);
-                return isHaveValue ? Information.type_manufacturer : DevicePath.Split("+")[6].Split("-")[0];
-            }
-        }
+        public string Manufacturer;
+        
         public int Watt => Information.watt;
         public int Weight => Information.weight;
         public int HeightU => Information.heightU;
@@ -69,6 +63,9 @@ namespace _VictorDev.TCIT.DCIM
             DeviceKindZh = DcimHelper.GetDeviceKindZh(RevitAssetKind);
             DeviceName = DcimHelper.GetDeviceName(DevicePath);
             DeviceNameAndCode = DcimHelper.GetDeviceName(DevicePath, true);
+            
+            bool isHaveValue = !string.IsNullOrEmpty(Information.type_manufacturer);
+            Manufacturer = isHaveValue ? Information.type_manufacturer : DevicePath.Split("+")[6].Split("-")[0];
         }
 
         /// 從Transform列表裡依照name設定模型，與設定RevitAssetDataHolder

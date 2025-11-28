@@ -9,6 +9,9 @@ namespace _VictorDev.ApiExtensions
         /// [Extended] -  陣列合併，並去除重覆值
         public static T[] Combine<T>(this T[] self, T[] others) => others.Concat(self).Distinct().ToArray();
 
-        #endregion
+        /// [Extended] -  列出所有陣列元素
+        public static string ToPrint<T>(this T[] self) => string.Join(", ", self);
+
+        #endregion  
     }
 }

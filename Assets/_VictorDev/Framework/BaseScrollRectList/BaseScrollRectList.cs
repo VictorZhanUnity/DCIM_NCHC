@@ -22,6 +22,7 @@ namespace _VictorDev.DebugUtils.ScrollRectUtils
         [Foldout("[Event] - OnTogglesValueChanged")] public UnityEvent invokeTogglesIsOnEvent, invokeTogglesIsOffEvent;
         [Foldout("[Event] - MouseOver")] public UnityEvent<TData> onPointerEnterEvent;
         [Foldout("[Event] - MouseExit")] public UnityEvent onPointerExitEvent;
+        [Foldout("[Event] - IsNoDataEvent")] public UnityEvent<bool> isNoDataEvent;
         
         [Foldout("[組件]"), SerializeField] private BaseScrollRectListItem<TData> listItemPrefab;
         [Foldout("[組件]"), SerializeField] protected ScrollRect scrollRect;
@@ -56,6 +57,7 @@ namespace _VictorDev.DebugUtils.ScrollRectUtils
                 ListItems.Add(item);
             });
             scrollRect.verticalNormalizedPosition = 1;
+            isNoDataEvent?.Invoke(ListItems.Count == 0);
         }
 
         public void CancelSelection() => toggleGroup.SetAllTogglesOff(true);
@@ -92,6 +94,7 @@ namespace _VictorDev.DebugUtils.ScrollRectUtils
             });
             ListItems.Clear();
             scrollRect.verticalNormalizedPosition = 1;
+            isNoDataEvent?.Invoke(ListItems.Count == 0);
         }
 
 
@@ -100,11 +103,13 @@ namespace _VictorDev.DebugUtils.ScrollRectUtils
             scrollRect.verticalNormalizedPosition = 1;
         }
 
-        protected void OnValidate()
+        private void Reset()
         {
-            scrollRect ??= GetComponentInChildren<ScrollRect>();
-            toggleGroup ??= GetComponent<ToggleGroup>();
-            toggleGroup ??= GetComponentInChildren<ToggleGroup>();
+            scrollRect = GetComponentInChildren<ScrollRect>(true);
+            toggleGroup = GetComponent<ToggleGroup>();
+            toggleGroup = GetComponentInChildren<ToggleGroup>(true);
         }
+
+        protected void OnValidate() => Reset();
     }
 }

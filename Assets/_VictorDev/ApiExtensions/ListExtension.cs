@@ -11,6 +11,9 @@ namespace _VictorDev.ApiExtensions
     public static class ListExtension
     {
         
+        /// [Extended] -  列出所有元素
+        public static string ToPrint<T>(this List<T> self) => string.Join(", ", self);
+        
         /// [Extended] - 移除Missing項目
         public static List<T> ClearMissingTargets<T>(this List<T> self) where T : Component
         {
