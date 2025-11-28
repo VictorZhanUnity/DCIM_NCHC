@@ -35,11 +35,11 @@ namespace _VictorDev.TCIT.DCIM
         {
             Data.ForEach(uploadDeviceData =>
             {
-                List<Transform> modelList = uploadDeviceData.DeviceKind switch
+                List<Transform> modelList = uploadDeviceData.RevitAssetKind switch
                 {
-                    EnumDeviceKind.Server => serverModels,
-                    EnumDeviceKind.Router => routerModels,
-                    EnumDeviceKind.Switch => switchModels,
+                    EnumRevitAssetKind.Server => serverModels,
+                    EnumRevitAssetKind.Router => routerModels,
+                    EnumRevitAssetKind.Switch => switchModels,
                     _ => null
                 };
                 if (modelList != null) uploadDeviceData.SetModelFromList(modelList);

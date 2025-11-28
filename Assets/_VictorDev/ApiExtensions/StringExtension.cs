@@ -9,6 +9,11 @@ namespace _VictorDev.ApiExtensions
     /// 原API String類別功能擴充
     public static class StringExtension
     {
+        
+        /// [Extended] - 取出字串裡的數字
+        public static string GetIntString(this string self, int padLeft = 0) 
+            => Regex.Match(self, @"\d+").Value.PadLeft(padLeft, '0');
+
         /// [Extended] - 依換行符號，分割成數行string
         public static string[] SplitToLines(this string self, params char[] delimiter)
         {

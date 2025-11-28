@@ -788,7 +788,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1324478403237403072}
-  - component: {fileID: 78067716217914288}
   m_Layer: 5
   m_Name: SearchBar
   m_TagString: Untagged
@@ -817,18 +816,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 34}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &78067716217914288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6527258124049691146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fea8e16fe1136e04aa8c6a0ea132338c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SearchBar
 --- !u!1 &6865061734056410988
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,7 +1065,6 @@ GameObject:
   - component: {fileID: 3239010422344531879}
   - component: {fileID: 2540657408586558366}
   - component: {fileID: 592002735542796031}
-  - component: {fileID: 4950955639979509823}
   m_Layer: 5
   m_Name: ResultPanel
   m_TagString: Untagged
@@ -1207,45 +1193,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 5
---- !u!114 &4950955639979509823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7391197626192642410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d55d9a7de9147f24581ebe0254e17b91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::VictorDev.Frameworks.LifeCycleEventDispatcher
-  onEnableDisabledEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onEnableDisabledReverseEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onEnableEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onDisableEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onStartEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7391197626192642410}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &7508472346541483005
 GameObject:
   m_ObjectHideFlags: 0

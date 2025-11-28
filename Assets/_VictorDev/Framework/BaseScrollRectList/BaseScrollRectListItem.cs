@@ -52,7 +52,6 @@ namespace _VictorDev.DebugUtils.ScrollRectUtils
 
         protected virtual void UpdateUI() => TextHelper.SetParamsToTxtComps(Data, txtComps);
 
-        [Button]
         protected virtual void Reset()
         {
             toggle = GetComponent<Toggle>();

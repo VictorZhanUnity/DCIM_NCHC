@@ -51,20 +51,20 @@ namespace _VictorDev.TCIT.DCIM
             => isIncludeCode && devicePath.Contains(":") ? devicePath.Split(":")[1] : devicePath.Split('+')[6].Split(":")[0];
 
         /// 從DevicePath 取得設備類型 (Rack、Server、Router、Switch)
-        public static EnumDeviceKind GetDeviceKind(string devicePath)
-            => EnumHelper.GetEnumByString<EnumDeviceKind>(devicePath);
+        public static EnumRevitAssetKind GetDeviceKind(string devicePath)
+            => EnumHelper.GetEnumByString<EnumRevitAssetKind>(devicePath);
         
         /// 從DevicePath 取得設備類型 中文
         public static string GetDeviceKindZh(string devicePath)
-            => GetDeviceKindZh(EnumHelper.GetEnumByString<EnumDeviceKind>(devicePath));
+            => GetDeviceKindZh(EnumHelper.GetEnumByString<EnumRevitAssetKind>(devicePath));
         /// 從DevicePath 取得設備類型 中文
-        public static string GetDeviceKindZh(EnumDeviceKind deviceKind)
-            => deviceKind switch
+        public static string GetDeviceKindZh(EnumRevitAssetKind revitAssetKind)
+            => revitAssetKind switch
             {
-                EnumDeviceKind.Rack => "機櫃",
-                EnumDeviceKind.Server => "伺服主機",
-                EnumDeviceKind.Router => "網路路由器",
-                EnumDeviceKind.Switch => "網路交換機",
+                EnumRevitAssetKind.Rack => "機櫃",
+                EnumRevitAssetKind.Server => "伺服主機",
+                EnumRevitAssetKind.Router => "網路路由器",
+                EnumRevitAssetKind.Switch => "網路交換機",
                 _=> "未知"
             };
         #endregion
@@ -83,7 +83,7 @@ namespace _VictorDev.TCIT.DCIM
     }
 
     [Serializable]
-    public enum EnumDeviceKind
+    public enum EnumRevitAssetKind
     {
         Unknown,
         Rack,

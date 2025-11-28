@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using _VictorDev.ApiExtensions;
 using _VictorDev.TCIT.DCIM;
 using Newtonsoft.Json;
 using Unity.VisualScripting;
@@ -12,6 +13,7 @@ using Object = UnityEngine.Object;
 namespace _VictorDev.TCIT.DCIM
 {
     /// 資產資料父類別
+    /// <para>+ [NCHC+TAINAN+IDCCO+02F+211+DCS+Synology-SA3200D 12-Bay-RackStation-2U: Synology-SA3200D 12-Bay-RackStation-2U+28]</para>
     public abstract class RevitAssetData
     {
         #region 固定欄位
@@ -24,8 +26,19 @@ namespace _VictorDev.TCIT.DCIM
         public Information Information { get; private set; }
         #endregion
 
+        /// 公司財產編號 (暫定)
+        [field: Serializable] 
+        public string CompanyAssetNo
+        {
+            get
+            {
+                string code = DeviceNameAndCode.Split("+")[1].GetIntString(4);
+                return $"NCHC1151114{code}";
+            }
+        }
+
         /// 資產類型 Rack, Server, Router, Switch
-        public EnumDeviceKind DeviceKind { get; protected set; }
+        public EnumRevitAssetKind RevitAssetKind { get; protected set; }
         
         /// 資產類型 中文
         public string DeviceKindZh { get; protected set; }
@@ -36,7 +49,15 @@ namespace _VictorDev.TCIT.DCIM
         /// 設備名稱與流水號
         public string DeviceNameAndCode { get; protected set; }
 
-        public string Manufacturer => Information.type_manufacturer;
+        /// 製作商 / 品牌
+        public string Manufacturer
+        {
+            get
+            {
+                bool isHaveValue = !string.IsNullOrEmpty(Information.type_manufacturer);
+                return isHaveValue ? Information.type_manufacturer : DevicePath.Split("+")[6].Split("-")[0];
+            }
+        }
         public int Watt => Information.watt;
         public int Weight => Information.weight;
         public int HeightU => Information.heightU;
@@ -44,8 +65,8 @@ namespace _VictorDev.TCIT.DCIM
         /// 取得設備名稱與流水號
         protected virtual void ParseDeviceNameAndCode()
         {
-            DeviceKind = DcimHelper.GetDeviceKind(DevicePath);
-            DeviceKindZh = DcimHelper.GetDeviceKindZh(DeviceKind);
+            RevitAssetKind = DcimHelper.GetDeviceKind(DevicePath);
+            DeviceKindZh = DcimHelper.GetDeviceKindZh(RevitAssetKind);
             DeviceName = DcimHelper.GetDeviceName(DevicePath);
             DeviceNameAndCode = DcimHelper.GetDeviceName(DevicePath, true);
         }

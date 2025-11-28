@@ -43,11 +43,11 @@ namespace _VictorDev.TCIT.DCIM.RevitAssetModule
                 //設備模型
                 rack.Containers.ForEach(device =>
                 {
-                    List<Transform> modelList = device.DeviceKind switch
+                    List<Transform> modelList = device.RevitAssetKind switch
                     {
-                        EnumDeviceKind.Server => serverModels,
-                        EnumDeviceKind.Router => routerModels,
-                        EnumDeviceKind.Switch => switchModels,
+                        EnumRevitAssetKind.Server => serverModels,
+                        EnumRevitAssetKind.Router => routerModels,
+                        EnumRevitAssetKind.Switch => switchModels,
                         _ => null
                     };
                     if (modelList != null) device.SetModelFromList(modelList);

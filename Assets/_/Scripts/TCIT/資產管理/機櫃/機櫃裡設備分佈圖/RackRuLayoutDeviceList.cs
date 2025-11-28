@@ -27,11 +27,11 @@ namespace _VictorDev.TCIT.DCIM
             int amountOfServer = 0, amountOfRouter = 0, amountOfSwitch = 0;
             foreach (DeviceRevitAssetData device in rackRevitAssetData.Containers)
             {
-                switch (device.DeviceKind)
+                switch (device.RevitAssetKind)
                 {
-                    case EnumDeviceKind.Server: amountOfServer++; break;
-                    case EnumDeviceKind.Router: amountOfRouter++; break;
-                    case EnumDeviceKind.Switch: amountOfSwitch++; break;
+                    case EnumRevitAssetKind.Server: amountOfServer++; break;
+                    case EnumRevitAssetKind.Router: amountOfRouter++; break;
+                    case EnumRevitAssetKind.Switch: amountOfSwitch++; break;
                 }
             }
 

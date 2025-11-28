@@ -6,11 +6,9 @@ using _VictorDev.DebugUtils;
 using _VictorDev.InterfaceUtils;
 using _VictorDev.TCIT.DCIM;
 using NaughtyAttributes;
-using UnityEditor.U2D.Sprites;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using Object = UnityEngine.Object;
 
 namespace _VictorDev.DebugUtils.ScrollRectUtils
 {
@@ -19,23 +17,25 @@ namespace _VictorDev.DebugUtils.ScrollRectUtils
     {
         #region Variables
 
-        [Foldout("[Event] - SelectedItem")] public UnityEvent<TData> onSelectedUploadDeviceEvent;
+        [Foldout("[Event] - SelectedItem")] public UnityEvent<TData> onSelectedItemEvent;
         [Foldout("[Event] - OnTogglesValueChanged")] public UnityEvent<bool> onTogglesValueChangedEvent;
         [Foldout("[Event] - OnTogglesValueChanged")] public UnityEvent invokeTogglesIsOnEvent, invokeTogglesIsOffEvent;
         [Foldout("[Event] - MouseOver")] public UnityEvent<TData> onPointerEnterEvent;
         [Foldout("[Event] - MouseExit")] public UnityEvent onPointerExitEvent;
         
         [Foldout("[組件]"), SerializeField] private BaseScrollRectListItem<TData> listItemPrefab;
-        [Foldout("[組件]"), SerializeField] private ScrollRect scrollRect;
+        [Foldout("[組件]"), SerializeField] protected ScrollRect scrollRect;
         [Foldout("[組件]"), SerializeField] private ToggleGroup toggleGroup;
 
         /// Data列表
-        public List<TData> DataList { get; protected set; }
+        public List<TData> DataList { get; protected set; } = new ();
 
+        protected List<BaseScrollRectListItem<TData>> ListItems = new();
+        
         #endregion
         
         /// 設定Data列表
-        public void ReceiveData(List<TData> data)
+        public virtual void ReceiveData(List<TData> data)
         {
             DataList = data;
             ClearList();
@@ -53,6 +53,7 @@ namespace _VictorDev.DebugUtils.ScrollRectUtils
                 item.OnToggleValueChangedEvent.AddListener(OnTogglesValueChangedEvent);
                 item.OnPointerEnterEvent.AddListener(OnPointerEnterEvent);
                 item.OnPointerExitEvent.AddListener(OnPointerExitEvent);
+                ListItems.Add(item);
             });
             scrollRect.verticalNormalizedPosition = 1;
         }
@@ -65,7 +66,7 @@ namespace _VictorDev.DebugUtils.ScrollRectUtils
 
         #region Event Listener
 
-        private void OnSelectedItemEvent(TData data) => onSelectedUploadDeviceEvent?.Invoke(data);
+        private void OnSelectedItemEvent(TData data) => onSelectedItemEvent?.Invoke(data);
         private void OnTogglesValueChangedEvent(bool isOn)
         {
             bool isHaveToggleOn = toggleGroup.AnyTogglesOn();
@@ -81,20 +82,20 @@ namespace _VictorDev.DebugUtils.ScrollRectUtils
         /// 清空列表 
         public void ClearList()
         {
-            UploadDeviceListItem[] listItems = scrollRect.content.GetComponentsInChildren<UploadDeviceListItem>();
-            Array.ForEach(listItems, child =>
+            ListItems.ForEach(listItems =>
             {
-                child.OnSelectedItemEvent.RemoveAllListeners();
-                child.OnToggleValueChangedEvent.RemoveAllListeners();
-                child.OnPointerEnterEvent.RemoveAllListeners();
-                child.OnPointerExitEvent.RemoveAllListeners();
-                ObjectHelper.Destroy(child.gameObject);
+                listItems.OnSelectedItemEvent.RemoveAllListeners();
+                listItems.OnToggleValueChangedEvent.RemoveAllListeners();
+                listItems.OnPointerEnterEvent.RemoveAllListeners();
+                listItems.OnPointerExitEvent.RemoveAllListeners();
+                ObjectHelper.Destroy(listItems.gameObject);
             });
+            ListItems.Clear();
             scrollRect.verticalNormalizedPosition = 1;
         }
 
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             scrollRect.verticalNormalizedPosition = 1;
         }
