@@ -1,3 +1,4 @@
+using _VictorDev.TCIT.DCIM.EnvironmentModule;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -15,6 +16,9 @@ namespace _VictorDev.TCIT.DCIM
         
         public bool IsRackAsset { get; private set; } 
         public bool IsDeviceAsset { get; private set; } 
+
+        public EnvironmentData EnvData => envData ??= GetComponent<EnvironmentDataHolder>().EnvData;
+        private EnvironmentData envData;
         
         /// 接收RackAssetData
         public void ReceiveAssetData(RevitAssetData revitAssetData)

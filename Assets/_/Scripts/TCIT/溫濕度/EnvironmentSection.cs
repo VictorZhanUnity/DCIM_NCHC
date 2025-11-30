@@ -1,118 +1,71 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using _VictorDev.ApiExtensions;
 using _VictorDev.Configs;
 using _VictorDev.DebugUtils;
-using _VictorDev.TCIT.DCIM.EnvironmentModule.Old;
 using NaughtyAttributes;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
 namespace _VictorDev.TCIT.DCIM.EnvironmentModule
 {
-    /// 環境監控 - 區域管理
+    /// 環境監控 - 區域劃分
     public class EnvironmentSection : MonoBehaviour
     {
         #region Vairalbes
-        [Label("[機櫃群 - 資料]"), SerializeField] private List<RevitAssetDataHolder> dataHolders;
-        [Label("[項目設定]"), SerializeField] private List<EnvironmentItem> environmentItems;
-        /// 點選Section時Invoke Section本身與所屬機櫃群
-        [HideInInspector] public UnityEvent<EnvironmentSection> onClickSectionEvent;
-        [HideInInspector] public UnityEvent onCancelSectionEvent;
+
+        [field:SerializeField] public float AverageRt { get; private set; }
+        [field:SerializeField] public float AverageRh { get; private set; }
+        [Label("[資料項] - 環控資料"), SerializeField] private List<EnvironmentDataHolder> evnDataHolders;
+        [Label("[EnvValueDisplay]"), SerializeField] private List<MonoBehaviour> receiverMonoBehaviours;
         [Foldout("[組件]"), SerializeField] private BoxCollider area;
-        [Foldout("[組件]"), SerializeField] private ToggleGroup toggleGroup;
 
-        public float AverageRt { get; private set; }
-        public float AverageRh { get; private set; }
-
-        public bool IsSelected => environmentItems.Any(item => item.ToggleComp.isOn);
-
-        ///機櫃群模型
-        public List<Transform> RackModels { get; private set; }
+        private List<IEnvDataDisplay> receivers;
 
         #endregion
 
-
-        [ContextMenu("CreateLandmark")]
-        public void CreateLandmark()
+        /// 新增EnvValueDisplay組件至Receiver列表
+        public void AddEnvDisplayTarget(IEnvDataDisplay target) => receiverMonoBehaviours.Add(target as MonoBehaviour);
+        public void ClearEnvDisplayTarget()
         {
-            environmentItems.ForEach(item =>
-            {
-               EnvironmentLandmark landmark =  item.Instantiate(gameObject.name);
-               landmark.SetToggleGroup(toggleGroup);
-               landmark.SetTargetModel(transform);
-               landmark.FindComponents();
-            });
-            GetAverageRtRhFromRacks();
+            receiverMonoBehaviours.ForEach(target=>ObjectHelper.Destroy(target.gameObject));
+            receiverMonoBehaviours.Clear();
+            receivers?.Clear();
         }
 
-        [ContextMenu("GetAverageRtRhFromRacks")]
-        public void GetAverageRtRhFromRacks()
+        /// 尋找Collider範圍裡的Rack模型，以收集EnvDataHolders
+        [Button]
+        public void GetEnvDataHoldersInArea()
         {
-            AverageRt = dataHolders.Average(holder => holder.RackRevitData.RT);
-            AverageRh = dataHolders.Average(holder => holder.RackRevitData.RH);
-            environmentItems[0].landmark.SetValue(AverageRt);
-            environmentItems[1].landmark.SetValue(AverageRh);
+            evnDataHolders = Physics.OverlapBox(area.bounds.center, area.bounds.extents, transform.rotation).ToList()
+                .FilterByNameForKeywords(EnumSearchType.Include, "Rack")
+                .Select(target => target.GetComponent<EnvironmentDataHolder>())
+                .Where(comp=> comp != null).ToList();
         }
         
-        /// 尋找Collider範圍裡的Rack模型
-        [ContextMenu("FindRacksInArea")]
-        private void FindRacksInArea()
+        /// 計算環控均值
+        [Button]
+        public void CalculateAverageEnvData()
         {
-            dataHolders = Physics.OverlapBox(area.bounds.center, area.bounds.extents, transform.rotation).ToList()
-                .FilterByNameForKeywords(EnumSearchType.Include, "Rack")
-                .FilterByNameForKeywords(EnumSearchType.Exclude, "RackUnitGrid")
-                .Select(target => target.GetComponent<RevitAssetDataHolder>()).ToList();
+            AverageRt = evnDataHolders.Average(holder => holder.EnvData.rt);
+            AverageRh = evnDataHolders.Average(holder => holder.EnvData.rh);
+            Awake();
+            receivers?.ForEach(target=>target.UpdateData(this));
         }
+        
 
-        [ContextMenu("FindComponents")]
-        private void FindComponents()
+        [Button]
+        private void OnValidate()
         {
             area = GetComponent<BoxCollider>();
-            toggleGroup = GetComponentInParent<ToggleGroup>(true);
+            area.isTrigger = true;
+            receiverMonoBehaviours = ObjectHelper.CheckTypeOfList<IEnvDataDisplay>(receiverMonoBehaviours);
         }
 
-        private void Reset() => FindComponents();
-
-        #region EventListener
-
-        private void OnEnable()
-        {
-            GetAverageRtRhFromRacks();
-            environmentItems.ForEach(item=> item.ToggleComp.onValueChanged.AddListener(OnToggleClicked));
-        }
-
-        private void OnDisable() => environmentItems.ForEach(item=> item.ToggleComp.onValueChanged.RemoveListener(OnToggleClicked));
-        private void OnToggleClicked(bool isOn)
-        {
-            RackModels ??= dataHolders.Select(data=> data.transform).ToList();
-            if(isOn) onClickSectionEvent?.Invoke(this);
-            else onCancelSectionEvent?.Invoke();
-        } 
-
-        #endregion
+        private void Awake() => receivers ??= receiverMonoBehaviours.Cast<IEnvDataDisplay>().ToList();
     }
 
-    /// 環境監控項目 - 溫度 / 濕度
-    [Serializable]
-    public class EnvironmentItem
+    public interface IEnvDataDisplay
     {
-        public Transform container;
-        public EnvironmentLandmark landmark;
-        public EnvironmentLandmark landmarkPrefab;
-
-        public Toggle ToggleComp => landmark.ToggleComp;
-        
-        public EnvironmentLandmark Instantiate(string sectionName)
-        {
-            if (landmark != null && container.Contain(landmark)) return landmark;
-            landmark = ObjectHelper.Instantiate(landmarkPrefab, container);
-            landmark.name += $" - {sectionName}";
-            return landmark;
-        }
+        void UpdateData(EnvironmentSection envSection);
     }
-  
 }

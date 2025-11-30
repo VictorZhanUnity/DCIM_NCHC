@@ -128,7 +128,9 @@ namespace _VictorDev.DateTimeUtils
 
     public interface ITimer
     {
+        /// 每讀完一個循環時
         void OnTimeUpdate();
+        /// 當Timer結束時
         void OnTimeFinished();
     }
 }

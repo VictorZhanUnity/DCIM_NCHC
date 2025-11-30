@@ -102,12 +102,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3317586185020210390, guid: 7a832e0aa8495474eac2df492be0de3f, type: 3}
       propertyPath: m_text
-      value: 23.8
+      value: 54
       objectReference: {fileID: 0}
     - target: {fileID: 3348262495630463919, guid: 7a832e0aa8495474eac2df492be0de3f, type: 3}
       propertyPath: m_text
       value: '%'
       objectReference: {fileID: 0}
+    - target: {fileID: 3949497637834457431, guid: 7a832e0aa8495474eac2df492be0de3f, type: 3}
+      propertyPath: envDataType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3949497637834457431, guid: 7a832e0aa8495474eac2df492be0de3f, type: 3}
+      propertyPath: txtComps.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3949497637834457431, guid: 7a832e0aa8495474eac2df492be0de3f, type: 3}
+      propertyPath: 'txtComps.Array.data[0]'
+      value: 
+      objectReference: {fileID: 890474204315073506}
     - target: {fileID: 4373679234719784924, guid: 7a832e0aa8495474eac2df492be0de3f, type: 3}
       propertyPath: m_Name
       value: "\u6FD5\u5EA6RhLandmarkPrefab"
@@ -115,6 +127,10 @@ PrefabInstance:
     - target: {fileID: 4373679234719784924, guid: 7a832e0aa8495474eac2df492be0de3f, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7357062221508793401, guid: 7a832e0aa8495474eac2df492be0de3f, type: 3}
+      propertyPath: m_Name
+      value: TxtAverageRh
       objectReference: {fileID: 0}
     - target: {fileID: 7562072931012911165, guid: 7a832e0aa8495474eac2df492be0de3f, type: 3}
       propertyPath: m_IsOn
@@ -125,3 +141,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a832e0aa8495474eac2df492be0de3f, type: 3}
+--- !u!114 &890474204315073506 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5659969986560215206, guid: 7a832e0aa8495474eac2df492be0de3f, type: 3}
+  m_PrefabInstance: {fileID: 4816557080197624644}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afe7b96a15b86d644aceaedb63d287b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.DoTweenUtils.TextDotweener

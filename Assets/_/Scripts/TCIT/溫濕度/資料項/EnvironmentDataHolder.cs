@@ -1,0 +1,17 @@
+using _VictorDev.TCIT.DCIM.EnvironmentModule;
+using UnityEngine;
+
+namespace _VictorDev.TCIT.DCIM
+{
+    /// 環控資料持有
+    [DisallowMultipleComponent]
+    public class EnvironmentDataHolder:MonoBehaviour
+    {
+        [field: SerializeField] public EnvironmentData EnvData { get; private set; }
+        
+        public RackRevitAssetData RackData => rackData ??= GetComponent<RevitAssetDataHolder>().RackRevitData;
+        private RackRevitAssetData rackData;
+        
+        public void SetEnvironmentData(EnvironmentData data) => EnvData = data;
+    }
+}

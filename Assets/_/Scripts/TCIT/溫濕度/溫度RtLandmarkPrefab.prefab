@@ -313,7 +313,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ac5eef724047f4b81f86c41ca322bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentModule.RtRhLandmark
-  txtValue: {fileID: 2813876761469323258}
+  envDataType: 1
+  valueMediator: {fileID: 2813876761469323258}
   positionTo2DPoint: {fileID: 3451038541954442582}
   toggle: {fileID: 7562072931012911165}
 --- !u!114 &7562072931012911165
@@ -624,7 +625,7 @@ GameObject:
   - component: {fileID: 2813876761469323258}
   - component: {fileID: 5659969986560215206}
   m_Layer: 5
-  m_Name: TxtRT
+  m_Name: TxtAverageRt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

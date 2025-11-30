@@ -58,6 +58,8 @@ namespace _VictorDev.DebugUtils
             this.currentValue = value;
             InvokeValueHandler();
         }
+        
+        public float Value {set=>SetValue(value);}
 
         /// 統一發送事件
         private void InvokeValueHandler()

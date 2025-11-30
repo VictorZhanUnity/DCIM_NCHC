@@ -1,3 +1,4 @@
+using System;
 using _VictorDev.ApiExtensions;
 using _VictorDev.Configs;
 using _VictorDev.DebugUtils;
@@ -28,8 +29,7 @@ namespace _VictorDev.Framework
         public float DistanceFromCamera => Vector3.Distance(mainCamera.transform.position, target3DObject.position);
 
         #endregion
-        
-        
+
         void Update()
         {
             Vector3 targetPos = target3DObject.position;
@@ -45,6 +45,7 @@ namespace _VictorDev.Framework
                 targetPos = EnumHelper.GetAxisAlignPosition(meshRenderer.bounds, EnumAlignmentPivotX.Center, alignAxisY,
                     EnumAlignmentPivotZ.Center);
             }
+
             targetPos += offsetPos;
 
             // 1. 轉換 3D 世界座標到螢幕座標
@@ -72,20 +73,16 @@ namespace _VictorDev.Framework
         /// 設定可視距離
         public void SetVisibleRange(float range) => visibleRange = range;
 
-        [Button][ContextMenu("FindComponents")]
-        public void FindComponents()
+        [Button]
+        public void OnValidate()
         {
             mainCamera = Camera.main;
+            canvasRect = transform.GetComponentInParent<Canvas>(true)?.transform as RectTransform;
+            
             rectTrans = transform as RectTransform;
-            canvasRect = transform.GetComponentInParent<Canvas>(true).transform as RectTransform;
             container = transform.GetChild(0).gameObject;
             if (transform.TryGetComponentInParent(out PositionTo2DPointSorter sorter))
                 sorter.AddToSortList(this);
-            else
-                Debug.LogError($"There is no component of type {nameof(PositionTo2DPointSorter)} on parent", this);
         }
-
-        private void Reset() => FindComponents();
-        
     }
 }
