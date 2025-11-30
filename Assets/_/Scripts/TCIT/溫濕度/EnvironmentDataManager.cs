@@ -1,15 +1,17 @@
 using System.Collections.Generic;
 using _VictorDev.ApiExtensions;
+using _VictorDev.DateTimeUtils;
 using _VictorDev.DebugUtils;
 using _VictorDev.InterfaceUtils;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 namespace _VictorDev.TCIT.DCIM.EnvironmentModule
 {
     /// 環控資料管理
-    public class EnvironmentDataManager : JsonDataManagerParent<List<EnvironmentData>>, IReceiveData<List<RackRevitAssetData>>
+    public class EnvironmentDataManager : JsonDataManagerParent<List<EnvironmentData>>, IReceiveData<List<RackRevitAssetData>>, ITimer
     {
         #region Variables
 
@@ -44,6 +46,14 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule
             });
             
             onLoadDataCompleteEvent?.Invoke();
+        }
+
+        private void Start() => OnTimeFinished();
+
+        public void OnTimeUpdate()=> LoadRtRhData();
+
+        public void OnTimeFinished()
+        {
         }
     }
 }

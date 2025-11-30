@@ -1,8 +1,11 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using _VictorDev.Configs;
 using _VictorDEV.DateTimeUtils;
+using _VictorDev.DebugUtils;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
@@ -49,13 +52,17 @@ namespace _VictorDev.DateTimeUtils
         [Foldout("[Event] - Timer結束時Invoke (DateTime.now)"), ShowIf(nameof(IsNotInfiniteLoop))]
         public UnityEvent<string> onTimeFinished;
 
-        public bool IsTimerRunning => _timerCoroutine != null;
+
+        [Label("[ITimer對像]"), SerializeField] private List<MonoBehaviour> iTimerMonoBehaviour;
+        private List<ITimer> iTimerTargets;
+
+        public bool IsTimerRunning => timerCoroutine != null;
 
         /// 目前時間String
         private string GetNowDateTimeString() => DateTime.Now.AddHours(offsetHour)
             .ToString(DateTimeHelper.GetTimeFormat(invokeTimeFormat), new CultureInfo("en-US"));
 
-        private Coroutine _timerCoroutine;
+        private Coroutine timerCoroutine;
 
         #endregion
         
@@ -72,10 +79,15 @@ namespace _VictorDev.DateTimeUtils
                 );
                 yield return new WaitForSeconds(totalIntervalSeconds);
                 onTimeUpdated?.Invoke(GetNowDateTimeString());
+                iTimerTargets.ForEach(target=> target.OnTimeUpdate());
                 count++;
             }
 
-            if (!isInfiniteLoop) onTimeFinished?.Invoke(GetNowDateTimeString());
+            if (!isInfiniteLoop)
+            {
+                onTimeFinished?.Invoke(GetNowDateTimeString());
+                iTimerTargets.ForEach(target=> target.OnTimeFinished());
+            }
         }
 
         /// 開始時鐘
@@ -83,17 +95,17 @@ namespace _VictorDev.DateTimeUtils
         public void StartTimer()
         {
             StopTimer(false);
-            if (!IsTimerRunning) _timerCoroutine = StartCoroutine(UpdateTimer());
+            if (!IsTimerRunning) timerCoroutine = StartCoroutine(UpdateTimer());
         }
 
         /// 停止時鐘
         [Button]
         public void StopTimer(bool isInvokeEvent = true)
         {
-            if (_timerCoroutine != null)
+            if (timerCoroutine != null)
             {
-                StopCoroutine(_timerCoroutine);
-                _timerCoroutine = null;
+                StopCoroutine(timerCoroutine);
+                timerCoroutine = null;
             }
 
             if (isInvokeEvent) onTimeFinished?.Invoke(GetNowDateTimeString());
@@ -107,5 +119,16 @@ namespace _VictorDev.DateTimeUtils
 
         private void OnEnable() => StartTimer();
         private void OnDisable() => StopTimer(false);
+
+        private void OnValidate() => iTimerMonoBehaviour = ObjectHelper.CheckTypeOfList<ITimer>(iTimerMonoBehaviour).ToList();
+
+        private void Awake() => iTimerTargets = iTimerMonoBehaviour.Cast<ITimer>().ToList();
+    }
+
+
+    public interface ITimer
+    {
+        void OnTimeUpdate();
+        void OnTimeFinished();
     }
 }
