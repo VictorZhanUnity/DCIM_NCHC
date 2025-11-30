@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using _VictorDev.Configs;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 using Debug = _VictorDev.DebugUtils.Debug;
 
@@ -12,6 +13,18 @@ namespace _VictorDev.ApiExtensions
     /// [Extended] 原API類別功能擴充
     public static class TransformExtension
     {
+        /// 檢查是否已含有Component
+        /// <para>+ 有：回傳現有的 </para>
+        /// <para>+ 無：回傳新增的 </para>
+        public static TComponent TryAddComponent<TComponent>(this Transform self) where TComponent : Component
+        {
+            if (self.TryGetComponent(out TComponent component) == false)
+            {
+                component = self.AddComponent<TComponent>();
+            }
+            return component;
+        }
+        
         /// 是否包含子物件
         public static bool Contain<T>(this Transform self, T target) where T : Component
         {

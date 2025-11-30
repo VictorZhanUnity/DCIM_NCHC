@@ -28,6 +28,8 @@ namespace _VictorDev.DebugUtils
         
         #endregion
 
+        protected void SetData(TData value) => data = value;
+        
         /// 接收JSON資料
         public void ReceiveJson(string jsonString)
         {
@@ -36,7 +38,7 @@ namespace _VictorDev.DebugUtils
             isLoadingEvent?.Invoke(false);
             InvokeData();
         }
-
+        
         protected virtual void BeforeInvokeData()
         {
         }

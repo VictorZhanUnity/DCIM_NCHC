@@ -11,6 +11,7 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule
     [Serializable]
     public class EnvironmentData
     {
-      
+        public float rt, rh;
+       
     }
 }
