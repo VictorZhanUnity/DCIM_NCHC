@@ -39,8 +39,8 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule
             {
                 holder.SetEnvironmentData(new EnvironmentData()
                 {
-                    rt = Random.Range(14, 23),
-                    rh = Random.Range(50, 68),
+                    rt = Random.Range(14, 28),
+                    rh = Random.Range(45, 70),
                 });
             });
             
@@ -54,6 +54,10 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule
         public void OnTimeFinished()
         {
         }
+
+        public void ShowHeatColor_RT() => dataHolders.ForEach(holder=> holder.SetRackDisplayType(EnumEnvDataType.RT));
+        public void ShowHeatColor_RH() => dataHolders.ForEach(holder=> holder.SetRackDisplayType(EnumEnvDataType.RH));
+        public void ShowSourceRackColor() => dataHolders.ForEach(holder=> holder.SetRackDisplayType(EnumEnvDataType.None));
     }
 }
 

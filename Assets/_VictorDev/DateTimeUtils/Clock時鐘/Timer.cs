@@ -50,7 +50,7 @@ namespace _VictorDev.DateTimeUtils
         private int maxCount = 1;
 
         [Foldout("[Event] - Timer結束時Invoke (DateTime.now)"), ShowIf(nameof(IsNotInfiniteLoop))]
-        public UnityEvent<string> onTimeFinished;
+        public UnityEvent<string> onTimerFinished;
 
 
         [Label("[ITimer對像]"), SerializeField] private List<MonoBehaviour> iTimerMonoBehaviour;
@@ -68,9 +68,9 @@ namespace _VictorDev.DateTimeUtils
         
         private IEnumerator UpdateTimer()
         {
-            int count = 0;
+            int loopCounter = 0;
 
-            while (isInfiniteLoop || count < maxCount)
+            while (isInfiniteLoop || loopCounter < maxCount)
             {
                 int totalIntervalSeconds = DateTimeHelper.CalculatedToTotalSeconds(
                     IsTimeIntervalHour ? intervalHour : 0,
@@ -78,16 +78,23 @@ namespace _VictorDev.DateTimeUtils
                     IsTimeIntervalSec ? intervalSecond : 0
                 );
                 yield return new WaitForSeconds(totalIntervalSeconds);
-                onTimeUpdated?.Invoke(GetNowDateTimeString());
-                iTimerTargets.ForEach(target=> target.OnTimeUpdate());
-                count++;
+                OnTimeUpdated();
+                loopCounter++;
             }
 
-            if (!isInfiniteLoop)
-            {
-                onTimeFinished?.Invoke(GetNowDateTimeString());
-                iTimerTargets.ForEach(target=> target.OnTimeFinished());
-            }
+            if (!isInfiniteLoop) OnTimerFinished();
+        }
+
+        public void OnTimeUpdated()
+        {
+            onTimeUpdated?.Invoke(GetNowDateTimeString());
+            iTimerTargets?.ForEach(target=> target.OnTimeUpdate());
+        }
+        
+        public void OnTimerFinished()
+        {
+            onTimerFinished?.Invoke(GetNowDateTimeString());
+            iTimerTargets.ForEach(target=> target.OnTimeFinished());
         }
 
         /// 開始時鐘
@@ -108,7 +115,7 @@ namespace _VictorDev.DateTimeUtils
                 timerCoroutine = null;
             }
 
-            if (isInvokeEvent) onTimeFinished?.Invoke(GetNowDateTimeString());
+            if (isInvokeEvent) OnTimerFinished();
         }
 
         private void Start()

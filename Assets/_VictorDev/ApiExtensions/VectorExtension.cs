@@ -1,3 +1,4 @@
+using UnityEditor.UI;
 using UnityEngine;
 
 namespace _VictorDev.ApiExtensions
@@ -63,6 +64,9 @@ namespace _VictorDev.ApiExtensions
 
         #region Vector2
 
+        /// XY值差值
+        public static float GetDeviation(this Vector2 self) => Mathf.Abs(self.x - self.y);
+        
         /// XY值對調
         public static Vector2 SwapXY(this Vector2 self) => new(self.y, self.x);
         

@@ -15,6 +15,24 @@ namespace _VictorDev.TCIT.DCIM
         [Label("[COBie語系設定]"), SerializeField] private List<LangConfig> cobieLangConfig;
         [Foldout("[設定]"), SerializeField] private TextFileLoader csvFileLoader;
 
+
+        [Foldout("[環控設定]"), SerializeField] private Vector2 rtRange, rhRange;
+        [Foldout("[環控設定]"), SerializeField] private Gradient heatColor;
+        [Foldout("[環控設定]"), SerializeField] private Gradient humidityColor;
+
+        /// 設計RT值佔的百分比
+        public static float CalculateRtPercent(float rtValue) =>
+            Mathf.Clamp01((rtValue - Instance.rtRange.x) / Instance.rtRange.GetDeviation());
+        
+        
+        /// 設計RH值佔的百分比
+        public static float CalculateRhPercent(float rhValue) =>
+            Mathf.Clamp01((rhValue - Instance.rhRange.x) / Instance.rhRange.GetDeviation());
+        
+        /// 取得百分比的顏色
+        public static Color GetPercentHeatColor(float percent) => Instance.heatColor.Evaluate(percent);
+        public static Color GetPercentHumidityColor(float percent) => Instance.humidityColor.Evaluate(percent);
+        
         public static string GetCobieColumnNames(string keyName)
         {
             keyName = keyName.Trim();

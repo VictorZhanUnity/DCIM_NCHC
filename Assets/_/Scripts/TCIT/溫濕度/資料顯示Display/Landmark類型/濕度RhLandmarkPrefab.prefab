@@ -110,7 +110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3949497637834457431, guid: 7a832e0aa8495474eac2df492be0de3f, type: 3}
       propertyPath: envDataType
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3949497637834457431, guid: 7a832e0aa8495474eac2df492be0de3f, type: 3}
       propertyPath: txtComps.Array.size

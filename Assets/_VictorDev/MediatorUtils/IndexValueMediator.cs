@@ -11,16 +11,22 @@ namespace _VictorDev.DebugUtils
     {
         #region Variables
 
-        [Label("[Event設定] Invoke是否被選取")] public List<KeyValueData<int, UnityEvent<bool>>> indexEventSetting;
+        [Label("[Event設定] Invoke是否被選取")] public List<KeyValueData<int, UnityEvent<bool>>> indexBoolEventSetting;
+        [Label("[Event設定] Index各別觸發")] public List<KeyValueData<int, UnityEvent>> indexEventSetting;
 
         #endregion
 
         /// 設定Index值
         public void SetIndexValue(int indexValue)
         {
-            indexEventSetting.ForEach(keyPair =>
+            indexBoolEventSetting.ForEach(keyPair =>
             {
                 keyPair.Value?.Invoke(keyPair.Key == indexValue);
+            });
+            
+            indexEventSetting.ForEach(keyPair =>
+            {
+                if(keyPair.Key == indexValue) keyPair.Value?.Invoke();
             });
         }
     }

@@ -123,7 +123,7 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule
     }
     public enum EnumEnvDataType
     {
-        RT, RH, 
+        None, RT, RH, 
     }
 }
 

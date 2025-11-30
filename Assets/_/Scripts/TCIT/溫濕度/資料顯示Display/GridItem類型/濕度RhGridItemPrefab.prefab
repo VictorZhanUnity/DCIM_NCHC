@@ -152,6 +152,10 @@ PrefabInstance:
       propertyPath: txtTitle
       value: 
       objectReference: {fileID: 4126940723804978110}
+    - target: {fileID: 8682525091557328847, guid: 1e000d6450287824b92446ec75bf6b04, type: 3}
+      propertyPath: envDataType
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

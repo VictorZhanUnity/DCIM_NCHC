@@ -19,7 +19,7 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule
         [field: SerializeField] public float AverageRt { get; private set; }
         [field: SerializeField] public float AverageRh { get; private set; }
 
-        [Label("[資料項] - 環控資料"), SerializeField]
+        [Label("[資料項] - EnvironmentDataHolder"), SerializeField]
         private List<EnvironmentDataHolder> evnDataHolders;
 
         [Label("[Value顯示組件] - EnvValueDisplay"), SerializeField]
