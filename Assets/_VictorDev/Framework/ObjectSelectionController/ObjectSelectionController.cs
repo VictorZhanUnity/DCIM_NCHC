@@ -25,12 +25,15 @@ namespace _VictorDev.DebugUtils
         /// 選取物件
         public void SelectObject(Transform target)
         {
-            if(isSingleSelection && currentSelectTarget != null) DeselectObject();
-            currentSelectTarget = target;
-            ObjectHelper.SetMatchSizeAndPosition(selectionBorder, target);
-            selectionBorder.gameObject.SetActive(true);
-            onSelectObjectEvent?.Invoke(target);
-            onIsSelectedObjectEvent?.Invoke(true);
+            if(isSingleSelection && currentSelectTarget != null && currentSelectTarget == target) DeselectObject();
+            else
+            {
+                currentSelectTarget = target;
+                ObjectHelper.SetMatchSizeAndPosition(selectionBorder, target);
+                selectionBorder.gameObject.SetActive(true);
+                onSelectObjectEvent?.Invoke(target);
+                onIsSelectedObjectEvent?.Invoke(true);
+            }
         }
 
         /// 取消選取物件

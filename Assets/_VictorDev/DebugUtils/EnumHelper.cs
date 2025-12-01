@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using _VictorDev.ApiExtensions;
 using _VictorDev.Configs;
 using UnityEngine;
 
@@ -58,7 +59,7 @@ namespace _VictorDev.DebugUtils
             keyword = keyword.Trim();
             foreach (TEnum option in Enum.GetValues(typeof(TEnum)))
             {
-                if (keyword.Contains(option.ToString(), StringComparison.OrdinalIgnoreCase))
+                if (keyword.IsContainKeyword(StringComparison.OrdinalIgnoreCase, option.ToString()))
                     return option;
             }
             return defaultValue;

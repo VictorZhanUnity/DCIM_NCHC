@@ -27,10 +27,22 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule
 
         [Foldout("[組件]"), SerializeField] private BoxCollider area;
 
+        public List<EnvironmentDataHolder> EvnDataHolders => evnDataHolders;
+
+        /// 機櫃群與其所有設備
+        public List<Transform> RacksAndDevices => racksAndDevices ??=
+            evnDataHolders.Select(envHolder => envHolder.RackData.Model)
+                .Concat(evnDataHolders.SelectMany(envHolder => envHolder.RackData.Containers)
+                    .Where(device=> device!=null)
+                    .Select(device => device.Model)).ToList();
+
+        /*public List<Transform> RacksAndDevices => racksAndDevices ??=
+            evnDataHolders.SelectMany(envHolder => envHolder.RackData.Containers).Select(device => device.Model)
+                .ToList();*/
         
-        public List<Transform> RacksTransformList => racksTransformLis ??= evnDataHolders.Select(x => x.transform).ToList();
-        private List<Transform> racksTransformLis;
         
+        private List<Transform> racksAndDevices;
+
         #endregion
 
         /// 新增EnvValueDisplay組件至Receiver列表

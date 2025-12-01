@@ -6,6 +6,15 @@ namespace _VictorDev.ApiExtensions
     /// 原API類別功能擴充
     public static class GameObjectExtension
     {
+        
+        /// [Extended] - 刪除GameObjec (Runtime/Editor), 包含檢查是否為null
+        /// <para>+ isAllowDestroyingAssets: 是否一併刪除Unity資產 (Editor環境下)</para>
+        public static void SetLayerMask(this GameObject self, LayerMask layerMask)
+        {
+            int layer = Mathf.RoundToInt(Mathf.Log(layerMask.value, 2));
+            self.layer = layer;
+        }
+        
         /// [Extended] - 刪除GameObjec (Runtime/Editor), 包含檢查是否為null
         /// <para>+ isAllowDestroyingAssets: 是否一併刪除Unity資產 (Editor環境下)</para>
         public static void ToDestroy(this GameObject self, bool isLogResult = false)

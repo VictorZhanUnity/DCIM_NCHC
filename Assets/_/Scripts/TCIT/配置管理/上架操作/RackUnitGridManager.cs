@@ -126,6 +126,7 @@ namespace _VictorDev.TCIT.DCIM
         [Button]
         private void BuildRackUnitGridToModels()
         {
+            #if UNITY_EDITOR
             RemoveRackUnitGridFromModels();
             rackModelList.ForEach(rackModel =>
             {
@@ -137,6 +138,7 @@ namespace _VictorDev.TCIT.DCIM
                     rackUnitGridList.Add(rackUnitGrid);
                 }
             });
+            #endif
         }
 
         /// 將RackUnitGrid從機櫃模型裡移除

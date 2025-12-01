@@ -5,7 +5,6 @@ using _VictorDev.DebugUtils;
 using _VictorDev.InterfaceUtils;
 using NaughtyAttributes;
 using UnityEngine;
-using Debug = _VictorDev.DebugUtils.Debug;
 
 namespace _VictorDev.TCIT.DCIM.RevitAssetModule
 {
@@ -13,25 +12,28 @@ namespace _VictorDev.TCIT.DCIM.RevitAssetModule
     {
         #region Variables
 
-        [Foldout("模型種類"), SerializeField] private List<Transform> rackModels, serverModels, routerModels, switchModels;
+        [Foldout("模型種類"), SerializeField] private List<Transform> rackModels, serverModels, routerModels, switchModels
+            , odfModels, rackStationModels;
         [Label("Json資料"), SerializeField] private List<RackRevitAssetData> dataList;
         
         #endregion
         
         public void ReceiveData(List<Transform> data)
         {
-            rackModels = data.FilterByNameForKeywords(EnumSearchType.Include, "Rack");
-            serverModels = data.FilterByNameForKeywords(EnumSearchType.Include, "Server");
-            routerModels = data.FilterByNameForKeywords(EnumSearchType.Include, "Router");
-            switchModels = data.FilterByNameForKeywords(EnumSearchType.Include, "Switch");
+            rackModels = data.FilterByNameForKeywords(EnumSearchType.Include, EnumRevitAssetKind.Rack.ToString());
+            serverModels = data.FilterByNameForKeywords(EnumSearchType.Include, EnumRevitAssetKind.Server.ToString());
+            routerModels = data.FilterByNameForKeywords(EnumSearchType.Include, EnumRevitAssetKind.Router.ToString());
+            switchModels = data.FilterByNameForKeywords(EnumSearchType.Include, EnumRevitAssetKind.Switch.ToString());
+            odfModels = data.FilterByNameForKeywords(EnumSearchType.Include, EnumRevitAssetKind.ODF.ToString());
+            rackStationModels = data.FilterByNameForKeywords(EnumSearchType.Include, EnumRevitAssetKind.RackStation.ToString());
         }
 
         public void ReceiveData(List<RackRevitAssetData> data)
         {
             dataList = data;
-            CombineDataAndModel();
         }
 
+        [Button]
         /// 結合資料與模型
         private void CombineDataAndModel()
         {
@@ -48,6 +50,8 @@ namespace _VictorDev.TCIT.DCIM.RevitAssetModule
                         EnumRevitAssetKind.Server => serverModels,
                         EnumRevitAssetKind.Router => routerModels,
                         EnumRevitAssetKind.Switch => switchModels,
+                        EnumRevitAssetKind.ODF => odfModels,
+                        EnumRevitAssetKind.RackStation => rackStationModels,
                         _ => null
                     };
                     if (modelList != null) device.SetModelFromList(modelList);
@@ -60,9 +64,12 @@ namespace _VictorDev.TCIT.DCIM.RevitAssetModule
         private void RemoveAssetDataHolderFromModel()
         {
             rackModels.ForEach(RemoveRevitAssetDataHolderComponent);
+            
             serverModels.ForEach(RemoveRevitAssetDataHolderComponent);
             routerModels.ForEach(RemoveRevitAssetDataHolderComponent);
             switchModels.ForEach(RemoveRevitAssetDataHolderComponent);
+            odfModels.ForEach(RemoveRevitAssetDataHolderComponent);
+            rackStationModels.ForEach(RemoveRevitAssetDataHolderComponent);
 
             void RemoveRevitAssetDataHolderComponent(Transform target)
             {

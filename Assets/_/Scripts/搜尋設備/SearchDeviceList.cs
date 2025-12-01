@@ -61,9 +61,9 @@ namespace _VictorDev.TCIT.DCIM
         }
         
         private Coroutine searchCoroutine;
-        
-        /// 搜尋設備財產編號
-        private void OnSubmitSearch(string keywordCompanyAssetNo)
+
+        /// 搜尋設備
+        private void OnSubmitSearch(string keyword)
         {
             //機櫃與設備
             //allRevitAssets ??= rackData.SelectMany(a => new RevitAssetData[] { a }.Concat(a.Containers)).ToList();
@@ -83,7 +83,7 @@ namespace _VictorDev.TCIT.DCIM
                
                // 模糊搜尋
                List<DeviceRevitAssetData> findResult = allDeviceRevitAssets
-                   .Where(x => x.DevicePath.Contains(keywordCompanyAssetNo, StringComparison.OrdinalIgnoreCase) == true)
+                   .Where(x => x.DevicePath.Contains(keyword, StringComparison.OrdinalIgnoreCase) == true)
                    .Take(50)
                    .ToList();
                deviceSearchBar.ReceiveData(findResult);

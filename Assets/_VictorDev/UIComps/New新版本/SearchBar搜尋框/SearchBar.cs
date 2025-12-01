@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using _VictorDev.DebugUtils.ScrollRectUtils;
 using NaughtyAttributes;
 using TMPro;
@@ -15,29 +13,25 @@ namespace _VictorDev.UIComps
 
         [Foldout("[Event] - Invoke搜尋字")] public UnityEvent<string> onKeyInputEvent;
         [Foldout("[Event] - Invoke搜尋字")] public UnityEvent<string> onSubmitEvent;
-        [Foldout("[Event]")] public UnityEvent<bool> onNoDataEvent;
         [Foldout("[組件]"), SerializeField] private TMP_InputField inputField;
         [Foldout("[設定]"), SerializeField, Min(3)] private int minKeywordLength = 6;
         #endregion
 
-        public override void ReceiveData(List<TData> data)
-        {
-            base.ReceiveData(data);
-            onNoDataEvent?.Invoke(data.Count == 0);
-        }
-
+       
         public void OnKeyInput(string keyword)
         {
             if (keyword.Length < minKeywordLength) return;
             onKeyInputEvent?.Invoke(keyword.Trim());
-            onNoDataEvent?.Invoke(false);
+            isNoDataEvent?.Invoke(false);
         }
+        
+        public void Search() => OnSubmit(inputField.text.Trim());
         
         private void OnSubmit(string keyword)
         {
             ClearList();;
             onSubmitEvent?.Invoke(keyword.Trim());
-            onNoDataEvent?.Invoke(false);
+            isNoDataEvent?.Invoke(false);
             OnDeselect(keyword);
         }
 

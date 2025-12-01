@@ -63,8 +63,11 @@ namespace _VictorDev.TCIT.DCIM
             {
                 EnumRevitAssetKind.Rack => "機櫃",
                 EnumRevitAssetKind.Server => "伺服主機",
-                EnumRevitAssetKind.Router => "網路路由器",
-                EnumRevitAssetKind.Switch => "網路交換機",
+                EnumRevitAssetKind.Router => "路由器",
+                EnumRevitAssetKind.Switch => "交換機",
+                EnumRevitAssetKind.ODF => "光纖配線架",
+                EnumRevitAssetKind.DF => "網路配線架",
+                EnumRevitAssetKind.RackStation => "NAS網路儲存伺服器",
                 _=> "未知"
             };
         #endregion
@@ -86,10 +89,21 @@ namespace _VictorDev.TCIT.DCIM
     public enum EnumRevitAssetKind
     {
         Unknown,
+        
+        /// 機櫃
         Rack,
+        /// 伺服主機
         Server,
+        /// 路由器
         Router,
-        Switch
+        /// 交換器
+        Switch,
+        /// 光纖配線架
+        ODF,
+        /// 網路配線架
+        DF,
+        /// NAS
+        RackStation,
     }
 
     #endregion

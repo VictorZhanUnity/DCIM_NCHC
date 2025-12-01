@@ -4,7 +4,6 @@ using System.Linq;
 using _VictorDev.ApiExtensions;
 using _VictorDev.DateTimeUtils;
 using _VictorDev.DebugUtils;
-using _VictorDev.TCIT.DCIM.EnvironmentModule.Old;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
@@ -24,8 +23,8 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule
         [Label("[資料項 - EnvironmentSection]"), SerializeField] private List<EnvironmentSection> environmentSections;
         
         
-        [Foldout("[Event] - 點擊Section時"), Label("Invoke Section本身")] public UnityEvent<Transform> onClickSectionEvent;
-        [Foldout("[Event] - 點擊Section時"), Label("Invoke Section機櫃群")] public UnityEvent<List<Transform>> invokeSectionRacksEvent;
+        [Foldout("[Event] - 點擊Section時")] public UnityEvent<Transform> invokeBodyOnClickSectionEvent;
+        [Foldout("[Event] - 點擊Section時")] public UnityEvent<EnvironmentSection> invokeSectionOnClickSectionEvent;
         [Foldout("[Event] - 所有Section都未選取時Invoke")] public UnityEvent onNonSelectedSectionEvent; 
         
         [Foldout("[Event] - 發送所有溫度平均值")] public UnityEvent<float> invokeAverageRtEvent; 
@@ -95,8 +94,8 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule
         {
             if (isOn)
             {
-                onClickSectionEvent?.Invoke(section.transform);
-                invokeSectionRacksEvent?.Invoke(section.RacksTransformList);
+                invokeBodyOnClickSectionEvent?.Invoke(section.transform);
+                invokeSectionOnClickSectionEvent?.Invoke(section);
             }
             else
                 onNonSelectedSectionEvent?.Invoke();

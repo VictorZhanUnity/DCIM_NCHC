@@ -25,7 +25,8 @@ namespace _VictorDev.ObjectUtils
 
         [Foldout("[設定]"), SerializeField] private EnumSearchType searchType = EnumSearchType.Include;
         [Foldout("[設定]"), SerializeField] private Transform targetModelsParent;
-
+        [Foldout("[設定]"), SerializeField, Label("設定LayerMask(選填)")] private LayerMask layerMask;
+        
         private List<IReceiveData<List<Transform>>> ReceiverReceivers
             => receiverTargets ??= receivers.Cast<IReceiveData<List<Transform>>>().ToList();
         private List<IReceiveData<List<Transform>>> receiverTargets;
@@ -39,6 +40,13 @@ namespace _VictorDev.ObjectUtils
             foundModels = targetModelsParent.FindChildrenByKeywords(searchType, keyWords);
             ReceiverReceivers.ForEach(receiver=> receiver.ReceiveData(foundModels));
             Debug.Log($"Found {foundModels.Count} target objects.", this);
+        }
+        
+        [Button]
+        public void SetLayerMask()
+        {
+            foundModels.ForEach(target => target.gameObject.SetLayerMask(layerMask));
+            Debug.Log($"SetLayerMask is done.", this);
         }
 
         private void OnValidate() => receivers = ObjectHelper.CheckTypeOfList<IReceiveData<List<Transform>>>(receivers);

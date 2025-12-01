@@ -13,21 +13,19 @@ namespace _VictorDev.TCIT.DCIM
 
         public RackRevitAssetData RackRevitData => rackRevitAssetData;
         public DeviceRevitAssetData DeviceRevitData => deviceRevitAssetData;
-        
-        public bool IsRackAsset { get; private set; } 
-        public bool IsDeviceAsset { get; private set; } 
-
+        public bool IsRackAsset => string.IsNullOrEmpty(rackRevitAssetData?.DevicePath) == false; 
+        public bool IsDeviceAsset => string.IsNullOrEmpty(deviceRevitAssetData?.DevicePath) == false; 
         public EnvironmentData EnvData => envData ??= GetComponent<EnvironmentDataHolder>().EnvData;
         private EnvironmentData envData;
         
         /// 接收RackAssetData
         public void ReceiveAssetData(RevitAssetData revitAssetData)
         {
-            rackRevitAssetData = revitAssetData as RackRevitAssetData;
-            IsRackAsset = rackRevitAssetData != null;
-
-            deviceRevitAssetData = revitAssetData as DeviceRevitAssetData;
-            IsDeviceAsset = deviceRevitAssetData != null;
+            switch (revitAssetData.RevitAssetKind)
+            {
+                case EnumRevitAssetKind.Rack: rackRevitAssetData = revitAssetData as RackRevitAssetData; break;
+                default: deviceRevitAssetData = revitAssetData as DeviceRevitAssetData; break;
+            }
         }
     }
 }

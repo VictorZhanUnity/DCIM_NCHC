@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -9,8 +10,49 @@ namespace _VictorDev.ApiExtensions
     /// 原API String類別功能擴充
     public static class StringExtension
     {
+        /// [Extended] - 尋找字串裡是否有關鍵單字
+        public static bool IsContainKeyword(this string self, StringComparison comparison,  params string[] keywords)
+        {
+            if (string.IsNullOrEmpty(self) || keywords == null || keywords.Length == 0)
+                return false;
+
+            foreach (var key in keywords)
+            {
+                if (string.IsNullOrWhiteSpace(key))
+                    continue;
+
+                // 判斷是否為純英文（決定是否要用 word boundary）
+                bool isEnglish = key.All(c => c <= 127 && char.IsLetterOrDigit(c));
+
+                if (isEnglish)
+                {
+                    // 英文：完整單字比對
+                    var pattern = $@"\b{Regex.Escape(key)}\b";
+
+                    // Regex 本身不吃 StringComparison，只能對應 IgnoreCase
+                    var opts = RegexOptions.None;
+                    if (comparison == StringComparison.OrdinalIgnoreCase ||
+                        comparison == StringComparison.CurrentCultureIgnoreCase ||
+                        comparison == StringComparison.InvariantCultureIgnoreCase)
+                    {
+                        opts |= RegexOptions.IgnoreCase;
+                    }
+
+                    if (Regex.IsMatch(self, pattern, opts))
+                        return true;
+                }
+                else
+                {
+                    // 中文或混合字串：直接用 StringComparison
+                    if (self.IndexOf(key, comparison) >= 0)
+                        return true;
+                }
+            }
+
+            return false;
+        }
         
-        /// [Extended] - 取出字串裡的數字
+        /// [Extended] - 取出字串裡的數字，並向左補位數
         public static string GetIntString(this string self, int padLeft = 0) 
             => Regex.Match(self, @"\d+").Value.PadLeft(padLeft, '0');
 

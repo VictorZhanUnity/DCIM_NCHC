@@ -13,6 +13,23 @@ namespace _VictorDev.ApiExtensions
     /// [Extended] 原API類別功能擴充
     public static class TransformExtension
     {
+        /// [Extended] 尋找所有的子物件
+        public static List<Transform> GetAllChildren(this List<Transform> self)
+        {
+            List<Transform> result = new();
+            foreach (var child in self)
+                CollectChildrenRecursive(child, result);
+            return result;
+            void CollectChildrenRecursive(Transform parent, List<Transform> output)
+            {
+                foreach (Transform child in parent)
+                {
+                    output.Add(child);
+                    CollectChildrenRecursive(child, output); // 深度遞迴
+                }
+            }
+        }
+        
         /// 檢查是否已含有Component
         /// <para>+ 有：回傳現有的 </para>
         /// <para>+ 無：回傳新增的 </para>
