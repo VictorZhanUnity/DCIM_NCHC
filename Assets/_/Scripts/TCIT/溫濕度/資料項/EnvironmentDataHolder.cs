@@ -43,7 +43,6 @@ namespace _VictorDev.TCIT.DCIM
         }
         private void UpdateRackColor()
         {
-            Debug.Log("UpdateRackColor");
             Color targetColor = rackSourceColor;
             float percent;
             switch (rackDisplayType)
