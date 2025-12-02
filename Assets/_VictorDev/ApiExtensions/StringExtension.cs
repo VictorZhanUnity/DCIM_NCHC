@@ -52,9 +52,12 @@ namespace _VictorDev.ApiExtensions
             return false;
         }
         
-        /// [Extended] - 取出字串裡的數字，並向左補位數
-        public static string GetIntString(this string self, int padLeft = 0) 
-            => Regex.Match(self, @"\d+").Value.PadLeft(padLeft, '0');
+        /// [Extended] - 取出字串裡的所有數字，並向左補位數
+        public static string GetNumberString(this string self, int padLeft = 0)
+        {
+            string digits = string.Concat(Regex.Matches(self, @"\d+").Select(m => m.Value));
+            return digits.PadLeft(padLeft, '0');
+        }
 
         /// [Extended] - 依換行符號，分割成數行string
         public static string[] SplitToLines(this string self, params char[] delimiter)

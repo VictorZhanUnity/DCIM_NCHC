@@ -32,7 +32,7 @@ namespace _VictorDev.TCIT.DCIM
         {
             get
             {
-                string code = DeviceNameAndCode.Split("+")[1].GetIntString(4);
+                string code = DeviceNameAndCode.Split("+")[1].GetNumberString(4);
                 return $"NCHC1151114{code}";
             }
         }
