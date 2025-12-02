@@ -124,9 +124,6 @@ namespace _VictorDev.DateTimeUtils
             if (isActiveInStart) StartTimer();
         }
 
-        private void OnEnable() => StartTimer();
-        private void OnDisable() => StopTimer(false);
-
         private void OnValidate() => iTimerMonoBehaviour = ObjectHelper.CheckTypeOfList<ITimer>(iTimerMonoBehaviour).ToList();
 
         private void Awake() => iTimerTargets = iTimerMonoBehaviour.Cast<ITimer>().ToList();

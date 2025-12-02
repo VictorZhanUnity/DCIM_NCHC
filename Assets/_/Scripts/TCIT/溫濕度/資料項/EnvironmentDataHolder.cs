@@ -1,9 +1,11 @@
 using System;
+using _VictorDev.ApiExtensions;
 using _VictorDev.ColorUtils;
 using _VictorDev.TCIT.DCIM.EnvironmentModule;
 using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
+using Debug = _VictorDev.DebugUtils.Debug;
 
 namespace _VictorDev.TCIT.DCIM
 {
@@ -18,7 +20,7 @@ namespace _VictorDev.TCIT.DCIM
         
         [Foldout("[DoTween設定]"), SerializeField] private float duration = 0.5f;
         [Foldout("[DoTween設定]"), SerializeField] private Ease ease = Ease.OutQuad;
-        private Color RackSourceColor => ColorHelper.HexToColor(0x333333);
+        private Color rackSourceColor;
         public EnvironmentData EnvData => envData;
         
         /// 機櫃資料
@@ -32,6 +34,8 @@ namespace _VictorDev.TCIT.DCIM
         
         #endregion
 
+        private void Start() => rackSourceColor = RackMaterial.color;
+
         public void SetEnvironmentData(EnvironmentData data)
         {
             envData = data;
@@ -39,7 +43,8 @@ namespace _VictorDev.TCIT.DCIM
         }
         private void UpdateRackColor()
         {
-            Color targetColor = RackSourceColor;
+            Debug.Log("UpdateRackColor");
+            Color targetColor = rackSourceColor;
             float percent;
             switch (rackDisplayType)
             {
@@ -61,7 +66,7 @@ namespace _VictorDev.TCIT.DCIM
         {
             rackDisplayType = value;
             RackMaterial.DOKill();
-            RackMaterial.color = RackSourceColor;
+            RackMaterial.color = rackSourceColor;
         }
     }
 }

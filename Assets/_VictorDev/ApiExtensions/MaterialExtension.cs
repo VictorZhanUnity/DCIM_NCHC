@@ -1,10 +1,15 @@
 using UnityEngine;
+using Debug = _VictorDev.DebugUtils.Debug;
 
 namespace _VictorDev.ApiExtensions
 {
     /// 原API類別功能擴充
     public static class MaterialExtension
     {
+        /// [Extension] - 判斷是否為Transparent (URP)
+        public static bool IsTransparentURP(this Material self) => self.GetInt("_Surface") == 1;
+
+
         /// [Extension] - 全部替換成指定material
         public static Material[] ToCopyWithChangeMaterials(this Material[] materials, Material material)
         {
