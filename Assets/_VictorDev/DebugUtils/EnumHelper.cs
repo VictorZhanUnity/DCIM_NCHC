@@ -59,7 +59,7 @@ namespace _VictorDev.DebugUtils
             keyword = keyword.Trim();
             foreach (TEnum option in Enum.GetValues(typeof(TEnum)))
             {
-                if (keyword.IsContainKeyword(StringComparison.OrdinalIgnoreCase, option.ToString()))
+                if (keyword.ContainKeyword(StringComparison.OrdinalIgnoreCase, option.ToString()))
                     return option;
             }
             return defaultValue;

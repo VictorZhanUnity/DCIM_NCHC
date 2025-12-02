@@ -11,7 +11,7 @@ namespace _VictorDev.ApiExtensions
     public static class StringExtension
     {
         /// [Extended] - 尋找字串裡是否有關鍵單字
-        public static bool IsContainKeyword(this string self, StringComparison comparison,  params string[] keywords)
+        public static bool ContainKeyword(this string self, StringComparison comparison,  params string[] keywords)
         {
             if (string.IsNullOrEmpty(self) || keywords == null || keywords.Length == 0)
                 return false;
@@ -21,16 +21,13 @@ namespace _VictorDev.ApiExtensions
                 if (string.IsNullOrWhiteSpace(key))
                     continue;
 
-                // 判斷是否為純英文（決定是否要用 word boundary）
-                bool isEnglish = key.All(c => c <= 127 && char.IsLetterOrDigit(c));
+                // 判斷是否是 ASCII 範圍內的英數字（含 A-Z, a-z, 0-9）
+                bool isAsciiWord = key.All(c => c <= 127 && char.IsLetterOrDigit(c));
 
-                if (isEnglish)
+                if (isAsciiWord)
                 {
-                    // 英文：完整單字比對
-                    var pattern = $@"\b{Regex.Escape(key)}\b";
-
-                    // Regex 本身不吃 StringComparison，只能對應 IgnoreCase
-                    var opts = RegexOptions.None;
+                    // RegexOptions：是否大小寫不分
+                    RegexOptions opts = RegexOptions.None;
                     if (comparison == StringComparison.OrdinalIgnoreCase ||
                         comparison == StringComparison.CurrentCultureIgnoreCase ||
                         comparison == StringComparison.InvariantCultureIgnoreCase)
@@ -38,12 +35,25 @@ namespace _VictorDev.ApiExtensions
                         opts |= RegexOptions.IgnoreCase;
                     }
 
+                    string pattern;
+
+                    // ① 若是「純數字」→ 使用數字邊界，不允許前後是數字
+                    if (key.All(char.IsDigit))
+                    {
+                        pattern = $@"(?<![0-9]){Regex.Escape(key)}(?![0-9])";
+                    }
+                    else
+                    {
+                        // ② 若是英數混合 → 使用英數字邊界，不允許前後是 A-Z a-z 0-9
+                        pattern = $@"(?<![A-Za-z0-9]){Regex.Escape(key)}(?![A-Za-z0-9])";
+                    }
+
                     if (Regex.IsMatch(self, pattern, opts))
                         return true;
                 }
                 else
                 {
-                    // 中文或混合字串：直接用 StringComparison
+                    // 中文、全形、或混合符號：用 IndexOf 即可
                     if (self.IndexOf(key, comparison) >= 0)
                         return true;
                 }

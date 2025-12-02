@@ -45,7 +45,7 @@ namespace _VictorDev.ApiExtensions
         {
             bool isInclude = searchType == EnumSearchType.Include;
             return self.Where(target =>
-                    keyWords.Any(word => target.name.IsContainKeyword(StringComparison.OrdinalIgnoreCase, word) == isInclude))
+                    keyWords.Any(word => target.name.ContainKeyword(StringComparison.OrdinalIgnoreCase, word) == isInclude))
                 .ToList();
         }
         #endregion
