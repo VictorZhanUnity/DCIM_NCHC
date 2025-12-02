@@ -30,17 +30,13 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule
         public List<EnvironmentDataHolder> EvnDataHolders => evnDataHolders;
 
         /// 機櫃群與其所有設備
-        public List<Transform> RacksAndDevices => racksAndDevices ??=
+        /*public List<Transform> RacksAndDevices => racksAndDevices ??=
             evnDataHolders.Select(envHolder => envHolder.RackData.Model)
                 .Concat(evnDataHolders.SelectMany(envHolder => envHolder.RackData.Containers)
                     .Where(device=> device!=null)
-                    .Select(device => device.Model)).ToList();
-
-        /*public List<Transform> RacksAndDevices => racksAndDevices ??=
-            evnDataHolders.SelectMany(envHolder => envHolder.RackData.Containers).Select(device => device.Model)
-                .ToList();*/
+                    .Select(device => device.Model)).ToList();*/
         
-        
+        public List<Transform> RacksAndDevices => racksAndDevices ??= evnDataHolders.Select(envHolder => envHolder.RackData.Model).ToList();
         private List<Transform> racksAndDevices;
 
         #endregion

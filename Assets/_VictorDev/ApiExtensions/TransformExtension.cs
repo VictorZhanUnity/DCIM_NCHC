@@ -74,11 +74,30 @@ namespace _VictorDev.ApiExtensions
             => FindChildrenByKeywords<MeshRenderer>(self, searchType, keywords);
         /// 搜尋子物件(有實作T類別)，名稱(包含/不包含)關鍵字
         public static List<Transform> FindChildrenByKeywords<T>(this Transform self, EnumSearchType searchType = EnumSearchType.Include, params string[] keywords)
-         where T : Component
+            where T : Component
         {
-            return self.GetComponentsInChildren<Transform>(includeInactive: true).Where(t => 
-                    t != self && t.GetComponent<T>() != null && IsMatch(t.name, searchType, keywords))
-                    .OrderBy(t=> t.name).ToList();
+            return self.GetComponentsInChildren<Transform>(includeInactive: true)
+                .Where(target =>
+                {
+                    if (target == self) 
+                        return false;
+
+                    var comp = target.GetComponent<T>();
+                    if (comp == null)
+                        return false;
+
+                    // ---- 核心：安全檢查 enabled ----
+                    bool isEnabled = comp switch
+                    {
+                        Behaviour b => b.enabled,
+                        Collider c => c.enabled,
+                        Renderer r => r.enabled,
+                        _ => true  // 若沒有 enabled 屬性 → 視為啟用
+                    };
+                    return isEnabled && IsMatch(target.name, searchType, keywords);
+                })
+                .OrderBy(t => t.name)
+                .ToList();
         }
         
         private static bool IsMatch(string name, EnumSearchType searchType, string[] keywords)
