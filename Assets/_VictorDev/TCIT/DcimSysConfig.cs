@@ -21,13 +21,10 @@ namespace _VictorDev.TCIT.DCIM
         [Foldout("[環控設定]"), SerializeField] private Gradient humidityColor;
 
         /// 設計RT值佔的百分比
-        public static float CalculateRtPercent(float rtValue) =>
-            Mathf.Clamp01((rtValue - Instance.rtRange.x) / Instance.rtRange.GetDeviation());
-        
+        public static float CalculateRtPercent(float value) => Instance.rtRange.GetPercentage01(value);
         
         /// 設計RH值佔的百分比
-        public static float CalculateRhPercent(float rhValue) =>
-            Mathf.Clamp01((rhValue - Instance.rhRange.x) / Instance.rhRange.GetDeviation());
+        public static float CalculateRhPercent(float value) => Instance.rhRange.GetPercentage01(value);
         
         /// 取得百分比的顏色
         public static Color GetPercentHeatColor(float percent) => Instance.heatColor.Evaluate(percent);

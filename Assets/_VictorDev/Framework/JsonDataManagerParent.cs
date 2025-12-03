@@ -24,7 +24,7 @@ namespace _VictorDev.DebugUtils
             => receiverTargets ??= receivers.Cast<IReceiveData<TData>>().ToList();
         private List<IReceiveData<TData>> receiverTargets;
 
-        protected TData Data => data;
+        public TData Data => data;
         
         #endregion
 
@@ -45,6 +45,6 @@ namespace _VictorDev.DebugUtils
         
         /// 發送資料
         public void InvokeData() => ReceiverReceivers.ForEach(receive => receivers.ReceiveData(data));
-        private void OnValidate() => receivers = ObjectHelper.CheckTypeOfList<IReceiveData<TData>>(receivers);
+        protected virtual void OnValidate() => receivers = ObjectHelper.CheckTypeOfList<IReceiveData<TData>>(receivers);
     }
 }

@@ -9,13 +9,14 @@ using Debug = _VictorDev.DebugUtils.Debug;
 
 namespace _VictorDev.TCIT.DCIM.RevitAssetModule
 {
-    public class ModelDataCombiner : MonoBehaviour, IReceiveData<List<RackRevitAssetData>>, IReceiveData<List<Transform>>
+    public class ModelDataCombiner : MonoBehaviour, IReceiveData<List<Transform>>
     {
         #region Variables
 
         [Foldout("模型種類"), SerializeField] private List<Transform> rackModels, serverModels, routerModels, switchModels
             , odfModels, rackStationModels;
-        [Label("Json資料"), SerializeField] private List<RackRevitAssetData> dataList;
+        
+        [SerializeField] private RevitAssetDataManager revitAssetDataManager;
         
         #endregion
         
@@ -28,17 +29,12 @@ namespace _VictorDev.TCIT.DCIM.RevitAssetModule
             odfModels = data.FilterByNameForKeywords(EnumSearchType.Include, EnumRevitAssetKind.ODF.ToString());
             rackStationModels = data.FilterByNameForKeywords(EnumSearchType.Include, EnumRevitAssetKind.RackStation.ToString());
         }
-
-        public void ReceiveData(List<RackRevitAssetData> data)
-        {
-            dataList = data;
-        }
-
+      
         [Button]
         /// 結合資料與模型
         private void CombineDataAndModel()
         {
-            dataList.ForEach(rack =>
+            revitAssetDataManager.Data.ForEach(rack =>
             {
                 //機櫃模型
                 rack.SetModelFromList(rackModels);

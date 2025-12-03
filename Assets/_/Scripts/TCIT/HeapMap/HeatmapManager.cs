@@ -1,132 +1,76 @@
-using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
+using _VictorDev.ApiExtensions;
+using _VictorDev.DebugUtils;
+using _VictorDev.TCIT.DCIM.EnvironmentModule;
 using NaughtyAttributes;
+using UnityEngine;
 
-public class HeatmapManager : MonoBehaviour
+namespace _VictorDev.Framework.HeatmapUtils
 {
-    [Header("Heatmap Plane")]
-    public Transform heatmapPlane;  // 綁你的地板
-    public Vector2 planeSize = new Vector2(10, 20);  // 地板世界尺寸
-
-    [Header("Temperature Range")]
-    public float minTemp = 18f;
-    public float maxTemp = 30f;
-
-    [Header("Heatmap Settings")]
-    public int textureSize = 512;
-
-    [Header("References")]
-    public Material blurMaterial;
-    public Material colorMaterial;
-    public Renderer targetRenderer;   // 地板 Mesh Renderer
-
-    public Texture2D rawTex;
-    public RenderTexture blurRT;
-    public RenderTexture finalRT;
-
-    void Start()
+    public class HeatmapManager : MonoBehaviour
     {
-        InitTextures();
-    }
+        #region Variables
 
-    [Button]
-    void InitTextures()
-    {
-        rawTex = new Texture2D(textureSize, textureSize, TextureFormat.RFloat, false);
+        [Label("[Sensor群]"), SerializeField] private List<HeatmapSensor_Environment> sensors;
+        [Foldout("[設定]"), SerializeField] private Material heatmapMaterial;
+        [Foldout("[設定]"), SerializeField] private Texture2D textureRt, textureRh;
+        [Foldout("[設定]"), SerializeField] private MeshRenderer targetMeshRenderer;
+        [Foldout("[設定]"), SerializeField] private EnvironmentDataManager envDataManager;
 
-        //blurRT = new RenderTexture(textureSize, textureSize, 0, RenderTextureFormat.RFloat);
-        //finalRT = new RenderTexture(textureSize, textureSize, 0, RenderTextureFormat.ARGB32);
+        private Vector4[] sensorArray;
 
-        // 結果貼到地板
-        targetRenderer.material.SetTexture("_MainTex", finalRT);
-    }
+        private string StrPointCount => "_PointCount";
+        private string StrPoints => "_Points";
+        private string StrGradientTexture => "_GradientTex";
+        #endregion
 
-    // ----------------------------------------------------------
-    // Public API：你只要呼叫 UpdateHeatmap(sensorList)
-    // ----------------------------------------------------------
-    public void UpdateHeatmap(List<SensorData> sensors)
-    {
-        ClearRawTexture();
-
-        foreach (var s in sensors)
+        [Button]
+        private void CreateSensorToRackModels()
         {
-            Vector2 uv = WorldToUV(s.worldPos);
-            float n = NormalizeTemp(s.temperature);
-
-            if (uv.x >= 0 && uv.x <= 1 && uv.y >= 0 && uv.y <= 1)
-                AddSensorToRaw(uv, n);
+            sensors.Clear();
+            envDataManager.DataHolders.ForEach(holder =>
+            {
+                HeatmapSensor_Environment sensor = holder.transform.TryAddComponent<HeatmapSensor_Environment>();
+                sensor.SetData(holder);
+                sensors.Add(sensor);
+            });
+            sensors = sensors.OrderBy(target => target.name).ToList();
         }
 
-        rawTex.Apply();
-
-        // Step 2: Blur
-        Graphics.Blit(rawTex, blurRT, blurMaterial);
-
-        // Step 3: Color
-        Graphics.Blit(blurRT, finalRT, colorMaterial);
-    }
-
-    // ----------------------------------------------------------
-    // 工具：世界座標 -> UV(0~1)
-    // ----------------------------------------------------------
-    Vector2 WorldToUV(Vector3 worldPos)
-    {
-        Vector3 local = heatmapPlane.InverseTransformPoint(worldPos);
-
-        float u = Mathf.InverseLerp(-planeSize.x / 2, planeSize.x / 2, local.x);
-        float v = Mathf.InverseLerp(-planeSize.y / 2, planeSize.y / 2, local.z);
-
-        return new Vector2(u, v);
-    }
-
-    // ----------------------------------------------------------
-    // 工具：溫度 Normalize → 0~1
-    // ----------------------------------------------------------
-    float NormalizeTemp(float t)
-    {
-        return Mathf.InverseLerp(minTemp, maxTemp, t);
-    }
-
-    // ----------------------------------------------------------
-    // 工具：繪 RawTexture（黑白）
-    // ----------------------------------------------------------
-    void AddSensorToRaw(Vector2 uv, float n)
-    {
-        int x = Mathf.RoundToInt(uv.x * (textureSize - 1));
-        int y = Mathf.RoundToInt(uv.y * (textureSize - 1));
-
-        rawTex.SetPixel(x, y, new Color(n, n, n));
-    }
-
-    void ClearRawTexture()
-    {
-        for (int y = 0; y < textureSize; y++)
-            for (int x = 0; x < textureSize; x++)
-                rawTex.SetPixel(x, y, Color.black);
-    }
-
-    void OnDestroy()
-    {
-        if (blurRT) blurRT.Release();
-        if (finalRT) finalRT.Release();
-    }
-
-
-    public List<Transform> rackList;
-    
-    [Button]
-    private void Test()
-    {
-        List<SensorData> sensors = new List<SensorData>();
-
-        foreach (var rack in rackList)
+        [Button]
+        private void RemoveSensorFromRackModels()
         {
-            Vector3 pos = rack.transform.position;
-            float temp = Random.Range(minTemp, maxTemp);
-
-            sensors.Add(new SensorData(pos, temp));
+            sensors.ForEach(ObjectHelper.Destroy);
+            sensors.Clear();
         }
 
-        UpdateHeatmap(sensors);
+        [Button]
+        public void ShowHeatmap_RT()
+        {
+            heatmapMaterial.SetTextureURP(textureRt, StrGradientTexture);
+            sensorArray = sensors.Select(target => target.Vector4Data_RT).ToArray();
+            SetHeatmapData();
+        }
+        [Button]
+        public void ShowHeatmap_RH()
+        {
+            heatmapMaterial.SetTextureURP(textureRh, StrGradientTexture);
+            sensorArray = sensors.Select(target => target.Vector4Data_RH).ToArray();
+            SetHeatmapData();
+        }
+
+        private void SetHeatmapData()
+        {
+            heatmapMaterial.SetInt(StrPointCount, sensorArray.Length);
+            heatmapMaterial.SetVectorArray(StrPoints, sensorArray);
+        }
+
+        private void Awake()
+        {
+            if (targetMeshRenderer != null) targetMeshRenderer.material = heatmapMaterial;
+        }
+
+        private void OnValidate() => Awake();
     }
 }

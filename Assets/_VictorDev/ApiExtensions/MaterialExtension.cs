@@ -6,6 +6,10 @@ namespace _VictorDev.ApiExtensions
     /// 原API類別功能擴充
     public static class MaterialExtension
     {
+
+        /// [Extension] - 設定Texture (URP)
+        public static void SetTextureURP(this Material self, Texture2D texture, string paramName = "_BaseMap") => self.SetTexture(paramName, texture);
+
         /// [Extension] - 判斷是否為Transparent (URP)
         public static bool IsTransparentURP(this Material self) => self.GetInt("_Surface") == 1;
 
