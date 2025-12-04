@@ -102,9 +102,8 @@ namespace _VictorDev.ApiExtensions
         
         private static bool IsMatch(string name, EnumSearchType searchType, string[] keywords)
         {
-            bool containsAny = keywords.Any(key =>
-                name.Contains(key, StringComparison.OrdinalIgnoreCase));
-
+            bool containsAny = name.ContainKeyword(StringComparison.OrdinalIgnoreCase, keywords);
+            
             return searchType switch
             {
                 EnumSearchType.Include => containsAny,      // 只要包含任一關鍵字即可

@@ -31,9 +31,5 @@ namespace _VictorDev.DebugUtils
         
         private void OnEnable() => toggle?.onValueChanged.AddListener(SetBoolValue);
         private void OnDisable() => toggle?.onValueChanged.RemoveListener(SetBoolValue);
-
-        [Button]
-        private void FindComponents() => toggle = GetComponent<Toggle>();
-        private void Reset() => FindComponents();
     }
 }

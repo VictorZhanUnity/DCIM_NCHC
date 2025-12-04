@@ -17,7 +17,7 @@ namespace _VictorDev.DoTweenUtils
         public void SetText(string str)
         {
             str = str.Trim();
-            if (Application.isPlaying && duration !=0 && delay != 0) DotweenHelper.ToBlink(txt, str, duration, delay, isRandomDelay);
+            if (Application.isPlaying && duration !=0 && delay != 0) DoTweenHelper.ToBlink(txt, str, duration, delay, isRandomDelay);
             else txt.text = str;
         }
 

@@ -5,12 +5,11 @@ using _VictorDev.DebugUtils;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
-using Random = UnityEngine.Random;
 
 namespace _VictorDev.TCIT.DCIM.EnvironmentModule
 {
     /// 環控資料管理
-    public class EnvironmentDataManager : JsonDataManagerParent<List<EnvironmentData>>, ITimer
+    public class EnvironmentDataManager : JsonDataManagerParent<List<EnvironmentData>>, ITimerUpdate
     {
         #region Variables
 
@@ -43,21 +42,15 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule
             {
                 holder.SetEnvironmentData(new EnvironmentData()
                 {
-                    rt = Random.Range(14, 28),
-                    rh = Random.Range(45, 70),
+                    rt = DcimSysConfig.RTValueValueRangeDEMO.GetRandomValue(),
+                    rh = DcimSysConfig.RhValueValueRangeDEMO.GetRandomValue(),
                 });
             });
             
             onLoadDataCompleteEvent?.Invoke();
         }
 
-        private void Start() => OnTimeFinished();
-
         public void OnTimeUpdate()=> LoadRtRhData();
-
-        public void OnTimeFinished()
-        {
-        }
 
         public void ShowHeatColor_RT() => dataHolders.ForEach(holder=> holder.SetRackDisplayType(EnumEnvDataType.RT));
         public void ShowHeatColor_RH() => dataHolders.ForEach(holder=> holder.SetRackDisplayType(EnumEnvDataType.RH));

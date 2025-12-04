@@ -15,7 +15,7 @@ namespace _VictorDev.TCIT.DCIM
     {
         #region Variables
 
-        [Foldout("[資料項]"), SerializeField] private EnvironmentData envData;
+        [Label("[資料項] - EnvironmentData"), SerializeField] private EnvironmentData envData;
         
         
         [Foldout("[DoTween設定]"), SerializeField] private float duration = 0.5f;
@@ -31,6 +31,7 @@ namespace _VictorDev.TCIT.DCIM
         private Material rackMaterial;
 
         private EnumEnvDataType rackDisplayType = EnumEnvDataType.None;
+        private Tween tween;
         
         #endregion
 
@@ -39,7 +40,7 @@ namespace _VictorDev.TCIT.DCIM
         public void SetEnvironmentData(EnvironmentData data)
         {
             envData = data;
-            if(Application.isPlaying) UpdateRackColor();
+            //if(Application.isPlaying) UpdateRackColor();
         }
         private void UpdateRackColor()
         {
@@ -48,23 +49,23 @@ namespace _VictorDev.TCIT.DCIM
             switch (rackDisplayType)
             {
                 case EnumEnvDataType.RT:
-                    percent = DcimSysConfig.CalculateRtPercent(envData.rt);
+                    percent = DcimSysConfig.RTValueValueRange.GetPercentage01(envData.rt);
                     targetColor = DcimSysConfig.GetPercentHeatColor(percent);
                     break;
                 case EnumEnvDataType.RH:
-                    percent = DcimSysConfig.CalculateRhPercent(envData.rh);
+                    percent = DcimSysConfig.RTValueValueRange.GetPercentage01(envData.rh);
                     targetColor = DcimSysConfig.GetPercentHumidityColor(percent);
                     break;
             }
 
-            RackMaterial.DOKill();
-            RackMaterial.DOColor(targetColor, "_BaseColor", duration).SetEase(ease);
+            tween?.Kill();
+            tween = RackMaterial.DOColor(targetColor, "_BaseColor", duration).SetEase(ease);
         }
 
         public void SetRackDisplayType(EnumEnvDataType value)
         {
             rackDisplayType = value;
-            RackMaterial.DOKill();
+            tween?.Kill();
             RackMaterial.color = rackSourceColor;
         }
     }

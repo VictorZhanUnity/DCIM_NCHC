@@ -6,78 +6,100 @@ using Random = UnityEngine.Random;
 
 namespace _VictorDev.DoTweenUtils
 {
-    /// Enabled動畫控制器
     public class DotweenFade2DWithEnabled : MonoBehaviour
     {
-        #region [Components]
-
+        [Header("基本設定")]
         [SerializeField] private bool isOnEnabled = true;
         [SerializeField] private float duration = 0.3f;
         [SerializeField] private bool isRandomDelay = true;
         [SerializeField] private float delay = 0.3f;
         [SerializeField] private float delay_Start = 0f;
         [SerializeField] private Ease ease = Ease.OutQuad;
-        [Header(">>> 是否移動")]
+
+        [Header("移動設定")]
         [SerializeField] private bool isDoMove = false;
         [SerializeField] private Vector3 fromPosValue = Vector3.zero;
-        [Header(">>> 是否縮放")]
+
+        [Header("縮放設定")]
         [SerializeField] private bool isDoScale = false;
         [SerializeField] private float fromScaleValue = 1f;
 
-        [Header(">>> 動畫目標對像(若為空則自動指向本身")]
+        [Header("目標（留空自抓）")]
         [SerializeField] private Transform targetTrans;
-        private Vector3? originalPos { get; set; } = null;
-        private Vector3? originalScale { get; set; } = null;
-        public CanvasGroup canvasGroup => _canvasGroup ??= GetComponent<CanvasGroup>();
-        [NonSerialized] private CanvasGroup _canvasGroup;
-        #endregion
 
-        [Header(">>> [Event] 當動畫結束時Invoke")]
+        private Vector3 originalPos;
+        private Vector3 originalScale;
+        private CanvasGroup cg;
+        private RectTransform rect;
+        private Sequence seq;
+
+        [Header("事件")]
         public UnityEvent onAnimateFinished = new UnityEvent();
-        [Header(">>> [Event] OnEabled時Invoke")]
         public UnityEvent onEnabledEvent = new UnityEvent();
-        [Header(">>> [Event] OnDisabled時Invoke")]
         public UnityEvent onDisabledEvent = new UnityEvent();
 
-        private RectTransform targetRectTrans;
-        
+        private void Awake()
+        {
+            if (targetTrans == null) targetTrans = transform;
+
+            rect = targetTrans as RectTransform;
+            originalPos = rect.localPosition;
+            originalScale = rect.localScale;
+
+            if (!targetTrans.TryGetComponent(out cg))
+                cg = targetTrans.gameObject.AddComponent<CanvasGroup>();
+        }
+
         private void OnEnable()
         {
             onEnabledEvent?.Invoke();
-            if(isOnEnabled) ToShow();
+            if (isOnEnabled) ToShow();
         }
 
-        [ContextMenu("- 播放Dotween動畫")]
         public void ToShow()
         {
-            DOTween.Kill(targetRectTrans);
+            KillSeq();
 
-            if (targetTrans == null) targetTrans = transform;
-            targetRectTrans = targetTrans as RectTransform;
+            float targetDelay = delay_Start + (isRandomDelay ? UnityEngine.Random.Range(0, delay) : delay);
 
-            originalPos ??= targetRectTrans.localPosition;
-            originalScale ??= targetRectTrans.localScale;
-            if (targetRectTrans.TryGetComponent(out CanvasGroup cg) == false)
-            {
-                cg = targetRectTrans.gameObject.AddComponent<CanvasGroup>();
-            }
-            Vector3 fromPos = (originalPos ?? Vector3.zero) + fromPosValue;
-            float targetDelay = delay_Start + (isRandomDelay ? Random.Range(0, delay) : delay);
+            // ===== 建立 Sequence =====
+            seq = DOTween.Sequence().SetTarget(rect);
+            seq.SetDelay(targetDelay);
+
+            // Fade
             cg.alpha = 0;
-            void CheckAlpha() => cg.interactable = cg.blocksRaycasts = cg.alpha == 1;
-            CheckAlpha();
-            cg.DOFade(1, duration).From(0).SetEase(ease).SetDelay(targetDelay).OnUpdate(CheckAlpha).OnComplete(()=>onAnimateFinished?.Invoke()).SetTarget(targetRectTrans);
+            seq.Join(cg.DOFade(1f, duration).SetEase(ease));
 
-            if (isDoMove) targetRectTrans.DOLocalMove(originalPos ?? Vector3.zero, duration).From(fromPos).SetEase(ease).SetDelay(targetDelay).SetTarget(targetRectTrans);
-           // if (isDoMove) targetRectTrans.DOAnchorPos(originalPos ?? Vector3.zero, duration).From(fromPos).SetEase(ease).SetDelay(targetDelay).SetTarget(targetRectTrans);
-            if (isDoScale) targetRectTrans.DOScale(originalScale ?? Vector3.zero, duration).From(new Vector3(fromScaleValue, fromScaleValue, fromScaleValue)).SetEase(ease).SetDelay(targetDelay).SetTarget(targetRectTrans);
-            
-            gameObject.SetActive(true);
+            // Move
+            if (isDoMove)
+            {
+                Vector3 fromPos = originalPos + fromPosValue;
+                rect.localPosition = fromPos;
+
+                seq.Join(rect.DOLocalMove(originalPos, duration).SetEase(ease));
+            }
+
+            // Scale
+            if (isDoScale)
+            {
+                rect.localScale = Vector3.one * fromScaleValue;
+
+                seq.Join(rect.DOScale(originalScale, duration).SetEase(ease));
+            }
+
+            seq.OnComplete(() => onAnimateFinished?.Invoke());
         }
+
         private void OnDisable()
         {
-            DOTween.Kill(targetTrans);
+            KillSeq();
             onDisabledEvent?.Invoke();
+        }
+
+        private void KillSeq()
+        {
+            seq?.Kill(true);
+            seq = null;
         }
     }
 }

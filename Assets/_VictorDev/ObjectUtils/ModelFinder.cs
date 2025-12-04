@@ -7,7 +7,6 @@ using _VictorDev.DebugUtils;
 using NaughtyAttributes;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Events;
 using Debug = _VictorDev.DebugUtils.Debug;
 
 namespace _VictorDev.ObjectUtils
@@ -27,10 +26,6 @@ namespace _VictorDev.ObjectUtils
         [Foldout("[設定]"), SerializeField] private Transform targetModelsParent;
         [Foldout("[設定]"), SerializeField, Label("設定LayerMask(選填)")] private LayerMask layerMask;
         
-        private List<IReceiveData<List<Transform>>> ReceiverReceivers
-            => receiverTargets ??= receivers.Cast<IReceiveData<List<Transform>>>().ToList();
-        private List<IReceiveData<List<Transform>>> receiverTargets;
-        
         #endregion
 
 
@@ -38,7 +33,8 @@ namespace _VictorDev.ObjectUtils
         public void FindModelsByKeywords()
         {
             foundModels = targetModelsParent.FindChildrenByKeywords(searchType, keyWords);
-            ReceiverReceivers.ForEach(receiver=> receiver.ReceiveData(foundModels));
+            receivers.Cast<IReceiveData<List<Transform>>>().ToList()
+                .ForEach(receiver=> receiver.ReceiveData(foundModels));
             Debug.Log($"Found {foundModels.Count} target objects.", this);
         }
         

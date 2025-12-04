@@ -12,7 +12,7 @@ using UnityEngine.UI;
 namespace _VictorDev.TCIT.DCIM.EnvironmentModule
 {
     /// 環控區域劃分管理器
-    public class EnvironmentSectionManager : MonoBehaviour, ITimer
+    public class EnvironmentSectionManager : MonoBehaviour, ITimerUpdate
     {
         #region Variables
 
@@ -79,10 +79,6 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule
         
         public void OnTimeUpdate() => CalculateAverageValue();
 
-        public void OnTimeFinished()
-        {
-        }
-        
         #region Toggle EventListener
         
         private void Start()

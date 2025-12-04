@@ -6,6 +6,7 @@ using System.Linq;
 using _VictorDev.Configs;
 using _VictorDEV.DateTimeUtils;
 using _VictorDev.DebugUtils;
+using _VictorDev.MediatorUtils;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
@@ -54,7 +55,8 @@ namespace _VictorDev.DateTimeUtils
 
 
         [Label("[ITimer對像]"), SerializeField] private List<MonoBehaviour> iTimerMonoBehaviour;
-        private List<ITimer> iTimerTargets;
+        private List<ITimerUpdate> iTimerUpdateTargets;
+        private List<ITimerFinish> iTimerFinishTargets;
 
         public bool IsTimerRunning => timerCoroutine != null;
 
@@ -88,13 +90,13 @@ namespace _VictorDev.DateTimeUtils
         public void OnTimeUpdated()
         {
             onTimeUpdated?.Invoke(GetNowDateTimeString());
-            iTimerTargets?.ForEach(target=> target.OnTimeUpdate());
+            iTimerUpdateTargets?.ForEach(target=> target.OnTimeUpdate());
         }
         
         public void OnTimerFinished()
         {
             onTimerFinished?.Invoke(GetNowDateTimeString());
-            iTimerTargets.ForEach(target=> target.OnTimeFinished());
+            iTimerFinishTargets.ForEach(target=> target.OnTimeFinished());
         }
 
         /// 開始時鐘
@@ -124,16 +126,25 @@ namespace _VictorDev.DateTimeUtils
             if (isActiveInStart) StartTimer();
         }
 
-        private void OnValidate() => iTimerMonoBehaviour = ObjectHelper.CheckTypeOfList<ITimer>(iTimerMonoBehaviour).ToList();
+        private void OnValidate() => iTimerMonoBehaviour = ObjectHelper.CheckTypesOfList(iTimerMonoBehaviour
+            , BoolLogicGate.BoolGateType.OR, typeof(ITimerUpdate), typeof(ITimerFinish));
 
-        private void Awake() => iTimerTargets = iTimerMonoBehaviour.Cast<ITimer>().ToList();
+        private void Awake()
+        {
+            iTimerUpdateTargets = iTimerMonoBehaviour.OfType<ITimerUpdate>().ToList();
+            iTimerFinishTargets = iTimerMonoBehaviour.OfType<ITimerFinish>().ToList();
+        }
     }
 
 
-    public interface ITimer
+    public interface ITimerUpdate
     {
         /// 每讀完一個循環時
         void OnTimeUpdate();
+    }
+    
+    public interface ITimerFinish
+    {
         /// 當Timer結束時
         void OnTimeFinished();
     }

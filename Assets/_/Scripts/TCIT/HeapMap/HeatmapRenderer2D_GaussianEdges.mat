@@ -12,7 +12,8 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
-  m_InvalidKeywords: []
+  m_InvalidKeywords:
+  - _USEDYNAMIC_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -29,10 +30,18 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _DynamicAmplitude: 0.05
+    - _DynamicSpeed: 0.5
+    - _GlobalAmplitude: 0.05
+    - _GlobalSpeed: 1
     - _MaxIntensity: 1
+    - _NoiseScale: 1
+    - _NoiseSpeed: 0.3
+    - _NoiseStrength: 0.15
     - _OutsideMode: 1
     - _PointCount: 101
     - _Radius: 1
+    - _UseDynamic: 1
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1

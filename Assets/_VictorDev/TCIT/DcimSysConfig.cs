@@ -12,20 +12,26 @@ namespace _VictorDev.TCIT.DCIM
     /// DCIM App設定檔
     public class DcimSysConfig : SingletonMonoBehaviour<DcimSysConfig>
     {
+        #region Variables
+
         [Label("[COBie語系設定]"), SerializeField] private List<LangConfig> cobieLangConfig;
         [Foldout("[設定]"), SerializeField] private TextFileLoader csvFileLoader;
 
 
-        [Foldout("[環控設定]"), SerializeField] private Vector2 rtRange, rhRange;
+        [Foldout("[環控設定]"), SerializeField] private Vector2 rtValueRange, rhValueRange;
+        [Foldout("[環控設定]"), SerializeField] private Vector4 rtValueThreshold, rhValueThreshold;
+        [Foldout("[環控設定]"), SerializeField] private Vector2 rtValueRangeDEMO, rhValueDEMO;
         [Foldout("[環控設定]"), SerializeField] private Gradient heatColor;
         [Foldout("[環控設定]"), SerializeField] private Gradient humidityColor;
+        
+        public static Vector2 RTValueValueRange => Instance.rtValueRange;
+        public static  Vector2 RhValueValueRange => Instance.rhValueRange;
 
-        /// 設計RT值佔的百分比
-        public static float CalculateRtPercent(float value) => Instance.rtRange.GetPercentage01(value);
+        public static Vector2 RTValueValueRangeDEMO => Instance.rtValueRangeDEMO;
+        public static  Vector2 RhValueValueRangeDEMO => Instance.rhValueDEMO;
         
-        /// 設計RH值佔的百分比
-        public static float CalculateRhPercent(float value) => Instance.rhRange.GetPercentage01(value);
-        
+        #endregion
+
         /// 取得百分比的顏色
         public static Color GetPercentHeatColor(float percent) => Instance.heatColor.Evaluate(percent);
         public static Color GetPercentHumidityColor(float percent) => Instance.humidityColor.Evaluate(percent);

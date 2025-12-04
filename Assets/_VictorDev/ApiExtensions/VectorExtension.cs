@@ -63,6 +63,14 @@ namespace _VictorDev.ApiExtensions
 
         #region Vector2
 
+        /// [Extended] 從X到Y之間取得亂數值
+        public static float GetRandomValue(this Vector2 self)
+        {
+            float min = Mathf.Min(self.x, self.y);
+            float max = Mathf.Max(self.x, self.y);
+            return Random.Range(min, max);
+        }
+
         /// [Extended] 計算值於XY之間的百分比
         public static float GetPercentage01(this Vector2 self, float value)
         {

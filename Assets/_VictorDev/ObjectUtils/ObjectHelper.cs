@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using _VictorDev.MediatorUtils;
 using IngameDebugConsole;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -287,6 +288,41 @@ namespace _VictorDev.DebugUtils
                 sortedChildren[i].SetSiblingIndex(i);
             }
         }
+        /// 檢查List裡面是否有實作T類別，將不符合的從List裡移除
+        public static List<MonoBehaviour> CheckTypesOfList(List<MonoBehaviour> list, BoolLogicGate.BoolGateType logic, params Type[] types)
+        {
+            if (list == null) return null;
+
+            StackTrace stackTrace = new StackTrace();
+            StackFrame frame = stackTrace.GetFrame(1);
+            var method = frame.GetMethod();
+
+            for (int i = list.Count - 1; i >= 0; i--)
+            {
+                MonoBehaviour target = list[i];
+                if (target == null) 
+                {
+                    list.RemoveAt(i);
+                    continue;
+                }
+
+                bool isValid = logic switch
+                {
+                    BoolLogicGate.BoolGateType.AND => types.All(t => t.IsAssignableFrom(target.GetType())),
+                    BoolLogicGate.BoolGateType.OR  => types.Any(t => t.IsAssignableFrom(target.GetType())),
+                    _ => false
+                };
+
+                if (!isValid)
+                {
+                    Debug.Log(
+                        $">>> [接收器：{method.DeclaringType?.Name}] - 物件：{{{target.name}}} 未符合 {logic} 條件, 已移除.");
+                    list.RemoveAt(i);
+                }
+            }
+
+            return list;
+        }
 
         /// 檢查List裡面是否有實作T類別，將不符合的從List裡移除
         public static List<MonoBehaviour> CheckTypeOfList<T>(List<MonoBehaviour> list) where T : class
@@ -311,7 +347,6 @@ namespace _VictorDev.DebugUtils
                     list.Remove(target);
                 }
             }
-
             return list;
         }
 
