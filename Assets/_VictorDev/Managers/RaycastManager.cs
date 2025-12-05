@@ -75,7 +75,7 @@ namespace _VictorDev.Managers
                     {
                         if (_lastHoveredObject != null && _lastHoveredObject != firstHitObject)
                         {
-                            onMouseExitTarget?.Invoke(); 
+                           onMouseExitTarget?.Invoke(); 
                         }
 
                         if (firstHitObject != null)
@@ -104,7 +104,7 @@ namespace _VictorDev.Managers
                     // 滑鼠在 UI 上，還原 _lastHoveredObject 狀態
                     if (_lastHoveredObject != null)
                     {
-                        onMouseExitTarget?.Invoke();
+                       // onMouseExitTarget?.Invoke(); //先註解，因為會反覆Invoke
                         _lastHoveredObject = null;
                     }
                 }

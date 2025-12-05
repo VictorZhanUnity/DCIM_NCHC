@@ -40,7 +40,7 @@ Material:
     - _NoiseStrength: 0.15
     - _OutsideMode: 1
     - _PointCount: 101
-    - _Radius: 1
+    - _Radius: 0.8
     - _UseDynamic: 1
     m_Colors: []
   m_BuildTextureStacks: []

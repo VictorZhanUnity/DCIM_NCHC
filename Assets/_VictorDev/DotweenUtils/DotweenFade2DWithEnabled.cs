@@ -60,22 +60,23 @@ namespace _VictorDev.DoTweenUtils
         {
             KillSeq();
 
-            float targetDelay = delay_Start + (isRandomDelay ? UnityEngine.Random.Range(0, delay) : delay);
-
+            float targetDelay = delay_Start + (isRandomDelay ? Random.Range(0f, Mathf.Max(0f, delay)) : Mathf.Max(0f, delay));
             // ===== 建立 Sequence =====
             seq = DOTween.Sequence().SetTarget(rect);
-            seq.SetDelay(targetDelay);
 
-            // Fade
+            // 先插入延遲（比 SetDelay 更直觀可靠）
+            if (targetDelay > 0f)
+                seq.AppendInterval(targetDelay);
+
+            // Fade (作為 Append 的第一個 tween，其他用 Join 與它同步)
             cg.alpha = 0;
-            seq.Join(cg.DOFade(1f, duration).SetEase(ease));
+            seq.Append(cg.DOFade(1f, duration).SetEase(ease));
 
             // Move
             if (isDoMove)
             {
                 Vector3 fromPos = originalPos + fromPosValue;
                 rect.localPosition = fromPos;
-
                 seq.Join(rect.DOLocalMove(originalPos, duration).SetEase(ease));
             }
 
@@ -83,12 +84,12 @@ namespace _VictorDev.DoTweenUtils
             if (isDoScale)
             {
                 rect.localScale = Vector3.one * fromScaleValue;
-
                 seq.Join(rect.DOScale(originalScale, duration).SetEase(ease));
             }
 
             seq.OnComplete(() => onAnimateFinished?.Invoke());
         }
+
 
         private void OnDisable()
         {

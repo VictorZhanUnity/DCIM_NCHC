@@ -1,10 +1,11 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using _VictorDev.ApiExtensions;
 using _VictorDev.TCIT.DCIM.EnvironmentModule;
 using NaughtyAttributes;
 using UnityEngine;
 using VictorDev.MaterialUtils;
-using Debug = _VictorDev.DebugUtils.Debug;
 
 namespace _VictorDev.TCIT.DCIM
 {
@@ -16,7 +17,6 @@ namespace _VictorDev.TCIT.DCIM
             materialReplacerRack, materialReplacerDevice, materialReplacerOthers, materialReplacerCustom;
 
         #endregion
-
 
         public List<Transform> devices;
         
@@ -48,9 +48,15 @@ namespace _VictorDev.TCIT.DCIM
             materialReplacerRack.ReplaceModelsMaterial();
             materialReplacerDevice.ReplaceModelsMaterial();
             materialReplacerOthers.ReplaceModelsMaterial();
-            MaterialHelper.RestoreMaterial(target);
+
+            if (target.name.ContainKeyword(StringComparison.OrdinalIgnoreCase, "Rack") == false)
+            {
+                MaterialHelper.RestoreMaterial(target.parent);
+            }else MaterialHelper.RestoreMaterial(target);
         }
 
+        private Transform lastMouseOverTarget;
+        
         [Button]
         public void ShowAllModels()
         {

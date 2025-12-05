@@ -66,7 +66,7 @@ namespace _VictorDev.DebugUtils
         {
             invokeString?.Invoke(MathHelper.ToDotNumberString(currentValue, dotNumber));
             invokeFloat?.Invoke(MathHelper.ToDotNumberFloat(currentValue, dotNumber));
-            invokeFloat01?.Invoke(MathHelper.ToPercent01(currentValue, maxValue, dotNumber));
+            invokeFloat01?.Invoke(MathHelper.ToPercent01(currentValue-minValue, maxValue-minValue, dotNumber));
             invokeInteger?.Invoke(Mathf.RoundToInt(currentValue));
 
             bool isOverThreshold = currentValue >= thresholdValue;

@@ -1,4 +1,5 @@
-using _VictorDev.CameraUtils;
+using System;
+using _VictorDev.ApiExtensions;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,6 +10,7 @@ namespace _VictorDev.TCIT.DCIM
     public class ObjectSelectionMediator : MonoBehaviour
     {
         #region Variables
+        [Foldout("[Event] MouseOver模型 - 機櫃")] public UnityEvent<RackRevitAssetData> onMouseOverRackModelEvent;
         [Foldout("[Event] 點擊模型 - 機櫃")] public UnityEvent<RackRevitAssetData> onRackClickedDataEvent;
         [Foldout("[Event] 點擊模型 - 機櫃")] public UnityEvent<Transform> onRackClickedModelEvent;
         [Foldout("[Event] 點擊模型 - 設備")] public UnityEvent<DeviceRevitAssetData> onDeviceClickedDataEvent;
@@ -24,6 +26,20 @@ namespace _VictorDev.TCIT.DCIM
         {
             targetModel = model;
             IsRackOrDeviceModel(targetModel);
+        }
+
+        public void OnMouseOverModel(Transform model)
+        {
+            if (model.name.ContainKeyword(StringComparison.OrdinalIgnoreCase, "Rack"))
+            {
+                if (model.TryGetComponent(out RevitAssetDataHolder assetDataHolder))
+                {
+                    if (assetDataHolder.IsRackAsset)
+                    {
+                        onMouseOverRackModelEvent?.Invoke(assetDataHolder.RackRevitData);
+                    }
+                }
+            }
         }
 
         public void UnSelectObject()
@@ -45,7 +61,6 @@ namespace _VictorDev.TCIT.DCIM
                     onDeviceClickedDataEvent?.Invoke(assetDataHolder.DeviceRevitData);
                     onDeviceClickedRackModelEvent?.Invoke(assetDataHolder.DeviceRevitData.Model.parent); //Invoke機櫃模型，以顯示全機櫃
                 }
-                RTSCameraController.CameraToPosition(targetModel, assetDataHolder.IsRackAsset? camDistanceToRack: camDistanceToDevice);
                 return true;
             }
             return false;

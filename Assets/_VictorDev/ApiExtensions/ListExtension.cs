@@ -38,7 +38,7 @@ namespace _VictorDev.ApiExtensions
         }
 
         #region 依關鍵字進行過濾
-        /// [Extended] -  取得Name包含關鍵字的對像
+        /// [Extended] -  取得Name包含關鍵字的對像 (含有單字)
         public static List<TComponent> FilterByNameForKeywords<TComponent>(this List<TComponent> self,
            EnumSearchType searchType = EnumSearchType.Include, params string[] keyWords)
             where TComponent : Component
@@ -46,6 +46,17 @@ namespace _VictorDev.ApiExtensions
             bool isInclude = searchType == EnumSearchType.Include;
             return self.Where(target =>
                     keyWords.Any(word => target.name.ContainKeyword(StringComparison.OrdinalIgnoreCase, word) == isInclude))
+                .ToList();
+        }
+        
+        /// [Extended] -  取得Name包含關鍵字的對像 (含有字元)
+        public static List<TComponent> FilterByNameForKeyChars<TComponent>(this List<TComponent> self,
+            EnumSearchType searchType = EnumSearchType.Include, params string[] keyWords)
+            where TComponent : Component
+        {
+            bool isInclude = searchType == EnumSearchType.Include;
+            return self.Where(target =>
+                    keyWords.Any(word => target.name.Contains(word) == isInclude))
                 .ToList();
         }
         #endregion
