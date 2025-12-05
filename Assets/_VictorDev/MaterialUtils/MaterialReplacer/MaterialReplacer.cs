@@ -13,8 +13,6 @@ namespace VictorDev.MaterialUtils
         [Label("[模型列表]"), SerializeField] private List<Transform> targetModels;
         [Foldout("[設定]"), SerializeField] private Material replaceMaterial;
         
-        public Material ReplaceMaterial => replaceMaterial;
-        
         #endregion
 
         /// 設定目標模型
