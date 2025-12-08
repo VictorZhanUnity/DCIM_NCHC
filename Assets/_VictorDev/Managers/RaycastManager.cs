@@ -57,7 +57,16 @@ namespace _VictorDev.Managers
             // 無論是否模擬 MouseOver，只要點擊就要處理事件
             if (isSimulateMouseOverExit || isClick)
             {
-                raycastHitObjects = GetRaycastHitObjectsFromScreen(Input.mousePosition);
+
+                Vector3 screenPos = Input.mousePosition;
+                if (float.IsNaN(screenPos.x) || float.IsNaN(screenPos.y) ||
+                    float.IsInfinity(screenPos.x) || float.IsInfinity(screenPos.y))
+                {
+                    Debug.LogWarning($"Invalid screenPos: {screenPos}", this);
+                    return;
+                }
+                
+                raycastHitObjects = GetRaycastHitObjectsFromScreen(screenPos);
                 if (raycastHitObjects.Length == 0)
                 {
                     onMouseExitTarget?.Invoke();
