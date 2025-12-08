@@ -7,7 +7,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using _VictorDev.Configs;
 
-namespace _VictorDev.ScrollRectUtils
+namespace _VictorDev.ScrollRectUtils.OLD
 {
     /// 樣版：ScrollRect
     public abstract class BaseScrollRectList<TData, TItem> : MonoBehaviour, IReceiveData<List<TData>>

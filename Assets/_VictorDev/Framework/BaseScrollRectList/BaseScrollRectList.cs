@@ -10,9 +10,10 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace _VictorDev.DebugUtils.ScrollRectUtils
+namespace _VictorDev.Framework.ScrollRectUtils
 {
-    /// [框架：ScrollRect列表] ScrollList 
+    /// [框架：ScrollRect列表] ScrollList
+    /// <para> + TData: 資料列表，免帶入List </para>
     public abstract class BaseScrollRectList<TData> : MonoBehaviour, IReceiveData<List<TData>>
     {
         #region Variables
@@ -24,7 +25,7 @@ namespace _VictorDev.DebugUtils.ScrollRectUtils
         [Foldout("[Event] - MouseExit")] public UnityEvent onPointerExitEvent;
         [Foldout("[Event] - IsNoDataEvent")] public UnityEvent<bool> isNoDataEvent;
         
-        [Foldout("[組件]"), SerializeField] private BaseScrollRectListItem<TData> listItemPrefab;
+        [Foldout("[組件]"), SerializeField] protected BaseScrollRectListItem<TData> listItemPrefab;
         [Foldout("[組件]"), SerializeField] protected ScrollRect scrollRect;
         [Foldout("[組件]"), SerializeField] private ToggleGroup toggleGroup;
 
@@ -40,14 +41,15 @@ namespace _VictorDev.DebugUtils.ScrollRectUtils
         {
             DataList = data;
             ClearList();
-            UpdateUI();
+            UpdateUI(scrollRect.content);
         }
         
-        protected virtual void UpdateUI()
+        protected virtual void UpdateUI(Transform container = null)
         {
+            container ??= scrollRect.content;
             DataList.ForEach(data =>
             {
-                BaseScrollRectListItem<TData> item = Instantiate(listItemPrefab, scrollRect.content);
+                BaseScrollRectListItem<TData> item = Instantiate(listItemPrefab, container);
                 item.SetData(data);
                 item.SetToggleGroup(toggleGroup);
                 item.OnSelectedItemEvent.AddListener(OnSelectedItemEvent);
@@ -110,6 +112,6 @@ namespace _VictorDev.DebugUtils.ScrollRectUtils
             toggleGroup = GetComponentInChildren<ToggleGroup>(true);
         }
 
-        protected void OnValidate() => Reset();
+        protected virtual void OnValidate() => Reset();
     }
 }

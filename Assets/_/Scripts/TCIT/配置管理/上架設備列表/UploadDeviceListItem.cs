@@ -1,4 +1,4 @@
-using _VictorDev.DebugUtils.ScrollRectUtils;
+using _VictorDev.Framework.ScrollRectUtils;
 
 namespace _VictorDev.TCIT.DCIM
 {

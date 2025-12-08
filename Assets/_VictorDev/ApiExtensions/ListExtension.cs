@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using _VictorDev.Configs;
 using _VictorDev.InterfaceUtils;
+using NaughtyAttributes.Test;
 using UnityEngine;
 
 namespace _VictorDev.ApiExtensions
@@ -10,7 +11,24 @@ namespace _VictorDev.ApiExtensions
     /// 原API類別功能擴充
     public static class ListExtension
     {
-        
+        /// [Extended] - 依TEnum類型來分類，存在Dictionary{Enum類型, 數量}
+        public static Dictionary<TEnum, int> GroupCount<TEnum, TClass>(this List<TClass> self,  Func<TClass, TEnum> selector)
+        {
+            // 預先把所有 Enum 值建立出來 → 不會字典擴容 → 避免 GC
+            TEnum[] enumValues = (TEnum[])Enum.GetValues(typeof(TEnum));
+            Dictionary<TEnum, int> result = new Dictionary<TEnum, int>(enumValues.Length);
+            for (int i = 0; i < enumValues.Length; i++)
+                result[enumValues[i]] = 0;
+            // 極速 for 迴圈計數
+            for (int i = 0; i < self.Count; i++)
+            {
+                var key = selector(self[i]);
+                result[key]++;
+            }
+
+            return result;
+        }
+
         /// [Extended] -  列出所有元素
         public static string ToPrint<T>(this List<T> self) => string.Join(", ", self);
         

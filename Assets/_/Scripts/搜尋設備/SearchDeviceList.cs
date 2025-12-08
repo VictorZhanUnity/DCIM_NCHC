@@ -3,8 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using _VictorDev.ApiExtensions;
-using _VictorDev.InterfaceUtils;
-using _VictorDev.ScrollRectUtils;
 using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
@@ -12,15 +10,15 @@ using UnityEngine.Events;
 
 namespace _VictorDev.TCIT.DCIM
 {
-    public class SearchDeviceList : MonoBehaviour, IReceiveData<List<RackRevitAssetData>>
+    public class SearchDeviceList : MonoBehaviour
     {
         #region Variables
-        [Label("[資料項] - 設備資產"), SerializeField] private List<RackRevitAssetData> rackData;
         [Foldout("[Event]")] public UnityEvent<bool> isSearchingEvent;
         [Foldout("[Event] - SelectedItem")] public UnityEvent<Transform> onSelectedItemEvent;
         [Foldout("[組件]"), SerializeField] private DeviceSearchBar deviceSearchBar;
         [Foldout("[組件]"), SerializeField] private TMP_Dropdown dpRevitAssetKind, dpManufacture;
         [Foldout("[組件]"), SerializeField] private DeviceAssetList deviceList;
+        [Foldout("[耦合]"), SerializeField] private RevitAssetDataManager revitAssetDataManager;
 
         /// 所有設備
         private List<DeviceRevitAssetData> allDeviceRevitAssets;
@@ -31,13 +29,8 @@ namespace _VictorDev.TCIT.DCIM
         private void Start()
         {
             //僅設備
-            allDeviceRevitAssets ??= rackData.SelectMany(rack => rack.Containers).ToList();
+            allDeviceRevitAssets ??= revitAssetDataManager.Data.SelectMany(rack => rack.Containers).ToList();
             OnDpRevitAssetKindChanged(0);
-        }
-
-        public void ReceiveData(List<RackRevitAssetData> data)
-        {
-            rackData = data;
         }
 
         /// 當選擇Asset類型時

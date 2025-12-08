@@ -6,6 +6,7 @@ using _VictorDev.DoTweenUtils;
 using _VictorDev.TextUtils;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace _VictorDev.TCIT.DCIM
 {
@@ -16,7 +17,7 @@ namespace _VictorDev.TCIT.DCIM
 
         [Label("[資料項 - RackRevitAssetData]"), SerializeField] private RackRevitAssetData rackRevitAssetData;
         [Label("[Txt組件]"), SerializeField] private List<TextDotweener> txtComps;
-
+        [Foldout("[Event]")] public UnityEvent<List<DeviceRevitAssetData>> invokeContainerDevicesEvent;
         #endregion
 
         public void SetRackRevitAssetData(RackRevitAssetData data)
@@ -25,6 +26,7 @@ namespace _VictorDev.TCIT.DCIM
             UpdateUI();
             gameObject.SetActive(false);
             gameObject.SetActive(true);
+            invokeContainerDevicesEvent?.Invoke(rackRevitAssetData.Containers);
         }
 
         private void UpdateUI()

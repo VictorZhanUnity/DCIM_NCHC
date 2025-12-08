@@ -21,6 +21,7 @@ namespace _VictorDev.TCIT.DCIM
         protected void OnDeserialized(StreamingContext context)
         {
             ParseDeviceNameAndCode();
+            RackLocation = Mathf.Clamp(RackLocation, 1, 42);
         }
     }
 }

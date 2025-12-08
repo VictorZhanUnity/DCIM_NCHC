@@ -27,7 +27,6 @@ namespace _VictorDev.TCIT.DCIM
         #endregion
 
         /// 公司財產編號 (暫定)
-        [field: Serializable] 
         public string CompanyAssetNo
         {
             get
@@ -91,15 +90,5 @@ namespace _VictorDev.TCIT.DCIM
             else Debug.LogError($"{DeviceNameAndCode} not found.");
         }
         public void SetModel(Transform model) => Model = model;
-
-        public void ForDemo(Transform transform)
-        {
-            return;
-            Model = transform;
-            DevicePath = DcimHelper.GetDevicePath(Model.name);
-            ParseDeviceNameAndCode();
-            Information = new Information();
-            transform.AddComponent<RevitAssetDataHolder>().ReceiveAssetData(this);
-        }
     }
 }

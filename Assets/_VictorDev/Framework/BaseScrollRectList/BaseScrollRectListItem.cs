@@ -8,7 +8,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace _VictorDev.DebugUtils.ScrollRectUtils
+namespace _VictorDev.Framework.ScrollRectUtils
 {
     /// [框架：ScrollRect列表] ScrollList ListItem
     public abstract class BaseScrollRectListItem<TData> : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
@@ -31,6 +31,7 @@ namespace _VictorDev.DebugUtils.ScrollRectUtils
         /// [Event] - MouseExit
         public UnityEvent OnPointerExitEvent { get; } = new();
 
+        [field:SerializeField]
         public TData Data { get; private set; }
         public bool IsOn => toggle.isOn;
         public bool IsPointerOver { get; private set; }

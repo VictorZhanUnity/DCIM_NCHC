@@ -1,4 +1,4 @@
-using _VictorDev.DebugUtils.ScrollRectUtils;
+using _VictorDev.Framework.ScrollRectUtils;
 using NaughtyAttributes;
 using UnityEngine;
 
