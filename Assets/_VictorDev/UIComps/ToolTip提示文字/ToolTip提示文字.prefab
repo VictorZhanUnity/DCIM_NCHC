@@ -240,7 +240,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u7CFB\u7D71\u8A2D\u5B9A"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: aea7587d457dbf74286a43054502e595, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 70861139e50a1f848abe3e1ec47a44cf, type: 2}
   m_sharedMaterial: {fileID: 1196226701208737513, guid: aea7587d457dbf74286a43054502e595, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

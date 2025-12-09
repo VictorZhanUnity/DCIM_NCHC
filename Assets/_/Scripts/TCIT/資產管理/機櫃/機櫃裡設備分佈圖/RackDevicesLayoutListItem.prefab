@@ -728,8 +728,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Bx4 Server-2814
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: aea7587d457dbf74286a43054502e595, type: 2}
-  m_sharedMaterial: {fileID: 1196226701208737513, guid: aea7587d457dbf74286a43054502e595, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 92d17a2e3594f9843979d70a01679e5c, type: 2}
+  m_sharedMaterial: {fileID: 4318575576955905576, guid: 92d17a2e3594f9843979d70a01679e5c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -883,7 +883,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2196540059175040169, guid: 9cd3ef0aebeba4c47b82a6f446f86966, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 20.42
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2196540059175040169, guid: 9cd3ef0aebeba4c47b82a6f446f86966, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -983,11 +983,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5630129208583681743, guid: 9cd3ef0aebeba4c47b82a6f446f86966, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 4.529999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5630129208583681743, guid: 9cd3ef0aebeba4c47b82a6f446f86966, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0.42000008
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6195467792806034370, guid: 9cd3ef0aebeba4c47b82a6f446f86966, type: 3}
       propertyPath: m_Name

@@ -320,7 +320,7 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_RichText: 1
-  m_GlobalFontAsset: {fileID: 11400000, guid: f8875d3a4d2edf9429ed681d0755609c, type: 2}
+  m_GlobalFontAsset: {fileID: 11400000, guid: 70861139e50a1f848abe3e1ec47a44cf, type: 2}
   m_OnFocusSelectAll: 1
   m_ResetOnDeActivation: 1
   m_KeepTextSelectionVisible: 0
@@ -426,8 +426,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f8875d3a4d2edf9429ed681d0755609c, type: 2}
-  m_sharedMaterial: {fileID: 8583388493591647377, guid: f8875d3a4d2edf9429ed681d0755609c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 70861139e50a1f848abe3e1ec47a44cf, type: 2}
+  m_sharedMaterial: {fileID: -3228171767495315164, guid: 70861139e50a1f848abe3e1ec47a44cf, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -690,8 +690,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u641C\u5C0B\u8A2D\u5099\u540D\u7A31..."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f8875d3a4d2edf9429ed681d0755609c, type: 2}
-  m_sharedMaterial: {fileID: 8583388493591647377, guid: f8875d3a4d2edf9429ed681d0755609c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 70861139e50a1f848abe3e1ec47a44cf, type: 2}
+  m_sharedMaterial: {fileID: -3228171767495315164, guid: 70861139e50a1f848abe3e1ec47a44cf, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

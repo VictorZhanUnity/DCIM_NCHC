@@ -143,8 +143,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: NCHC11511140015
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f8875d3a4d2edf9429ed681d0755609c, type: 2}
-  m_sharedMaterial: {fileID: 8583388493591647377, guid: f8875d3a4d2edf9429ed681d0755609c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 25df31d2cbf010d4dbeb7bdaa6e79529, type: 2}
+  m_sharedMaterial: {fileID: -5400270125734386531, guid: 25df31d2cbf010d4dbeb7bdaa6e79529, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -293,8 +293,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Synology-SA3200D 12-Bay-RackStation
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f8875d3a4d2edf9429ed681d0755609c, type: 2}
-  m_sharedMaterial: {fileID: 8583388493591647377, guid: f8875d3a4d2edf9429ed681d0755609c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 70861139e50a1f848abe3e1ec47a44cf, type: 2}
+  m_sharedMaterial: {fileID: -3228171767495315164, guid: 70861139e50a1f848abe3e1ec47a44cf, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -328,7 +328,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: -5
+  m_characterSpacing: -3
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -873,6 +873,63 @@ MonoBehaviour:
   txtComps:
   - {fileID: 1790832169832095401}
   - {fileID: 7779772921058775117}
+  <Data>k__BackingField:
+    <DevicePath>k__BackingField: 
+    <Model>k__BackingField: {fileID: 0}
+    <Information>k__BackingField:
+      height: 0
+      heightU: 0
+      watt: 0
+      weight: 0
+      component_description: 
+      component_assetIdentifier: 
+      component_installationDate: 
+      component_tagName: 
+      component_warrantyDurationPart: 
+      component_warrantyDurationUnit: 
+      component_warrantyGuarantorLabor: 
+      component_warrantyEndDate: 
+      component_serialNumber: 
+      component_warrantyStartDate: 
+      contact_company: 
+      contact_department: 
+      contact_email: 
+      contact_familyName: 
+      contact_givenName: 
+      contact_phone: 
+      contact_street: 
+      facility_name: 
+      facility_projectName: 
+      facility_siteName: 
+      floor_name: 
+      space_name: 
+      space_roomTag: 
+      system_category: 
+      system_name: 
+      type_category: 
+      type_expectedLife: 
+      type_manufacturer: 
+      type_modelNumber: 
+      type_name: 
+      type_accessibilityPerformance: 
+      type_replacementCost: 
+      type_shape: 
+      type_size: 
+      type_color: 
+      type_finish: 
+      type_grade: 
+      type_material: 
+      document_inspection: 
+      document_handout: 
+      document_drawing: 
+      equipment_supplier: 
+    RevitAssetKind: 0
+    DeviceKindZh: 
+    DeviceName: 
+    DeviceNameAndCode: 
+    Manufacturer: 
+    <RackDevicePath>k__BackingField: 
+    <RackLocation>k__BackingField: 0
   revitAssetTypeDisplay: {fileID: 6379867472322989483}
 --- !u!114 &7959578581860349083 stripped
 MonoBehaviour:

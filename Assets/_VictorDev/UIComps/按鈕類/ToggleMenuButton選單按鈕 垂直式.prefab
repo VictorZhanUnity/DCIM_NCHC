@@ -143,8 +143,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u6A5F\u6AC3\u6EAB\u6FD5\u5EA6"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f8875d3a4d2edf9429ed681d0755609c, type: 2}
-  m_sharedMaterial: {fileID: 8583388493591647377, guid: f8875d3a4d2edf9429ed681d0755609c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 70861139e50a1f848abe3e1ec47a44cf, type: 2}
+  m_sharedMaterial: {fileID: -3228171767495315164, guid: 70861139e50a1f848abe3e1ec47a44cf, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
