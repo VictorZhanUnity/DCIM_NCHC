@@ -23,7 +23,7 @@ namespace _VictorDev.Framework.HeatmapUtils
         [Foldout("[設定]"), SerializeField] private Texture2D textureRt, textureRh;
         [Foldout("[設定]"), SerializeField] private MeshRenderer targetMeshRenderer;
         [Foldout("[耦合]"), SerializeField] private EnvironmentDataManager envDataManager;
-
+        
         private Vector4[] currentSensorArray, targetSensorArray;
 
         private string StrPointCount => "_PointCount";

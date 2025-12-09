@@ -26,11 +26,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5343960430329201630, guid: 1e000d6450287824b92446ec75bf6b04, type: 3}
       propertyPath: maxValue
-      value: 85
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5343960430329201630, guid: 1e000d6450287824b92446ec75bf6b04, type: 3}
       propertyPath: thresholdValue
-      value: 70
+      value: 85
       objectReference: {fileID: 0}
     - target: {fileID: 6408139661830681168, guid: 1e000d6450287824b92446ec75bf6b04, type: 3}
       propertyPath: maxValue

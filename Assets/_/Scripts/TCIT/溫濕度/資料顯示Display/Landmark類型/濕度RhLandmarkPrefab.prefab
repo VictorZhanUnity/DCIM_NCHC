@@ -94,11 +94,11 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: ecf7aecc3db555849a4380af27f03367, type: 3}
     - target: {fileID: 2813876761469323258, guid: 7a832e0aa8495474eac2df492be0de3f, type: 3}
       propertyPath: maxValue
-      value: 55
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2813876761469323258, guid: 7a832e0aa8495474eac2df492be0de3f, type: 3}
       propertyPath: thresholdValue
-      value: 78
+      value: 85
       objectReference: {fileID: 0}
     - target: {fileID: 3317586185020210390, guid: 7a832e0aa8495474eac2df492be0de3f, type: 3}
       propertyPath: m_text

@@ -63,6 +63,9 @@ namespace _VictorDev.ApiExtensions
 
         #region Vector2
 
+        /// [Extended] X、Y之間的差值
+        public static float Difference(this Vector2 self) => Mathf.Abs(self.x - self.y);
+
         /// [Extended] 從X到Y之間取得亂數值
         public static float GetRandomValue(this Vector2 self)
         {
