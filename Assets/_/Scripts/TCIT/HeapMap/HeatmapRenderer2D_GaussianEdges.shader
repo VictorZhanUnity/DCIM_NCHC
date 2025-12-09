@@ -141,7 +141,7 @@ Shader "Custom/HeatmapRenderer2D_GaussianEdges_Simplex"
 
                 float heatNorm = saturate(heatValue / _MaxIntensity);
 
-                float alpha = pow(heatNorm, 1.2);
+              float alpha = lerp(0.2, 1.0, heatNorm);
                 if (alpha <= 0.001)
                     return float4(0, 0, 0, 0);
 
