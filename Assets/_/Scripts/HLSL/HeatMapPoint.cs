@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using Debug = _VictorDev.DebugUtils.Debug;
 
-namespace VictorDev.HeatMapUtiils
+namespace _VictorDev.HeatMapUtiils
 {
     //熱雲圖值點位資訊
     public class HeatMapPoint : MonoBehaviour

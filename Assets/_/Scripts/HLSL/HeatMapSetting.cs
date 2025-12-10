@@ -3,7 +3,7 @@ using System.Linq;
 using NaughtyAttributes;
 using UnityEngine;
 
-namespace VictorDev.HeatMapUtiils
+namespace _VictorDev.HeatMapUtiils
 {
     public class HeatMapSetting : MonoBehaviour
     {

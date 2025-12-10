@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using VictorDev.HeatMapUtiils;
-using VictorDev.ShaderUtils;
+using _VictorDev.HeatMapUtiils;
+using _VictorDev.ShaderUtils;
 
 /// 雲物件資訊 (HLSL)
 public class HeatMapItemHLSL : IHeatMapItem

@@ -4,7 +4,7 @@ using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace VictorDev.ShaderUtils
+namespace _VictorDev.ShaderUtils
 {
     /// 負責繪制HLSL Graphics.DrawMeshInstance
     /// <para> + 它是繪製圖形，並非真實Instance，所以可以根據Matrix4x4[]設定的內容進行繪製多個MeshInstance</para>

@@ -5,7 +5,7 @@ using _VictorDev.ApiExtensions;
 using _VictorDev.TCIT.DCIM.EnvironmentModule;
 using NaughtyAttributes;
 using UnityEngine;
-using VictorDev.MaterialUtils;
+using _VictorDev.MaterialUtils;
 
 namespace _VictorDev.TCIT.DCIM
 {

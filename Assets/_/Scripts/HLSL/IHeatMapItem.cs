@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-namespace VictorDev.HeatMapUtiils
+namespace _VictorDev.HeatMapUtiils
 {
     public interface IHeatMapItem
     {

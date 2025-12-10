@@ -42,7 +42,6 @@ namespace _VictorDev.TCIT.DCIM.RevitAssetModule
                 int posY = (42 - item.Data.RackLocation) * EachLayoutRuHeight;
                 itemRect.anchoredPosition = itemRect.anchoredPosition.SetY(posY);
                 item.OnSelectedItemEvent.AddListener((deviceRevitAssetData)=> onInvokeSelectedModelEvent?.Invoke(deviceRevitAssetData.Model));
-                Debug.Log($"posY: {posY} / {item.Data.RackLocation}");
             });
         }
 

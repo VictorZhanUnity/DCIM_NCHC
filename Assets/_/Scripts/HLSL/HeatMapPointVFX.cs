@@ -4,7 +4,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
-namespace VictorDev.HeatMapUtiils
+namespace _VictorDev.HeatMapUtiils
 {
 //熱力圖點位資訊
     public class HeatMapPointVFX : MonoBehaviour

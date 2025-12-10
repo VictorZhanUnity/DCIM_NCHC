@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using Debug = _VictorDev.DebugUtils.Debug;
 
-namespace VictorDev.MaterialUtils
+namespace _VictorDev.MaterialUtils
 {
     public static class MaterialHelper
     {

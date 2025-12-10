@@ -1,0 +1,352 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &306988489509237670
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 371068620784159963}
+  - component: {fileID: 4634955004424730987}
+  m_Layer: 0
+  m_Name: WebAPIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &371068620784159963
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306988489509237670}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6704006595164302417}
+  - {fileID: 6341212463884054172}
+  - {fileID: 4652602919036824613}
+  - {fileID: 6780456365939132588}
+  - {fileID: 738898189447825561}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4634955004424730987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306988489509237670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29ce1725124df34990888b77a8c3bac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WebAPIManager
+  login: {fileID: 6785028515102673748}
+  allRackDevicesData: {fileID: 2979922595003727047}
+  notOnRackDevices: {fileID: 3487151094487756201}
+  deviceRelocation: {fileID: 2306598409932230997}
+  rackDeviceReport: {fileID: 3262312206757062324}
+--- !u!1 &657214198036224293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4652602919036824613}
+  - component: {fileID: 3487151094487756201}
+  m_Layer: 0
+  m_Name: "3 .\u8B80\u53D6\u672A\u4E0A\u67B6\u7684 DCS\u3001DCN \u8A2D\u5099\u6E05\u55AE"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4652602919036824613
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657214198036224293}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 371068620784159963}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3487151094487756201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657214198036224293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f201e45b4e88d89418f06ca775d135ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.Net.WebAPI.WebApiCallHandler
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onFailed:
+    m_PersistentCalls:
+      m_Calls: []
+  webApiRequestSo: {fileID: 11400000, guid: b280f5e3f5888f949a2668f88300ef93, type: 2}
+  responseString: '[]'
+--- !u!1 &1420946985722114583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6780456365939132588}
+  - component: {fileID: 2306598409932230997}
+  m_Layer: 0
+  m_Name: "4 .\u8B8A\u66F4\u6A5F\u6AC3\u5167\u8A2D\u5099\u72C0\u614B"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6780456365939132588
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420946985722114583}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 371068620784159963}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2306598409932230997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420946985722114583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f201e45b4e88d89418f06ca775d135ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.Net.WebAPI.WebApiCallHandler
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onFailed:
+    m_PersistentCalls:
+      m_Calls: []
+  webApiRequestSo: {fileID: 11400000, guid: 299dd4d65f4245f45856afdedeac0064, type: 2}
+  responseString: "{\r\n  \"isSuccess\": false,\r\n  \"state\": \"\u7F3A\u5C11\u4F4D\u7F6E\u8A2D\u5B9A\"\r\n}"
+--- !u!1 &5463187173607402239
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6704006595164302417}
+  - component: {fileID: 6785028515102673748}
+  m_Layer: 0
+  m_Name: "1. \u767B\u5165\u53D6\u5F97Token"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6704006595164302417
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5463187173607402239}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 371068620784159963}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6785028515102673748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5463187173607402239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f201e45b4e88d89418f06ca775d135ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.Net.WebAPI.WebApiCallHandler
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+      - m_Target: {fileID: 11400000, guid: 1fa76db46f829a2419540bf7fd40534b, type: 2}
+        m_TargetAssemblyTypeName: VictorDev.Net.WebAPI.WebApiAuthorizationSO, Assembly-CSharp
+        m_MethodName: SetToken
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  onFailed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  webApiRequestSo: {fileID: 11400000, guid: b3dcf6dd861c81c4a98110660177f748, type: 2}
+  responseString: eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyMDI1VENJVCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiIyMDI1VENJVCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6InRjaXQiLCJqdGkiOiIwMTk2MzYzMy1iNjYzLTRiOTEtYmNmYS04ODhmNDg2OGFjOTYiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL2dyb3Vwc2lkIjoiVEFJTkFOIiwiSXBBZGRyZXNzIjoiMTkyLjE2OC4wLjE2MCIsImV4cCI6MTc2Nzk0NTU1NCwiaXNzIjoiaHR0cHM6Ly93d3cudGNpdGVjaC5jb20udHcvIiwiYXVkIjoiaHR0cHM6Ly93d3cudGNpdGVjaC5jb20udHcvIn0.pUk6n_RA57g5E-3PWqwgP8pa0XKRFSb_WbdM3BroCos
+--- !u!1 &8636681045252901736
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6341212463884054172}
+  - component: {fileID: 2979922595003727047}
+  m_Layer: 0
+  m_Name: "2. \u8B80\u53D6\u6A5F\u6AC3\u5BB9\u91CF\u8CC7\u8A0A (\u5168\u8CC7\u6599)"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6341212463884054172
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8636681045252901736}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 371068620784159963}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2979922595003727047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8636681045252901736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f201e45b4e88d89418f06ca775d135ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.Net.WebAPI.WebApiCallHandler
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onFailed:
+    m_PersistentCalls:
+      m_Calls: []
+  webApiRequestSo: {fileID: 11400000, guid: b280f5e3f5888f949a2668f88300ef93, type: 2}
+  responseString: A task was canceled.
+--- !u!1 &8780877450932295163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 738898189447825561}
+  - component: {fileID: 3262312206757062324}
+  m_Layer: 0
+  m_Name: "5 .\u5BB9\u91CF\u5831\u8868\u4E0B\u8F09"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &738898189447825561
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8780877450932295163}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 371068620784159963}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3262312206757062324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8780877450932295163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f201e45b4e88d89418f06ca775d135ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.Net.WebAPI.WebApiCallHandler
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onFailed:
+    m_PersistentCalls:
+      m_Calls: []
+  webApiRequestSo: {fileID: 0}
+  responseString: "{\r\n  \"isSuccess\": false,\r\n  \"state\": \"\u7F3A\u5C11\u4F4D\u7F6E\u8A2D\u5B9A\"\r\n}"

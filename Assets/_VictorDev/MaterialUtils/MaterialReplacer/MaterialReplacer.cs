@@ -3,7 +3,7 @@ using _VictorDev.InterfaceUtils;
 using NaughtyAttributes;
 using UnityEngine;
 
-namespace VictorDev.MaterialUtils
+namespace _VictorDev.MaterialUtils
 {
     /// 處理3D物件的材質替換
     public class MaterialReplacer: MonoBehaviour, IReceiveData<List<Transform>>

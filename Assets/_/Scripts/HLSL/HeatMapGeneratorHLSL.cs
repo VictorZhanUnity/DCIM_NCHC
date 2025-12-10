@@ -2,12 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using _VictorDev.ShaderUtils;
 using NaughtyAttributes;
 using UnityEngine;
-using VictorDev.ShaderUtils;
 using Debug = _VictorDev.DebugUtils.Debug;
 
-namespace VictorDev.HeatMapUtiils
+namespace _VictorDev.HeatMapUtiils
 {
     [RequireComponent(typeof(BoxCollider), typeof(HLSLRenderer))]
     public class HeatMapGeneratorHLSL : MonoBehaviour
