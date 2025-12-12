@@ -74,10 +74,19 @@ namespace _VictorDev.TCIT.DCIM
             cancelSelectedRackEvent?.Invoke(isSelectedRackUnitGrid);
         }
 
+        /// 確認上架設備
         public void ConfirmSelectedDeviceModel()
         {
             selectedDevice = null;
             CancelSelectRackUnitGrid();
+        }
+        
+        /// 取消上架的設備模型
+        public void CancelSelectUploadDevice()
+        {
+            if(selectedDevice == null) return;
+            ObjectHelper.Destroy(selectedDevice.gameObject);
+            selectedDevice = null;
         }
 
         /// 從RaycastManager接收目前Hit到的RackUnitGrid與其座標

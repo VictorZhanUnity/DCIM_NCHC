@@ -84,6 +84,7 @@ namespace _VictorDev.Framework.ScrollRectUtils
         /// 清空列表 
         public void ClearList()
         {
+            ListItems = ListItems.ClearMissingTargets();
             ListItems.ForEach(listItems =>
             {
                 listItems.OnSelectedItemEvent.RemoveAllListeners();

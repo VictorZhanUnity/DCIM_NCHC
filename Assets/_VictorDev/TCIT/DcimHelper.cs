@@ -47,9 +47,13 @@ namespace _VictorDev.TCIT.DCIM
             => EnumHelper.GetEnumByString<EnumDeviceType>(devicePath);
 
         /// 從DevicePath 取得設備名稱 (是否包含流水號)
-        public static string GetDeviceName(string devicePath, bool isIncludeCode = false) 
-            //=> isIncludeCode && devicePath.Contains(":") ? devicePath.Split(":")[1].Trim() : devicePath.Split('+')[6].Split(":")[0].Trim();
-            => isIncludeCode && devicePath.Contains(":") ? devicePath.Split(":")[1].Trim() : devicePath;
+        public static string GetDeviceName(string devicePath, bool isIncludeCode = false)
+        {
+            if(devicePath.Contains(":") == false)return devicePath;
+            string deviceNameAndCode = devicePath.Split(":")[1].Trim();
+            if(isIncludeCode) return deviceNameAndCode;
+            return deviceNameAndCode.Split("+")[0];
+        }
 
         /// 從DevicePath 取得設備類型 (Rack、Server、Router、Switch)
         public static EnumRevitAssetKind GetDeviceKind(string devicePath)

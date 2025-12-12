@@ -62,9 +62,7 @@ namespace _VictorDev.TCIT.DCIM
             Manufacturer = isHaveValue ? Information.type_manufacturer : DevicePath.Split("+")[6].Split("-")[0];
             
             ///暫時用：公司財產編號
-            CompanyAssetNo = string.IsNullOrEmpty(DeviceNameAndCode)
-            ? Random.Range(0, 9999).ToString("D4")
-                : DeviceNameAndCode.Split("+")[1].GetNumberFromString();
+            CompanyAssetNo = "NCHC202512" + Random.Range(0, 99999999).ToString("D8");
         }
 
         /// 從Transform列表裡依照name設定模型，與設定RevitAssetDataHolder
