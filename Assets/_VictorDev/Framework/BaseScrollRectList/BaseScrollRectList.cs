@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Data;
 using _VictorDev.ApiExtensions;
 using _VictorDev.DebugUtils;
 using _VictorDev.InterfaceUtils;
@@ -32,6 +33,8 @@ namespace _VictorDev.Framework.ScrollRectUtils
 
         protected List<BaseScrollRectListItem<TData>> ListItems = new();
         
+        public BaseScrollRectListItem<TData> CurrentSelectedItem { get; protected set; }
+        
         #endregion
         
         /// 設定Data列表
@@ -50,7 +53,7 @@ namespace _VictorDev.Framework.ScrollRectUtils
                 BaseScrollRectListItem<TData> item = ObjectHelper.Instantiate(listItemPrefab, container);
                 item.SetData(data);
                 item.SetToggleGroup(toggleGroup);
-                item.OnSelectedItemEvent.AddListener(OnSelectedItemEvent);
+                item.OnSelectedItemEvent.AddListener((itemData)=>OnSelectedItemEvent(itemData, item));
                 item.OnToggleValueChangedEvent.AddListener(OnTogglesValueChangedEvent);
                 item.OnPointerEnterEvent.AddListener(OnPointerEnterEvent);
                 item.OnPointerExitEvent.AddListener(OnPointerExitEvent);
@@ -60,15 +63,25 @@ namespace _VictorDev.Framework.ScrollRectUtils
             isNoDataEvent?.Invoke(ListItems.Count == 0);
         }
 
-        public void CancelSelection() => toggleGroup.SetAllTogglesOff(true);
-        
+        public void CancelSelection()
+        {
+            if (CurrentSelectedItem == null) return;
+            CurrentSelectedItem.SetToggleIsOn(false);
+            CurrentSelectedItem = null;
+        }
+
         /// 列表排序
         public void OrderByName(bool isDescending = false) 
             => ObjectHelper.SortTargetsByObjectName<BaseScrollRectListItem<TData>>(scrollRect.content, isDescending);
 
         #region Event Listener
 
-        private void OnSelectedItemEvent(TData data) => onSelectedItemEvent?.Invoke(data);
+        private void OnSelectedItemEvent(TData data, BaseScrollRectListItem<TData> item)
+        {
+            CurrentSelectedItem = item;
+            onSelectedItemEvent?.Invoke(data);
+        }
+
         private void OnTogglesValueChangedEvent(bool isOn)
         {
             bool isHaveToggleOn = toggleGroup.AnyTogglesOn();
