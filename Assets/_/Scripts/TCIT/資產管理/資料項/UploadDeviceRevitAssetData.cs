@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Serialization;
-using Newtonsoft.Json;
-using UnityEngine;
+using _VictorDev.ApiExtensions;
+using Random = UnityEngine.Random;
 
 namespace _VictorDev.TCIT.DCIM
 {
@@ -11,16 +11,23 @@ namespace _VictorDev.TCIT.DCIM
     {
         /// 在JSON解析後處理 (需子類別自行解析，override函式需加上[OnDeserialized])
         [OnDeserialized]
-        protected void OnDeserialized(StreamingContext context)
-        {
-            ParseDeviceNameAndCode();
-        }
+        protected void OnDeserialized(StreamingContext context) => ParseDeviceNameAndCode();
 
+        /// 未來需依照需求而修改
         protected override void ParseDeviceNameAndCode()
         {
+            RevitAssetKind = DcimHelper.GetDeviceKind(DevicePath);
             DeviceKindZh = DcimHelper.GetDeviceKindZh(RevitAssetKind);
             DeviceName = DevicePath.Split("+")[2];
-            DeviceNameAndCode = "";
+            DeviceNameAndCode = DevicePath;
+            
+            bool isHaveValue = !string.IsNullOrEmpty(Information.type_manufacturer);
+            Manufacturer = isHaveValue ? Information.type_manufacturer : DevicePath.Split("+")[6].Split("-")[0];
+            
+            ///暫時用：公司財產編號
+            CompanyAssetNo = string.IsNullOrEmpty(DeviceNameAndCode)
+                ? Random.Range(0, 9999).ToString("D4")
+                : DeviceNameAndCode.GetNumberFromString(4, 4);
         }
     }
 }

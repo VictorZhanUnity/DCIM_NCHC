@@ -4,6 +4,7 @@ using System.Linq;
 using _VictorDev.ApiExtensions;
 using _VictorDev.DebugUtils;
 using _VictorDev.GimzoUtils;
+using _VictorDev.InterfaceUtils;
 using NaughtyAttributes;
 using UnityEditor;
 using UnityEngine;
@@ -12,7 +13,7 @@ using Debug = _VictorDev.DebugUtils.Debug;
 
 namespace _VictorDev.TCIT.DCIM
 {
-    public class RackUnitGridManager : MonoBehaviour
+    public class RackUnitGridManager : MonoBehaviour, IReceiveData<List<Transform>>
     {
         #region Variables
 
@@ -91,7 +92,7 @@ namespace _VictorDev.TCIT.DCIM
         }
 
         /// 接收模型
-        public void ReceiveModels(List<Transform> models)
+        public void ReceiveData(List<Transform> models)
         {
             rackKeyWord = rackKeyWord.Trim();
             rackModelList = models.Where(model => model.name.Contains(rackKeyWord, StringComparison.OrdinalIgnoreCase))

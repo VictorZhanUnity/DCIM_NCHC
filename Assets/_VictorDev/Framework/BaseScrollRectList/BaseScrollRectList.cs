@@ -1,10 +1,7 @@
-
-using System;
 using System.Collections.Generic;
-using System.Linq;
+using _VictorDev.ApiExtensions;
 using _VictorDev.DebugUtils;
 using _VictorDev.InterfaceUtils;
-using _VictorDev.TCIT.DCIM;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
@@ -30,6 +27,7 @@ namespace _VictorDev.Framework.ScrollRectUtils
         [Foldout("[組件]"), SerializeField] private ToggleGroup toggleGroup;
 
         /// Data列表
+        [field:SerializeField]
         public List<TData> DataList { get; protected set; } = new ();
 
         protected List<BaseScrollRectListItem<TData>> ListItems = new();
@@ -49,7 +47,7 @@ namespace _VictorDev.Framework.ScrollRectUtils
             container ??= scrollRect.content;
             DataList.ForEach(data =>
             {
-                BaseScrollRectListItem<TData> item = Instantiate(listItemPrefab, container);
+                BaseScrollRectListItem<TData> item = ObjectHelper.Instantiate(listItemPrefab, container);
                 item.SetData(data);
                 item.SetToggleGroup(toggleGroup);
                 item.OnSelectedItemEvent.AddListener(OnSelectedItemEvent);
@@ -95,6 +93,7 @@ namespace _VictorDev.Framework.ScrollRectUtils
                 ObjectHelper.Destroy(listItems.gameObject);
             });
             ListItems.Clear();
+            scrollRect.content.RemoveAllChildren();
             scrollRect.verticalNormalizedPosition = 1;
             isNoDataEvent?.Invoke(ListItems.Count == 0);
         }
@@ -105,13 +104,11 @@ namespace _VictorDev.Framework.ScrollRectUtils
             scrollRect.verticalNormalizedPosition = 1;
         }
 
-        private void Reset()
+        protected virtual void OnValidate()
         {
-            scrollRect = GetComponentInChildren<ScrollRect>(true);
-            toggleGroup = GetComponent<ToggleGroup>();
-            toggleGroup = GetComponentInChildren<ToggleGroup>(true);
+            if(scrollRect == null) scrollRect = GetComponentInChildren<ScrollRect>(true);
+            if(toggleGroup == null) toggleGroup = GetComponent<ToggleGroup>();
+            ListItems = ListItems.ClearMissingTargets();
         }
-
-        protected virtual void OnValidate() => Reset();
     }
 }

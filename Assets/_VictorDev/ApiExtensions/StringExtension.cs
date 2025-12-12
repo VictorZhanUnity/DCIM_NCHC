@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -63,10 +64,26 @@ namespace _VictorDev.ApiExtensions
         }
         
         /// [Extended] - 取出字串裡的所有數字，並向左補位數
-        public static string GetNumberString(this string self, int padLeft = 0)
+        /// <para>+ maxLength：最多幾位數，若-1則不限制 </para>
+        public static string GetNumberFromString(this string self, int padLeft = 0, int maxLength = -1)
         {
-            string digits = string.Concat(Regex.Matches(self, @"\d+").Select(m => m.Value));
-            return digits.PadLeft(padLeft, '0');
+            StringBuilder sb = new System.Text.StringBuilder();
+            // 抓全部數字
+            for (var i = 0; i < self.Length; i++)
+            {
+                var c = self[i];
+                if (char.IsDigit(c))
+                    sb.Append(c);
+            }
+            string digits = sb.ToString();
+
+            // 補左邊 0（如果 padLeft > 0）
+            if (padLeft > 0)
+                digits = digits.PadLeft(padLeft, '0');
+            // 限制最大長度（可選）
+            if (maxLength > 0 && digits.Length > maxLength)
+                digits = digits.Substring(digits.Length - maxLength);
+            return digits;
         }
 
         /// [Extended] - 依換行符號，分割成數行string

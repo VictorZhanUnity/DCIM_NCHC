@@ -10,6 +10,7 @@ namespace _VictorDev.TCIT.DCIM
         protected override void UpdateUI(Transform container = null)
         {
             DataList = DataList.OrderBy(data=>data.DeviceName).ToList();
+            
             base.UpdateUI(container);
         }
     }

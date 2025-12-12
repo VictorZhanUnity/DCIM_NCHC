@@ -15,13 +15,13 @@ namespace _VictorDev.TCIT.DCIM
 
         [Foldout("[Event] 在此設定擷取資料的觸發")] public UnityEvent toGetDataEvent;
 
-        [Foldout("[模型]"), Label("\tServer"), SerializeField]
+        [Foldout("[設備模型Prefab]"), Label("\tServer"), SerializeField]
         private List<Transform> serverModels;
 
-        [Foldout("[模型]"), Label("\tRouter"), SerializeField]
+        [Foldout("[設備模型Prefab]"), Label("\tRouter"), SerializeField]
         private List<Transform> routerModels;
 
-        [Foldout("[模型]"), Label("\tSwitch"), SerializeField]
+        [Foldout("[設備模型Prefab]"), Label("\tSwitch"), SerializeField]
         private List<Transform> switchModels;
 
         #endregion

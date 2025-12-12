@@ -5,7 +5,6 @@ using _VictorDev.DebugUtils;
 using _VictorDev.InterfaceUtils;
 using NaughtyAttributes;
 using UnityEngine;
-using Debug = _VictorDev.DebugUtils.Debug;
 
 namespace _VictorDev.TCIT.DCIM.RevitAssetModule
 {

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7219623738213114120}
   - component: {fileID: 5664949183677691158}
   - component: {fileID: 6731852170800045733}
+  - component: {fileID: 2529824391457614366}
   m_Layer: 0
   m_Name: HPE+ProLiant+DL360_Gen10_plus+Switch+1U
   m_TagString: Untagged
@@ -96,3 +97,131 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2529824391457614366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7059670681256577747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55aabd833d334eb586814430e5bfafe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.RevitAssetDataHolder
+  rackRevitAssetData:
+    <DevicePath>k__BackingField: 
+    <Model>k__BackingField: {fileID: 0}
+    <Information>k__BackingField:
+      height: 0
+      heightU: 0
+      watt: 0
+      weight: 0
+      component_description: 
+      component_assetIdentifier: 
+      component_installationDate: 
+      component_tagName: 
+      component_warrantyDurationPart: 
+      component_warrantyDurationUnit: 
+      component_warrantyGuarantorLabor: 
+      component_warrantyEndDate: 
+      component_serialNumber: 
+      component_warrantyStartDate: 
+      contact_company: 
+      contact_department: 
+      contact_email: 
+      contact_familyName: 
+      contact_givenName: 
+      contact_phone: 
+      contact_street: 
+      facility_name: 
+      facility_projectName: 
+      facility_siteName: 
+      floor_name: 
+      space_name: 
+      space_roomTag: 
+      system_category: 
+      system_name: 
+      type_category: 
+      type_expectedLife: 
+      type_manufacturer: 
+      type_modelNumber: 
+      type_name: 
+      type_accessibilityPerformance: 
+      type_replacementCost: 
+      type_shape: 
+      type_size: 
+      type_color: 
+      type_finish: 
+      type_grade: 
+      type_material: 
+      document_inspection: 
+      document_handout: 
+      document_drawing: 
+      equipment_supplier: 
+    <CompanyAssetNo>k__BackingField: 
+    RevitAssetKind: 0
+    DeviceKindZh: 
+    DeviceName: 
+    DeviceNameAndCode: 
+    Manufacturer: 
+    <Containers>k__BackingField: []
+    RackNo: 
+  deviceRevitAssetData:
+    <DevicePath>k__BackingField: 
+    <Model>k__BackingField: {fileID: 0}
+    <Information>k__BackingField:
+      height: 0
+      heightU: 0
+      watt: 0
+      weight: 0
+      component_description: 
+      component_assetIdentifier: 
+      component_installationDate: 
+      component_tagName: 
+      component_warrantyDurationPart: 
+      component_warrantyDurationUnit: 
+      component_warrantyGuarantorLabor: 
+      component_warrantyEndDate: 
+      component_serialNumber: 
+      component_warrantyStartDate: 
+      contact_company: 
+      contact_department: 
+      contact_email: 
+      contact_familyName: 
+      contact_givenName: 
+      contact_phone: 
+      contact_street: 
+      facility_name: 
+      facility_projectName: 
+      facility_siteName: 
+      floor_name: 
+      space_name: 
+      space_roomTag: 
+      system_category: 
+      system_name: 
+      type_category: 
+      type_expectedLife: 
+      type_manufacturer: 
+      type_modelNumber: 
+      type_name: 
+      type_accessibilityPerformance: 
+      type_replacementCost: 
+      type_shape: 
+      type_size: 
+      type_color: 
+      type_finish: 
+      type_grade: 
+      type_material: 
+      document_inspection: 
+      document_handout: 
+      document_drawing: 
+      equipment_supplier: 
+    <CompanyAssetNo>k__BackingField: 
+    RevitAssetKind: 0
+    DeviceKindZh: 
+    DeviceName: 
+    DeviceNameAndCode: 
+    Manufacturer: 
+    <RackDevicePath>k__BackingField: 
+    <RackLocation>k__BackingField: 0

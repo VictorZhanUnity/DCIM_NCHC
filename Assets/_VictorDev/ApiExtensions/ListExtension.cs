@@ -2,15 +2,23 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using _VictorDev.Configs;
+using _VictorDev.DebugUtils;
 using _VictorDev.InterfaceUtils;
-using NaughtyAttributes.Test;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace _VictorDev.ApiExtensions
 {
     /// 原API類別功能擴充
     public static class ListExtension
     {
+        /// [Extended] - 移除所有子物件
+        public static void RemoveAllChildren(this Transform self)
+        {
+            List<Transform> objectList = self.Cast<Transform>().ToList();
+            objectList.ForEach(ObjectHelper.Destroy);
+        }
+        
         /// [Extended] - 依TEnum類型來分類，存在Dictionary{Enum類型, 數量}
         public static Dictionary<TEnum, int> GroupCount<TEnum, TClass>(this List<TClass> self,  Func<TClass, TEnum> selector)
         {
