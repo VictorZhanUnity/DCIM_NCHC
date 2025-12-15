@@ -27,6 +27,21 @@ namespace _VictorDev.TCIT.DCIM
         public Information Information { get; private set; }
         #endregion
         
+        /// 模型MeshRenderer, 以方便更改Material
+        public MeshRenderer ModelMeshRender
+        {
+            get
+            {
+                if (Model == null)
+                {
+                    Debug.LogWarning($"Model is null: {DevicePath}");
+                    return null;
+                }
+                return render ??= Model.GetComponent<MeshRenderer>();
+            }
+        }
+        private MeshRenderer render;
+        
         /// 公司財產編號 (暫定)
         [field: SerializeField] 
         public string CompanyAssetNo { get; protected set; }
