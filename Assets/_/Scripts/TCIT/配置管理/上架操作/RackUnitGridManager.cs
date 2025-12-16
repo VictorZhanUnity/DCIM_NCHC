@@ -28,6 +28,7 @@ namespace _VictorDev.TCIT.DCIM
         [Foldout("[Event] 目前MouseClick的機櫃資訊")] public UnityEvent<Transform> toFocusDeviceModelEvent;
         [Foldout("[Event] 目前MouseClick的機櫃資訊")] public UnityEvent<Transform> onClickRackModelEvent;
         [Foldout("[Event] 取消選擇機櫃(Invoke False)")] public UnityEvent<bool> cancelSelectedRackEvent;
+        [Foldout("[Event]")] public UnityEvent<bool> isAbleToPlaceDeviceEvent;
 
         [Foldout("[設定]"), SerializeField] private string rackKeyWord;
         [Foldout("[設定]"), SerializeField] private RackUnitGrid rackUnitGridPrefab;
@@ -44,6 +45,7 @@ namespace _VictorDev.TCIT.DCIM
         private int currentPositionU;
         /// 是否已選擇機櫃U層RackUnitGrid
         private bool isSelectedRackUnitGrid;
+        private bool isAbleToPlaceDevice;
             
         #endregion
 
@@ -59,6 +61,7 @@ namespace _VictorDev.TCIT.DCIM
         public void OnMouseClickRackUnitGrid()
         {
             if (isSelectedRackUnitGrid) return;
+            if (isAbleToPlaceDevice == false) return;
             isSelectedRackUnitGrid = true;
             onMouseClickEvent?.Invoke(currentPositionU, currentRackRevitAssetData);
             toFocusDeviceModelEvent?.Invoke(selectedDevice);
@@ -111,14 +114,45 @@ namespace _VictorDev.TCIT.DCIM
         /// 取得RackUnitGrid資訊
         private void OnGetCurrentGridInfo(Vector3 gridWorldPosition, int positionU, RevitAssetDataHolder rackAssetDataHolder)
         {
-            if(currentPositionU == positionU && currentRackRevitAssetData == rackAssetDataHolder.RackRevitData) return;
+            if (currentPositionU == positionU && currentRackRevitAssetData == rackAssetDataHolder.RackRevitData)
+            {
+              //  selectedDevice.gameObject.SetActive(false);
+                return;
+            }
+            
+            //檢查positionU是否可以放置Upload設備
+            if (rackAssetDataHolder.RackRevitData.IsAbleToPlaceDevice(positionU, uploadDeviceRevitAssetData.HeightU) ==
+                false)
+            {
+               selectedDevice.gameObject.SetActive(false);
+               isAbleToPlaceDevice = false;
+               isAbleToPlaceDeviceEvent?.Invoke(isAbleToPlaceDevice);
+                return;
+            }
+            isAbleToPlaceDevice = true; 
+            isAbleToPlaceDeviceEvent?.Invoke(isAbleToPlaceDevice);
+            selectedDevice.gameObject.SetActive(true);
+            
             currentPositionU = positionU;
             currentRackRevitAssetData = rackAssetDataHolder.RackRevitData;
+
+            gridWorldPosition += Vector3.up * deviceOffsetPosY;
+
+            //Z軸前後偏移
+            MeshRenderer deviceMesh = selectedDevice.GetComponent<MeshRenderer>();
+            MeshRenderer rackMesh = rackAssetDataHolder.RackRevitData.ModelMeshRender;
+            float deviceOffsetZ = deviceMesh.bounds.center.x - deviceMesh.bounds.min.x;
+            float rackOffsetZ = rackMesh.bounds.center.x - rackMesh.bounds.min.x;
+            gridWorldPosition -= Vector3.left * (rackOffsetZ-deviceOffsetZ+deviceOffsetPosZ);
             
-            selectedDevice.position = gridWorldPosition;
+            selectedDevice.SetPositionByBottom(gridWorldPosition);
             selectedDevice.rotation = rackAssetDataHolder.transform.rotation;
             onMouseOverEvent?.Invoke(positionU, rackAssetDataHolder.RackRevitData);
         }
+
+        [SerializeField] private float deviceOffsetPosY;
+        [SerializeField] private float deviceOffsetPosZ;
+        
 
         #region Initialized
 

@@ -14,6 +14,23 @@ namespace _VictorDev.ApiExtensions
     public static class TransformExtension
     {
         /// [Extended] 尋找所有的子物件
+        public static void SetPositionByBottom(this Transform self, Vector3 pos)
+        {
+            if (self.TryGetComponent(out MeshRenderer renderer))
+            {
+                // bounds 是世界座標
+                Bounds bound = renderer.bounds;
+                // Pivot 到 Mesh 底部的 Y 偏移量
+                float bottomOffsetY = bound.center.y - bound.min.y;
+                // 設定位置：把 Pivot 往上抬
+                //self.position = pos + Vector3.up * bottomOffsetY;
+                self.position = pos - Vector3.up * 0.0445f * 0.5f;
+            }
+            else
+                Debug.LogError($"找不到 MeshRenderer:{self.name}");
+        }
+        
+        /// [Extended] 尋找所有的子物件
         public static List<Transform> GetAllChildren(this List<Transform> self)
         {
             List<Transform> result = new();

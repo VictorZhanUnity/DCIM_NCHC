@@ -51,13 +51,14 @@ namespace _VictorDev.TCIT.DCIM
         {
             get
             {
-                Array.Clear(Occupied, 0, Occupied.Length);
+                Array.Clear(OccupiedU, 0, OccupiedU.Length);
                 MarkOccupied();
                 return GetAvailableDeviceSegments();
             }
         }
         private const int RackTotalU = 42;
-        public bool[] Occupied { get; private set; } = new bool[RackTotalU];// index 0 = U1
+        /// 各U層的佔用情況
+        public bool[] OccupiedU { get; private set; } = new bool[RackTotalU];// index 0 = U1
         /// 計算佔用U層
         private void MarkOccupied()
         {
@@ -68,7 +69,7 @@ namespace _VictorDev.TCIT.DCIM
                 {
                     int index = startIndex + i;
 
-                    if (index < 0 || index >= Occupied.Length)
+                    if (index < 0 || index >= OccupiedU.Length)
                     {
                         throw new IndexOutOfRangeException(
                             $"[Rack Occupy Error]\n" +
@@ -76,11 +77,11 @@ namespace _VictorDev.TCIT.DCIM
                             $"RackLocation: {device.RackLocation}\n" +
                             $"HeightU: {device.HeightU}\n" +
                             $"CalculatedIndex: {index}\n" +
-                            $"RackSizeU: {Occupied.Length}"
+                            $"RackSizeU: {OccupiedU.Length}"
                         );
                     }
 
-                    Occupied[index] = true;
+                    OccupiedU[index] = true;
                 }
             }
         }
@@ -89,9 +90,9 @@ namespace _VictorDev.TCIT.DCIM
         {
             List<int> segments = new();
             int currentEmpty = 0;
-            for (int i = 0; i < Occupied.Length; i++)
+            for (int i = 0; i < OccupiedU.Length; i++)
             {
-                if (Occupied[i] == false)
+                if (OccupiedU[i] == false)
                     currentEmpty++;
                 else if (currentEmpty > 0)
                 {
@@ -109,7 +110,7 @@ namespace _VictorDev.TCIT.DCIM
         /// 取得哪些「起始 U」可以放設備
         public List<int> GetAvailableStartU(DeviceRevitAssetData deviceData)
         {
-            Array.Clear(Occupied, 0, Occupied.Length);
+            Array.Clear(OccupiedU, 0, OccupiedU.Length);
             MarkOccupied();
 
             List<int> result = new();
@@ -118,9 +119,9 @@ namespace _VictorDev.TCIT.DCIM
             int currentEmpty = 0;
             int segmentStartIndex = -1;
 
-            for (int i = 0; i < Occupied.Length; i++)
+            for (int i = 0; i < OccupiedU.Length; i++)
             {
-                if (!Occupied[i])
+                if (!OccupiedU[i])
                 {
                     if (currentEmpty == 0)
                         segmentStartIndex = i;
@@ -147,7 +148,7 @@ namespace _VictorDev.TCIT.DCIM
         /// 最佳放置策略（減少碎片）
         public int? GetBestFitStartU(DeviceRevitAssetData deviceData)
         {
-            Array.Clear(Occupied, 0, Occupied.Length);
+            Array.Clear(OccupiedU, 0, OccupiedU.Length);
             MarkOccupied();
 
             int height = deviceData.HeightU;
@@ -158,9 +159,9 @@ namespace _VictorDev.TCIT.DCIM
             int currentEmpty = 0;
             int segmentStart = -1;
 
-            for (int i = 0; i < Occupied.Length; i++)
+            for (int i = 0; i < OccupiedU.Length; i++)
             {
-                if (!Occupied[i])
+                if (!OccupiedU[i])
                 {
                     if (currentEmpty == 0)
                         segmentStart = i;
@@ -190,6 +191,30 @@ namespace _VictorDev.TCIT.DCIM
                     }
                 }
             }
+        }
+
+        /// 是否放的下設備高度
+        public bool IsAbleToPlaceDevice(int startU, int deviceHeightU)
+        {
+            Array.Clear(OccupiedU, 0, OccupiedU.Length);
+            MarkOccupied();
+
+            int startIndex = startU - 1;
+
+            for (int i = 0; i < deviceHeightU; i++)
+            {
+                int index = startIndex + i;
+
+                // 超出機櫃範圍 → 一定不行
+                if (index < 0 || index >= OccupiedU.Length)
+                    return false;
+
+                // 這一 U 已被佔用 → 不行
+                if (OccupiedU[index])
+                    return false;
+            }
+
+            return true;
         }
         
         /// 百分比：可供電力 
