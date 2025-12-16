@@ -7,12 +7,20 @@ using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
 using Debug = _VictorDev.DebugUtils.Debug;
+using Object = UnityEngine.Object;
 
 namespace _VictorDev.ApiExtensions
 {
     /// [Extended] 原API類別功能擴充
     public static class TransformExtension
     {
+        /// [Extended] Destroy刪除此GameObject
+        public static void Destroy(this Transform self)
+        {
+            if (Application.isPlaying) Object.Destroy(self.gameObject);
+            else Object.DestroyImmediate(self.gameObject);
+        }
+        
         /// [Extended] 尋找所有的子物件
         public static void SetPositionByBottom(this Transform self, Vector3 pos)
         {

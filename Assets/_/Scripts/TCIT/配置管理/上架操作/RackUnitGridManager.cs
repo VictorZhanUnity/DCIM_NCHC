@@ -6,6 +6,7 @@ using _VictorDev.DebugUtils;
 using _VictorDev.GimzoUtils;
 using _VictorDev.InterfaceUtils;
 using NaughtyAttributes;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -32,6 +33,7 @@ namespace _VictorDev.TCIT.DCIM
 
         [Foldout("[設定]"), SerializeField] private string rackKeyWord;
         [Foldout("[設定]"), SerializeField] private RackUnitGrid rackUnitGridPrefab;
+        [Foldout("[設定]"), SerializeField] private LayerMask selectableLayerMask;
 
         
         /// 欲上架的設備資訊
@@ -78,8 +80,18 @@ namespace _VictorDev.TCIT.DCIM
         }
 
         /// 確認上架設備
-        public void ConfirmSelectedDeviceModel()
+        public void ConfirmSelectedDeviceModel(DeviceRevitAssetData deviceData)
         {
+            deviceData.RackLocation = currentPositionU;
+            deviceData.SetDevicePath(selectedDevice.name);
+            deviceData.SetDeviceName(selectedDevice.name.Split("+")[2]);
+            deviceData.SetModel(selectedDevice);
+            deviceData.RevitAssetKind = DcimHelper.GetDeviceKind(selectedDevice.name);
+            selectedDevice.GetComponent<RevitAssetDataHolder>().ReceiveAssetData(deviceData);
+            selectedDevice.AddComponent<BoxCollider>();
+            selectedDevice.parent = currentRackRevitAssetData.Model.transform;
+            selectedDevice.gameObject.SetLayerMask(selectableLayerMask);
+            currentRackRevitAssetData.AddDevice(deviceData);
             selectedDevice = null;
             CancelSelectRackUnitGrid();
         }

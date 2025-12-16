@@ -48,6 +48,7 @@ namespace _VictorDev.MaterialUtils
         /// 將目前模型的材質，替換為指定材質
         public static void ReplaceMaterial(Transform target, Material replaceMaterial)
         {
+            if (target == null) return;
             // 尋找所有子物件身上的 Renderer（包含 inactive）
             Renderer[] result = target.GetComponentsInChildren<Renderer>(includeInactive: true);
 
@@ -91,6 +92,7 @@ namespace _VictorDev.MaterialUtils
         /// 復原對像的原始材質，並從Dictionary裡移除
         public static void RestoreMaterial(Transform target)
         {
+            if(target == null) return;
             // 尋找所有子物件身上的 Renderer（包含 inactive）
             Renderer[] childRenderer = target.GetComponentsInChildren<Renderer>(includeInactive: true);
 

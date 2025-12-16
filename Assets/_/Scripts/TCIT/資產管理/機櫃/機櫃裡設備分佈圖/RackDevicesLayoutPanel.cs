@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using _VictorDev.ApiExtensions;
+using _VictorDev.DebugUtils;
 using _VictorDev.DoTweenUtils;
 using _VictorDev.Framework.ScrollRectUtils;
 using NaughtyAttributes;
@@ -28,7 +29,21 @@ namespace _VictorDev.TCIT.DCIM.RevitAssetModule
         public override void ReceiveData(List<DeviceRevitAssetData> data)
         {
             DataList = data;
-            ClearList();
+            
+            ListItems = ListItems.ClearMissingTargets();
+            ListItems.ForEach(listItems =>
+            {
+                listItems.OnSelectedItemEvent.RemoveAllListeners();
+                listItems.OnToggleValueChangedEvent.RemoveAllListeners();
+                listItems.OnPointerEnterEvent.RemoveAllListeners();
+                listItems.OnPointerExitEvent.RemoveAllListeners();
+                ObjectHelper.Destroy(listItems.gameObject);
+            });
+            ListItems.Clear();
+            container.RemoveAllChildren();
+            scrollRect.verticalNormalizedPosition = 1;
+            isNoDataEvent?.Invoke(ListItems.Count == 0);
+            
             UpdateUI(container);
             UpdateListItemsPos();
             UpdateDeviceAmount();

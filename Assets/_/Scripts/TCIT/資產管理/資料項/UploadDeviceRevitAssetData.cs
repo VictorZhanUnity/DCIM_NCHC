@@ -14,7 +14,7 @@ namespace _VictorDev.TCIT.DCIM
         protected void OnDeserialized(StreamingContext context) => ParseDeviceNameAndCode();
 
         /// 未來需依照需求而修改
-        protected override void ParseDeviceNameAndCode()
+        public override void ParseDeviceNameAndCode()
         {
             RevitAssetKind = DcimHelper.GetDeviceKind(DevicePath);
             DeviceKindZh = DcimHelper.GetDeviceKindZh(RevitAssetKind);
@@ -23,11 +23,6 @@ namespace _VictorDev.TCIT.DCIM
             
             bool isHaveValue = !string.IsNullOrEmpty(Information.type_manufacturer);
             Manufacturer = isHaveValue ? Information.type_manufacturer : DevicePath.Split("+")[6].Split("-")[0];
-            
-            ///暫時用：公司財產編號
-            CompanyAssetNo = string.IsNullOrEmpty(DeviceNameAndCode)
-                ? Random.Range(0, 9999).ToString("D4")
-                : DeviceNameAndCode.GetNumberFromString(4, 4);
         }
     }
 }

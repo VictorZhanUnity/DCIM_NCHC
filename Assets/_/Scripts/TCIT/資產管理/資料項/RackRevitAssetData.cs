@@ -192,6 +192,21 @@ namespace _VictorDev.TCIT.DCIM
                 }
             }
         }
+        
+        /// 百分比：可供電力 
+        public float AvailableWattPercentage01 => (float)AvailableWatt / (MaxWatt);
+        /// 百分比：可供重量
+        public float AvailableWeightPercentage01 => (float)AvailableWeight / MaxWeight;
+        /// 百分比：可供U層數
+        public float AvailableHeightUPercentage01 => (float)AvailableHeightU / MaxHeightU;
+        
+        /// 即時溫度
+        public float RT => Random.Range(14f, 30f);
+
+        /// 即時濕度
+        public float RH => Random.Range(55f, 85f);
+
+        #endregion
 
         /// 是否放的下設備高度
         public bool IsAbleToPlaceDevice(int startU, int deviceHeightU)
@@ -217,21 +232,6 @@ namespace _VictorDev.TCIT.DCIM
             return true;
         }
         
-        /// 百分比：可供電力 
-        public float AvailableWattPercentage01 => (float)AvailableWatt / (MaxWatt);
-        /// 百分比：可供重量
-        public float AvailableWeightPercentage01 => (float)AvailableWeight / MaxWeight;
-        /// 百分比：可供U層數
-        public float AvailableHeightUPercentage01 => (float)AvailableHeightU / MaxHeightU;
-        
-        /// 即時溫度
-        public float RT => Random.Range(14f, 30f);
-
-        /// 即時濕度
-        public float RH => Random.Range(55f, 85f);
-
-        #endregion
-
         /// 設備是否適放於至機櫃
         public bool IsDeviceSuitable(UploadDeviceRevitAssetData deviceData)
         {
@@ -241,6 +241,9 @@ namespace _VictorDev.TCIT.DCIM
             bool isHeightSuitable = availableUSegments.Any(size=> size > deviceData.HeightU);
             return isWattSuitable && isWeightSuitable && isHeightSuitable;
         }
+
+        public void AddDevice(DeviceRevitAssetData deviceData) => Containers.Add(deviceData);
+        public void RemoveDevice(DeviceRevitAssetData deviceData) => Containers.Remove(deviceData);
         
         /// 在JSON解析後處理 (需子類別自行解析，override函式需加上[OnDeserialized])
         [OnDeserialized]
