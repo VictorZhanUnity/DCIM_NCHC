@@ -57,6 +57,7 @@ namespace _VictorDev.TCIT.DCIM.DeviceConfigurationModuel
                 // 是否適合
                 bool isSuitable = rackData.IsDeviceSuitable(currentDeviceData);
                 ChangeRackModelScale(rackData, isSuitable ? 1f : 0.001f);
+                rackData.Model.GetComponentInChildren<RackUnitGrid>(true).gameObject.SetActive(isSuitable);
 
                 Color rackConditionColor;
                 // 計算百分比
@@ -81,7 +82,6 @@ namespace _VictorDev.TCIT.DCIM.DeviceConfigurationModuel
                         counter++;
                     }
                     totalPercent /= counter;
-                    Debug.Log($"totalPercent: {totalPercent} / {rackData.AvailableWatt} / {rackData.MaxWatt}");
                     rackConditionColor = counter == 0? rackSourceColor : GetColorByPercentage(totalPercent);
                 }else rackConditionColor = rackSourceColor;
                 
@@ -109,6 +109,9 @@ namespace _VictorDev.TCIT.DCIM.DeviceConfigurationModuel
                 ChangeRackModelScale(rackData, 1);
                 ChangeRackModelColor(rackData, rackSourceColor);
             });
+            toggleWatt.isOn = false;
+            toggleWeight.isOn = false;
+            toggleHeightU.isOn = false;
         }
 
 
@@ -150,10 +153,6 @@ namespace _VictorDev.TCIT.DCIM.DeviceConfigurationModuel
             toggleWatt.onValueChanged.RemoveListener(OnToggleValueChanged);
             toggleWeight.onValueChanged.RemoveListener(OnToggleValueChanged);
             toggleHeightU.onValueChanged.RemoveListener(OnToggleValueChanged);
-            toggleWatt.isOn = false;
-            toggleWeight.isOn = false;
-            toggleHeightU.isOn = false;
-            RestoreRackAttribute();
         }
 
         #endregion

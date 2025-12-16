@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
+using _VictorDev.ApiExtensions;
+using NaughtyAttributes;
 using Newtonsoft.Json;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -32,7 +34,7 @@ namespace _VictorDev.TCIT.DCIM
         /// 總電力 (+3000 For Demo)
         public int MaxWatt => Information.watt + 3000;
         /// 總負重
-        public int MaxWeight => Information.weight + 3000;
+        public int MaxWeight => Information.weight + 300;
         /// 總U層數
         public int MaxHeightU => Information.heightU;
         
@@ -43,6 +45,153 @@ namespace _VictorDev.TCIT.DCIM
         /// 可供U層數
         public int AvailableHeightU => Mathf.Clamp(MaxHeightU - UsageHeightU, 0, MaxHeightU);
 
+        #region 可供U層數的尺吋
+        /// 可供U層數的尺吋
+        public List<int> AvailableUSize
+        {
+            get
+            {
+                Array.Clear(Occupied, 0, Occupied.Length);
+                MarkOccupied();
+                return GetAvailableDeviceSegments();
+            }
+        }
+        private const int RackTotalU = 42;
+        public bool[] Occupied { get; private set; } = new bool[RackTotalU];// index 0 = U1
+        /// 計算佔用U層
+        private void MarkOccupied()
+        {
+            foreach (var device in Containers)
+            {
+                int startIndex = device.RackLocation - 1;
+                for (int i = 0; i < device.HeightU; i++)
+                {
+                    int index = startIndex + i;
+
+                    if (index < 0 || index >= Occupied.Length)
+                    {
+                        throw new IndexOutOfRangeException(
+                            $"[Rack Occupy Error]\n" +
+                            $"Device: {device.DevicePath}\n" +
+                            $"RackLocation: {device.RackLocation}\n" +
+                            $"HeightU: {device.HeightU}\n" +
+                            $"CalculatedIndex: {index}\n" +
+                            $"RackSizeU: {Occupied.Length}"
+                        );
+                    }
+
+                    Occupied[index] = true;
+                }
+            }
+        }
+        /// 取得空閒U區段 (各種可用U尺吋)
+        private List<int> GetAvailableDeviceSegments()
+        {
+            List<int> segments = new();
+            int currentEmpty = 0;
+            for (int i = 0; i < Occupied.Length; i++)
+            {
+                if (Occupied[i] == false)
+                    currentEmpty++;
+                else if (currentEmpty > 0)
+                {
+                    segments.Add(currentEmpty);
+                    currentEmpty = 0;
+                }
+            }
+            if (currentEmpty > 0)
+                segments.Add(currentEmpty);
+            segments = segments.Distinct().OrderBy(value=>value).ToList();
+            return segments;
+        }
+        #endregion 
+
+        /// 取得哪些「起始 U」可以放設備
+        public List<int> GetAvailableStartU(DeviceRevitAssetData deviceData)
+        {
+            Array.Clear(Occupied, 0, Occupied.Length);
+            MarkOccupied();
+
+            List<int> result = new();
+            int height = deviceData.HeightU;
+
+            int currentEmpty = 0;
+            int segmentStartIndex = -1;
+
+            for (int i = 0; i < Occupied.Length; i++)
+            {
+                if (!Occupied[i])
+                {
+                    if (currentEmpty == 0)
+                        segmentStartIndex = i;
+
+                    currentEmpty++;
+
+                    if (currentEmpty >= height)
+                    {
+                        // i 是目前段的結尾
+                        int startIndex = i - height + 1;
+                        result.Add(startIndex + 1); // 轉回 U (1-based)
+                    }
+                }
+                else
+                {
+                    currentEmpty = 0;
+                    segmentStartIndex = -1;
+                }
+            }
+
+            return result;
+        }
+
+        /// 最佳放置策略（減少碎片）
+        public int? GetBestFitStartU(DeviceRevitAssetData deviceData)
+        {
+            Array.Clear(Occupied, 0, Occupied.Length);
+            MarkOccupied();
+
+            int height = deviceData.HeightU;
+
+            int bestStartU = -1;
+            int minRemaining = int.MaxValue;
+
+            int currentEmpty = 0;
+            int segmentStart = -1;
+
+            for (int i = 0; i < Occupied.Length; i++)
+            {
+                if (!Occupied[i])
+                {
+                    if (currentEmpty == 0)
+                        segmentStart = i;
+
+                    currentEmpty++;
+                }
+                else
+                {
+                    EvaluateSegment();
+                    currentEmpty = 0;
+                }
+            }
+
+            EvaluateSegment();
+
+            return bestStartU == -1 ? null : bestStartU + 1;
+
+            void EvaluateSegment()
+            {
+                if (currentEmpty >= height)
+                {
+                    int remaining = currentEmpty - height;
+                    if (remaining < minRemaining)
+                    {
+                        minRemaining = remaining;
+                        bestStartU = segmentStart;
+                    }
+                }
+            }
+        }
+        
         /// 百分比：可供電力 
         public float AvailableWattPercentage01 => (float)AvailableWatt / (MaxWatt);
         /// 百分比：可供重量
@@ -63,7 +212,8 @@ namespace _VictorDev.TCIT.DCIM
         {
             bool isWattSuitable = deviceData.Watt < AvailableWatt;
             bool isWeightSuitable = deviceData.Weight < AvailableWeight;
-            bool isHeightSuitable = deviceData.HeightU < AvailableHeightU;
+            List<int> availableUSegments = GetAvailableDeviceSegments();
+            bool isHeightSuitable = availableUSegments.Any(size=> size > deviceData.HeightU);
             return isWattSuitable && isWeightSuitable && isHeightSuitable;
         }
         

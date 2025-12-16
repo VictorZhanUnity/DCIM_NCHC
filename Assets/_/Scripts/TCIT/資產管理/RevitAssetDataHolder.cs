@@ -1,3 +1,4 @@
+using _VictorDev.ApiExtensions;
 using _VictorDev.TCIT.DCIM.EnvironmentModule;
 using NaughtyAttributes;
 using UnityEngine;
@@ -27,5 +28,8 @@ namespace _VictorDev.TCIT.DCIM
                 default: deviceRevitAssetData = revitAssetData as DeviceRevitAssetData; break;
             }
         }
+
+        [Button, ShowIf(nameof(IsRackAsset))]
+        private void GetAvailableUSize() => Debug.Log($"GetAvailableUSize: {rackRevitAssetData.AvailableUSize.ToPrint()}");
     }
 }
