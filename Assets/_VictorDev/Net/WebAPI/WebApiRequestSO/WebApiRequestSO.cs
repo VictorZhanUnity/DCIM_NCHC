@@ -42,15 +42,13 @@ namespace _VictorDev.Net.WebAPI
             }
         }
 
-        /// 設定HttpRequest內容
+        /// 依照HttpMethod(POST/GET...)來設定HttpRequest內容
         public HttpRequestMessage HttpRequestMessage
         {
             get
             {
                 HttpRequestMessage request;
-                
                 string url = URL;
-
                 if (isQueryParams)
                 {
                     if(url.EndsWith("/") == false) url += "/";
@@ -66,12 +64,11 @@ namespace _VictorDev.Net.WebAPI
                 switch (enumHttpMethod)
                 {
                     default:
-                    case EnumHttpMethod.Get:
+                    case EnumHttpMethod.GET:
                         request = new HttpRequestMessage(HttpMethod.Get, url);
                         break;
-                    case EnumHttpMethod.Post:
+                    case EnumHttpMethod.POST:
                         request = new HttpRequestMessage(HttpMethod.Post, url);
-                        Debug.Log($"bodyType: {bodyType}");
                         switch (bodyType)
                         {
                             case EnumBody.RawJson:
@@ -83,6 +80,26 @@ namespace _VictorDev.Net.WebAPI
                                 {
                                     form.Add(new StringContent(kv.Value.Trim()), kv.Key.Trim());
                                 }
+                                request.Content = form;
+                                break;
+                        }
+                        break;
+                    case EnumHttpMethod.PATCH:
+                        request = new HttpRequestMessage(HttpMethod.Patch, url);
+                        switch (bodyType)
+                        {
+                            case EnumBody.RawJson:
+                                StringContent content = new StringContent(BodyRawJson, Encoding.UTF8, MediaType);
+                                
+                                // PATCH 很常要求 Accept
+                                content.Headers.ContentType.CharSet = "utf-8";
+                                request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(MediaType));
+                                request.Content = content;
+                                break;
+                            case EnumBody.FormData:
+                                var form = new MultipartFormDataContent();
+                                foreach (KeyValueData<string, string> kv in formData) 
+                                    form.Add(new StringContent(kv.Value.Trim()), kv.Key.Trim());
                                 request.Content = form;
                                 break;
                         }
@@ -153,7 +170,7 @@ namespace _VictorDev.Net.WebAPI
         #endregion
 
         /// 設定URL (強制取消IPConfig設定)
-        public void SetUrl(string url, EnumHttpMethod method = EnumHttpMethod.Get)
+        public void SetUrl(string url, EnumHttpMethod method = EnumHttpMethod.GET)
         {
             url = url.Trim();
             ipConfigSo = null;
@@ -177,7 +194,7 @@ namespace _VictorDev.Net.WebAPI
                 return;
             }
             queryParams = data;
-            enumHttpMethod = EnumHttpMethod.Get;
+            enumHttpMethod = EnumHttpMethod.GET;
             isQueryParams = true;
         }
 

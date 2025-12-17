@@ -24,7 +24,7 @@ namespace _VictorDev.Net.WebAPI
         public static void PostAsync(string url, string bodyJson, Action<string> onSuccess, Action<string> onFailed = null)
         {
             WebApiRequestSO data = ScriptableObject.CreateInstance<WebApiRequestSO>();
-            data.SetUrl(url, EnumHttpMethod.Post);
+            data.SetUrl(url, EnumHttpMethod.POST);
             data.SetBodyRawJson(bodyJson);
             SendRequest(data, onSuccess, onFailed);
         }
@@ -45,9 +45,19 @@ namespace _VictorDev.Net.WebAPI
 
             TaskManager.Run($"SendRequest_{apiRequestSo.name}", RunTask);
             
-            // 執行Task
+            // 執行Task：呼叫WebAPI
             async Task RunTask(CancellationToken token)
             {
+                
+                if (apiRequestSo.EnumHttpMethod == EnumHttpMethod.PATCH)
+                {
+                    string result = await SendPatchByUnityWebRequest(apiRequestSo, token);
+                    Debug.Log($"SendRequest Success (PATCH)\n{result}",
+                        nameof(WebApiRequestSO), EmojiEnum.Success);
+                    onSuccess?.Invoke(result);
+                    return;
+                }
+                
                 try
                 {
                     token.ThrowIfCancellationRequested(); // 支援取消
@@ -83,6 +93,64 @@ namespace _VictorDev.Net.WebAPI
             }
         }
         
+        /// [Patch]方式的另外處理
+        private static async Task<string> SendPatchByUnityWebRequest(
+            WebApiRequestSO apiRequest,
+            CancellationToken token)
+        {
+            using var request = new UnityEngine.Networking.UnityWebRequest(
+                apiRequest.URL,
+                "PATCH");
+
+            // ===== Body =====
+            if (!string.IsNullOrEmpty(apiRequest.BodyRawJson))
+            {
+                byte[] bodyBytes =
+                    System.Text.Encoding.UTF8.GetBytes(apiRequest.BodyRawJson);
+
+                request.uploadHandler =
+                    new UnityEngine.Networking.UploadHandlerRaw(bodyBytes);
+
+                request.SetRequestHeader("Content-Type", apiRequest.MediaType);
+            }
+
+            request.downloadHandler =
+                new UnityEngine.Networking.DownloadHandlerBuffer();
+
+            request.SetRequestHeader("Accept", "application/json");
+            // ===== 關鍵：複製 Header（含 Authorization）=====
+            if (apiRequest.HttpRequestMessage != null)
+            {
+                foreach (var header in apiRequest.HttpRequestMessage.Headers)
+                {
+                    foreach (var value in header.Value)
+                    {
+                        request.SetRequestHeader(header.Key, value);
+                    }
+                }
+            }
+
+            // ===== Send =====
+            var operation = request.SendWebRequest();
+            while (!operation.isDone)
+            {
+                if (token.IsCancellationRequested)
+                {
+                    request.Abort();
+                    throw new OperationCanceledException();
+                }
+                await Task.Yield();
+            }
+
+            if (request.result !=
+                UnityEngine.Networking.UnityWebRequest.Result.Success)
+            {
+                throw new Exception(request.error);
+            }
+
+            return request.downloadHandler.text;
+        }
+
       
 
         /// 預設的OnFail事件處理

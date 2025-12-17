@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e3caa59a36991a4a9edb82b91feb47b, type: 3}
+  m_Name: "5. \u8A2D\u5099\u4E0B\u67B6"
+  m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.Net.WebAPI.WebApiRequestSO
+  ipConfigSo: {fileID: 11400000, guid: c39d74d54804df04e90cd7182d0225eb, type: 2}
+  extendApiURL: api/DataCenter/Container/Uninstall
+  authorizationSo: {fileID: 11400000, guid: 1fa76db46f829a2419540bf7fd40534b, type: 2}
+  httpType: 0
+  fullApiURL: 
+  enumHttpMethod: 3
+  responseDataType: 0
+  isQueryParams: 0
+  queryParams:
+  - <Key>k__BackingField: BuildingCode
+    <Value>k__BackingField: TAINAN
+  - <Key>k__BackingField: DeviceCode
+    <Value>k__BackingField: 123
+  - <Key>k__BackingField: ChildDeviceCode
+    <Value>k__BackingField: 24
+  - <Key>k__BackingField: Status
+    <Value>k__BackingField: 1
+  - <Key>k__BackingField: RackLocation
+    <Value>k__BackingField: 
+  - <Key>k__BackingField: DeviceId
+    <Value>k__BackingField: 
+  - <Key>k__BackingField: OrderSn
+    <Value>k__BackingField: 
+  bodyType: 2
+  formData:
+  - <Key>k__BackingField: account
+    <Value>k__BackingField: 2025TCIT
+  - <Key>k__BackingField: pw
+    <Value>k__BackingField: TCIT2080@
+  rawJson: "{\r\n  \"isSuccess\": true,\r\n  \"state\": \"string\",\r\n  \"nextAction\":
+    [\r\n    [\r\n      \"string\"\r\n    ]\r\n  ],\r\n  \"data\": \"string\"\r\n}"

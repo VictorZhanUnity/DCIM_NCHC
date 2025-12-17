@@ -10,18 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e3caa59a36991a4a9edb82b91feb47b, type: 3}
-  m_Name: "1. \u767B\u5165\u53D6\u5F97Token"
+  m_Name: "3. \u53D6\u5F97\u672A\u4E0A\u67B6\u5BB9\u5668"
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.Net.WebAPI.WebApiRequestSO
   ipConfigSo: {fileID: 11400000, guid: c39d74d54804df04e90cd7182d0225eb, type: 2}
-  extendApiURL: api/Auth/login
+  extendApiURL: api/DataCenter/Container/Unpublished
   authorizationSo: {fileID: 11400000, guid: 1fa76db46f829a2419540bf7fd40534b, type: 2}
   httpType: 0
   fullApiURL: 
-  enumHttpMethod: 1
-  responseDataType: 2
-  isQueryParams: 0
-  queryParams: []
-  bodyType: 1
+  enumHttpMethod: 0
+  responseDataType: 0
+  isQueryParams: 1
+  queryParams:
+  - <Key>k__BackingField: BuildingCode
+    <Value>k__BackingField: TAINAN
+  bodyType: 0
   formData:
   - <Key>k__BackingField: account
     <Value>k__BackingField: 2025TCIT

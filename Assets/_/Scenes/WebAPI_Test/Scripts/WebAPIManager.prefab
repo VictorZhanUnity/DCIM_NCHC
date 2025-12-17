@@ -35,6 +35,7 @@ Transform:
   - {fileID: 4652602919036824613}
   - {fileID: 6780456365939132588}
   - {fileID: 738898189447825561}
+  - {fileID: 6052059850370349594}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4634955004424730987
@@ -104,7 +105,7 @@ MonoBehaviour:
   onFailed:
     m_PersistentCalls:
       m_Calls: []
-  webApiRequestSo: {fileID: 11400000, guid: b280f5e3f5888f949a2668f88300ef93, type: 2}
+  webApiRequestSo: {fileID: 11400000, guid: ebf79397b63a5b54d9d81ca523ca22fa, type: 2}
   responseString: '[]'
 --- !u!1 &1420946985722114583
 GameObject:
@@ -157,6 +158,58 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   webApiRequestSo: {fileID: 11400000, guid: 299dd4d65f4245f45856afdedeac0064, type: 2}
+  responseString: "{\r\n  \"isSuccess\": false,\r\n  \"state\": \"\u7F3A\u5C11\u4F4D\u7F6E\u8A2D\u5B9A\"\r\n}"
+--- !u!1 &2607325862104129727
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6052059850370349594}
+  - component: {fileID: 4062692057507752269}
+  m_Layer: 0
+  m_Name: "6. \u8A2D\u5099\u79FB\u52D5"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6052059850370349594
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2607325862104129727}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 371068620784159963}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4062692057507752269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2607325862104129727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f201e45b4e88d89418f06ca775d135ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.Net.WebAPI.WebApiCallHandler
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onFailed:
+    m_PersistentCalls:
+      m_Calls: []
+  webApiRequestSo: {fileID: 11400000, guid: b7ff4e726edc6e54eb72a6c452b7f1d2, type: 2}
   responseString: "{\r\n  \"isSuccess\": false,\r\n  \"state\": \"\u7F3A\u5C11\u4F4D\u7F6E\u8A2D\u5B9A\"\r\n}"
 --- !u!1 &5463187173607402239
 GameObject:
@@ -348,5 +401,5 @@ MonoBehaviour:
   onFailed:
     m_PersistentCalls:
       m_Calls: []
-  webApiRequestSo: {fileID: 0}
+  webApiRequestSo: {fileID: 11400000, guid: be1f1e2e83ae0b8438e4e40509fec329, type: 2}
   responseString: "{\r\n  \"isSuccess\": false,\r\n  \"state\": \"\u7F3A\u5C11\u4F4D\u7F6E\u8A2D\u5B9A\"\r\n}"

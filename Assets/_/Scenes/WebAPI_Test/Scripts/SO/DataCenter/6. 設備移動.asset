@@ -10,27 +10,37 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e3caa59a36991a4a9edb82b91feb47b, type: 3}
-  m_Name: "2. \u8B80\u53D6\u6A5F\u6AC3\u5BB9\u91CF\u8CC7\u8A0A"
+  m_Name: "6. \u8A2D\u5099\u79FB\u52D5"
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.Net.WebAPI.WebApiRequestSO
   ipConfigSo: {fileID: 11400000, guid: c39d74d54804df04e90cd7182d0225eb, type: 2}
-  extendApiURL: api/Eqpt/RackCapacityAnalysis
+  extendApiURL: api/DataCenter/Container/Move
   authorizationSo: {fileID: 11400000, guid: 1fa76db46f829a2419540bf7fd40534b, type: 2}
   httpType: 0
   fullApiURL: 
-  enumHttpMethod: 2
+  enumHttpMethod: 3
   responseDataType: 0
-  isQueryParams: 1
+  isQueryParams: 0
   queryParams:
   - <Key>k__BackingField: BuildingCode
     <Value>k__BackingField: TAINAN
-  - <Key>k__BackingField: TAKE
-    <Value>k__BackingField: 100
-  bodyType: 0
+  - <Key>k__BackingField: DeviceCode
+    <Value>k__BackingField: 123
+  - <Key>k__BackingField: ChildDeviceCode
+    <Value>k__BackingField: 24
+  - <Key>k__BackingField: Status
+    <Value>k__BackingField: 1
+  - <Key>k__BackingField: RackLocation
+    <Value>k__BackingField: 
+  - <Key>k__BackingField: DeviceId
+    <Value>k__BackingField: 
+  - <Key>k__BackingField: OrderSn
+    <Value>k__BackingField: 
+  bodyType: 2
   formData:
   - <Key>k__BackingField: account
     <Value>k__BackingField: 2025TCIT
   - <Key>k__BackingField: pw
     <Value>k__BackingField: TCIT2080@
-  rawJson: '{asdfasdf
-
-    }'
+  rawJson: "{\r\n  \"fromRackDeviceCode\": \"string\",\r\n  \"targetRackDeviceCode\":
+    \"string\",\r\n  \"containerDeviceCode\": \"string\",\r\n  \"fromRackLocation\":
+    0,\r\n  \"targetRackLocation\": 0\r\n}"

@@ -37,7 +37,8 @@ namespace _VictorDev.DebugUtils
             bool isPrintArrow)
         {
             if (isLogEnable == false) return;
-            string msg = $"{EmojiHelper.GetEmoji(emojiEnum)} ";
+            //string msg = $"{EmojiHelper.GetEmoji(emojiEnum)} ";
+            string msg ="";
             msg += callerClass != null ? $"[ {callerClass} ] " : "";
             msg += (isPrintArrow ? ":> " : " ") + message;
             Action action = null;

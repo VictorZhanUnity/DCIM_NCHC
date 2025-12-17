@@ -12,15 +12,16 @@ namespace _VictorDev.Net.WebAPI
         https,
         http
     };
-    /// Get / Post 
+    /// GET / POST 與其它類型
     public enum EnumHttpMethod
     {
-        Get,
-        Head,
-        Post,
-        Put,
-        Create,
-        Delete
+        GET,
+        POST,
+        PUT,
+        PATCH, 
+        DELETE,
+        HEAD,
+        OPTIONS,
     }
     public enum EnumBody
     {

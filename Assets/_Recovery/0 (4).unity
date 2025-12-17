@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyMDI1VENJVCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiIyMDI1VENJVCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6InRjaXQiLCJqdGkiOiIzNGI4NzZiNS1kNmRiLTRlYzEtYmNiYy04NjFjNDZjYzEyOTEiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL2dyb3Vwc2lkIjoiVEFJTkFOIiwiSXBBZGRyZXNzIjoiMTkyLjE2OC4wLjE2MCIsImV4cCI6MTc2ODU1NzEyMCwiaXNzIjoiaHR0cHM6Ly93d3cudGNpdGVjaC5jb20udHcvIiwiYXVkIjoiaHR0cHM6Ly93d3cudGNpdGVjaC5jb20udHcvIn0.UZG66ha9tAG-a2CW7uO62NJMh5RtwLUoAEiBEm8mFYE
+  m_text: HTTP/1.1 404 Not Found
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 25df31d2cbf010d4dbeb7bdaa6e79529, type: 2}
   m_sharedMaterial: {fileID: -5400270125734386531, guid: 25df31d2cbf010d4dbeb7bdaa6e79529, type: 2}
@@ -185,8 +185,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278193407
+  m_fontColor: {r: 1, g: 0.045656387, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1443,7 +1443,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
   onSuccess:
     m_PersistentCalls:
       m_Calls:
@@ -2091,7 +2091,7 @@ MonoBehaviour:
   onLoadingEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 389734831}
+      - m_Target: {fileID: 153760857}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 0
@@ -2133,7 +2133,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
-  url: http://192.168.0.107:5080/api/Auth/login
+  url: http://192.168.0.107:5080/api/Auth/login1
   timeoutSeconds: 10
   httpMethod: 1
   sendBodyType: 1
@@ -2152,93 +2152,6 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1738930216}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1767994528
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1767994530}
-  - component: {fileID: 1767994529}
-  m_Layer: 0
-  m_Name: WebAPICaller (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1767994529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1767994528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78a90b67eba67584fb329a68514c3419, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ApiTest
-  onLoadingEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 389734831}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onResponseSuccessEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onResponseErrorEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 153760859}
-        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
-        m_MethodName: set_text
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
-  url: http://192.168.0.107:5080/api/DataCenter/Rack/List
-  timeoutSeconds: 10
-  httpMethod: 0
-  sendBodyType: 1
-  useAuthorization: 1
-  bearerToken: eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyMDI1VENJVCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiIyMDI1VENJVCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6InRjaXQiLCJqdGkiOiIzNGI4NzZiNS1kNmRiLTRlYzEtYmNiYy04NjFjNDZjYzEyOTEiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL2dyb3Vwc2lkIjoiVEFJTkFOIiwiSXBBZGRyZXNzIjoiMTkyLjE2OC4wLjE2MCIsImV4cCI6MTc2ODU1NzEyMCwiaXNzIjoiaHR0cHM6Ly93d3cudGNpdGVjaC5jb20udHcvIiwiYXVkIjoiaHR0cHM6Ly93d3cudGNpdGVjaC5jb20udHcvIn0.UZG66ha9tAG-a2CW7uO62NJMh5RtwLUoAEiBEm8mFYE
-  paramsSetting:
-  - <Key>k__BackingField: BuildingCode
-    <Value>k__BackingField: TAINAN
-  sendBodyJson: 
---- !u!4 &1767994530
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1767994528}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -2363,5 +2276,4 @@ SceneRoots:
   - {fileID: 709261268}
   - {fileID: 511085212}
   - {fileID: 1738930218}
-  - {fileID: 1767994530}
   - {fileID: 956234136}

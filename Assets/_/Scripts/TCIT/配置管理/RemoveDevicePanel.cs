@@ -1,8 +1,6 @@
 using _VictorDev.ApiExtensions;
-using _VictorDev.DebugUtils;
 using _VictorDev.TCIT.DCIM;
 using TMPro;
-using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 
 public class RemoveDevicePanel : MonoBehaviour

@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e3caa59a36991a4a9edb82b91feb47b, type: 3}
-  m_Name: "4 .\u8B8A\u66F4\u6A5F\u6AC3\u5167\u8A2D\u5099\u72C0\u614B"
+  m_Name: "4. \u8A2D\u5099\u4E0A\u67B6"
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.Net.WebAPI.WebApiRequestSO
   ipConfigSo: {fileID: 11400000, guid: c39d74d54804df04e90cd7182d0225eb, type: 2}
-  extendApiURL: api/Eqpt/RackDeviceRelocation
+  extendApiURL: api/DataCenter/Container/Install
   authorizationSo: {fileID: 11400000, guid: 1fa76db46f829a2419540bf7fd40534b, type: 2}
   httpType: 0
   fullApiURL: 
-  enumHttpMethod: 2
+  enumHttpMethod: 1
   responseDataType: 0
-  isQueryParams: 1
+  isQueryParams: 0
   queryParams:
   - <Key>k__BackingField: BuildingCode
     <Value>k__BackingField: TAINAN
@@ -35,12 +35,11 @@ MonoBehaviour:
     <Value>k__BackingField: 
   - <Key>k__BackingField: OrderSn
     <Value>k__BackingField: 
-  bodyType: 0
+  bodyType: 2
   formData:
   - <Key>k__BackingField: account
     <Value>k__BackingField: 2025TCIT
   - <Key>k__BackingField: pw
     <Value>k__BackingField: TCIT2080@
-  rawJson: '{asdfasdf
-
-    }'
+  rawJson: "{\r\n  \"rackDeviceCode\": \"string\",\r\n  \"containerDeviceCode\":
+    \"string\",\r\n  \"rackLocation\": 0\r\n}"
