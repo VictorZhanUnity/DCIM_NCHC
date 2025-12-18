@@ -4,6 +4,7 @@ using System.Linq;
 using _VictorDev.Configs;
 using _VictorDev.DebugUtils;
 using _VictorDev.InterfaceUtils;
+using Newtonsoft.Json;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
@@ -12,6 +13,13 @@ namespace _VictorDev.ApiExtensions
     /// 原API類別功能擴充
     public static class ListExtension
     {
+        /// [Extended] - 將List{KeyValueData{string, string}}轉成JSON字串格式
+        public static string ToJsonFormat(this List<KeyValueData<string, string>> self)
+        {
+            var dict = self.ToDictionary(x => x.Key, x => x.Value);
+            return JsonConvert.SerializeObject(dict, Formatting.Indented);
+        }
+        
         /// [Extended] - 移除所有子物件
         public static void RemoveAllChildren(this Transform self)
         {

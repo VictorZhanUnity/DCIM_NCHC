@@ -1,4 +1,3 @@
-using System;
 using System.Text;
 using System.Collections;
 using System.Collections.Generic;
@@ -33,13 +32,11 @@ public class CanvasSampleOpenFileImage : MonoBehaviour, IPointerDownHandler {
     //
     public void OnPointerDown(PointerEventData eventData) { }
 
-    [Obsolete("Obsolete")]
     void Start() {
         var button = GetComponent<Button>();
         button.onClick.AddListener(OnClick);
     }
 
-    [Obsolete("Obsolete")]
     private void OnClick() {
         var paths = StandaloneFileBrowser.OpenFilePanel("Title", "", ".png", false);
         if (paths.Length > 0) {
@@ -48,7 +45,6 @@ public class CanvasSampleOpenFileImage : MonoBehaviour, IPointerDownHandler {
     }
 #endif
 
-    [Obsolete("Obsolete")]
     private IEnumerator OutputRoutine(string url) {
         var loader = new WWW(url);
         yield return loader;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -7,6 +8,8 @@ using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
+using VictorDev.Net.WebAPI;
+using Debug = _VictorDev.DebugUtils.Debug;
 
 namespace _VictorDev.Framework.WebAPI
 {
@@ -15,40 +18,43 @@ namespace _VictorDev.Framework.WebAPI
         #region Variables
 
         [Foldout("[Event] - 是否在Loading")] public UnityEvent<bool> onLoadingEvent;
-        [Foldout("[Event] - Response內容")] public UnityEvent<string> onResponseSuccessEvent, onResponseErrorEvent;
+        [Foldout("[Event] - Response內容"), HideIf(nameof(IsResponseBinary))] public UnityEvent<string> onResponseSuccessEvent;
+        [Foldout("[Event] - Response內容"), ShowIf(nameof(IsResponseBinary))] public UnityEvent<Byte[]> onResponseSuccessBinaryEvent;
+        [Foldout("[Event] - Response內容")] public UnityEvent<string> onResponseErrorEvent;
+        
         [Foldout("[連線設定]"), SerializeField] private string url = "http://192.168.0.107:5080/api/Auth/login";
-        [Foldout("[連線設定]"), SerializeField] private int timeoutSeconds = 10;
         [Foldout("[連線設定]"), SerializeField] private EnumHttpMethod httpMethod = EnumHttpMethod.POST;
         [Foldout("[連線設定]"), SerializeField, ShowIf(nameof(IsNotGetMethod))] private EnumBody sendBodyType = EnumBody.FormData;
-        [Foldout("[認證設定]"), SerializeField]
-        private bool useAuthorization = false;
-
-        [Foldout("[認證設定]"), SerializeField, ShowIf(nameof(useAuthorization))]
-        private string bearerToken;
+        [Foldout("[連線設定]"), SerializeField, ShowIf(nameof(IsGetOrFormData))] private List<KeyValueData<string, string>> paramsSetting;
+        [Foldout("[連線設定]"), SerializeField, ResizableTextArea, ShowIf(nameof(IsSendJson))] private string sendBodyJson;
+        [Foldout("[連線設定]"), SerializeField] private EnumResponseDataType responseDataType = EnumResponseDataType.Json;
+        [Foldout("[連線設定]"), Label("逾時秒數"), SerializeField] private int timeoutSeconds = 60;
+        [Foldout("[連線設定]"), Label("Authorization (選填)"), SerializeField] private WebApiAuthorizationSO authorization;
         
-        private bool IsNotGetMethod => httpMethod != EnumHttpMethod.GET;
-        private bool IsGetOrFormData => sendBodyType == EnumBody.FormData || httpMethod == EnumHttpMethod.GET;
-        private bool IsSendJson => sendBodyType == EnumBody.RawJson;
-
-        [Foldout("[連線設定]"), SerializeField, ShowIf(nameof(IsGetOrFormData))]
-        private List<KeyValueData<string, string>> paramsSetting;
-
-        [Foldout("[連線設定]"), SerializeField, ShowIf(nameof(IsSendJson))]
-        private string sendBodyJson;
-
         #endregion
 
+        /// 設置SendBody - Params
+        public void SetParams(List<KeyValueData<string, string>> data) => SetFormData(data);
+        
+        /// 設置SendBody - FormData
+        public void SetFormData(List<KeyValueData<string, string>> data) => paramsSetting = data;
+        
+        /// 設置SendBody -  JSON字串
+        public void SetBodyJson(List<KeyValueData<string, string>> data) => sendBodyJson = data.ToJsonFormat();
+
         [Button]
-        public void CallAPI()
+        public void CallAPI() => CallAPI(null, null);
+
+        public void CallAPI(UnityEvent<string> onSuccess, UnityEvent<string> onError)
         {
             onLoadingEvent?.Invoke(true);
-            StartCoroutine(CoroutineHandler());
+            StartCoroutine(CoroutineHandler(onSuccess, onError));
         }
 
-        IEnumerator CoroutineHandler()
+        /// 呼叫WebAPI流程
+        private IEnumerator CoroutineHandler(UnityEvent<string> onSuccess, UnityEvent<string> onError)
         {
             UnityWebRequest request = null;
-
             switch (httpMethod)
             {
                 case EnumHttpMethod.GET:
@@ -71,35 +77,53 @@ namespace _VictorDev.Framework.WebAPI
                 yield break;
             }
             request.timeout = timeoutSeconds; // timeout時會觸發：UnityWebRequest.Result.ConnectionError
-            if (useAuthorization && !string.IsNullOrEmpty(bearerToken))
+            if (authorization != null)
             {
-                request.SetRequestHeader("Authorization", $"Bearer {bearerToken}");
+                request.SetRequestHeader("Authorization", $"{authorization.AuthorizationType} {authorization.Token}");
             }
             yield return request.SendWebRequest();
 
             string msg;
             if (request.result != UnityWebRequest.Result.Success)
             {
+                // 失敗
                 msg = $"[{request.error}]\n{request.downloadHandler.text}";
-                Debug.LogError(msg);
+                Debug.LogError($"onResponseErrorEvent\n{msg}", this);
                 onResponseErrorEvent?.Invoke(msg);
+                onError?.Invoke(msg);
             }
             else
             {
-                msg = request.downloadHandler.text.ToJsonFormat();
-                Debug.Log(msg);
-                onResponseSuccessEvent?.Invoke(msg);
+                // 成功時
+                Debug.Log($"ResponseHeader Content-Type: {request.GetResponseHeader("Content-Type")}");
+                switch (responseDataType)
+                {
+                    
+                    case EnumResponseDataType.Json:
+                    case EnumResponseDataType.Text:
+                        msg = request.downloadHandler.text.ToJsonFormat();
+                        Debug.Log($"onResponseSuccessEvent\n{msg}", this);
+                        onResponseSuccessEvent?.Invoke(msg);
+                        onSuccess?.Invoke(msg);
+                        break;
+                    case EnumResponseDataType.Binary:
+                        byte[] bytes = request.downloadHandler.data;
+                        Debug.Log($"onResponseSuccessEvent\nbytes lenght:{bytes.Length}", this);
+                        onResponseSuccessBinaryEvent?.Invoke(bytes);
+                        onSuccess?.Invoke("");
+                        break;
+                }
             }
-
             request.Dispose();
             onLoadingEvent?.Invoke(false);
         }
 
+        #region 依HttpMethod的不同，建立WebRequest
         private UnityWebRequest BuildGetRequest()
         {
             string finalUrl = url;
 
-            if (paramsSetting != null && paramsSetting.Count > 0)
+            if (paramsSetting is { Count: > 0 })
             {
                 List<string> query = new();
                 foreach (var kv in paramsSetting)
@@ -110,8 +134,7 @@ namespace _VictorDev.Framework.WebAPI
             }
             return UnityWebRequest.Get(finalUrl);
         }
-
-        UnityWebRequest BuildPostRequest()
+        private UnityWebRequest BuildPostRequest()
         {
             switch (sendBodyType)
             {
@@ -133,8 +156,7 @@ namespace _VictorDev.Framework.WebAPI
 
             return null;
         }
-
-        UnityWebRequest BuildPatchRequest()
+        private UnityWebRequest BuildPatchRequest()
         {
             var request = new UnityWebRequest(url, "PATCH");
 
@@ -161,5 +183,21 @@ namespace _VictorDev.Framework.WebAPI
             request.downloadHandler = new DownloadHandlerBuffer();
             return request;
         }
+        #endregion
+        
+        private void OnValidate()
+        {
+            if (name == gameObject.SetNameHeader(httpMethod.ToString())) return;
+            name = gameObject.SetNameHeader(httpMethod.ToString());
+        }
+        
+        #region Variables for NaughtyAttribute
+
+        private bool IsNotGetMethod => httpMethod != EnumHttpMethod.GET;
+        private bool IsGetOrFormData => sendBodyType == EnumBody.FormData || httpMethod == EnumHttpMethod.GET;
+        private bool IsSendJson => sendBodyType == EnumBody.RawJson && httpMethod != EnumHttpMethod.GET ;
+        private bool IsResponseBinary => responseDataType == EnumResponseDataType.Binary;
+
+        #endregion
     }
 }

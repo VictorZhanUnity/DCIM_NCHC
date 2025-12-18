@@ -10,20 +10,20 @@ namespace VictorDev.Net.WebAPI
     {
         #region Variables
 
-        [SerializeField] private EnumAuthorizationType authorizationTypeType = EnumAuthorizationType.Bearer;
-        public bool IsHaveAuth => authorizationTypeType != EnumAuthorizationType.NoAuth;
+        [SerializeField] private EnumAuthorizationType authorizationType = EnumAuthorizationType.Bearer;
 
         [TextArea(1, 23), ShowIf(nameof(IsHaveAuth)), SerializeField]
         private string token;
 
-        public EnumAuthorizationType AuthorizationTypeType => authorizationTypeType;
+        public EnumAuthorizationType AuthorizationType => authorizationType;
         public string Token => token;
+        
 
         #endregion
 
         public void SetToken(string data, EnumAuthorizationType authorizationType)
         {
-            authorizationTypeType = authorizationType;
+            this.authorizationType = authorizationType;
             SetToken(data);
         }
         public void SetToken(string data) => token = data;
@@ -31,8 +31,11 @@ namespace VictorDev.Net.WebAPI
         [Button]
         private void ClearToken()
         {
-            authorizationTypeType = EnumAuthorizationType.NoAuth;
+            authorizationType = EnumAuthorizationType.NoAuth;
             token = string.Empty;
         }
+        
+        
+        public bool IsHaveAuth => authorizationType != EnumAuthorizationType.NoAuth;
     }
 }

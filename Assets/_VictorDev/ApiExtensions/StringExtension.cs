@@ -100,15 +100,35 @@ namespace _VictorDev.ApiExtensions
             return char.ToUpper(str[0]) + str.Substring(1);
         }
 
-        /// [Extended] - 轉成JSON字串格式
-        public static string ToJsonFormat(this string str)
+        /// [Extended] - 是否為JSON字串格式
+        public static bool IsJsonFormat(this string self)
         {
-            if (string.IsNullOrEmpty(str)) return str;
+            if (string.IsNullOrWhiteSpace(self)) return false;
+            try
+            {
+                JToken.Parse(self);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// [Extended] - 轉成JSON字串格式
+        public static string ToJsonFormat(this string self)
+        {
+            if (string.IsNullOrEmpty(self)) return "Value is NullOrEmpty.";
+            if (IsJsonFormat(self) == false)
+            {
+                Debug.Log("Value is not JsonFormat.");
+                return self;
+            }
 
             string result = null;
             try
             {
-                JToken token = JToken.Parse(str);
+                JToken token = JToken.Parse(self);
                 // 嘗試解析為 JArray（陣列）
                 if (token is JArray jsonArray)
                 {
@@ -130,8 +150,8 @@ namespace _VictorDev.ApiExtensions
         }
 
         /// [Extended] - 轉成指定的Enum
-        public static T ToEnum<T>(this string value) where T : struct
-            => Enum.Parse<T>(value.Trim(), true);
+        public static T ToEnum<T>(this string self) where T : struct
+            => Enum.Parse<T>(self.Trim(), true);
 
         /// 移除開頭的HTTP方法
         public static string RemoveHttpTypeOnHeader(this string self) => 

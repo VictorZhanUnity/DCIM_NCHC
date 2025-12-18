@@ -107,10 +107,10 @@ namespace _VictorDev.Net.WebAPI
                 }
 
                 // 設定Authorization
-                if (authorizationSo != null && authorizationSo.AuthorizationTypeType != EnumAuthorizationType.NoAuth)
+                if (authorizationSo != null && authorizationSo.AuthorizationType != EnumAuthorizationType.NoAuth)
                 {
                     request.Headers.Authorization = new AuthenticationHeaderValue(
-                        authorizationSo.AuthorizationTypeType.ToString(), authorizationSo.Token);
+                        authorizationSo.AuthorizationType.ToString(), authorizationSo.Token);
                 }
                 return request;
             }

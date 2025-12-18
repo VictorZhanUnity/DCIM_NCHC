@@ -1,0 +1,889 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &32960116844914576
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6344152324146262338}
+  - component: {fileID: 4116640839565912283}
+  m_Layer: 0
+  m_Name: "[POST] WebAPICaller_\u8A2D\u5099\u4E0A\u67B6"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6344152324146262338
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32960116844914576}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3900672960803200705}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4116640839565912283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32960116844914576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a90b67eba67584fb329a68514c3419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ApiTest
+  onLoadingEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onResponseSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onResponseSuccessBinaryEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onResponseErrorEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  url: http://192.168.0.107:5080/api/DataCenter/Container/Install
+  httpMethod: 1
+  sendBodyType: 2
+  paramsSetting:
+  - <Key>k__BackingField: BuildingCode
+    <Value>k__BackingField: TAINAN
+  sendBodyJson: "{\r\n  \"rackDeviceCode\": \"NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackA01\",\r\n 
+    \"containerDeviceCode\": \"NCHC/TAINAN/HPC/02F/DCN/Panduit-FRE1UBL--ODF/Net304\",\r\n 
+    \"rackLocation\": 3\r\n}"
+  responseDataType: 0
+  timeoutSeconds: 60
+  authorization: {fileID: 11400000, guid: 2c0ae48eda9c60746b4e5ffab6b0f825, type: 2}
+--- !u!1 &90559007696050207
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4148691975989742398}
+  - component: {fileID: 2016316413771442648}
+  m_Layer: 0
+  m_Name: "[GET] WebAPICaller_\u53D6\u5F97\u5BB9\u91CF\u5831\u8868"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4148691975989742398
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90559007696050207}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3900672960803200705}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2016316413771442648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90559007696050207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a90b67eba67584fb329a68514c3419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ApiTest
+  onLoadingEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onResponseSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onResponseSuccessBinaryEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onResponseErrorEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  url: http://192.168.0.107:5080/api/DataCenter/Capacity/File
+  httpMethod: 0
+  sendBodyType: 1
+  paramsSetting:
+  - <Key>k__BackingField: BuildingCode
+    <Value>k__BackingField: TAINAN
+  sendBodyJson: 
+  responseDataType: 8
+  timeoutSeconds: 60
+  authorization: {fileID: 11400000, guid: 2c0ae48eda9c60746b4e5ffab6b0f825, type: 2}
+--- !u!1 &495172854946668634
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3023642903758991750}
+  - component: {fileID: 659651797496298846}
+  m_Layer: 0
+  m_Name: '[POST] WebAPICaller_Login'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3023642903758991750
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495172854946668634}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3900672960803200705}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &659651797496298846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495172854946668634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a90b67eba67584fb329a68514c3419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ApiTest
+  onLoadingEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onResponseSuccessEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 2c0ae48eda9c60746b4e5ffab6b0f825, type: 2}
+        m_TargetAssemblyTypeName: VictorDev.Net.WebAPI.WebApiAuthorizationSO, Assembly-CSharp
+        m_MethodName: SetToken
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  onResponseSuccessBinaryEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onResponseErrorEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  url: http://192.168.0.107:5080/api/Auth/login
+  httpMethod: 1
+  sendBodyType: 1
+  paramsSetting:
+  - <Key>k__BackingField: account
+    <Value>k__BackingField: 2025TCIT
+  - <Key>k__BackingField: pw
+    <Value>k__BackingField: TCIT2080@
+  sendBodyJson: 
+  responseDataType: 0
+  timeoutSeconds: 60
+  authorization: {fileID: 0}
+--- !u!1 &2576883089045399259
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2902819736318332982}
+  - component: {fileID: 3036869498603286233}
+  m_Layer: 0
+  m_Name: "[POST] WebAPICaller_\u53D6\u5F97\u6A5F\u623F\u6EAB\u6FD5\u5EA6"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2902819736318332982
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2576883089045399259}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3900672960803200705}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3036869498603286233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2576883089045399259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a90b67eba67584fb329a68514c3419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ApiTest
+  onLoadingEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onResponseSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onResponseSuccessBinaryEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onResponseErrorEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  url: http://192.168.0.107:5080/api/DataCenter/Rack/TempHumidity/Search
+  httpMethod: 1
+  sendBodyType: 2
+  paramsSetting:
+  - <Key>k__BackingField: BuildingCode
+    <Value>k__BackingField: TAINAN
+  sendBodyJson: "{\r\n  \"buildingCode\": \"TAINAN\",\r\n  \"deviceCode\": [\r\n   
+    \"NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackA01\",\r\n    \"NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackA02\",\r\n   
+    \"NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackA03\"\r\n  ]\r\n}"
+  responseDataType: 0
+  timeoutSeconds: 60
+  authorization: {fileID: 11400000, guid: 2c0ae48eda9c60746b4e5ffab6b0f825, type: 2}
+--- !u!1 &3122435957259424980
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3403930084418249700}
+  - component: {fileID: 81882724276268899}
+  m_Layer: 0
+  m_Name: "[GET] WebAPICaller_\u53D6\u5F97\u6A5F\u6AC3PDU\u8017\u96FB\u529F\u7387"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3403930084418249700
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3122435957259424980}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3900672960803200705}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &81882724276268899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3122435957259424980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a90b67eba67584fb329a68514c3419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ApiTest
+  onLoadingEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onResponseSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onResponseSuccessBinaryEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onResponseErrorEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  url: http://192.168.0.107:5080/api/DataCenter/Rack/Power
+  httpMethod: 0
+  sendBodyType: 2
+  paramsSetting:
+  - <Key>k__BackingField: BuildingCode
+    <Value>k__BackingField: TAINAN
+  - <Key>k__BackingField: deviceCode
+    <Value>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackA01
+  sendBodyJson: "{\r\n  \"rackDeviceCode\": \"string\",\r\n  \"containerDeviceCode\":
+    \"string\",\r\n  \"rackLocation\": 0\r\n}"
+  responseDataType: 0
+  timeoutSeconds: 60
+  authorization: {fileID: 11400000, guid: 2c0ae48eda9c60746b4e5ffab6b0f825, type: 2}
+--- !u!1 &3381180252279836913
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3900672960803200705}
+  - component: {fileID: 7595663399347552602}
+  m_Layer: 0
+  m_Name: WebAPIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3900672960803200705
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3381180252279836913}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3023642903758991750}
+  - {fileID: 4148691975989742398}
+  - {fileID: 1533491385986894098}
+  - {fileID: 3403930084418249700}
+  - {fileID: 2902819736318332982}
+  - {fileID: 410065003509559547}
+  - {fileID: 6344152324146262338}
+  - {fileID: 6301236720731091116}
+  - {fileID: 3604053688093533562}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7595663399347552602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3381180252279836913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a3907477290d2e4aa8c16b6eb839c57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.NCHC.WebAPIManager
+  login: {fileID: 659651797496298846}
+  rackDataFile: {fileID: 2016316413771442648}
+  allRackData: {fileID: 8105829481357931814}
+  pduPower: {fileID: 81882724276268899}
+  tempHumidity: {fileID: 3036869498603286233}
+  unPublishedDevice: {fileID: 2112115386953060807}
+  installDevice: {fileID: 4116640839565912283}
+  uninstallDevice: {fileID: 5267824703791599833}
+  moveDevice: {fileID: 1973331717399530640}
+  buildingCode: TAINAN
+--- !u!1 &3808693528148304690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3604053688093533562}
+  - component: {fileID: 1973331717399530640}
+  m_Layer: 0
+  m_Name: "[POST] WebAPICaller_\u8A2D\u5099\u79FB\u52D5"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3604053688093533562
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3808693528148304690}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3900672960803200705}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1973331717399530640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3808693528148304690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a90b67eba67584fb329a68514c3419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ApiTest
+  onLoadingEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onResponseSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onResponseSuccessBinaryEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onResponseErrorEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  url: http://192.168.0.107:5080/api/DataCenter/Container/Move
+  httpMethod: 1
+  sendBodyType: 2
+  paramsSetting:
+  - <Key>k__BackingField: BuildingCode
+    <Value>k__BackingField: TAINAN
+  sendBodyJson: "{\r\n  \"fromRackDeviceCode\": \"NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackA01\",\r\n 
+    \"targetRackDeviceCode\": \"NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackA01\",\r\n 
+    \"containerDeviceCode\": \"NCHC/TAINAN/HPC/02F/DCN/Panduit-FRE1UBL--ODF/Net304\",\r\n 
+    \"fromRackLocation\": 3,\r\n  \"targetRackLocation\": 10\r\n}"
+  responseDataType: 0
+  timeoutSeconds: 60
+  authorization: {fileID: 11400000, guid: 2c0ae48eda9c60746b4e5ffab6b0f825, type: 2}
+--- !u!1 &5510849958139093596
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1533491385986894098}
+  - component: {fileID: 8105829481357931814}
+  m_Layer: 0
+  m_Name: "[GET] WebAPICaller_\u8B80\u53D6\u6A5F\u6AC3\u5BB9\u91CF\u8CC7\u8A0A\u6E05\u55AE"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1533491385986894098
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5510849958139093596}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3900672960803200705}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8105829481357931814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5510849958139093596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a90b67eba67584fb329a68514c3419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ApiTest
+  onLoadingEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onResponseSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onResponseSuccessBinaryEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onResponseErrorEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  url: http://192.168.0.107:5080/api/DataCenter/Rack/List
+  httpMethod: 0
+  sendBodyType: 1
+  paramsSetting:
+  - <Key>k__BackingField: BuildingCode
+    <Value>k__BackingField: TAINAN
+  sendBodyJson: 
+  responseDataType: 0
+  timeoutSeconds: 60
+  authorization: {fileID: 11400000, guid: 2c0ae48eda9c60746b4e5ffab6b0f825, type: 2}
+--- !u!1 &5842033398433699821
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6301236720731091116}
+  - component: {fileID: 5267824703791599833}
+  m_Layer: 0
+  m_Name: "[POST] WebAPICaller_\u8A2D\u5099\u4E0B\u67B6 "
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6301236720731091116
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5842033398433699821}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3900672960803200705}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5267824703791599833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5842033398433699821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a90b67eba67584fb329a68514c3419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ApiTest
+  onLoadingEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onResponseSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onResponseSuccessBinaryEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onResponseErrorEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  url: http://192.168.0.107:5080/api/DataCenter/Container/Uninstall
+  httpMethod: 1
+  sendBodyType: 2
+  paramsSetting:
+  - <Key>k__BackingField: BuildingCode
+    <Value>k__BackingField: TAINAN
+  sendBodyJson: "{\r\n  \"rackDeviceCode\": \"NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackA01\",\r\n 
+    \"containerDeviceCode\": \"NCHC/TAINAN/HPC/02F/DCN/Panduit-FRE1UBL--ODF/Net304\",\r\n 
+    \"rackLocation\": 10\r\n}"
+  responseDataType: 0
+  timeoutSeconds: 60
+  authorization: {fileID: 11400000, guid: 2c0ae48eda9c60746b4e5ffab6b0f825, type: 2}
+--- !u!1 &7082268747566880632
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 410065003509559547}
+  - component: {fileID: 2112115386953060807}
+  m_Layer: 0
+  m_Name: "[GET] WebAPICaller_\u53D6\u5F97\u672A\u4E0A\u67B6\u5BB9\u5668"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &410065003509559547
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7082268747566880632}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3900672960803200705}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2112115386953060807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7082268747566880632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a90b67eba67584fb329a68514c3419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ApiTest
+  onLoadingEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onResponseSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onResponseSuccessBinaryEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onResponseErrorEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  url: http://192.168.0.107:5080/api/DataCenter/Container/Unpublished
+  httpMethod: 0
+  sendBodyType: 1
+  paramsSetting:
+  - <Key>k__BackingField: BuildingCode
+    <Value>k__BackingField: TAINAN
+  sendBodyJson: 
+  responseDataType: 0
+  timeoutSeconds: 60
+  authorization: {fileID: 11400000, guid: 2c0ae48eda9c60746b4e5ffab6b0f825, type: 2}
