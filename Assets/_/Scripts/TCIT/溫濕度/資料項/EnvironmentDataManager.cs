@@ -42,8 +42,8 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule
             {
                 holder.SetEnvironmentData(new EnvironmentData()
                 {
-                    rt = DcimSysConfig.RTValueValueRangeDEMO.GetRandomValue(),
-                    rh = DcimSysConfig.RhValueValueRangeDEMO.GetRandomValue(),
+                    RTValue = DcimSysConfig.RTValueValueRangeDEMO.GetRandomValue(),
+                    RHValue = (int)DcimSysConfig.RhValueValueRangeDEMO.GetRandomValue(),
                 });
             });
             

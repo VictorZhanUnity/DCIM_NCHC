@@ -32,9 +32,9 @@ namespace _VictorDev.TCIT.DCIM
         public int UsageHeightU => Containers.Sum(deviceData => deviceData.HeightU);
         
         /// 總電力 (+3000 For Demo)
-        public int MaxWatt => Information.watt + 3000;
+        public int MaxWatt => Information.watt_limit;
         /// 總負重
-        public int MaxWeight => Information.weight + 300;
+        public int MaxWeight => Information.weight_limit;
         /// 總U層數
         public int MaxHeightU => Information.heightU;
         
@@ -73,7 +73,7 @@ namespace _VictorDev.TCIT.DCIM
                     {
                         throw new IndexOutOfRangeException(
                             $"[Rack Occupy Error]\n" +
-                            $"Device: {device.DevicePath}\n" +
+                            $"Device: {device.deviceId}\n" +
                             $"RackLocation: {device.RackLocation}\n" +
                             $"HeightU: {device.HeightU}\n" +
                             $"CalculatedIndex: {index}\n" +

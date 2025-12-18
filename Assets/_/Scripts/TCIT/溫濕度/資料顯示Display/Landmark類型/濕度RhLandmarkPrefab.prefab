@@ -97,6 +97,10 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2813876761469323258, guid: 7a832e0aa8495474eac2df492be0de3f, type: 3}
+      propertyPath: dotNumber
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813876761469323258, guid: 7a832e0aa8495474eac2df492be0de3f, type: 3}
       propertyPath: thresholdValue
       value: 85
       objectReference: {fileID: 0}

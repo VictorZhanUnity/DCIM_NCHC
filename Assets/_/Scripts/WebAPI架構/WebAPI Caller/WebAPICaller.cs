@@ -31,6 +31,8 @@ namespace _VictorDev.Framework.WebAPI
         [Foldout("[連線設定]"), Label("逾時秒數"), SerializeField] private int timeoutSeconds = 60;
         [Foldout("[連線設定]"), Label("Authorization (選填)"), SerializeField] private WebApiAuthorizationSO authorization;
         
+        private Coroutine coroutine;
+        
         #endregion
 
         /// 設置SendBody - Params
@@ -48,7 +50,8 @@ namespace _VictorDev.Framework.WebAPI
         public void CallAPI(UnityEvent<string> onSuccess, UnityEvent<string> onError)
         {
             onLoadingEvent?.Invoke(true);
-            StartCoroutine(CoroutineHandler(onSuccess, onError));
+            if(coroutine != null) StopCoroutine(coroutine);
+            coroutine = StartCoroutine(CoroutineHandler(onSuccess, onError));
         }
 
         /// 呼叫WebAPI流程
@@ -88,7 +91,7 @@ namespace _VictorDev.Framework.WebAPI
             {
                 // 失敗
                 msg = $"[{request.error}]\n{request.downloadHandler.text}";
-                Debug.LogError($"onResponseErrorEvent\n{msg}", this);
+              //  Debug.LogError($"onResponseErrorEvent\n{msg}", this);
                 onResponseErrorEvent?.Invoke(msg);
                 onError?.Invoke(msg);
             }

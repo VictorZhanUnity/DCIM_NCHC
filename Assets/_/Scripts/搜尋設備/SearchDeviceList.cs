@@ -76,7 +76,7 @@ namespace _VictorDev.TCIT.DCIM
                
                // 模糊搜尋
                List<DeviceRevitAssetData> findResult = allDeviceRevitAssets
-                   .Where(x => x.DevicePath.Contains(keyword, StringComparison.OrdinalIgnoreCase) == true)
+                   .Where(x => x.deviceId.Contains(keyword, StringComparison.OrdinalIgnoreCase) == true)
                    .Take(50)
                    .ToList();
                deviceSearchBar.ReceiveData(findResult);

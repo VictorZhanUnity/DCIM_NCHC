@@ -49,11 +49,11 @@ namespace _VictorDev.TCIT.DCIM
             switch (rackDisplayType)
             {
                 case EnumEnvDataType.RT:
-                    percent = DcimSysConfig.RTValueValueRange.GetPercentage01(envData.rt);
+                    percent = DcimSysConfig.RTValueValueRange.GetPercentage01(envData.RTValue);
                     targetColor = DcimSysConfig.GetPercentHeatColor(percent);
                     break;
                 case EnumEnvDataType.RH:
-                    percent = DcimSysConfig.RTValueValueRange.GetPercentage01(envData.rh);
+                    percent = DcimSysConfig.RTValueValueRange.GetPercentage01(envData.RHValue);
                     targetColor = DcimSysConfig.GetPercentHumidityColor(percent);
                     break;
             }

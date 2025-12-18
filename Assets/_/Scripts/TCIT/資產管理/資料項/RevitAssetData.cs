@@ -18,7 +18,15 @@ namespace _VictorDev.TCIT.DCIM
     public abstract class RevitAssetData
     {
         #region 固定欄位
-        [JsonProperty] [field: SerializeField] public string DevicePath { get; protected set; }
+        [JsonProperty] [field: SerializeField] public string deviceCode { get; protected set; }
+        [JsonProperty] [field: SerializeField] public string code { get; protected set; }
+        [JsonProperty] [field: SerializeField] public string deviceId { get; protected set; }
+        [JsonProperty] [field: SerializeField] public string Manufacturer { get; protected set; }
+        [JsonProperty] [field: SerializeField] public string modelNumber { get; protected set; }
+        [JsonProperty] [field: SerializeField] public string description { get; protected set; }
+        [JsonProperty] [field: SerializeField] public string system { get; protected set; }
+        [JsonProperty] [field: SerializeField] public string type { get; protected set; }
+        
         [field: SerializeField] public Transform Model { get; private set; }
 
         /// COBie資訊
@@ -32,7 +40,7 @@ namespace _VictorDev.TCIT.DCIM
             {
                 if (Model == null)
                 {
-                    Debug.LogWarning($"Model is null: {DevicePath}");
+                    Debug.LogWarning($"Model is null: {deviceId}");
                     return null;
                 }
                 return render ??= Model.GetComponent<MeshRenderer>();
@@ -67,24 +75,17 @@ namespace _VictorDev.TCIT.DCIM
         /// 設備名稱與流水號
         public string DeviceNameAndCode;
 
-        /// 製作商 / 品牌
-        public string Manufacturer;
-        
-        public int Watt => Information.watt;
-        public int Weight => Information.weight;
+        public int Watt => Information.watt_limit;
+        public int Weight => Information.weight_limit;
         public int HeightU => Information.heightU;
         
         /// 取得設備名稱與流水號
         public virtual void ParseDeviceNameAndCode()
         {
-            RevitAssetKind = DcimHelper.GetDeviceKind(DevicePath);
+            RevitAssetKind = DcimHelper.GetDeviceKind(deviceId);
             DeviceKindZh = DcimHelper.GetDeviceKindZh(RevitAssetKind);
-            DeviceName = DcimHelper.GetDeviceName(DevicePath);
-            DeviceNameAndCode = DcimHelper.GetDeviceName(DevicePath, true);
-            
-            bool isHaveValue = !string.IsNullOrEmpty(Information.type_manufacturer);
-            Manufacturer = isHaveValue ? Information.type_manufacturer : DevicePath.Split("+")[6].Split("-")[0];
-            
+            DeviceName = DcimHelper.GetDeviceName(deviceId);
+            DeviceNameAndCode = DcimHelper.GetDeviceName(deviceId, true);
         }
 
         /// 從Transform列表裡依照name設定模型，與設定RevitAssetDataHolder
@@ -92,7 +93,7 @@ namespace _VictorDev.TCIT.DCIM
         {
             Transform result = modelList.FirstOrDefault(model=>
             {
-                var devicePath = DcimHelper.GetDevicePath(model.name);
+                var devicePath = DcimHelper.GetDeviceId(model.name);
                 return DcimHelper.GetDeviceName(devicePath,true) == DeviceNameAndCode;
             });
             if (result != null)
@@ -110,7 +111,7 @@ namespace _VictorDev.TCIT.DCIM
             else Debug.LogError($"{DeviceNameAndCode} not found.");
         }
         public void SetModel(Transform model) => Model = model;
-        public void SetDevicePath(string str) => DevicePath = str;
+        public void SetDevicePath(string str) => deviceId = str;
         public void SetDeviceName(string str) => DeviceName = str;
     }
 }

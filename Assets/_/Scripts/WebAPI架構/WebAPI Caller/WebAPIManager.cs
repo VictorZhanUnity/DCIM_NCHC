@@ -1,9 +1,13 @@
+using System;
 using System.Collections.Generic;
+using System.Text;
 using _VictorDev.ApiExtensions;
+using _VictorDev.FileUtils;
 using _VictorDev.Framework.WebAPI;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
+using Debug = _VictorDev.DebugUtils.Debug;
 
 namespace _VictorDev.TCIT.DCIM.NCHC
 {
@@ -17,6 +21,7 @@ namespace _VictorDev.TCIT.DCIM.NCHC
             unPublishedDevice, installDevice, uninstallDevice, moveDevice;
 
         [Foldout("[設定]"), SerializeField] private string buildingCode = "TAINAN";
+        [Foldout("[設定]"), SerializeField] private string excelFileNameHeader = "容量報表";
 
         #endregion
 
@@ -114,6 +119,14 @@ namespace _VictorDev.TCIT.DCIM.NCHC
                 new KeyValueData<string, string>("targetRackLocation", targetRackLocation.ToString())
             });
             moveDevice.CallAPI(onSuccess, onError);
+        }
+        
+        /// 下載Excel容量報表
+        public void SaveExcelFile(byte[] bytes)
+        {
+            string fileName = $"{excelFileNameHeader} - {DateTime.Now:yyyyMMddhhmmss}.xlsx";
+            Debug.Log($"SaveExcelFile: {fileName}");
+            WebGLFileDownloader.SaveExcelFile(bytes, fileName);
         }
     }
 }

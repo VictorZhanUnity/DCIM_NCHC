@@ -49,7 +49,7 @@ namespace _VictorDev.ApiExtensions
         public static string ToPrint<T>(this List<T> self) => string.Join(", ", self);
         
         /// [Extended] - 移除Missing項目
-        public static List<T> ClearMissingTargets<T>(this List<T> self) where T : Component
+        public static List<T> ClearMissingTargets<T>(this List<T> self)
         {
             self.RemoveAll(item => item == null);
             return self;

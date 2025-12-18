@@ -1,6 +1,8 @@
 using System;
 using System.Runtime.Serialization;
 using _VictorDev.ApiExtensions;
+using Newtonsoft.Json;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace _VictorDev.TCIT.DCIM
@@ -9,20 +11,23 @@ namespace _VictorDev.TCIT.DCIM
     [Serializable]
     public class UploadDeviceRevitAssetData : RevitAssetData
     {
+        [JsonProperty] [field: SerializeField] public string DevicePath { get; protected set; }
+        
         /// 在JSON解析後處理 (需子類別自行解析，override函式需加上[OnDeserialized])
         [OnDeserialized]
-        protected void OnDeserialized(StreamingContext context) => ParseDeviceNameAndCode();
+        protected void OnDeserialized(StreamingContext context)
+        {
+            deviceId = DevicePath;
+            ParseDeviceNameAndCode();
+        }
 
         /// 未來需依照需求而修改
         public override void ParseDeviceNameAndCode()
         {
-            RevitAssetKind = DcimHelper.GetDeviceKind(DevicePath);
+            RevitAssetKind = DcimHelper.GetDeviceKind(deviceId);
             DeviceKindZh = DcimHelper.GetDeviceKindZh(RevitAssetKind);
-            DeviceName = DevicePath.Split("+")[2];
-            DeviceNameAndCode = DevicePath;
-            
-            bool isHaveValue = !string.IsNullOrEmpty(Information.type_manufacturer);
-            Manufacturer = isHaveValue ? Information.type_manufacturer : DevicePath.Split("+")[6].Split("-")[0];
+            DeviceName = deviceId.Split("+")[2];
+            DeviceNameAndCode = deviceId;
         }
     }
 }

@@ -9,10 +9,9 @@ namespace _VictorDev.TCIT.DCIM
     [Serializable]
     public class Information
     {
-        public float height;
-        public int heightU;
-        public int watt;
-        public int weight;
+        public int watt_limit;
+        public int weight_limit;
+        
         public string component_description;
         public string component_assetIdentifier;
         public string component_installationDate;
@@ -55,5 +54,12 @@ namespace _VictorDev.TCIT.DCIM
         public string document_handout;
         public string document_drawing;
         public string equipment_supplier;
+
+        public float length;
+        public float width;
+        public float height;
+        public int heightU;
+        public int watt;
+        public int weight;
     }
 }

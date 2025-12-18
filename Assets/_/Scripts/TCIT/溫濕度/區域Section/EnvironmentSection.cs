@@ -64,8 +64,8 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule
         [Button]
         public void CalculateAverageEnvData()
         {
-            AverageRt = evnDataHolders.Average(holder => holder.EnvData.rt);
-            AverageRh = evnDataHolders.Average(holder => holder.EnvData.rh);
+            AverageRt = evnDataHolders.Average(holder => holder.EnvData.RTValue);
+            AverageRh = evnDataHolders.Average(holder => holder.EnvData.RHValue);
             envValueDisplays.ForEach(target => target.SetEnvData(this));
         }
 

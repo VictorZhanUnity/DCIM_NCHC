@@ -176,11 +176,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[HTTP/1.1 404 Not Found]
+  m_text: '[Cannot connect to destination host]
 
-    {"HttpCode":404,"MessageTitle":"Uninstall
-    container error","Message":"The container is not located at the specified rack
-    position."}'
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 25df31d2cbf010d4dbeb7bdaa6e79529, type: 2}
   m_sharedMaterial: {fileID: -5400270125734386531, guid: 25df31d2cbf010d4dbeb7bdaa6e79529, type: 2}
@@ -522,50 +520,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 362869128}
   m_CullTransparentMesh: 1
---- !u!1 &363566206
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 363566207}
-  - component: {fileID: 363566208}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &363566207
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 363566206}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8117350156168437448}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &363566208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 363566206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 012788e5c9db495469aaf31527f88650, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WebGLFileDownloader
 --- !u!1 &389734831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1431,7 +1385,7 @@ MonoBehaviour:
     _prefab: Assets/_AssetPackage/Graphy - Ultimate Stats Monitor/Prefab/Internal/ADVANCED
       - Module.prefab
   - _gameObject: {fileID: 1788515946}
-    _prefab: Assets/_/Scripts/WebAPIManager.prefab
+    _prefab: "Assets/_/Scripts/WebAPI\u67B6\u69CB/WebAPI Caller/WebAPIManager.prefab"
 --- !u!4 &954189318
 Transform:
   m_ObjectHideFlags: 11
@@ -1863,6 +1817,50 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 168050, guid: 0abab5bb77339e4428787a870eb31bd3, type: 3}
   m_PrefabInstance: {fileID: 511085212}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1307289113
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1307289115}
+  - component: {fileID: 1307289114}
+  m_Layer: 0
+  m_Name: Test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1307289114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307289113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66b83b5a588df034fb135ba82f0c219d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Tester
+--- !u!4 &1307289115
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307289113}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8117350156168437448}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1382987877
 GameObject:
   m_ObjectHideFlags: 0
@@ -2427,7 +2425,7 @@ PrefabInstance:
       objectReference: {fileID: 153760859}
     - target: {fileID: 2016316413771442648, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: url
-      value: api/DataCenter/Capacity/File
+      value: http://192.168.0.107:5080/api/DataCenter/Capacity/File
       objectReference: {fileID: 0}
     - target: {fileID: 2016316413771442648, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: onLoadingEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2448,18 +2446,18 @@ PrefabInstance:
     - target: {fileID: 2016316413771442648, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: onResponseSuccessBinaryEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 363566208}
+      objectReference: {fileID: 1307289114}
     - target: {fileID: 2016316413771442648, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: onResponseSuccessBinaryEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2016316413771442648, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: onResponseSuccessBinaryEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SaveFile
+      value: ReceiveBytes
       objectReference: {fileID: 0}
     - target: {fileID: 2016316413771442648, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: onResponseSuccessBinaryEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: WebGLFileDownloader, Assembly-CSharp
+      value: Tester, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2016316413771442648, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: onResponseSuccessBinaryEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -2554,7 +2552,7 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4148691975989742398, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 363566207}
+      addedObject: {fileID: 1307289115}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
 --- !u!4 &8117350156168437448 stripped

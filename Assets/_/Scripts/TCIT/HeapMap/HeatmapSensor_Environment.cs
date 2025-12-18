@@ -6,8 +6,8 @@ namespace _VictorDev.Framework.HeatmapUtils
 {
     public class HeatmapSensor_Environment: HeatmapSensor<EnvironmentDataHolder>
     {
-        public float RT => Data.EnvData.rt;
-        public float RH => Data.EnvData.rh;
+        public float RT => Data.EnvData.RTValue;
+        public float RH => Data.EnvData.RHValue;
         
         public Vector4 Vector4Data_RT => GetVector4Data(DcimSysConfig.RTValueValueRange.GetPercentage01(RT));
         public Vector4 Vector4Data_RH => GetVector4Data(DcimSysConfig.RhValueValueRange.GetPercentage01(RH));

@@ -1,11 +1,13 @@
-using UnityEngine;
 using Debug = _VictorDev.DebugUtils.Debug;
 #if UNITY_WEBGL && !UNITY_EDITOR
 using System.Runtime.InteropServices;
 #endif
 
-public class WebGLFileDownloader: MonoBehaviour
+namespace _VictorDev.FileUtils
 {
+    /// 檔案下載 For WebGL
+    public static class WebGLFileDownloader
+    {
 #if UNITY_WEBGL && !UNITY_EDITOR
     [DllImport("__Internal")]
     private static extern void DownloadFileFromBytes(
@@ -16,14 +18,15 @@ public class WebGLFileDownloader: MonoBehaviour
     );
 #endif
 
-    public void SaveFile(byte[] bytes) => SaveFile(bytes, "report.xlsx",
-        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-    public void SaveFile(
-        byte[] bytes,
-        string fileName,
-        string mimeType = "application/octet-stream"
-    )
-    {
+        public static void SaveExcelFile(byte[] bytes, string fileName = "ExcelFile.xlsx") => SaveFile(bytes, fileName,
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+
+        public static void SaveFile(
+            byte[] bytes,
+            string fileName,
+            string mimeType = "application/octet-stream"
+        )
+        {
 #if UNITY_WEBGL && !UNITY_EDITOR
         if (bytes == null || bytes.Length == 0)
         {
@@ -33,7 +36,8 @@ public class WebGLFileDownloader: MonoBehaviour
 
         DownloadFileFromBytes(bytes, bytes.Length, fileName, mimeType);
 #else
-        Debug.LogWarning("SaveFile is WebGL only.");
+            Debug.LogWarning("SaveFile is WebGL only.");
 #endif
+        }
     }
 }

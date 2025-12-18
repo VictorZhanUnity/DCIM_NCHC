@@ -11,7 +11,6 @@ namespace _VictorDev.TCIT.DCIM
     {
         #region Struct Variables
 
-        [JsonProperty] [field: SerializeField] public string RackDevicePath { get; private set; }
         [JsonProperty] [field: SerializeField] public int RackLocation;
 
         #endregion

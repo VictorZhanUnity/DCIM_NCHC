@@ -29,9 +29,9 @@ namespace _VictorDev.TCIT.DCIM.RevitAssetModule
             rackStationModels = data.FilterByNameForKeywords(EnumSearchType.Include, EnumRevitAssetKind.RackStation.ToString());
         }
       
-        [Button]
         /// 結合資料與模型
-        private void CombineDataAndModel()
+        [Button]
+        public void CombineDataAndModel()
         {
             revitAssetDataManager.Data.ForEach(rack =>
             {
