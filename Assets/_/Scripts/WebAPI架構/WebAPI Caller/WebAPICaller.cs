@@ -22,7 +22,9 @@ namespace _VictorDev.Framework.WebAPI
         [Foldout("[Event] - Response內容"), ShowIf(nameof(IsResponseBinary))] public UnityEvent<Byte[]> onResponseSuccessBinaryEvent;
         [Foldout("[Event] - Response內容")] public UnityEvent<string> onResponseErrorEvent;
         
-        [Foldout("[連線設定]"), SerializeField] private string url = "http://192.168.0.107:5080/api/Auth/login";
+        [Foldout("[連線設定]"), SerializeField] private string urlRoute = "api/Auth/login";
+        [Foldout("[連線設定]"), SerializeField] private bool isUserServerURL = false;
+        [Foldout("[連線設定]"), SerializeField, ShowIf(nameof(isUserServerURL))] private string serverURL = "http://192.168.0.107:5080";
         [Foldout("[連線設定]"), SerializeField] private EnumHttpMethod httpMethod = EnumHttpMethod.POST;
         [Foldout("[連線設定]"), SerializeField, ShowIf(nameof(IsNotGetMethod))] private EnumBody sendBodyType = EnumBody.FormData;
         [Foldout("[連線設定]"), SerializeField, ShowIf(nameof(IsGetOrFormData))] private List<KeyValueData<string, string>> paramsSetting;
@@ -32,6 +34,8 @@ namespace _VictorDev.Framework.WebAPI
         [Foldout("[連線設定]"), Label("Authorization (選填)"), SerializeField] private WebApiAuthorizationSO authorization;
         
         private Coroutine coroutine;
+
+        private string finalUrl;
         
         #endregion
 
@@ -50,6 +54,8 @@ namespace _VictorDev.Framework.WebAPI
         public void CallAPI(UnityEvent<string> onSuccess, UnityEvent<string> onError)
         {
             onLoadingEvent?.Invoke(true);
+            finalUrl = (isUserServerURL? $"{serverURL}/" : "") + urlRoute;
+            Debug.Log($"finalUrl: {finalUrl}");
             if(coroutine != null) StopCoroutine(coroutine);
             coroutine = StartCoroutine(CoroutineHandler(onSuccess, onError));
         }
@@ -91,7 +97,7 @@ namespace _VictorDev.Framework.WebAPI
             {
                 // 失敗
                 msg = $"[{request.error}]\n{request.downloadHandler.text}";
-              //  Debug.LogError($"onResponseErrorEvent\n{msg}", this);
+                Debug.LogError($"onResponseErrorEvent\n{msg}", this);
                 onResponseErrorEvent?.Invoke(msg);
                 onError?.Invoke(msg);
             }
@@ -124,8 +130,6 @@ namespace _VictorDev.Framework.WebAPI
         #region 依HttpMethod的不同，建立WebRequest
         private UnityWebRequest BuildGetRequest()
         {
-            string finalUrl = url;
-
             if (paramsSetting is { Count: > 0 })
             {
                 List<string> query = new();
@@ -147,9 +151,9 @@ namespace _VictorDev.Framework.WebAPI
                     {
                         form.AddField(kv.Key, kv.Value);
                     }
-                    return UnityWebRequest.Post(url, form);
+                    return UnityWebRequest.Post(finalUrl, form);
                 case EnumBody.RawJson:
-                    var request = new UnityWebRequest(url, "POST");
+                    var request = new UnityWebRequest(finalUrl, "POST");
                     byte[] bodyRaw = Encoding.UTF8.GetBytes(sendBodyJson);
                     request.uploadHandler = new UploadHandlerRaw(bodyRaw);
                     request.downloadHandler = new DownloadHandlerBuffer();
@@ -161,7 +165,7 @@ namespace _VictorDev.Framework.WebAPI
         }
         private UnityWebRequest BuildPatchRequest()
         {
-            var request = new UnityWebRequest(url, "PATCH");
+            var request = new UnityWebRequest(finalUrl, "PATCH");
 
             switch (sendBodyType)
             {

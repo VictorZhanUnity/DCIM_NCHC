@@ -75,8 +75,11 @@ namespace _VictorDev.TCIT.DCIM
         /// 設備名稱與流水號
         public string DeviceNameAndCode;
 
-        public int Watt => Information.watt_limit;
-        public int Weight => Information.weight_limit;
+        public int Watt => Information.watt;
+        public int Weight => Information.weight;
+        
+        public int Watt_Limit => Information.watt_limit;
+        public int Weight_Limit => Information.weight_limit;
         public int HeightU => Information.heightU;
         
         /// 取得設備名稱與流水號

@@ -15,7 +15,7 @@ namespace _VictorDev.TCIT.DCIM.NCHC
     public class WebAPIManager : MonoBehaviour
     {
         #region Variables
-
+ 
         [Foldout("[組件] - WebAPICaller"), SerializeField]
         private WebAPICaller login, rackDataFile, allRackData, pduPower, tempHumidity,
             unPublishedDevice, installDevice, uninstallDevice, moveDevice;

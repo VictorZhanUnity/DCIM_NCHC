@@ -18,6 +18,9 @@ namespace _VictorDev.TCIT.DCIM
         protected void OnDeserialized(StreamingContext context)
         {
             deviceId = DevicePath;
+            var index = Random.Range(0, 2);
+            Information.watt_limit = (index == 0) ? 350 : 250;
+            Information.weight_limit = (index == 0) ? 20 : 10;
             ParseDeviceNameAndCode();
         }
 
