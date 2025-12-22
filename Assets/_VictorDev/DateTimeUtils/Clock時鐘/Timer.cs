@@ -10,6 +10,7 @@ using _VictorDev.MediatorUtils;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
+using Debug = UnityEngine.Debug;
 
 namespace _VictorDev.DateTimeUtils
 {
@@ -74,6 +75,7 @@ namespace _VictorDev.DateTimeUtils
 
             while (isInfiniteLoop || loopCounter < maxCount)
             {
+                Debug.Log($"UpdateTimer: loopCounter {loopCounter}");
                 int totalIntervalSeconds = DateTimeHelper.CalculatedToTotalSeconds(
                     IsTimeIntervalHour ? intervalHour : 0,
                     IsTimeIntervalMin ? intervalMinute : 0,
@@ -104,6 +106,7 @@ namespace _VictorDev.DateTimeUtils
         public void StartTimer()
         {
             StopTimer(false);
+            Debug.Log($"StartTimer");
             if (!IsTimerRunning) timerCoroutine = StartCoroutine(UpdateTimer());
         }
 
@@ -111,6 +114,7 @@ namespace _VictorDev.DateTimeUtils
         [Button]
         public void StopTimer(bool isInvokeEvent = true)
         {
+            Debug.Log($"StopTimer");
             if (timerCoroutine != null)
             {
                 StopCoroutine(timerCoroutine);
@@ -131,6 +135,8 @@ namespace _VictorDev.DateTimeUtils
 
         private void Awake()
         {
+            iTimerUpdateTargets?.Clear();
+            iTimerFinishTargets?.Clear();
             iTimerUpdateTargets = iTimerMonoBehaviour.OfType<ITimerUpdate>().ToList();
             iTimerFinishTargets = iTimerMonoBehaviour.OfType<ITimerFinish>().ToList();
         }

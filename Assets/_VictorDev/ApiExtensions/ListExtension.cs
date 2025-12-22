@@ -23,8 +23,8 @@ namespace _VictorDev.ApiExtensions
         /// [Extended] - 移除所有子物件
         public static void RemoveAllChildren(this Transform self)
         {
-            List<Transform> objectList = self.Cast<Transform>().ToList();
-            objectList.ForEach(ObjectHelper.Destroy);
+            // 從後往前刪，不影響到迴圈
+            for (int i = self.childCount - 1; i >= 0; i--) ObjectHelper.Destroy(self.GetChild(i).gameObject);
         }
         
         /// [Extended] - 依TEnum類型來分類，存在Dictionary{Enum類型, 數量}

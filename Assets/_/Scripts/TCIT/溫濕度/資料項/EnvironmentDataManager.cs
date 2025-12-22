@@ -34,9 +34,10 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule
             });
         }
 
-        /// 讀取RTRH資料
+        
+        /// 產生RTRH假資料
         [Button]
-        public void LoadRtRhData()
+        public void GenerateRtRhData()
         {
             dataHolders.ForEach(holder =>
             {
@@ -50,10 +51,13 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule
             onLoadDataCompleteEvent?.Invoke();
         }
 
-        public void OnTimeUpdate()=> LoadRtRhData();
+        public void OnTimeUpdate()=> GenerateRtRhData();
 
+        /// 設定顯示溫度
         public void ShowHeatColor_RT() => dataHolders.ForEach(holder=> holder.SetRackDisplayType(EnumEnvDataType.RT));
+        /// 設定顯示濕度
         public void ShowHeatColor_RH() => dataHolders.ForEach(holder=> holder.SetRackDisplayType(EnumEnvDataType.RH));
+        /// 顯示機櫃原始材質
         public void ShowSourceRackColor() => dataHolders.ForEach(holder=> holder.SetRackDisplayType(EnumEnvDataType.None));
     }
 }
