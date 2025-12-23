@@ -17,7 +17,8 @@ namespace _VictorDev.Framework.WebAPI
     {
         #region Variables
 
-        [Foldout("[Event] - 是否在Loading")] public UnityEvent<bool> onLoadingEvent;
+        [Foldout("[Event] - 是否在Loading")] public UnityEvent<bool> loadingStatusEvent;
+        [Foldout("[Event] - 是否在Loading")] public UnityEvent onLoadingEvent, onLoadingFinishedEvent;
         [Foldout("[Event] - Response內容"), HideIf(nameof(IsResponseBinary))] public UnityEvent<string> onResponseSuccessEvent;
         [Foldout("[Event] - Response內容"), ShowIf(nameof(IsResponseBinary))] public UnityEvent<Byte[]> onResponseSuccessBinaryEvent;
         [Foldout("[Event] - Response內容")] public UnityEvent<string> onResponseErrorEvent;
@@ -53,7 +54,8 @@ namespace _VictorDev.Framework.WebAPI
 
         public void CallAPI(UnityEvent<string> onSuccess, UnityEvent<string> onError)
         {
-            onLoadingEvent?.Invoke(true);
+            loadingStatusEvent?.Invoke(true);
+            onLoadingEvent?.Invoke();
             finalUrl = (isUserServerURL? $"{serverURL}/" : "") + urlRoute;
             Debug.Log($"finalUrl: {finalUrl}");
             if(coroutine != null) StopCoroutine(coroutine);
@@ -82,7 +84,8 @@ namespace _VictorDev.Framework.WebAPI
             if (request == null)
             {
                 onResponseErrorEvent?.Invoke("Request build failed");
-                onLoadingEvent?.Invoke(false);
+                loadingStatusEvent?.Invoke(false);
+                onLoadingFinishedEvent?.Invoke();
                 yield break;
             }
             request.timeout = timeoutSeconds; // timeout時會觸發：UnityWebRequest.Result.ConnectionError
@@ -110,7 +113,7 @@ namespace _VictorDev.Framework.WebAPI
                     
                     case EnumResponseDataType.Json:
                     case EnumResponseDataType.Text:
-                        msg = request.downloadHandler.text.ToJsonFormat();
+                        msg = request.downloadHandler.text;
                         Debug.Log($"onResponseSuccessEvent\n{msg}", this);
                         onResponseSuccessEvent?.Invoke(msg);
                         onSuccess?.Invoke(msg);
@@ -124,7 +127,8 @@ namespace _VictorDev.Framework.WebAPI
                 }
             }
             request.Dispose();
-            onLoadingEvent?.Invoke(false);
+            loadingStatusEvent?.Invoke(false);
+            onLoadingFinishedEvent?.Invoke();
         }
 
         #region 依HttpMethod的不同，建立WebRequest

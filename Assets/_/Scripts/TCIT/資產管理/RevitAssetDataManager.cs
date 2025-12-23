@@ -3,7 +3,6 @@ using _VictorDev.ApiExtensions;
 using _VictorDev.DebugUtils;
 using NaughtyAttributes;
 using UnityEngine;
-using UnityEngine.Events;
 using Debug = _VictorDev.DebugUtils.Debug;
 
 namespace _VictorDev.TCIT.DCIM
@@ -12,18 +11,8 @@ namespace _VictorDev.TCIT.DCIM
     public class RevitAssetDataManager : JsonDataManagerParent<List<RackRevitAssetData>>
     {
         #region Variables
-
-        [Foldout("[Event] 在此設定擷取資料的觸發")] public UnityEvent toGetDataEvent;
+        private bool IsHaveData => Data != null && Data.ClearMissingTargets().Count > 0;
         #endregion
-
-        private bool IsHaveData => Data.ClearMissingTargets().Count > 0;
-        
-        [Button]
-        public void ToGetData()
-        {
-            isLoadingEvent?.Invoke(true);
-            toGetDataEvent?.Invoke();
-        }
 
         [Button, ShowIf(nameof(IsHaveData))]
         private void CopyRackDeviceCodesToClipboard()

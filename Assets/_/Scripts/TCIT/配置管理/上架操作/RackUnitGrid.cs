@@ -48,6 +48,16 @@ namespace _VictorDev.TCIT.DCIM
                 Debug.LogError($"Parent dont have RevitAssetDataHolder.", this);
         }
 
+        /// 設定DeviceData模型於RackLoaction位置
+        public void SetDevicePosition(DeviceRevitAssetData deviceRevitAssetData)
+        {
+            int rackLocation = Mathf.Clamp(deviceRevitAssetData.RackLocation, 1, 42);
+            Vector3 targetPos = gridGizmoDrawer.CellIndexToWorldPosition(new Vector3Int(0, rackLocation, 0));
+            deviceRevitAssetData.Model.localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
+            deviceRevitAssetData.Model.SetPositionByBottom(targetPos);
+            deviceRevitAssetData.Model.ToParentFront();
+        }
+
         #region Initialized
         private void OnEnable() => gridGizmoDrawer.OnGetCurrentGridInfoEvent.AddListener(OnGetCurrentGridInfo);
         private void OnDisable() => gridGizmoDrawer.OnGetCurrentGridInfoEvent.RemoveListener(OnGetCurrentGridInfo);

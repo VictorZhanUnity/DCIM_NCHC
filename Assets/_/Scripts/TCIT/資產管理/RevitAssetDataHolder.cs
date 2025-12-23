@@ -1,6 +1,8 @@
+using System;
 using _VictorDev.ApiExtensions;
 using _VictorDev.TCIT.DCIM.EnvironmentModule;
 using NaughtyAttributes;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace _VictorDev.TCIT.DCIM
@@ -18,7 +20,12 @@ namespace _VictorDev.TCIT.DCIM
         public bool IsDeviceAsset => string.IsNullOrEmpty(deviceRevitAssetData?.deviceId) == false; 
         public EnvironmentData EnvData => envData ??= GetComponent<EnvironmentDataHolder>().EnvData;
         private EnvironmentData envData;
-        
+
+        private void Start()
+        {
+            gameObject.layer = LayerMask.NameToLayer("Selectable");
+        }
+
         /// 接收RackAssetData
         public void ReceiveAssetData(RevitAssetData revitAssetData)
         {

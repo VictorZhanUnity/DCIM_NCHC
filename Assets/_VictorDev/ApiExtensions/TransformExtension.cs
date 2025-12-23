@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using _VictorDev.Configs;
+using _VictorDev.DebugUtils;
 using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -14,6 +15,17 @@ namespace _VictorDev.ApiExtensions
     /// [Extended] 原API類別功能擴充
     public static class TransformExtension
     {
+        /// [Extended] 刪除所有子物件
+        public static void RemoveAllChildren(this Transform self, params string[] excludeKeywords)
+        {
+            for (int i = self.childCount-1; i >=0; i--)
+            {
+                GameObject child = self.GetChild(i).gameObject;
+                if(child.name.ContainKeyword(StringComparison.OrdinalIgnoreCase,excludeKeywords)) continue;
+                ObjectHelper.Destroy(child);
+            }
+        }
+        
         /// [Extended] Destroy刪除此GameObject
         public static void Destroy(this Transform self)
         {
@@ -21,7 +33,7 @@ namespace _VictorDev.ApiExtensions
             else Object.DestroyImmediate(self.gameObject);
         }
         
-        /// [Extended] 尋找所有的子物件
+        /// [Extended] 以底部為Pivot設定位置
         public static void SetPositionByBottom(this Transform self, Vector3 pos)
         {
             if (self.TryGetComponent(out MeshRenderer renderer))
@@ -36,6 +48,24 @@ namespace _VictorDev.ApiExtensions
             }
             else
                 Debug.LogError($"找不到 MeshRenderer:{self.name}");
+        }
+
+        /// [Extended] 向父物件前面對齊
+        public static void ToParentFront(this Transform self)
+        {
+            var parentRenderer = self.parent.GetComponent<Renderer>();
+            var childRenderer  = self.GetComponent<Renderer>();
+
+            if (parentRenderer == null || childRenderer == null)
+            {
+                Debug.LogWarning("缺 Renderer，無法計算 bounds");
+                return;
+            }
+
+            float parentHalfDepth = parentRenderer.bounds.extents.x;
+            float childHalfDepth = childRenderer.bounds.extents.x;
+
+            self.position += self.parent.forward* (parentHalfDepth - childHalfDepth);
         }
         
         /// [Extended] 尋找所有的子物件

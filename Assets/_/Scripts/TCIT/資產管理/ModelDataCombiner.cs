@@ -36,7 +36,7 @@ namespace _VictorDev.TCIT.DCIM.RevitAssetModule
             revitAssetDataManager.Data.ForEach(rack =>
             {
                 //機櫃模型
-                rack.SetModelFromList(rackModels);
+                rack.SetModelAndHolderFromList(rackModels);
 
                 //設備模型
                 rack.Containers.ForEach(device =>
@@ -44,13 +44,13 @@ namespace _VictorDev.TCIT.DCIM.RevitAssetModule
                     List<Transform> modelList = device.RevitAssetKind switch
                     {
                         EnumRevitAssetKind.Server => serverModels,
-                        EnumRevitAssetKind.Router => routerModels,
+                        /*EnumRevitAssetKind.Router => routerModels,
                         EnumRevitAssetKind.Switch => switchModels,
                         EnumRevitAssetKind.ODF => odfModels,
-                        EnumRevitAssetKind.RackStation => rackStationModels,
+                        EnumRevitAssetKind.RackStation => rackStationModels,*/
                         _ => null
                     };
-                    if (modelList != null) device.SetModelFromList(modelList);
+                    if (modelList != null) device.SetModelAndHolderFromList(modelList);
                 });
             });
         }

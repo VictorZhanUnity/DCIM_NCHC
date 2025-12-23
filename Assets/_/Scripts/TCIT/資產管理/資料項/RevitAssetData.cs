@@ -89,10 +89,13 @@ namespace _VictorDev.TCIT.DCIM
             DeviceKindZh = DcimHelper.GetDeviceKindZh(RevitAssetKind);
             DeviceName = DcimHelper.GetDeviceName(deviceId);
             DeviceNameAndCode = DcimHelper.GetDeviceName(deviceId, true);
+
+            modelNumber = deviceId.Split("+")[6].Split("-")[1].Replace(" ", "_");
+            
         }
 
         /// 從Transform列表裡依照name設定模型，與設定RevitAssetDataHolder
-        public void SetModelFromList(List<Transform> modelList)
+        public void SetModelAndHolderFromList(List<Transform> modelList)
         {
             Transform result = modelList.FirstOrDefault(model=>
             {
@@ -111,7 +114,7 @@ namespace _VictorDev.TCIT.DCIM
                     Model.AddComponent<RevitAssetDataHolder>().ReceiveAssetData(this);
                 }
             }
-            else Debug.LogError($"{DeviceNameAndCode} not found.");
+            //else Debug.Log($"{DeviceNameAndCode} not found.");
         }
         public void SetModel(Transform model) => Model = model;
         public void SetDevicePath(string str) => deviceId = str;

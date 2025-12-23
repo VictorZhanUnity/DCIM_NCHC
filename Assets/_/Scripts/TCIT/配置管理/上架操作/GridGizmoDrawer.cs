@@ -81,6 +81,12 @@ namespace _VictorDev.GimzoUtils
             return posOfWorld;
         }
 
+        public Vector3 CellIndexToWorldPosition(Vector3Int cellIndex)
+        {
+            var cellPosition = grid.CellToWorld(cellIndex);
+            return  ToGridWorldPosition(cellPosition);
+        }
+
         /// 向下對齊父類別的Collider
         [Button]
         public void AlignToParentBottomMesh()

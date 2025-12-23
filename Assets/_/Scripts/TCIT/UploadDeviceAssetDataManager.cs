@@ -42,7 +42,7 @@ namespace _VictorDev.TCIT.DCIM
                     EnumRevitAssetKind.Switch => switchModels,
                     _ => null
                 };
-                if (modelList != null) uploadDeviceData.SetModelFromList(modelList);
+                if (modelList != null) uploadDeviceData.SetModelAndHolderFromList(modelList);
             });
         }
 
