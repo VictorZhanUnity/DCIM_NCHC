@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -11,6 +12,22 @@ namespace _VictorDev.ApiExtensions
     /// 原API String類別功能擴充
     public static class StringExtension
     {
+        /// [Extended] - 是否包含英文關鍵字(忽略標點符號)
+        public static bool IsMatch(this string self, string str)
+        {
+            Regex TokenRegex = new Regex(@"[A-Za-z0-9]+", RegexOptions.Compiled);
+            HashSet<string> GetTokens(string s)
+            {
+                return TokenRegex.Matches(s)
+                    .Select(m => m.Value.ToLowerInvariant())
+                    .ToHashSet();
+            }
+            var aTokens = GetTokens(self);
+            var bTokens = GetTokens(str);
+            // self的所有關鍵字，都能在 str 裡找到
+            return aTokens.All(bTokens.Contains);
+        }
+        
         /// [Extended] - 尋找字串裡是否有關鍵單字
         public static bool ContainKeyword(this string self, StringComparison comparison,  params string[] keywords)
         {

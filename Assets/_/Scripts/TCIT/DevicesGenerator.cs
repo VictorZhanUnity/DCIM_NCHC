@@ -6,6 +6,7 @@ using _VictorDev.ApiExtensions;
 using NaughtyAttributes;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using Debug = UnityEngine.Debug;
 
 namespace _VictorDev.TCIT.DCIM.RevitAssetModule
@@ -16,6 +17,7 @@ namespace _VictorDev.TCIT.DCIM.RevitAssetModule
         #region Variables
         [Label("[設備模型]"), SerializeField] private List<Transform> deviceModels;
         [Label("[Revit模型Prefab]"), SerializeField] private List<Transform> devicePrefabs;
+        [Foldout("[Event] 設備生成完後Invoke")] public UnityEvent onGenerateCompleteEvent;
         [Foldout("[組件]"), SerializeField] private RevitAssetDataManager revitAssetDataManager;
         [Foldout("[設定]"), SerializeField] private int chunkSize = 20;
 
@@ -48,6 +50,8 @@ namespace _VictorDev.TCIT.DCIM.RevitAssetModule
                         counter = 0;
                     }
                 }
+                
+                onGenerateCompleteEvent?.Invoke();
             }
         }
 
@@ -59,7 +63,6 @@ namespace _VictorDev.TCIT.DCIM.RevitAssetModule
                 Debug.LogWarning($"Cant find target model at location: {deviceData.modelNumber}");
                 return;
             }
-            Debug.Log($"Create Target Model: {deviceData.modelNumber}");
             Transform newDevice = Instantiate(targetModel.transform, rackUnitGrid.transform.parent);
             deviceData.SetModel(newDevice);
             newDevice.AddComponent<RevitAssetDataHolder>().ReceiveAssetData(deviceData);

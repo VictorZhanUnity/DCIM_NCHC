@@ -84,7 +84,15 @@ namespace _VictorDev.GimzoUtils
         public Vector3 CellIndexToWorldPosition(Vector3Int cellIndex)
         {
             var cellPosition = grid.CellToWorld(cellIndex);
-            return  ToGridWorldPosition(cellPosition);
+            
+            Vector3Int posOfGridIndex = grid.WorldToCell(cellPosition);
+
+            posOfGridIndex.x = Mathf.Clamp(posOfGridIndex.x, 0, amountOfGrids.x - 1);
+            posOfGridIndex.y = Mathf.Clamp(posOfGridIndex.y, 0, amountOfGrids.y - 1);
+            posOfGridIndex.z = Mathf.Clamp(posOfGridIndex.z, 0, amountOfGrids.z - 1);
+
+            Vector3 posOfWorld = grid.GetCellCenterWorld(posOfGridIndex); //抓Grid中間座標
+            return posOfWorld;
         }
 
         /// 向下對齊父類別的Collider

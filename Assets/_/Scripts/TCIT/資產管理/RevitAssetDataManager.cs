@@ -3,6 +3,7 @@ using _VictorDev.ApiExtensions;
 using _VictorDev.DebugUtils;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Events;
 using Debug = _VictorDev.DebugUtils.Debug;
 
 namespace _VictorDev.TCIT.DCIM
@@ -11,6 +12,8 @@ namespace _VictorDev.TCIT.DCIM
     public class RevitAssetDataManager : JsonDataManagerParent<List<RackRevitAssetData>>
     {
         #region Variables
+
+        [Foldout("[Event] 接收到資料時")] public UnityEvent onReceiveDataEvent;
         private bool IsHaveData => Data != null && Data.ClearMissingTargets().Count > 0;
         #endregion
 
@@ -21,6 +24,11 @@ namespace _VictorDev.TCIT.DCIM
             Data.ForEach(rackData => result += $"\"{rackData.deviceCode}\", \n");
             Debug.Log($"全機櫃deviceCode已複製至Clipboard");
             GUIUtility.systemCopyBuffer = result;
+        }
+
+        protected override void BeforeInvokeData()
+        {
+            onReceiveDataEvent?.Invoke();
         }
     }
 }

@@ -7,6 +7,7 @@ using NaughtyAttributes;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.ProBuilder.MeshOperations;
 
 namespace _VictorDev.DebugUtils
 {
@@ -16,7 +17,7 @@ namespace _VictorDev.DebugUtils
     public abstract class JsonDataManagerParent<TData> : MonoBehaviour
     {
         #region Variables
-
+        
         [Label("[資料項]"), SerializeField] private TData data;
         [Label("[接收器]"), SerializeField] private List<MonoBehaviour> receivers;
         [Foldout("[Event] 是否在讀取資料")] public UnityEvent<bool> isLoadingEvent;

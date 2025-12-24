@@ -1,10 +1,13 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using _VictorDev.ApiExtensions;
-using _VictorDev.Configs;
 using _VictorDev.DebugUtils;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
+using Debug = _VictorDev.DebugUtils.Debug;
 
 namespace _VictorDev.TCIT.DCIM
 {
@@ -14,54 +17,28 @@ namespace _VictorDev.TCIT.DCIM
         #region Variables
 
         [Foldout("[Event] 在此設定擷取資料的觸發")] public UnityEvent toGetDataEvent;
-
-        [Foldout("[設備模型Prefab]"), Label("\tServer"), SerializeField]
-        private List<Transform> serverModels;
-
-        [Foldout("[設備模型Prefab]"), Label("\tRouter"), SerializeField]
-        private List<Transform> routerModels;
-
-        [Foldout("[設備模型Prefab]"), Label("\tSwitch"), SerializeField]
-        private List<Transform> switchModels;
+        [Foldout("[組件]"), SerializeField] private ModelCombiner modelCombiner;
 
         #endregion
 
         protected override void BeforeInvokeData() => CombineDataAndModels();
 
-        #region 設定資料與模型
-
-        /// 處理資料集與對應3D模型
+        ///設定資料與模型
         private void CombineDataAndModels()
         {
             Data.ForEach(uploadDeviceData =>
             {
-                List<Transform> modelList = uploadDeviceData.RevitAssetKind switch
+                Transform targetModel = modelCombiner.DeviceModels.FirstOrDefault(t =>uploadDeviceData.type.IsMatch(t.name));
+                if (targetModel == null)
                 {
-                    EnumRevitAssetKind.Server => serverModels,
-                    EnumRevitAssetKind.Router => routerModels,
-                    EnumRevitAssetKind.Switch => switchModels,
-                    _ => null
-                };
-                if (modelList != null) uploadDeviceData.SetModelAndHolderFromList(modelList);
+                    Debug.LogWarning($"Cant find target model at location: {uploadDeviceData.type}");
+                    return; 
+                    
+                }
+                uploadDeviceData.SetModel(targetModel);
             });
         }
-
-        #endregion
-
-
-        [Button]
-        public void ToGetData()
-        {
-            isLoadingEvent?.Invoke(true);
-            toGetDataEvent?.Invoke();
-        }
-
-        /// 接收機房模型，並進行分類
-        public void ReceiveModels(List<Transform> targets)
-        {
-            serverModels = targets.FilterByNameForKeywords(EnumSearchType.Include, "Server");
-            routerModels = targets.FilterByNameForKeywords(EnumSearchType.Include, "Router");
-            switchModels = targets.FilterByNameForKeywords(EnumSearchType.Include, "Switch");
-        }
+        
+       
     }
 }
