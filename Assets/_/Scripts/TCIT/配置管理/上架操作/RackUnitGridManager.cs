@@ -56,7 +56,8 @@ namespace _VictorDev.TCIT.DCIM
         {
             uploadDeviceRevitAssetData = data;
             if(selectedDevice != null) ObjectHelper.Destroy(selectedDevice.gameObject);
-            selectedDevice = ObjectHelper.Instantiate(uploadDeviceRevitAssetData.Model, transform);
+            selectedDevice = Instantiate(uploadDeviceRevitAssetData.Model, transform);
+            selectedDevice.gameObject.SetActive(false);
         }
 
         /// 點擊RackUnitGrid時，切換為選取狀態並發送資料
@@ -148,17 +149,20 @@ namespace _VictorDev.TCIT.DCIM
             currentPositionU = positionU;
             currentRackRevitAssetData = rackAssetDataHolder.RackRevitData;
 
-            gridWorldPosition += Vector3.up * deviceOffsetPosY;
+           // gridWorldPosition += Vector3.up * deviceOffsetPosY;
 
             //Z軸前後偏移
             MeshRenderer deviceMesh = selectedDevice.GetComponent<MeshRenderer>();
             MeshRenderer rackMesh = rackAssetDataHolder.RackRevitData.ModelMeshRender;
-            float deviceOffsetZ = deviceMesh.bounds.center.x - deviceMesh.bounds.min.x;
+            /*float deviceOffsetZ = deviceMesh.bounds.center.x - deviceMesh.bounds.min.x;
             float rackOffsetZ = rackMesh.bounds.center.x - rackMesh.bounds.min.x;
-            gridWorldPosition -= Vector3.left * (rackOffsetZ-deviceOffsetZ+deviceOffsetPosZ);
+            gridWorldPosition -= Vector3.left * (rackOffsetZ-deviceOffsetZ+deviceOffsetPosZ);*/
             
+          //  selectedDevice.rotation = rackAssetDataHolder.transform.rotation;
+            selectedDevice.SetParent(rackAssetDataHolder.RackRevitData.Model, true);
             selectedDevice.SetPositionByBottom(gridWorldPosition);
-            selectedDevice.rotation = rackAssetDataHolder.transform.rotation;
+            selectedDevice.localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
+            selectedDevice.ToParentFront();
             onMouseOverEvent?.Invoke(positionU, rackAssetDataHolder.RackRevitData);
         }
 

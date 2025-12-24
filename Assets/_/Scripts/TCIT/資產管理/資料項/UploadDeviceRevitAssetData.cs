@@ -31,6 +31,10 @@ namespace _VictorDev.TCIT.DCIM
             DeviceKindZh = DcimHelper.GetDeviceKindZh(RevitAssetKind);
             DeviceName = deviceId.Split("+")[2];
             DeviceNameAndCode = deviceId;
+            
+            //暫定自已加入
+            int index = description.IndexOf("-");
+            modelNumber = description.Substring(index+1);
         }
     }
 }

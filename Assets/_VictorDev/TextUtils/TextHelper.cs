@@ -47,7 +47,7 @@ namespace _VictorDev.TextUtils
 
             void ApplyValue(string name, object value)
             {
-                var comp = txtComps.FirstOrDefault(c => (string)nameProp.GetValue(c) == name);
+                var comp = txtComps.FirstOrDefault(c => ((string)nameProp.GetValue(c)).Equals(name, StringComparison.OrdinalIgnoreCase));
                 if (comp != null)
                     textProp.SetValue(comp, value?.ToString() ?? string.Empty);
             }
