@@ -49,7 +49,7 @@ namespace _VictorDev.TCIT.DCIM
         private void OnDpManufactureChanged(int selectedIndex)
         {
             List<DeviceRevitAssetData> result = filteredDeviceRevitAssets
-                .Where(device => device.Manufacturer.Equals(dpManufacture.CurrentSelectedText())).ToList();
+                .Where(device => device.DeviceKindZh.Equals(dpManufacture.CurrentSelectedText())).ToList();
             deviceList.ReceiveData(result);
         }
         
