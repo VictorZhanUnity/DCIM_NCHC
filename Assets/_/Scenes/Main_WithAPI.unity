@@ -31641,7 +31641,6 @@ Transform:
   m_Children:
   - {fileID: 1609034266}
   - {fileID: 1869611750}
-  - {fileID: 786963622}
   - {fileID: 1655076846}
   - {fileID: 990189025}
   - {fileID: 1808119840}
@@ -44544,7 +44543,6 @@ GameObject:
   - component: {fileID: 680918729}
   - component: {fileID: 680918733}
   - component: {fileID: 680918731}
-  - component: {fileID: 680918732}
   m_Layer: 0
   m_Name: "\u6EAB\u6FD5\u5EA6\u5340\u57DF\u5283\u5206"
   m_TagString: Untagged
@@ -44590,45 +44588,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ToggleGroup
   m_AllowSwitchOff: 1
---- !u!114 &680918732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 680918728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d55d9a7de9147f24581ebe0254e17b91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.MediatorUtils.LifeCycleEventDispatcher
-  onEnableDisabledEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onEnableDisabledReverseEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onEnableEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 680918731}
-        m_TargetAssemblyTypeName: UnityEngine.UI.ToggleGroup, UnityEngine.UI
-        m_MethodName: SetAllTogglesOff
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onDisableEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onStartEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &680918733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46035,22 +45994,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
-      - m_Target: {fileID: 1853390150}
-        m_TargetAssemblyTypeName: _VictorDev.TCIT.DCIM.EnvironmentModule.EnvironmentDataManager,
-          Assembly-CSharp
-        m_MethodName: ShowHeatColor_RT
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 786963623}
-        m_TargetAssemblyTypeName: _VictorDev.DateTimeUtils.Timer, Assembly-CSharp
-        m_MethodName: OnTimeUpdated
+      - m_Target: {fileID: 1869611757}
+        m_TargetAssemblyTypeName: _VictorDev.Framework.WebAPI.WebAPICaller, Assembly-CSharp
+        m_MethodName: CallAPI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -46080,6 +46026,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: _VictorDev.TCIT.DCIM.ModelMaterialManager, Assembly-CSharp
         m_MethodName: ShowAllModels
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 786963623}
+        m_TargetAssemblyTypeName: _VictorDev.DateTimeUtils.Timer, Assembly-CSharp
+        m_MethodName: StopTimer
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 802532688}
+        m_TargetAssemblyTypeName: _VictorDev.DateTimeUtils.Timer, Assembly-CSharp
+        m_MethodName: StopTimer
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -78859,7 +78829,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &786963622
 Transform:
   m_ObjectHideFlags: 0
@@ -78868,12 +78838,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 786963621}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 480855691}
+  m_Father: {fileID: 1869611754}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &786963623
 MonoBehaviour:
@@ -78888,7 +78858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.DateTimeUtils.Timer
   isActiveInStart: 0
-  isInfiniteLoop: 1
+  isInfiniteLoop: 0
   onTimeUpdated:
     m_PersistentCalls:
       m_Calls: []
@@ -78901,10 +78871,32 @@ MonoBehaviour:
   maxCount: 1
   onTimerFinished:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 802532688}
+        m_TargetAssemblyTypeName: _VictorDev.DateTimeUtils.Timer, Assembly-CSharp
+        m_MethodName: StartTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1869611757}
+        m_TargetAssemblyTypeName: _VictorDev.Framework.WebAPI.WebAPICaller, Assembly-CSharp
+        m_MethodName: CallAPI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   iTimerMonoBehaviour:
-  - {fileID: 1853390150}
-  - {fileID: 680918733}
   - {fileID: 992173848}
 --- !u!1001 &787289829
 PrefabInstance:
@@ -79859,6 +79851,79 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 802491294}
   m_CullTransparentMesh: 1
+--- !u!1 &802532687
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 802532689}
+  - component: {fileID: 802532688}
+  m_Layer: 0
+  m_Name: Timer_OverTime
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &802532688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802532687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f518ddb4eb2eba74e8b1a4c3aabc7b47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.DateTimeUtils.Timer
+  isActiveInStart: 0
+  isInfiniteLoop: 0
+  onTimeUpdated:
+    m_PersistentCalls:
+      m_Calls: []
+  enumTime: 2
+  intervalSecond: 60
+  intervalMinute: 5
+  intervalHour: 1
+  invokeTimeFormat: 0
+  offsetHour: 0
+  maxCount: 1
+  onTimerFinished:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1869611757}
+        m_TargetAssemblyTypeName: _VictorDev.Framework.WebAPI.WebAPICaller, Assembly-CSharp
+        m_MethodName: CallAPI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  iTimerMonoBehaviour:
+  - {fileID: 992173848}
+--- !u!4 &802532689
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802532687}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1869611754}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &803137213
 GameObject:
   m_ObjectHideFlags: 0
@@ -152472,7 +152537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1853390149
 Transform:
   m_ObjectHideFlags: 0
@@ -152504,9 +152569,20 @@ MonoBehaviour:
   receivers: []
   isLoadingEvent:
     m_PersistentCalls:
-      m_Calls: []
-  dataHolders:
-  - {fileID: 8956210019206167664}
+      m_Calls:
+      - m_Target: {fileID: 1904670178}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  environmentDataHolders:
   - {fileID: 5793473553644494826}
   - {fileID: 7912621858940034727}
   - {fileID: 7234178804493946021}
@@ -152515,7 +152591,7 @@ MonoBehaviour:
   - {fileID: 8876862942926124790}
   - {fileID: 4485311733139706498}
   - {fileID: 9159741406592195334}
-  - {fileID: 9104891926547783442}
+  - {fileID: 8956210019206167664}
   - {fileID: 8792498421415627518}
   - {fileID: 8611630761842654067}
   - {fileID: 7868314184249667982}
@@ -152526,16 +152602,18 @@ MonoBehaviour:
   - {fileID: 8907328119169265264}
   - {fileID: 8069756901929478900}
   - {fileID: 8600993542740606310}
-  - {fileID: 8734491035867521790}
-  - {fileID: 8180069253674142660}
-  - {fileID: 8192317169966409894}
-  - {fileID: 8785927928485338325}
-  - {fileID: 6207351063627446155}
-  - {fileID: 8122496432550742179}
-  - {fileID: 8719292025915266349}
-  - {fileID: 7896795553568309178}
-  - {fileID: 8675162996480895335}
-  - {fileID: 8275523429658710021}
+  - {fileID: 9048377294934560174}
+  - {fileID: 8049711954800753584}
+  - {fileID: 6305599343938935239}
+  - {fileID: 7017869769620654142}
+  - {fileID: 8158306556046690019}
+  - {fileID: 5629513988717308612}
+  - {fileID: 8019613334161824447}
+  - {fileID: 7737349093471602417}
+  - {fileID: 7032862911517620769}
+  - {fileID: 4596551863165166570}
+  - {fileID: 6311568255493537119}
+  - {fileID: 9104891926547783442}
   - {fileID: 8941390286274794081}
   - {fileID: 3314338993254472023}
   - {fileID: 9086058471638360146}
@@ -152555,7 +152633,6 @@ MonoBehaviour:
   - {fileID: 8577023176500070191}
   - {fileID: 4774426124394659910}
   - {fileID: 9136261688758262187}
-  - {fileID: 5128807741183416327}
   - {fileID: 8835282796421801358}
   - {fileID: 8861733100249904260}
   - {fileID: 7657989334456318384}
@@ -152566,15 +152643,17 @@ MonoBehaviour:
   - {fileID: 9058347144144995359}
   - {fileID: 8596427986388973920}
   - {fileID: 8456150568313872095}
-  - {fileID: 8061881656359795294}
-  - {fileID: 8271822906101302235}
-  - {fileID: 6640145097918501871}
-  - {fileID: 7522047042875370685}
-  - {fileID: 6708490717405614069}
-  - {fileID: 9063431571701461364}
-  - {fileID: 7726862971996583488}
-  - {fileID: 7944580094635175725}
-  - {fileID: 8578301018775744722}
+  - {fileID: 5128807741183416327}
+  - {fileID: 8734491035867521790}
+  - {fileID: 8180069253674142660}
+  - {fileID: 8192317169966409894}
+  - {fileID: 8785927928485338325}
+  - {fileID: 6207351063627446155}
+  - {fileID: 8122496432550742179}
+  - {fileID: 8719292025915266349}
+  - {fileID: 7896795553568309178}
+  - {fileID: 8675162996480895335}
+  - {fileID: 8275523429658710021}
   - {fileID: 8651304781304385539}
   - {fileID: 4624811686670821409}
   - {fileID: 8820187547323003564}
@@ -152586,6 +152665,15 @@ MonoBehaviour:
   - {fileID: 6452555932624047374}
   - {fileID: 5800924352913459707}
   - {fileID: 8862408890035384917}
+  - {fileID: 8061881656359795294}
+  - {fileID: 8271822906101302235}
+  - {fileID: 6640145097918501871}
+  - {fileID: 7522047042875370685}
+  - {fileID: 6708490717405614069}
+  - {fileID: 9063431571701461364}
+  - {fileID: 7726862971996583488}
+  - {fileID: 7944580094635175725}
+  - {fileID: 8578301018775744722}
   - {fileID: 8659380734732384378}
   - {fileID: 8485383801319323354}
   - {fileID: 8667325201350944229}
@@ -152596,20 +152684,22 @@ MonoBehaviour:
   - {fileID: 7246205876703995405}
   - {fileID: 5192517860666396028}
   - {fileID: 7035277777613501819}
-  - {fileID: 9048377294934560174}
-  - {fileID: 8049711954800753584}
-  - {fileID: 6305599343938935239}
-  - {fileID: 7017869769620654142}
-  - {fileID: 8158306556046690019}
-  - {fileID: 5629513988717308612}
-  - {fileID: 8019613334161824447}
-  - {fileID: 7737349093471602417}
-  - {fileID: 7032862911517620769}
-  - {fileID: 4596551863165166570}
-  - {fileID: 6311568255493537119}
   onLoadDataCompleteEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 680918733}
+        m_TargetAssemblyTypeName: _VictorDev.TCIT.DCIM.EnvironmentModule.EnvironmentSectionManager,
+          Assembly-CSharp
+        m_MethodName: CalculateAverageValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   revitAssetDataManager: {fileID: 1808119841}
 --- !u!1001 &1857573739
 PrefabInstance:
@@ -153427,30 +153517,78 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3036869498603286233, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: onResponseSuccessEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3036869498603286233, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: onResponseSuccessEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3036869498603286233, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
+      propertyPath: onResponseSuccessEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3036869498603286233, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
+      propertyPath: onResponseSuccessEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3036869498603286233, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: onResponseSuccessEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2003621404}
     - target: {fileID: 3036869498603286233, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
+      propertyPath: onResponseSuccessEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 802532688}
+    - target: {fileID: 3036869498603286233, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
+      propertyPath: onResponseSuccessEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 786963623}
+    - target: {fileID: 3036869498603286233, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: onResponseSuccessEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3036869498603286233, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
+      propertyPath: onResponseSuccessEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3036869498603286233, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
+      propertyPath: onResponseSuccessEvent.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3036869498603286233, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: onResponseSuccessEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ReceiveJsonString
       objectReference: {fileID: 0}
     - target: {fileID: 3036869498603286233, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
+      propertyPath: onResponseSuccessEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: StopTimer
+      objectReference: {fileID: 0}
+    - target: {fileID: 3036869498603286233, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
+      propertyPath: onResponseSuccessEvent.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: StartTimer
+      objectReference: {fileID: 0}
+    - target: {fileID: 3036869498603286233, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: onResponseSuccessEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: JsonDataGetter, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3036869498603286233, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
+      propertyPath: onResponseSuccessEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: _VictorDev.DateTimeUtils.Timer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3036869498603286233, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
+      propertyPath: onResponseSuccessEvent.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: _VictorDev.DateTimeUtils.Timer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3036869498603286233, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: onResponseSuccessEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3036869498603286233, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
+      propertyPath: onResponseSuccessEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3036869498603286233, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
+      propertyPath: onResponseSuccessEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3381180252279836913, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
@@ -153566,6 +153704,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2902819736318332982, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2003621405}
+    - targetCorrespondingSourceObject: {fileID: 2902819736318332982, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 786963622}
+    - targetCorrespondingSourceObject: {fileID: 2902819736318332982, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 802532689}
     - targetCorrespondingSourceObject: {fileID: 410065003509559547, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       insertIndex: -1
       addedObject: {fileID: 863169414}
@@ -153616,6 +153760,17 @@ Transform:
 --- !u!114 &1869611756 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 659651797496298846, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
+  m_PrefabInstance: {fileID: 1869611749}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a90b67eba67584fb329a68514c3419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ApiTest
+--- !u!114 &1869611757 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3036869498603286233, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
   m_PrefabInstance: {fileID: 1869611749}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -203380,7 +203535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackD03
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -214611,7 +214766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackA07
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -215029,7 +215184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackB04
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -215945,7 +216100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackE05
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -216431,7 +216586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackC10
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -216849,7 +217004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackH02
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -218613,7 +218768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackE08
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -222183,7 +222338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackG01
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -222994,7 +223149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackH06
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -223348,7 +223503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackJ09
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -223981,7 +224136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackE01
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -225341,7 +225496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackJ06
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -228069,7 +228224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackE02
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -228394,7 +228549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackC06
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -230212,7 +230367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackA01
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -230609,7 +230764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackH10
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -232531,7 +232686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackJ05
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -232998,7 +233153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackD09
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -234536,7 +234691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackG06
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -235597,7 +235752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackH08
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -235892,7 +236047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackC03
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -236115,7 +236270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackC11
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -237437,7 +237592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackH09
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -239564,7 +239719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackI03
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -240476,7 +240631,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackI05
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -241471,7 +241626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackB06
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -243550,7 +243705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackC04
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -243814,7 +243969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackC09
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -244041,7 +244196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackJ10
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -244904,7 +245059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackF06
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -245197,7 +245352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackH04
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -245957,7 +246112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackA05
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -246458,7 +246613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackA03
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -246778,7 +246933,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackJ08
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -247731,7 +247886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackD08
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -248040,7 +248195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackB07
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -250153,7 +250308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackD07
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -250600,7 +250755,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackI04
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -252049,7 +252204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackD11
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -252447,7 +252602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackF03
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -252714,7 +252869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackB05
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -253367,7 +253522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackI07
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -253593,7 +253748,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackC08
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -255103,7 +255258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackB03
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -255472,7 +255627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackG09
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -255840,7 +255995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackJ07
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -256048,7 +256203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackA02
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -256490,7 +256645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackI08
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -257160,7 +257315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackA04
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -257509,7 +257664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackC07
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -257897,7 +258052,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackC02
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -258411,7 +258566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackI01
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -258685,7 +258840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackB09
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -259132,7 +259287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackD06
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -259456,7 +259611,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackG07
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -259679,7 +259834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackH07
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -260191,7 +260346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackC05
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -260599,7 +260754,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackG03
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -260840,7 +260995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackG04
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -261841,7 +261996,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackI02
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -262057,7 +262212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackG11
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -264228,7 +264383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackF10
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -264641,7 +264796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackJ02
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -265556,7 +265711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackE07
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -265779,7 +265934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackI09
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -266091,7 +266246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackF09
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -266414,7 +266569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackB10
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -266711,7 +266866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackB02
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -267444,7 +267599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackH01
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -267739,7 +267894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackJ01
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -268018,7 +268173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackJ03
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -268294,7 +268449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackG10
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -268813,7 +268968,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackG08
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -269245,7 +269400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackG02
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -269864,7 +270019,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackG05
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -270154,7 +270309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackB01
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -270526,7 +270681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackE04
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -270752,7 +270907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackH03
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -271105,7 +271260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackF01
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -271373,7 +271528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackD05
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -271914,7 +272069,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackF07
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -272132,7 +272287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackF02
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -272388,7 +272543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackH11
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -272614,7 +272769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackE06
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -272923,7 +273078,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackA06
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -273287,7 +273442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackD10
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -273665,7 +273820,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackB08
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -274342,7 +274497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackD02
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -274801,7 +274956,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackA09
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -275332,7 +275487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackH05
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -275826,7 +275981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackF05
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -276072,7 +276227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackJ04
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -276313,7 +276468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackC01
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -276546,7 +276701,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackF08
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -276799,7 +276954,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackI06
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -277197,7 +277352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackD04
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -277567,7 +277722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackD01
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -277926,7 +278081,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackE09
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -278179,7 +278334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackF04
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -278639,7 +278794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackA08
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0
@@ -278928,7 +279083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.EnvironmentDataHolder
   envData:
-    <deviceCode>k__BackingField: 
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackE03
     <tags>k__BackingField: []
     <RTValue>k__BackingField: 0
     <RHValue>k__BackingField: 0

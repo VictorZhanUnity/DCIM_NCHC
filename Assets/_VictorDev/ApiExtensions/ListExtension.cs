@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using _VictorDev.Configs;
-using _VictorDev.DebugUtils;
+using _VictorDev.MediatorUtils;
 using _VictorDev.InterfaceUtils;
 using Newtonsoft.Json;
 using UnityEngine;

@@ -1,10 +1,10 @@
 using System;
 using _VictorDev.ApiExtensions;
 using _VictorDev.Configs;
-using _VictorDev.DebugUtils;
+using _VictorDev.MediatorUtils;
 using NaughtyAttributes;
 using UnityEngine;
-using Debug = _VictorDev.DebugUtils.Debug;
+using Debug = _VictorDev.MediatorUtils.Debug;
 
 namespace _VictorDev.Framework
 {

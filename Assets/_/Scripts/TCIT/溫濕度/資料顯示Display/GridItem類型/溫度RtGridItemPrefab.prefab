@@ -181,7 +181,7 @@ MonoBehaviour:
         m_CallState: 2
   dotNumber: 1
   minValue: 0
-  maxValue: 36
+  maxValue: 32
   thresholdValue: 28
 --- !u!114 &675815297841226410
 MonoBehaviour:

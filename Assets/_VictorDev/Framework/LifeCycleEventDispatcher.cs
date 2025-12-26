@@ -2,7 +2,7 @@ using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace _VictorDev.DebugUtils
+namespace _VictorDev.MediatorUtils
 {
     public class LifeCycleEventDispatcher : MonoBehaviour
     {

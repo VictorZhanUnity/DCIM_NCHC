@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Data;
 using _VictorDev.ApiExtensions;
-using _VictorDev.DebugUtils;
+using _VictorDev.MediatorUtils;
 using _VictorDev.InterfaceUtils;
 using NaughtyAttributes;
 using UnityEngine;

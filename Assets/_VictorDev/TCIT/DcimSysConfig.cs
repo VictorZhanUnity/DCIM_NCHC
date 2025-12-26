@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using _VictorDev.ApiExtensions;
 using _VictorDev.Configs;
-using _VictorDev.DebugUtils;
+using _VictorDev.MediatorUtils;
 using _VictorDev.FileUtils;
 using NaughtyAttributes;
 using UnityEngine;
@@ -24,8 +24,8 @@ namespace _VictorDev.TCIT.DCIM
         [Foldout("[環控設定]"), SerializeField] private Gradient heatColor;
         [Foldout("[環控設定]"), SerializeField] private Gradient humidityColor;
         
-        public static Vector2 RTValueValueRange => Instance.rtValueRange;
-        public static  Vector2 RhValueValueRange => Instance.rhValueRange;
+        public static Vector2 RTValueRange => Instance.rtValueRange;
+        public static  Vector2 RhValueRange => Instance.rhValueRange;
 
         public static Vector2 RTValueValueRangeDEMO => Instance.rtValueRangeDEMO;
         public static  Vector2 RhValueValueRangeDEMO => Instance.rhValueDEMO;

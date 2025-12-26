@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using _VictorDev.ApiExtensions;
 using _VictorDev.DateTimeUtils;
-using _VictorDev.DebugUtils;
+using _VictorDev.MediatorUtils;
 using _VictorDev.TCIT.DCIM.EnvironmentModule;
 using DG.Tweening;
 using NaughtyAttributes;
@@ -37,7 +37,7 @@ namespace _VictorDev.Framework.HeatmapUtils
         private void CreateSensorToRackModels()
         {
             rackSensors.Clear();
-            envDataManager.DataHolders.ForEach(holder =>
+            envDataManager.EnvironmentDataHolders.ForEach(holder =>
             {
                 HeatmapSensor_Environment sensor = holder.transform.TryAddComponent<HeatmapSensor_Environment>();
                 sensor.SetData(holder);

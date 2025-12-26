@@ -9,8 +9,8 @@ namespace _VictorDev.Framework.HeatmapUtils
         public float RT => Data.EnvData.RTValue;
         public float RH => Data.EnvData.RHValue;
         
-        public Vector4 Vector4Data_RT => GetVector4Data(DcimSysConfig.RTValueValueRange.GetPercentage01(RT));
-        public Vector4 Vector4Data_RH => GetVector4Data(DcimSysConfig.RhValueValueRange.GetPercentage01(RH));
+        public Vector4 Vector4Data_RT => GetVector4Data(DcimSysConfig.RTValueRange.GetPercentage01(RT));
+        public Vector4 Vector4Data_RH => GetVector4Data(DcimSysConfig.RhValueRange.GetPercentage01(RH));
 
         private Vector3? centerPos;
         

@@ -5,7 +5,7 @@ using _VictorDev.TCIT.DCIM.EnvironmentModule;
 using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
-using Debug = _VictorDev.DebugUtils.Debug;
+using Debug = _VictorDev.MediatorUtils.Debug;
 
 namespace _VictorDev.TCIT.DCIM
 {
@@ -40,8 +40,16 @@ namespace _VictorDev.TCIT.DCIM
         public void SetEnvironmentData(EnvironmentData data)
         {
             envData = data;
-            //if(Application.isPlaying) UpdateRackColor();
+            if(Application.isPlaying) UpdateRackColor();
         }
+
+        public void UpdateDeviceCode()
+        {
+            var revitDataHolder = GetComponent<RevitAssetDataHolder>();
+            if(revitDataHolder != null) envData.SetDeviceCode(revitDataHolder.RackRevitData.deviceCode);
+            else Debug.LogWarning($"RevitAssetDataHolder component not found\n{gameObject.name}");
+        }
+        
         private void UpdateRackColor()
         {
             Color targetColor = rackSourceColor;
@@ -49,11 +57,11 @@ namespace _VictorDev.TCIT.DCIM
             switch (rackDisplayType)
             {
                 case EnumEnvDataType.RT:
-                    percent = DcimSysConfig.RTValueValueRange.GetPercentage01(envData.RTValue);
+                    percent = DcimSysConfig.RTValueRange.GetPercentage01(envData.RTValue);
                     targetColor = DcimSysConfig.GetPercentHeatColor(percent);
                     break;
                 case EnumEnvDataType.RH:
-                    percent = DcimSysConfig.RTValueValueRange.GetPercentage01(envData.RHValue);
+                    percent = DcimSysConfig.RTValueRange.GetPercentage01(envData.RHValue);
                     targetColor = DcimSysConfig.GetPercentHumidityColor(percent);
                     break;
             }

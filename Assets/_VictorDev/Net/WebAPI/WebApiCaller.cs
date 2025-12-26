@@ -7,7 +7,7 @@ using _VictorDev.FileUtils;
 using Unity.VisualScripting;
 using UnityEngine;
 using VictorDev.Managers;
-using Debug = _VictorDev.DebugUtils.Debug;
+using Debug = _VictorDev.MediatorUtils.Debug;
 
 namespace _VictorDev.Net.WebAPI
 {

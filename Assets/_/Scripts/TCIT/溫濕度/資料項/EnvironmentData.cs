@@ -25,6 +25,8 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule
 
         #endregion
 
+        
+        public void SetDeviceCode(string value) => deviceCode = value;
 
         [Serializable]
         public class EnvironmentTag
@@ -44,10 +46,11 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule
         [OnDeserialized]
         protected void OnDeserialized(StreamingContext context)
         {
-            EnvironmentTag result = tags.FirstOrDefault(data => data.tagDescription.Contains("溫度"));
-            if (result != null) RTValue = result.value;
-            result = tags.FirstOrDefault(data => data.tagDescription.Contains("濕度"));
-            if (result != null) RHValue = result.value;
+            EnvironmentTag result;
+            result = tags.FirstOrDefault(data => data.tagDescription.Contains("溫度") && data.value >= 0);
+            RTValue = result != null? result.value: -1;
+            result = tags.FirstOrDefault(data => data.tagDescription.Contains("濕度") && data.value >= 0);
+            RHValue = result != null? result.value: -1;
         }
     }
 }

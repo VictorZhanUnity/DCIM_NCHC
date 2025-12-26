@@ -7,7 +7,7 @@ using _VictorDev.Framework.WebAPI;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
-using Debug = _VictorDev.DebugUtils.Debug;
+using Debug = _VictorDev.MediatorUtils.Debug;
 
 namespace _VictorDev.TCIT.DCIM.NCHC
 {

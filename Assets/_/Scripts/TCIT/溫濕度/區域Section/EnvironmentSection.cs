@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using _VictorDev.ApiExtensions;
 using _VictorDev.Configs;
-using _VictorDev.DebugUtils;
+using _VictorDev.MediatorUtils;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
@@ -64,8 +64,12 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule
         [Button]
         public void CalculateAverageEnvData()
         {
-            AverageRt = evnDataHolders.Average(holder => holder.EnvData.RTValue);
-            AverageRh = evnDataHolders.Average(holder => holder.EnvData.RHValue);
+            List<EnvironmentDataHolder> result;
+            result = evnDataHolders.Where(holder => holder.EnvData.RTValue >= 0).ToList();
+            AverageRt = result.Any()? result.Average(holder => holder.EnvData.RTValue): -1;
+         
+            result = evnDataHolders.Where(holder => holder.EnvData.RHValue >= 0).ToList();
+            AverageRh = result.Any()? result.Average(holder => holder.EnvData.RHValue):-1;
             envValueDisplays.ForEach(target => target.SetEnvData(this));
         }
 

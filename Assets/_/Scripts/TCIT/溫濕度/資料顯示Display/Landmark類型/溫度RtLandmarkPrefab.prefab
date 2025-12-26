@@ -624,6 +624,8 @@ GameObject:
   - component: {fileID: 3317586185020210390}
   - component: {fileID: 6729299682230763584}
   - component: {fileID: 2813876761469323258}
+  - component: {fileID: 7213748790695238721}
+  - component: {fileID: 2212447323597369931}
   - component: {fileID: 5659969986560215206}
   m_Layer: 5
   m_Name: TxtAverageRt
@@ -788,10 +790,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.DebugUtils.ValueMediator
   invokeString:
     m_PersistentCalls:
+      m_Calls: []
+  invokeFloat:
+    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5659969986560215206}
-        m_TargetAssemblyTypeName: _VictorDev.DoTweenUtils.TextDotweener, Assembly-CSharp
-        m_MethodName: SetText
+      - m_Target: {fileID: 7213748790695238721}
+        m_TargetAssemblyTypeName: ValueStringMapper, Assembly-CSharp
+        m_MethodName: SetValue
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -801,9 +806,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
-  invokeFloat:
-    m_PersistentCalls:
-      m_Calls: []
+      - m_Target: {fileID: 2212447323597369931}
+        m_TargetAssemblyTypeName: _VictorDev.MediatorUtils.ValueThresholdMediator,
+          Assembly-CSharp
+        m_MethodName: SetValue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   invokeFloat01:
     m_PersistentCalls:
       m_Calls: []
@@ -830,7 +845,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 8875532705151767332}
         m_TargetAssemblyTypeName: _VictorDev.UIComps.StatusIconMark, Assembly-CSharp
         m_MethodName: SetStatusGood
@@ -842,7 +857,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
   invokeOverThreshold:
     m_PersistentCalls:
       m_Calls:
@@ -857,7 +872,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 8875532705151767332}
         m_TargetAssemblyTypeName: _VictorDev.UIComps.StatusIconMark, Assembly-CSharp
         m_MethodName: SetStatusOverload
@@ -869,7 +884,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
   invokeInMax:
     m_PersistentCalls:
       m_Calls:
@@ -884,7 +899,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 8875532705151767332}
         m_TargetAssemblyTypeName: _VictorDev.UIComps.StatusIconMark, Assembly-CSharp
         m_MethodName: SetStatusWarning
@@ -896,11 +911,170 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
   dotNumber: 1
   minValue: 0
-  maxValue: 30
+  maxValue: 32
   thresholdValue: 28
+--- !u!114 &7213748790695238721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7357062221508793401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e4747b5dec79f546960c311503b188f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ValueStringMapper
+  toMapValueStringEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5659969986560215206}
+        m_TargetAssemblyTypeName: _VictorDev.DoTweenUtils.TextDotweener, Assembly-CSharp
+        m_MethodName: SetText
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  mapperSetting:
+  - <Key>k__BackingField: -1
+    <Value>k__BackingField: --
+--- !u!114 &2212447323597369931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7357062221508793401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a697f4e7a53566d498f4cf729fba8029, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.MediatorUtils.ValueThresholdMediator
+  valueEventMappingSettings:
+  - compare: 0
+    threshold: 18
+    onConditionEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8875532705151767332}
+          m_TargetAssemblyTypeName: _VictorDev.UIComps.StatusIconMark, Assembly-CSharp
+          m_MethodName: SetStatusGood
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+        - m_Target: {fileID: 6729299682230763584}
+          m_TargetAssemblyTypeName: _VictorDev.ColorUtils.UiColorChanger, Assembly-CSharp
+          m_MethodName: ChangeColor
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+  - compare: 0
+    threshold: 28
+    onConditionEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8875532705151767332}
+          m_TargetAssemblyTypeName: _VictorDev.UIComps.StatusIconMark, Assembly-CSharp
+          m_MethodName: SetStatusWarning
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+        - m_Target: {fileID: 6729299682230763584}
+          m_TargetAssemblyTypeName: _VictorDev.ColorUtils.UiColorChanger, Assembly-CSharp
+          m_MethodName: ChangeColor
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+  - compare: 0
+    threshold: 32
+    onConditionEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8875532705151767332}
+          m_TargetAssemblyTypeName: _VictorDev.UIComps.StatusIconMark, Assembly-CSharp
+          m_MethodName: SetStatusOverload
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+        - m_Target: {fileID: 6729299682230763584}
+          m_TargetAssemblyTypeName: _VictorDev.ColorUtils.UiColorChanger, Assembly-CSharp
+          m_MethodName: ChangeColor
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 2
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+  - compare: 2
+    threshold: -1
+    onConditionEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8875532705151767332}
+          m_TargetAssemblyTypeName: _VictorDev.UIComps.StatusIconMark, Assembly-CSharp
+          m_MethodName: SetStatusMissingData
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+        - m_Target: {fileID: 6729299682230763584}
+          m_TargetAssemblyTypeName: _VictorDev.ColorUtils.UiColorChanger, Assembly-CSharp
+          m_MethodName: ChangeColor
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
 --- !u!114 &5659969986560215206
 MonoBehaviour:
   m_ObjectHideFlags: 0

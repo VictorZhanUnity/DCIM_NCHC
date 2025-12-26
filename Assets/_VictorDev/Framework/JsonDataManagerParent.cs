@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.ProBuilder.MeshOperations;
 
-namespace _VictorDev.DebugUtils
+namespace _VictorDev.MediatorUtils
 {
     /// JSON解析資料接收器
     /// <para>+ 僅接收解析後的JSON資料</para>

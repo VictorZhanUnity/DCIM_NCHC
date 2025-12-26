@@ -40,6 +40,38 @@ PrefabInstance:
       propertyPath: thresholdValue
       value: 85
       objectReference: {fileID: 0}
+    - target: {fileID: 5343960430329201630, guid: 1e000d6450287824b92446ec75bf6b04, type: 3}
+      propertyPath: invokeFloat.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343960430329201630, guid: 1e000d6450287824b92446ec75bf6b04, type: 3}
+      propertyPath: invokeString.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343960430329201630, guid: 1e000d6450287824b92446ec75bf6b04, type: 3}
+      propertyPath: invokeFloat.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343960430329201630, guid: 1e000d6450287824b92446ec75bf6b04, type: 3}
+      propertyPath: invokeFloat.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1122070875469881813}
+    - target: {fileID: 5343960430329201630, guid: 1e000d6450287824b92446ec75bf6b04, type: 3}
+      propertyPath: invokeFloat.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343960430329201630, guid: 1e000d6450287824b92446ec75bf6b04, type: 3}
+      propertyPath: invokeFloat.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetValue
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343960430329201630, guid: 1e000d6450287824b92446ec75bf6b04, type: 3}
+      propertyPath: invokeFloat.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ValueStringMapper, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343960430329201630, guid: 1e000d6450287824b92446ec75bf6b04, type: 3}
+      propertyPath: invokeFloat.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6408139661830681168, guid: 1e000d6450287824b92446ec75bf6b04, type: 3}
       propertyPath: maxValue
       value: 72
@@ -167,11 +199,60 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1899512993605192551, guid: 1e000d6450287824b92446ec75bf6b04, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 1122070875469881813}
   m_SourcePrefab: {fileID: 100100000, guid: 1e000d6450287824b92446ec75bf6b04, type: 3}
 --- !u!114 &4126940723804978110 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1805059750807248270, guid: 1e000d6450287824b92446ec75bf6b04, type: 3}
+  m_PrefabInstance: {fileID: 2326402771072689712}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afe7b96a15b86d644aceaedb63d287b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.DoTweenUtils.TextDotweener
+--- !u!1 &4185365771349011799 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1899512993605192551, guid: 1e000d6450287824b92446ec75bf6b04, type: 3}
+  m_PrefabInstance: {fileID: 2326402771072689712}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1122070875469881813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4185365771349011799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e4747b5dec79f546960c311503b188f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ValueStringMapper
+  toMapValueStringEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7016553541746475681}
+        m_TargetAssemblyTypeName: _VictorDev.DoTweenUtils.TextDotweener, Assembly-CSharp
+        m_MethodName: SetText
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  mapperSetting:
+  - <Key>k__BackingField: -1
+    <Value>k__BackingField: --
+--- !u!114 &7016553541746475681 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4690152372830954641, guid: 1e000d6450287824b92446ec75bf6b04, type: 3}
   m_PrefabInstance: {fileID: 2326402771072689712}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

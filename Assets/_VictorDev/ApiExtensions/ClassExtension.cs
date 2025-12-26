@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Reflection;
-using _VictorDev.DebugUtils;
-using Debug = _VictorDev.DebugUtils.Debug;
+using _VictorDev.MediatorUtils;
+using Debug = _VictorDev.MediatorUtils.Debug;
 
 namespace _VictorDev.ApiExtensions
 {

@@ -5,7 +5,7 @@ using System.Linq;
 using _VictorDev.ShaderUtils;
 using NaughtyAttributes;
 using UnityEngine;
-using Debug = _VictorDev.DebugUtils.Debug;
+using Debug = _VictorDev.MediatorUtils.Debug;
 
 namespace _VictorDev.HeatMapUtiils
 {

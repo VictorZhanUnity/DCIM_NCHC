@@ -1,5 +1,5 @@
 using System;
-using _VictorDev.DebugUtils;
+using _VictorDev.MediatorUtils;
 using _VictorDev.ImageUtils;
 using DG.Tweening;
 using NaughtyAttributes;

@@ -1,7 +1,7 @@
 using _VictorDev.Net.WebAPI;
 using NaughtyAttributes;
 using UnityEngine;
-using Debug = _VictorDev.DebugUtils.Debug;
+using Debug = _VictorDev.MediatorUtils.Debug;
 
 namespace VictorDev.Net
 {

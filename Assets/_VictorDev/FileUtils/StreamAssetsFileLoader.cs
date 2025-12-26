@@ -2,11 +2,11 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Text;
-using _VictorDev.DebugUtils;
+using _VictorDev.MediatorUtils;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Networking;
-using Debug = _VictorDev.DebugUtils.Debug;
+using Debug = _VictorDev.MediatorUtils.Debug;
 
 namespace _VictorDev.FileUtils
 {

@@ -9,7 +9,7 @@ using UnityEngine;
 using _VictorDev.ApiExtensions;
 using VictorDev.Net;
 using VictorDev.Net.WebAPI;
-using Debug = _VictorDev.DebugUtils.Debug;
+using Debug = _VictorDev.MediatorUtils.Debug;
 
 namespace _VictorDev.Net.WebAPI
 {
