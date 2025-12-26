@@ -33,6 +33,8 @@ namespace _VictorDev.TCIT.DCIM
         [JsonProperty] [field: SerializeField] public Information Information;
         #endregion
         
+        public void SetDeviceCode(string value) => deviceCode = value;
+        
         /// 模型MeshRenderer, 以方便更改Material
         public MeshRenderer ModelMeshRender
         {

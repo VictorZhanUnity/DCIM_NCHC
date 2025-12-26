@@ -22,7 +22,7 @@ namespace _VictorDev.TCIT.DCIM
             ParseDeviceNameAndCode();
             
             //Revit冠宇工具的RackLocation計算錯誤，忽略了櫃體底部滑輪的高度，大約3U
-            RackLocation = (RackLocation == 0) ? 42 : RackLocation - 2;
+            RackLocation = (RackLocation == 0) ? 42 : RackLocation;// - 2;
         }
     }
 }

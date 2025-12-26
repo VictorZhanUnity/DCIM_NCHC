@@ -16,8 +16,8 @@ namespace _VictorDev.TCIT.DCIM
 
         public RackRevitAssetData RackRevitData => rackRevitAssetData;
         public DeviceRevitAssetData DeviceRevitData => deviceRevitAssetData;
-        public bool IsRackAsset => string.IsNullOrEmpty(rackRevitAssetData?.deviceId) == false; 
-        public bool IsDeviceAsset => string.IsNullOrEmpty(deviceRevitAssetData?.deviceId) == false; 
+        public bool IsRackAsset => string.IsNullOrEmpty(rackRevitAssetData?.deviceCode) == false; 
+        public bool IsDeviceAsset => string.IsNullOrEmpty(deviceRevitAssetData?.deviceCode) == false; 
         public EnvironmentData EnvData => envData ??= GetComponent<EnvironmentDataHolder>().EnvData;
         private EnvironmentData envData;
 

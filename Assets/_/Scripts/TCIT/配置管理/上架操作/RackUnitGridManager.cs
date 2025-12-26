@@ -83,12 +83,12 @@ namespace _VictorDev.TCIT.DCIM
         /// 確認上架設備
         public void ConfirmSelectedDeviceModel(DeviceRevitAssetData deviceData)
         {
-            deviceData.RackLocation = currentPositionU;
-            deviceData.SetDevicePath(selectedDevice.name);
-            deviceData.SetDeviceName(selectedDevice.name.Split("+")[2]);
+          //  deviceData.RackLocation = currentPositionU;
+            //deviceData.SetDevicePath(selectedDevice.name);
+            //deviceData.SetDeviceName(selectedDevice.name.Split("+")[2]);
             deviceData.SetModel(selectedDevice);
             deviceData.RevitAssetKind = DcimHelper.GetDeviceKind(selectedDevice.name);
-            selectedDevice.GetComponent<RevitAssetDataHolder>().ReceiveAssetData(deviceData);
+            selectedDevice.AddComponent<RevitAssetDataHolder>().ReceiveAssetData(deviceData);
             selectedDevice.AddComponent<BoxCollider>();
             selectedDevice.parent = currentRackRevitAssetData.Model.transform;
             selectedDevice.gameObject.SetLayerMask(selectableLayerMask);
