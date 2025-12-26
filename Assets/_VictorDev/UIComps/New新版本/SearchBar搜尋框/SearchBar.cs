@@ -17,7 +17,6 @@ namespace _VictorDev.UIComps
         [Foldout("[設定]"), SerializeField, Min(3)] private int minKeywordLength = 6;
         #endregion
 
-       
         public void OnKeyInput(string keyword)
         {
             if (keyword.Length < minKeywordLength) return;
@@ -40,7 +39,6 @@ namespace _VictorDev.UIComps
             bool isShowList = string.IsNullOrEmpty(keyword.Trim()) != true || ListItems.Count > 0;
             scrollRect.transform.parent.gameObject.SetActive(isShowList);
         }
-        
         
         
         protected override void OnEnable()

@@ -59,7 +59,7 @@ namespace _VictorDev.TCIT.DCIM
                 else
                 {
                     onDeviceClickedDataEvent?.Invoke(assetDataHolder.DeviceRevitData);
-                    onDeviceClickedRackModelEvent?.Invoke(assetDataHolder.DeviceRevitData.Model.parent); //Invoke機櫃模型，以顯示全機櫃
+                    onDeviceClickedRackModelEvent?.Invoke(assetDataHolder.DeviceRevitData.Model); //Invoke機櫃模型，以顯示全機櫃
                 }
                 return true;
             }

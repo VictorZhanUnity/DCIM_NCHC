@@ -40,6 +40,11 @@ namespace _VictorDev.Framework.WebAPI
         
         #endregion
 
+        private void Start()
+        {
+            if(Application.isEditor == false) serverURL = "https://localhost/";
+        }
+
         /// 設置SendBody - Params
         public void SetParams(List<KeyValueData<string, string>> data) => SetFormData(data);
         

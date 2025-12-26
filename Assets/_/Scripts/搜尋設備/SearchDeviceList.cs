@@ -38,7 +38,7 @@ namespace _VictorDev.TCIT.DCIM
         {
             filteredDeviceRevitAssets = allDeviceRevitAssets.Where(device=> device.RevitAssetKind == (EnumRevitAssetKind)(selectedIndex+2)).ToList();
             string[] manufactureList = filteredDeviceRevitAssets.GroupBy(device => device.Manufacturer)
-                .Select(group => group.First().Manufacturer).OrderBy(manufacturer => manufacturer).ToArray();
+                .Select(group => group.First().Manufacturer + $" ({group.Count()})").OrderBy(manufacturer => manufacturer).ToArray();
 
             if (manufactureList.Length == 0) manufactureList = new[] { "無資料" };
             dpManufacture.SetOptions(manufactureList);
@@ -49,7 +49,13 @@ namespace _VictorDev.TCIT.DCIM
         private void OnDpManufactureChanged(int selectedIndex)
         {
             List<DeviceRevitAssetData> result = filteredDeviceRevitAssets
-                .Where(device => device.DeviceKindZh.Equals(dpManufacture.CurrentSelectedText())).ToList();
+                //.Where(device => device.Manufacturer.Equals(dpManufacture.CurrentSelectedText())).ToList();
+                .Where(device =>
+                {
+                    int index = dpManufacture.CurrentSelectedText().LastIndexOf('(');
+                    string manufactureLabel = dpManufacture.CurrentSelectedText().Substring(0, index).Trim();
+                    return device.Manufacturer.Equals(manufactureLabel);
+                }).ToList();
             deviceList.ReceiveData(result);
         }
         
