@@ -1,3 +1,4 @@
+using System.Linq;
 using _VictorDev.MediatorUtils;
 using _VictorDev.DoTweenUtils;
 using _VictorDev.Framework;
@@ -24,6 +25,21 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule
         
         public void SetEnumEnvDataType(EnumEnvDataType value) => envDataType = value;
 
+
+        public void SetEnvData(EnvironmentDataHolder dataHolder)
+        {
+            txtTitle?.SetText(dataHolder.EnvData.deviceCode.Split('/').Last());
+            var targetModel = dataHolder.transform.GetComponent<RevitAssetDataHolder>().RackRevitData.Model;
+            positionTo2DPoint?.SetTargetObject(targetModel);
+            float result = envDataType switch
+            {
+                EnumEnvDataType.RT => dataHolder.EnvData.RTValue,
+                EnumEnvDataType.RH => dataHolder.EnvData.RHValue,
+                _ => 0
+            };
+            valueMediator.SetValue(result);
+        }
+        
         public void SetEnvData(EnvironmentSection envSection)
         {
             txtTitle?.SetText(envSection.name);

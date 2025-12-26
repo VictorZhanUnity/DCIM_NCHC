@@ -114,11 +114,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2212447323597369931, guid: 7a832e0aa8495474eac2df492be0de3f, type: 3}
       propertyPath: valueEventMappingSettings.Array.data[0].threshold
-      value: 45
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2212447323597369931, guid: 7a832e0aa8495474eac2df492be0de3f, type: 3}
       propertyPath: valueEventMappingSettings.Array.data[1].threshold
-      value: 45
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2212447323597369931, guid: 7a832e0aa8495474eac2df492be0de3f, type: 3}
       propertyPath: valueEventMappingSettings.Array.data[2].threshold
@@ -242,7 +242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2212447323597369931, guid: 7a832e0aa8495474eac2df492be0de3f, type: 3}
       propertyPath: valueEventMappingSettings.Array.data[0].onConditionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2212447323597369931, guid: 7a832e0aa8495474eac2df492be0de3f, type: 3}
       propertyPath: valueEventMappingSettings.Array.data[1].onConditionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument

@@ -29,7 +29,12 @@ namespace _VictorDev.UIComps
             imageProgressbar.SetDuration(duration, delay);
         }
 
-        private void OnDisable() => SetValue(0);
+        private void OnEnable()
+        {
+            imageProgressbar.SetValue(0);
+            imageProgressbar?.DoFillAmount(percentage);
+            needleDot.DORotate(new Vector3(0, 0, dotAngle), duration).From(Vector3.zero).SetEase(Ease.OutQuad);
+        }
 
         public void SetValue(float value)
         {
@@ -44,11 +49,10 @@ namespace _VictorDev.UIComps
 
         private void UpdateUI()
         {
-            float percentage = currentValue / maxValue;
-            percentage = Mathf.Clamp01(percentage);
+            percentage = Mathf.Clamp01(currentValue / maxValue);
             imageProgressbar?.DoFillAmount(percentage);
 
-            float dotAngle = minDotAngle + percentage * (maxDotAngle - minDotAngle);
+            dotAngle = minDotAngle + percentage * (maxDotAngle - minDotAngle);
             if (Application.isPlaying)
             {
                 needleDot.DORotate(new Vector3(0, 0, dotAngle), duration).SetEase(Ease.OutQuad).SetDelay(delay);
@@ -58,5 +62,8 @@ namespace _VictorDev.UIComps
                 needleDot.rotation = Quaternion.Euler(0, 0, dotAngle);
             }
         }
+
+        private float dotAngle = 0, percentage = 0;
+
     }
 }

@@ -40,7 +40,7 @@ namespace _VictorDev.TCIT.DCIM
         public void SetEnvironmentData(EnvironmentData data)
         {
             envData = data;
-            if(Application.isPlaying) UpdateRackColor();
+          // if(Application.isPlaying) UpdateRackColor();
         }
 
         public void UpdateDeviceCode()

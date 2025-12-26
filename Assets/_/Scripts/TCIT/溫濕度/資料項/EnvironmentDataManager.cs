@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using _VictorDev.ApiExtensions;
-using _VictorDev.DateTimeUtils;
 using _VictorDev.MediatorUtils;
 using NaughtyAttributes;
 using UnityEngine;
@@ -29,8 +28,6 @@ namespace _VictorDev.TCIT.DCIM.EnvironmentModule
                 var result =environmentDataHolders.FirstOrDefault(dataHolder => dataHolder.EnvData.deviceCode.Equals(data.deviceCode));
                 if(result != null) result.SetEnvironmentData(data);
             });
-
-            ShowHeatColor_RT();
             onLoadDataCompleteEvent?.Invoke();
         }
 

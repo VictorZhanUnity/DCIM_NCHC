@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using _VictorDev.ApiExtensions;
-using _VictorDev.DateTimeUtils;
 using _VictorDev.MediatorUtils;
 using _VictorDev.TCIT.DCIM.EnvironmentModule;
 using DG.Tweening;
@@ -12,7 +11,7 @@ using UnityEngine.Events;
 
 namespace _VictorDev.Framework.HeatmapUtils
 {
-    public class HeatmapManager : MonoBehaviour, ITimerUpdate
+    public class HeatmapManager : MonoBehaviour
     {
         #region Variables
 
@@ -121,7 +120,7 @@ namespace _VictorDev.Framework.HeatmapUtils
 
         private void OnValidate() => Awake();
 
-        public void OnTimeUpdate()
+        public void DrawHeatmap()
         {
             switch (envDataType)
             {

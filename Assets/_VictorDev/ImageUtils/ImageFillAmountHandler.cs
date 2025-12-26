@@ -13,6 +13,8 @@ namespace _VictorDev.ImageUtils
     [RequireComponent(typeof(Image))]
     public class ImageFillAmountHandler : MonoBehaviour
     {
+        public void SetValue(float value) => imageFillTarget.fillAmount = 0;
+        
        public void DoFillAmount(float value)
         {
             receivePercentageValue = value / (isValueOf01? 1: 100f);
