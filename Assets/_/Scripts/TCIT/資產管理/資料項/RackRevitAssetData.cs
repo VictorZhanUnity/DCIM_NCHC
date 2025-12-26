@@ -32,10 +32,10 @@ namespace _VictorDev.TCIT.DCIM
         public int UsageHeightU => Containers.Sum(deviceData => deviceData.HeightU);
 
         /// 總電力 (+3000 For Demo)
-        public int MaxWatt => 5000;//Information.watt_limit;
+        public int MaxWatt => Information.watt_limit; //5000;
 
         /// 總負重
-        public int MaxWeight => 300;//Information.weight_limit;
+        public int MaxWeight => Information.weight_limit; //300;
         /// 總U層數
         public int MaxHeightU => Information.heightU;
         

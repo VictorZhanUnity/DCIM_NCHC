@@ -9023,27 +9023,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 198.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 99.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5579327178485955083, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_Sprite
@@ -12010,6 +12010,10 @@ PrefabInstance:
     - target: {fileID: 1908913425685413251, guid: dcaeb2fadda70cc4b85f77948bb91d94, type: 3}
       propertyPath: m_Name
       value: ValueAutoJumper
+      objectReference: {fileID: 0}
+    - target: {fileID: 1908913425685413251, guid: dcaeb2fadda70cc4b85f77948bb91d94, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2001796869395785403, guid: dcaeb2fadda70cc4b85f77948bb91d94, type: 3}
       propertyPath: maxValue
@@ -22474,27 +22478,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 400
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 150
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 200
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5669274251998081254, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_Spacing
@@ -32791,6 +32795,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ToggleRULayout
       objectReference: {fileID: 0}
+    - target: {fileID: 8705868842674687061, guid: 3bcacad906995f841ba1ccc0f5316aa6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8919132667689690319, guid: 3bcacad906995f841ba1ccc0f5316aa6, type: 3}
       propertyPath: m_IsOn
       value: 0
@@ -33809,6 +33817,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ToggleInformation
       objectReference: {fileID: 0}
+    - target: {fileID: 8705868842674687061, guid: 3bcacad906995f841ba1ccc0f5316aa6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8919132667689690319, guid: 3bcacad906995f841ba1ccc0f5316aa6, type: 3}
       propertyPath: m_IsOn
       value: 0
@@ -34293,27 +34305,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 400
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 200
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 200
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5669274251998081254, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_Spacing
@@ -36054,27 +36066,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 400
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 30
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 200
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5669274251998081254, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_Spacing
@@ -42725,6 +42737,78 @@ MonoBehaviour:
   delay: 0.3
   isRandomDelay: 1
   txt: {fileID: 641008700}
+--- !u!1 &641572760
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 641572761}
+  - component: {fileID: 641572762}
+  m_Layer: 0
+  m_Name: Timer_OverTime
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &641572761
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641572760}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1189871191}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &641572762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641572760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f518ddb4eb2eba74e8b1a4c3aabc7b47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.DateTimeUtils.Timer
+  isActiveInStart: 0
+  isInfiniteLoop: 0
+  onTimeUpdated:
+    m_PersistentCalls:
+      m_Calls: []
+  enumTime: 2
+  intervalSecond: 60
+  intervalMinute: 5
+  intervalHour: 1
+  invokeTimeFormat: 0
+  offsetHour: 0
+  maxCount: 1
+  onTimerFinished:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1189871192}
+        m_TargetAssemblyTypeName: _VictorDev.Framework.WebAPI.WebAPICaller, Assembly-CSharp
+        m_MethodName: CallAPI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  iTimerMonoBehaviour: []
 --- !u!1 &643070573
 GameObject:
   m_ObjectHideFlags: 0
@@ -46343,6 +46427,65 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 3, y: -3}
   m_UseGraphicAlpha: 1
+--- !u!1 &721003776
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 721003778}
+  - component: {fileID: 721003777}
+  m_Layer: 0
+  m_Name: JsonDataGetter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &721003777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721003776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 283b19a42a470ca41be4b2a27a3d6372, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JsonDataGetter
+  invokeJsonDataEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1478908024}
+        m_TargetAssemblyTypeName: _VictorDev.TCIT.DCIM.RackAssetDataPanel, Assembly-CSharp
+        m_MethodName: ReceivePduData
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+--- !u!4 &721003778
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721003776}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 730385429}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &725761233 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1816352568161505549, guid: 538e7c7dd07fb24488d99d00c8c7d63b, type: 3}
@@ -46589,6 +46732,22 @@ MonoBehaviour:
   delay: 0.3
   isRandomDelay: 1
   txt: {fileID: 726765415}
+--- !u!114 &730385428 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 81882724276268899, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
+  m_PrefabInstance: {fileID: 1869611749}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a90b67eba67584fb329a68514c3419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ApiTest
+--- !u!4 &730385429 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3403930084418249700, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
+  m_PrefabInstance: {fileID: 1869611749}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &731321423
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -85464,6 +85623,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u72C0\u614B\u8B66\u793A\u71C8"
       objectReference: {fileID: 0}
+    - target: {fileID: 7641917693891042033, guid: 3254abe0127bd82459b9b8815fcf6aed, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7774884495258175824, guid: 3254abe0127bd82459b9b8815fcf6aed, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -86253,6 +86416,12 @@ PrefabInstance:
       addedObject: {fileID: 884483758}
     - targetCorrespondingSourceObject: {fileID: 2168770464386601907, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 884483763}
+    - targetCorrespondingSourceObject: {fileID: 2168770464386601907, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 884483762}
+    - targetCorrespondingSourceObject: {fileID: 2168770464386601907, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 884483759}
   m_SourcePrefab: {fileID: 100100000, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
 --- !u!224 &884483755 stripped
@@ -86302,10 +86471,35 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 0
   invokeFloat:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 884483763}
+        m_TargetAssemblyTypeName: ValueStringMapper, Assembly-CSharp
+        m_MethodName: SetValue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+      - m_Target: {fileID: 884483762}
+        m_TargetAssemblyTypeName: _VictorDev.MediatorUtils.ValueThresholdMediator,
+          Assembly-CSharp
+        m_MethodName: SetValue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   invokeFloat01:
     m_PersistentCalls:
       m_Calls: []
@@ -86332,7 +86526,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 0
       - m_Target: {fileID: 884483759}
         m_TargetAssemblyTypeName: _VictorDev.ColorUtils.UiColorChanger, Assembly-CSharp
         m_MethodName: ChangeColor
@@ -86344,7 +86538,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 0
   invokeOverThreshold:
     m_PersistentCalls:
       m_Calls:
@@ -86359,7 +86553,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 0
       - m_Target: {fileID: 884483759}
         m_TargetAssemblyTypeName: _VictorDev.ColorUtils.UiColorChanger, Assembly-CSharp
         m_MethodName: ChangeColor
@@ -86371,7 +86565,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 0
   invokeInMax:
     m_PersistentCalls:
       m_Calls:
@@ -86386,7 +86580,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 0
       - m_Target: {fileID: 884483759}
         m_TargetAssemblyTypeName: _VictorDev.ColorUtils.UiColorChanger, Assembly-CSharp
         m_MethodName: ChangeColor
@@ -86398,7 +86592,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 0
   dotNumber: 0
   minValue: 0
   maxValue: 0
@@ -86441,6 +86635,194 @@ MonoBehaviour:
   delay: 0.3
   isRandomDelay: 1
   txt: {fileID: 884483756}
+--- !u!114 &884483762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884483757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a697f4e7a53566d498f4cf729fba8029, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.MediatorUtils.ValueThresholdMediator
+  valueEventMappingSettings:
+  - compare: 1
+    threshold: 40
+    onConditionEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 876634951}
+          m_TargetAssemblyTypeName: _VictorDev.UIComps.StatusIconMark, Assembly-CSharp
+          m_MethodName: SetStatusWarning
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+        - m_Target: {fileID: 884483759}
+          m_TargetAssemblyTypeName: _VictorDev.ColorUtils.UiColorChanger, Assembly-CSharp
+          m_MethodName: ChangeColor
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+  - compare: 0
+    threshold: 40
+    onConditionEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 876634951}
+          m_TargetAssemblyTypeName: _VictorDev.UIComps.StatusIconMark, Assembly-CSharp
+          m_MethodName: SetStatusGood
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+        - m_Target: {fileID: 884483759}
+          m_TargetAssemblyTypeName: _VictorDev.ColorUtils.UiColorChanger, Assembly-CSharp
+          m_MethodName: ChangeColor
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+  - compare: 0
+    threshold: 85
+    onConditionEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 876634951}
+          m_TargetAssemblyTypeName: _VictorDev.UIComps.StatusIconMark, Assembly-CSharp
+          m_MethodName: SetStatusWarning
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+        - m_Target: {fileID: 884483759}
+          m_TargetAssemblyTypeName: _VictorDev.ColorUtils.UiColorChanger, Assembly-CSharp
+          m_MethodName: ChangeColor
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+  - compare: 0
+    threshold: 100
+    onConditionEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 876634951}
+          m_TargetAssemblyTypeName: _VictorDev.UIComps.StatusIconMark, Assembly-CSharp
+          m_MethodName: SetStatusOverload
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+        - m_Target: {fileID: 884483759}
+          m_TargetAssemblyTypeName: _VictorDev.ColorUtils.UiColorChanger, Assembly-CSharp
+          m_MethodName: ChangeColor
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 2
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+  - compare: 2
+    threshold: -1
+    onConditionEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 876634951}
+          m_TargetAssemblyTypeName: _VictorDev.UIComps.StatusIconMark, Assembly-CSharp
+          m_MethodName: SetStatusMissingData
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+        - m_Target: {fileID: 884483759}
+          m_TargetAssemblyTypeName: _VictorDev.ColorUtils.UiColorChanger, Assembly-CSharp
+          m_MethodName: ChangeColor
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+--- !u!114 &884483763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884483757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e4747b5dec79f546960c311503b188f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ValueStringMapper
+  toMapValueStringEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 884483760}
+        m_TargetAssemblyTypeName: _VictorDev.DoTweenUtils.TextDotweener, Assembly-CSharp
+        m_MethodName: SetText
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  mapperSetting:
+  - <Key>k__BackingField: -1
+    <Value>k__BackingField: --
 --- !u!1001 &887794253
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -90427,7 +90809,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2937121761826092097, guid: 3542377ddad0342428dca988d0810fc5, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 103.37
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2937121761826092097, guid: 3542377ddad0342428dca988d0810fc5, type: 3}
       propertyPath: m_SizeDelta.y
@@ -90503,7 +90885,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5683456958756664869, guid: 3542377ddad0342428dca988d0810fc5, type: 3}
       propertyPath: m_Name
-      value: TxtWatt
+      value: TxtAvailableWatt
       objectReference: {fileID: 0}
     - target: {fileID: 7591680050587612446, guid: 3542377ddad0342428dca988d0810fc5, type: 3}
       propertyPath: m_text
@@ -91528,6 +91910,90 @@ MonoBehaviour:
   - {fileID: 179433741}
   txtPositionU: {fileID: 2138140926}
   speedometer: {fileID: 262184171}
+--- !u!1 &980777261
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 980777263}
+  - component: {fileID: 980777262}
+  m_Layer: 0
+  m_Name: Timer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &980777262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980777261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f518ddb4eb2eba74e8b1a4c3aabc7b47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.DateTimeUtils.Timer
+  isActiveInStart: 0
+  isInfiniteLoop: 0
+  onTimeUpdated:
+    m_PersistentCalls:
+      m_Calls: []
+  enumTime: 2
+  intervalSecond: 10
+  intervalMinute: 5
+  intervalHour: 1
+  invokeTimeFormat: 0
+  offsetHour: 0
+  maxCount: 1
+  onTimerFinished:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 641572762}
+        m_TargetAssemblyTypeName: _VictorDev.DateTimeUtils.Timer, Assembly-CSharp
+        m_MethodName: StartTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1189871192}
+        m_TargetAssemblyTypeName: _VictorDev.Framework.WebAPI.WebAPICaller, Assembly-CSharp
+        m_MethodName: CallAPI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  iTimerMonoBehaviour: []
+--- !u!4 &980777263
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980777261}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1189871191}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &982476629
 GameObject:
   m_ObjectHideFlags: 0
@@ -101172,19 +101638,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2903559153246061990, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2903559153246061990, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2903559153246061990, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2903559153246061990, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -30
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2903559153246061990, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -101343,6 +101809,12 @@ PrefabInstance:
       addedObject: {fileID: 1089285933}
     - targetCorrespondingSourceObject: {fileID: 2168770464386601907, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1089285938}
+    - targetCorrespondingSourceObject: {fileID: 2168770464386601907, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1089285937}
+    - targetCorrespondingSourceObject: {fileID: 2168770464386601907, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1089285934}
   m_SourcePrefab: {fileID: 100100000, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
 --- !u!224 &1089285927 stripped
@@ -101392,10 +101864,35 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 0
   invokeFloat:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1089285938}
+        m_TargetAssemblyTypeName: ValueStringMapper, Assembly-CSharp
+        m_MethodName: SetValue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+      - m_Target: {fileID: 1089285937}
+        m_TargetAssemblyTypeName: _VictorDev.MediatorUtils.ValueThresholdMediator,
+          Assembly-CSharp
+        m_MethodName: SetValue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   invokeFloat01:
     m_PersistentCalls:
       m_Calls: []
@@ -101422,7 +101919,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 0
       - m_Target: {fileID: 1089285934}
         m_TargetAssemblyTypeName: _VictorDev.ColorUtils.UiColorChanger, Assembly-CSharp
         m_MethodName: ChangeColor
@@ -101434,7 +101931,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 0
   invokeOverThreshold:
     m_PersistentCalls:
       m_Calls:
@@ -101449,7 +101946,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 0
       - m_Target: {fileID: 1089285934}
         m_TargetAssemblyTypeName: _VictorDev.ColorUtils.UiColorChanger, Assembly-CSharp
         m_MethodName: ChangeColor
@@ -101461,7 +101958,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 0
   invokeInMax:
     m_PersistentCalls:
       m_Calls:
@@ -101476,7 +101973,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 0
       - m_Target: {fileID: 1089285934}
         m_TargetAssemblyTypeName: _VictorDev.ColorUtils.UiColorChanger, Assembly-CSharp
         m_MethodName: ChangeColor
@@ -101488,8 +101985,8 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
-  dotNumber: 0
+        m_CallState: 0
+  dotNumber: 1
   minValue: 0
   maxValue: 0
   thresholdValue: 28
@@ -101531,6 +102028,165 @@ MonoBehaviour:
   delay: 0.3
   isRandomDelay: 1
   txt: {fileID: 1089285930}
+--- !u!114 &1089285937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089285932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a697f4e7a53566d498f4cf729fba8029, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.MediatorUtils.ValueThresholdMediator
+  valueEventMappingSettings:
+  - compare: 0
+    threshold: 0
+    onConditionEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6627000205735498957}
+          m_TargetAssemblyTypeName: _VictorDev.UIComps.StatusIconMark, Assembly-CSharp
+          m_MethodName: SetStatusGood
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+        - m_Target: {fileID: 1089285934}
+          m_TargetAssemblyTypeName: _VictorDev.ColorUtils.UiColorChanger, Assembly-CSharp
+          m_MethodName: ChangeColor
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+  - compare: 0
+    threshold: 28
+    onConditionEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6627000205735498957}
+          m_TargetAssemblyTypeName: _VictorDev.UIComps.StatusIconMark, Assembly-CSharp
+          m_MethodName: SetStatusWarning
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+        - m_Target: {fileID: 1089285934}
+          m_TargetAssemblyTypeName: _VictorDev.ColorUtils.UiColorChanger, Assembly-CSharp
+          m_MethodName: ChangeColor
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+  - compare: 0
+    threshold: 32
+    onConditionEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6627000205735498957}
+          m_TargetAssemblyTypeName: _VictorDev.UIComps.StatusIconMark, Assembly-CSharp
+          m_MethodName: SetStatusOverload
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+        - m_Target: {fileID: 1089285934}
+          m_TargetAssemblyTypeName: _VictorDev.ColorUtils.UiColorChanger, Assembly-CSharp
+          m_MethodName: ChangeColor
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 2
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+  - compare: 2
+    threshold: -1
+    onConditionEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6627000205735498957}
+          m_TargetAssemblyTypeName: _VictorDev.UIComps.StatusIconMark, Assembly-CSharp
+          m_MethodName: SetStatusMissingData
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+        - m_Target: {fileID: 1089285934}
+          m_TargetAssemblyTypeName: _VictorDev.ColorUtils.UiColorChanger, Assembly-CSharp
+          m_MethodName: ChangeColor
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+--- !u!114 &1089285938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089285932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e4747b5dec79f546960c311503b188f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ValueStringMapper
+  toMapValueStringEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1089285935}
+        m_TargetAssemblyTypeName: _VictorDev.DoTweenUtils.TextDotweener, Assembly-CSharp
+        m_MethodName: SetText
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  mapperSetting:
+  - <Key>k__BackingField: -1
+    <Value>k__BackingField: --
 --- !u!1001 &1090764356
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -102983,6 +103639,65 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1363595265919190964, guid: 6233d93c90a650f49a483d215a252414, type: 3}
   m_PrefabInstance: {fileID: 3670562481424472289}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1132555979
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1132555981}
+  - component: {fileID: 1132555980}
+  m_Layer: 0
+  m_Name: JsonDataGetter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1132555980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132555979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 283b19a42a470ca41be4b2a27a3d6372, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JsonDataGetter
+  invokeJsonDataEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1478908024}
+        m_TargetAssemblyTypeName: _VictorDev.TCIT.DCIM.RackAssetDataPanel, Assembly-CSharp
+        m_MethodName: ReceiveRtRhData
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+--- !u!4 &1132555981
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132555979}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1189871191}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1133560973
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -104128,7 +104843,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2903559153246061990, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 90.01
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2903559153246061990, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
       propertyPath: m_SizeDelta.y
@@ -104224,7 +104939,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648546524490864750, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
       propertyPath: m_text
-      value: 439
+      value: '0
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648546524490864750, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648546524490864750, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
       propertyPath: m_fontSize
@@ -104487,7 +105208,7 @@ MonoBehaviour:
         m_CallState: 1
   dotNumber: 0
   minValue: 0
-  maxValue: 0
+  maxValue: 6600
   thresholdValue: 3960
 --- !u!114 &1162606539
 MonoBehaviour:
@@ -108352,6 +109073,120 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 540138194840327197, guid: 1e000d6450287824b92446ec75bf6b04, type: 3}
   m_PrefabInstance: {fileID: 957111070}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1189871190
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1189871191}
+  - component: {fileID: 1189871192}
+  m_Layer: 0
+  m_Name: "[POST] WebAPICaller_\u53D6\u5F97\u55AE\u4E00\u6A5F\u6AC3\u6EAB\u6FD5\u5EA6"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1189871191
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189871190}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1132555981}
+  - {fileID: 980777263}
+  - {fileID: 641572761}
+  m_Father: {fileID: 1869611750}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1189871192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189871190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a90b67eba67584fb329a68514c3419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ApiTest
+  loadingStatusEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onLoadingEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onLoadingFinishedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onResponseSuccessEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1132555980}
+        m_TargetAssemblyTypeName: JsonDataGetter, Assembly-CSharp
+        m_MethodName: ReceiveJsonString
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+      - m_Target: {fileID: 641572762}
+        m_TargetAssemblyTypeName: _VictorDev.DateTimeUtils.Timer, Assembly-CSharp
+        m_MethodName: StopTimer
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 980777262}
+        m_TargetAssemblyTypeName: _VictorDev.DateTimeUtils.Timer, Assembly-CSharp
+        m_MethodName: StartTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onResponseSuccessBinaryEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onResponseErrorEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  urlRoute: api/DataCenter/Rack/TempHumidity/Search
+  isUserServerURL: 1
+  serverURL: http://192.168.0.107:5080
+  httpMethod: 1
+  sendBodyType: 2
+  paramsSetting:
+  - <Key>k__BackingField: BuildingCode
+    <Value>k__BackingField: TAINAN
+  sendBodyJson: "{\r\n  \"buildingCode\": \"TAINAN\",\r\n  \"deviceCode\": [\r\n   
+    \"NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackA01\", \r\n  ]\r\n}"
+  responseDataType: 0
+  timeoutSeconds: 60
+  authorization: {fileID: 11400000, guid: 2c0ae48eda9c60746b4e5ffab6b0f825, type: 2}
 --- !u!1001 &1191256386
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -116025,6 +116860,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ValueAutoJumper
       objectReference: {fileID: 0}
+    - target: {fileID: 1908913425685413251, guid: dcaeb2fadda70cc4b85f77948bb91d94, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2001796869395785403, guid: dcaeb2fadda70cc4b85f77948bb91d94, type: 3}
       propertyPath: maxValue
       value: 4000
@@ -116067,7 +116906,7 @@ PrefabInstance:
       objectReference: {fileID: 1162606538}
     - target: {fileID: 2001796869395785403, guid: dcaeb2fadda70cc4b85f77948bb91d94, type: 3}
       propertyPath: onValueChangedFloat.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2001796869395785403, guid: dcaeb2fadda70cc4b85f77948bb91d94, type: 3}
       propertyPath: onValueChangedFloat.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -118782,10 +119621,10 @@ RectTransform:
   - {fileID: 1930382178}
   m_Father: {fileID: 2090937268}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200.00002, y: -60}
-  m_SizeDelta: {x: 131.33334, y: 120}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1361551327
 MonoBehaviour:
@@ -120990,6 +121829,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ValueAutoJumper
       objectReference: {fileID: 0}
+    - target: {fileID: 1908913425685413251, guid: dcaeb2fadda70cc4b85f77948bb91d94, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2001796869395785403, guid: dcaeb2fadda70cc4b85f77948bb91d94, type: 3}
       propertyPath: maxValue
       value: 1000
@@ -121168,6 +122011,10 @@ PrefabInstance:
     - target: {fileID: 1908913425685413251, guid: dcaeb2fadda70cc4b85f77948bb91d94, type: 3}
       propertyPath: m_Name
       value: ValueAutoJumper
+      objectReference: {fileID: 0}
+    - target: {fileID: 1908913425685413251, guid: dcaeb2fadda70cc4b85f77948bb91d94, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2001796869395785403, guid: dcaeb2fadda70cc4b85f77948bb91d94, type: 3}
       propertyPath: maxValue
@@ -123749,7 +124596,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2937121761826092097, guid: 3542377ddad0342428dca988d0810fc5, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 64.81
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2937121761826092097, guid: 3542377ddad0342428dca988d0810fc5, type: 3}
       propertyPath: m_SizeDelta.y
@@ -123829,7 +124676,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5683456958756664869, guid: 3542377ddad0342428dca988d0810fc5, type: 3}
       propertyPath: m_Name
-      value: TxtHeightU
+      value: TxtAvailableHeightU
       objectReference: {fileID: 0}
     - target: {fileID: 7591680050587612446, guid: 3542377ddad0342428dca988d0810fc5, type: 3}
       propertyPath: m_text
@@ -125389,7 +126236,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1478908021
 RectTransform:
   m_ObjectHideFlags: 0
@@ -125457,18 +126304,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_VictorDev.TCIT.DCIM.RackAssetDataPanel
   rackRevitAssetData:
-    <deviceCode>k__BackingField: 
-    <code>k__BackingField: 
-    <deviceId>k__BackingField: 
-    <Manufacturer>k__BackingField: 
-    <modelNumber>k__BackingField: 
-    <description>k__BackingField: 
-    <system>k__BackingField: 
-    <type>k__BackingField: 
-    <Model>k__BackingField: {fileID: 0}
+    <deviceCode>k__BackingField: NCHC/TAINAN/HPC/02F/DCR/MDA-120-42U-31/RackE09
+    <code>k__BackingField: RackE09
+    <deviceId>k__BackingField: 'NCHC+TAINAN+IDCCO+02F+211+DCR+Modem Rack-MDA19: Modem
+      Rack-MDA19+D22-E09'
+    <Manufacturer>k__BackingField: MDA
+    <modelNumber>k__BackingField: MDA19:_Modem_Rack
+    <description>k__BackingField: R-E09
+    <system>k__BackingField: DCR
+    <type>k__BackingField: MDA-120-42U-31
+    <Model>k__BackingField: {fileID: 3506393491827198591}
     Information:
-      watt_limit: 0
-      weight_limit: 0
+      watt_limit: 15000
+      weight_limit: 1500
       component_description: 
       component_assetIdentifier: 
       component_installationDate: 
@@ -125511,18 +126359,18 @@ MonoBehaviour:
       document_handout: 
       document_drawing: 
       equipment_supplier: 
-      length: 0
-      width: 0
-      height: 0
-      heightU: 0
-      watt: 0
-      weight: 0
-    RevitAssetKind: 0
-    DeviceKindZh: 
-    DeviceName: 
-    DeviceNameAndCode: 
+      length: 120
+      width: 80
+      height: 206.1
+      heightU: 42
+      watt: 1000
+      weight: 70
+    RevitAssetKind: 1
+    DeviceKindZh: "\u6A5F\u6AC3"
+    DeviceName: Modem Rack-MDA19
+    DeviceNameAndCode: Modem Rack-MDA19+D22-E09
     <Containers>k__BackingField: []
-    RackNo: 
+    RackNo: D22-E09
   txtComps:
   - {fileID: 2043756431}
   - {fileID: 1162606540}
@@ -125535,6 +126383,9 @@ MonoBehaviour:
   - {fileID: 516301976}
   - {fileID: 1912517250}
   - {fileID: 1815121615}
+  - {fileID: 7291919797456944666}
+  - {fileID: 1930382179}
+  - {fileID: 1786911011}
   invokeContainerDevicesEvent:
     m_PersistentCalls:
       m_Calls:
@@ -125551,6 +126402,98 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  pduWebAPICaller: {fileID: 730385428}
+  rtrhWebAPICaller: {fileID: 1189871192}
+  valueWatt: {fileID: 972933377}
+  valueWeight: {fileID: 1944312746}
+  valueHeightU: {fileID: 1456914021}
+  onSetDataEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 980777262}
+        m_TargetAssemblyTypeName: _VictorDev.DateTimeUtils.Timer, Assembly-CSharp
+        m_MethodName: StopTimer
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 641572762}
+        m_TargetAssemblyTypeName: _VictorDev.DateTimeUtils.Timer, Assembly-CSharp
+        m_MethodName: StopTimer
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  pdu1ValueEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1162606538}
+        m_TargetAssemblyTypeName: _VictorDev.MediatorUtils.ValueMediator, Assembly-CSharp
+        m_MethodName: SetValue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  pdu2ValueEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2043756429}
+        m_TargetAssemblyTypeName: _VictorDev.MediatorUtils.ValueMediator, Assembly-CSharp
+        m_MethodName: SetValue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  rtValueEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1089285933}
+        m_TargetAssemblyTypeName: _VictorDev.MediatorUtils.ValueMediator, Assembly-CSharp
+        m_MethodName: SetValue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  rhValueEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 884483758}
+        m_TargetAssemblyTypeName: _VictorDev.MediatorUtils.ValueMediator, Assembly-CSharp
+        m_MethodName: SetValue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &1478908025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125610,7 +126553,31 @@ MonoBehaviour:
         m_CallState: 2
   onDisableEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 980777262}
+        m_TargetAssemblyTypeName: _VictorDev.DateTimeUtils.Timer, Assembly-CSharp
+        m_MethodName: StopTimer
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 641572762}
+        m_TargetAssemblyTypeName: _VictorDev.DateTimeUtils.Timer, Assembly-CSharp
+        m_MethodName: StopTimer
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onStartEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -128804,27 +129771,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 131.33334
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 120
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 65.66667
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -60
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5669274251998081254, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_Spacing
@@ -131411,10 +132378,10 @@ RectTransform:
   - {fileID: 876634950}
   m_Father: {fileID: 120252896}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300.75, y: -50}
-  m_SizeDelta: {x: 198.5, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1562055509
 MonoBehaviour:
@@ -133591,6 +134558,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ValueAutoJumper
       objectReference: {fileID: 0}
+    - target: {fileID: 1908913425685413251, guid: dcaeb2fadda70cc4b85f77948bb91d94, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2001796869395785403, guid: dcaeb2fadda70cc4b85f77948bb91d94, type: 3}
       propertyPath: maxValue
       value: 28
@@ -134335,6 +135306,10 @@ PrefabInstance:
     - target: {fileID: 1908913425685413251, guid: dcaeb2fadda70cc4b85f77948bb91d94, type: 3}
       propertyPath: m_Name
       value: ValueAutoJumper
+      objectReference: {fileID: 0}
+    - target: {fileID: 1908913425685413251, guid: dcaeb2fadda70cc4b85f77948bb91d94, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2001796869395785403, guid: dcaeb2fadda70cc4b85f77948bb91d94, type: 3}
       propertyPath: maxValue
@@ -141993,10 +142968,10 @@ RectTransform:
   - {fileID: 1786911010}
   m_Father: {fileID: 2090937268}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 334.33337, y: -60}
-  m_SizeDelta: {x: 131.33334, y: 120}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1789408519
 MonoBehaviour:
@@ -143071,6 +144046,10 @@ PrefabInstance:
     - target: {fileID: 1908913425685413251, guid: dcaeb2fadda70cc4b85f77948bb91d94, type: 3}
       propertyPath: m_Name
       value: ValueAutoJumper
+      objectReference: {fileID: 0}
+    - target: {fileID: 1908913425685413251, guid: dcaeb2fadda70cc4b85f77948bb91d94, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2001796869395785403, guid: dcaeb2fadda70cc4b85f77948bb91d94, type: 3}
       propertyPath: maxValue
@@ -150849,7 +151828,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2903559153246061990, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2903559153246061990, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
       propertyPath: m_AnchorMin.x
@@ -150857,11 +151836,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2903559153246061990, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2903559153246061990, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 370
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2903559153246061990, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
       propertyPath: m_SizeDelta.y
@@ -150897,11 +151876,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2903559153246061990, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 185
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2903559153246061990, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -55
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2903559153246061990, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -153935,6 +154914,38 @@ PrefabInstance:
       propertyPath: isUserServerURL
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 81882724276268899, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
+      propertyPath: onResponseErrorEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 81882724276268899, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
+      propertyPath: onResponseSuccessEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 81882724276268899, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
+      propertyPath: onResponseSuccessEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 81882724276268899, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
+      propertyPath: onResponseSuccessEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 721003777}
+    - target: {fileID: 81882724276268899, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
+      propertyPath: onResponseSuccessEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 81882724276268899, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
+      propertyPath: onResponseSuccessEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReceiveJsonString
+      objectReference: {fileID: 0}
+    - target: {fileID: 81882724276268899, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
+      propertyPath: onResponseSuccessEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: JsonDataGetter, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 81882724276268899, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
+      propertyPath: onResponseSuccessEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 659651797496298846, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: isUserServerURL
       value: 1
@@ -154409,9 +155420,15 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3900672960803200705, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 1189871191}
     - targetCorrespondingSourceObject: {fileID: 1533491385986894098, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       insertIndex: -1
       addedObject: {fileID: 601041620}
+    - targetCorrespondingSourceObject: {fileID: 3403930084418249700, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 721003778}
     - targetCorrespondingSourceObject: {fileID: 2902819736318332982, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2003621405}
@@ -156946,7 +157963,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2903559153246061990, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2903559153246061990, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
       propertyPath: m_AnchorMin.x
@@ -156954,11 +157971,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2903559153246061990, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2903559153246061990, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 370
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2903559153246061990, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
       propertyPath: m_SizeDelta.y
@@ -156994,11 +158011,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2903559153246061990, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 185
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2903559153246061990, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2903559153246061990, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -158668,7 +159685,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2937121761826092097, guid: 3542377ddad0342428dca988d0810fc5, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 84.79
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2937121761826092097, guid: 3542377ddad0342428dca988d0810fc5, type: 3}
       propertyPath: m_SizeDelta.y
@@ -158744,7 +159761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5683456958756664869, guid: 3542377ddad0342428dca988d0810fc5, type: 3}
       propertyPath: m_Name
-      value: TxtWeight
+      value: TxtAvailableWeight
       objectReference: {fileID: 0}
     - target: {fileID: 7591680050587612446, guid: 3542377ddad0342428dca988d0810fc5, type: 3}
       propertyPath: m_text
@@ -167293,27 +168310,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 400
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 150
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 200
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5572332991314757974, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5669274251998081254, guid: 03985bbf2d0c335408f39c095395569f, type: 3}
       propertyPath: m_Spacing
@@ -167721,7 +168738,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2903559153246061990, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 91.41
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2903559153246061990, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
       propertyPath: m_SizeDelta.y
@@ -167817,7 +168834,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648546524490864750, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
       propertyPath: m_text
-      value: 920
+      value: '0
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 8648546524490864750, guid: 3b8527897fac47642bbc2c79c3d82335, type: 3}
       propertyPath: m_fontSize
@@ -168080,7 +169099,7 @@ MonoBehaviour:
         m_CallState: 1
   dotNumber: 0
   minValue: 0
-  maxValue: 0
+  maxValue: 6600
   thresholdValue: 3960
 --- !u!114 &2043756430
 MonoBehaviour:

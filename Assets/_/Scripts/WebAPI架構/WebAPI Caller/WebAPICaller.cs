@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using _VictorDev.ApiExtensions;
 using _VictorDev.Net.WebAPI;
@@ -38,6 +39,8 @@ namespace _VictorDev.Framework.WebAPI
 
         private string finalUrl;
         
+        public string SendBodyJson => sendBodyJson.Trim();
+        
         #endregion
 
         private void Start()
@@ -50,9 +53,20 @@ namespace _VictorDev.Framework.WebAPI
         
         /// 設置SendBody - FormData
         public void SetFormData(List<KeyValueData<string, string>> data) => paramsSetting = data;
+
+        /// 更新SendBody - FormData
+        public void UpdateFormData(List<KeyValueData<string, string>> data)
+        {
+            data.ForEach(kv =>
+            {
+                var result = paramsSetting.FirstOrDefault(p => p.Key == kv.Key);
+                if(result != null) result.Value = kv.Value;
+            });
+        } 
         
         /// 設置SendBody -  JSON字串
         public void SetBodyJson(List<KeyValueData<string, string>> data) => sendBodyJson = data.ToJsonFormat();
+        public void SetBodyJson(string data) => sendBodyJson = data.ToJsonFormat();
 
         [Button]
         public void CallAPI() => CallAPI(null, null);
