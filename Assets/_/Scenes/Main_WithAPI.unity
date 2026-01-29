@@ -109737,7 +109737,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   urlRoute: api/DataCenter/Rack/TempHumidity/Search
-  isUserServerURL: 1
+  isUserServerURL: 0
   serverURL: http://192.168.0.107:5080
   httpMethod: 1
   sendBodyType: 2
@@ -155607,7 +155607,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 81882724276268899, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: isUserServerURL
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 81882724276268899, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: onResponseErrorEvent.m_PersistentCalls.m_Calls.Array.size
@@ -155643,7 +155643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 659651797496298846, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: isUserServerURL
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 659651797496298846, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: responseDataType
@@ -155739,7 +155739,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1973331717399530640, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: isUserServerURL
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2016316413771442648, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: urlRoute
@@ -155747,7 +155747,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2016316413771442648, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: isUserServerURL
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2016316413771442648, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: onResponseErrorEvent.m_PersistentCalls.m_Calls.Array.size
@@ -155787,7 +155787,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2112115386953060807, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: isUserServerURL
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2112115386953060807, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: onLoadingEvent.m_PersistentCalls.m_Calls.Array.size
@@ -155922,7 +155922,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3036869498603286233, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: isUserServerURL
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3036869498603286233, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: onLoadingEvent.m_PersistentCalls.m_Calls.Array.size
@@ -156058,7 +156058,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4116640839565912283, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: isUserServerURL
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4116640839565912283, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: onLoadingEvent.m_PersistentCalls.m_Calls.Array.size
@@ -156142,7 +156142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5267824703791599833, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: isUserServerURL
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5267824703791599833, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: onLoadingEvent.m_PersistentCalls.m_Calls.Array.size
@@ -156238,7 +156238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8105829481357931814, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: isUserServerURL
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8105829481357931814, guid: a6579700281aee8419a43356aa20d1ad, type: 3}
       propertyPath: onLoadingEvent.m_PersistentCalls.m_Calls.Array.size
