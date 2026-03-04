@@ -78,11 +78,14 @@ namespace _VictorDev.TCIT.DCIM
         public string DeviceNameAndCode;
 
         public int Watt => Information.watt;
+        public void SetWatt(int value) => Information.watt = value;
         public int Weight => Information.weight;
+        public void SetWeight(int value) => Information.weight = value;
         
         public int Watt_Limit => Information.watt_limit;
         public int Weight_Limit => Information.weight_limit;
         public int HeightU => Information.heightU;
+        public void SetHeightU(int value) => Information.heightU = value;
         
         /// 取得設備名稱與流水號
         public virtual void ParseDeviceNameAndCode()
@@ -91,9 +94,7 @@ namespace _VictorDev.TCIT.DCIM
             DeviceKindZh = DcimHelper.GetDeviceKindZh(RevitAssetKind);
             DeviceName = DcimHelper.GetDeviceName(deviceId);
             DeviceNameAndCode = DcimHelper.GetDeviceName(deviceId, true);
-
             modelNumber = deviceId.Split("+")[6].Split("-")[1].Replace(" ", "_");
-            
         }
 
         /// 從Transform列表裡依照name設定模型，與設定RevitAssetDataHolder

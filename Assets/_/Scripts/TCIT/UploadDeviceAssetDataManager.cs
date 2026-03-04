@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using _VictorDev.ApiExtensions;
 using _VictorDev.MediatorUtils;
 using NaughtyAttributes;
@@ -18,10 +16,15 @@ namespace _VictorDev.TCIT.DCIM
 
         [Foldout("[Event] 在此設定擷取資料的觸發")] public UnityEvent toGetDataEvent;
         [Foldout("[組件]"), SerializeField] private ModelCombiner modelCombiner;
+        [Foldout("[Event] 接收到資料時")] public UnityEvent onReceiveDataEvent;
 
         #endregion
 
-        protected override void BeforeInvokeData() => CombineDataAndModels();
+        protected override void BeforeInvokeData()
+        {
+            CombineDataAndModels();
+            onReceiveDataEvent?.Invoke();
+        }
 
         ///設定資料與模型
         private void CombineDataAndModels()
@@ -38,7 +41,5 @@ namespace _VictorDev.TCIT.DCIM
                 uploadDeviceData.SetModel(targetModel);
             });
         }
-        
-       
     }
 }
