@@ -72,13 +72,15 @@ namespace _VictorDev.MediatorUtils
         /// 取得類別裡的所有變數名稱
         public static List<string> GetFieldNames<T>(params string[] skipFiledName)
         {
-            var type = typeof(T);
-            var fields = type.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+            var fields = typeof(T).GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
             var list = new List<string>();
             foreach (var field in fields)
             {
-                if(skipFiledName.Contains(field.Name)) continue;
-                list.Add(field.Name);
+                bool shouldSkip = Array.Exists(skipFiledName, x => x.Equals(field.Name, System.StringComparison.OrdinalIgnoreCase));
+                if (!shouldSkip)
+                {
+                    list.Add(field.Name);
+                }
             }
             return list;
         }

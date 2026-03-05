@@ -5,6 +5,7 @@ using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using Debug = _VictorDev.MediatorUtils.Debug;
 
 namespace _VictorDev.TCIT.DCIM
 {
@@ -12,12 +13,13 @@ namespace _VictorDev.TCIT.DCIM
     {
         #region Variables
 
+        [Label("[資料項]"), SerializeField]  private Information informationData;
+        
         [Foldout("[Event]")] public UnityEvent onUpdateUIFinishEvent;
         [Foldout("[組件]"), SerializeField] private ScrollRect scrollRect;
         [Foldout("[組件]"), SerializeField] private EditableText listItemPrefab;
         [Foldout("[組件]"), SerializeField] private List<EditableText> editableTexts;
 
-        private Information informationData;
         #endregion
         
         public void ReceiveData(RevitAssetData data)
@@ -28,6 +30,16 @@ namespace _VictorDev.TCIT.DCIM
 
         [Button]
         private void UpdateUI()
+        {
+            List<string> fieldNames = ObjectHelper.GetFieldNames<Information>("Watt_limit", "Weight_limit","Length", "Width", "Height", "HeightU", "Watt", "Weight");
+            for (int i = 0; i < editableTexts.Count; i++)
+            {
+                editableTexts[i].SetText(ObjectHelper.GetValueByFiledName(informationData, fieldNames[i]));
+            }
+            scrollRect.verticalNormalizedPosition = 1;
+        }
+        
+        private void CreatUI()
         {
             ClearUI();
             List<string> fieldNames = ObjectHelper.GetFieldNames<Information>("height", "heightU", "watt", "weight");
@@ -45,7 +57,6 @@ namespace _VictorDev.TCIT.DCIM
             onUpdateUIFinishEvent?.Invoke();
         }
 
-        [Button]
         private void ClearUI()
         {
             ObjectHelper.DestoryObjectsOfContainer(scrollRect.content);
