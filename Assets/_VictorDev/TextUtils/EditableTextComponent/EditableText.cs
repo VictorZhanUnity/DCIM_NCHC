@@ -3,6 +3,8 @@ using System.Linq;
 using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 namespace _VictorDev.TextUtils.EditableTextComponent
 {
@@ -13,19 +15,27 @@ namespace _VictorDev.TextUtils.EditableTextComponent
 
         [field: SerializeField] public bool IsEditable { get; private set; } = true;
 
+        [Foldout("[Event]"), HideInInspector] public UnityEvent<EditableText> onClickEditButton;
         [Foldout("[組件]"), SerializeField] private TextMeshProUGUI txtTitle;
         [Foldout("[組件]"), SerializeField] private TMP_InputField inputField;
         [Foldout("[組件]"), SerializeField] private TextMeshProUGUI placeHolder;
 
         public string Title => txtTitle.text.Trim();
         public string Text => inputField.text.Trim();
+
+        private string sourceTxt;
         
         #endregion
 
         /// 設定標題
         public void SetTitle(string title) => txtTitle.text = title.Trim();
         /// 設定內容
-        public void SetText(string txt) => inputField.text = txt.Trim();
+        public void SetText(string txt)
+        {
+            sourceTxt = txt?.Trim();
+            inputField.text = sourceTxt;
+        }
+
         /// 設定內容
         public void SetPlaceHolder(string txt) => placeHolder.text = txt.Trim();
         
@@ -35,7 +45,11 @@ namespace _VictorDev.TextUtils.EditableTextComponent
             IsEditable = isEnableEdit;
             inputField.interactable = IsEditable;
         }
-         
+        public void OnClickEditButton()
+        {
+            onClickEditButton?.Invoke(this);
+        }
+
         [Button]
         private void FindComponents()
         {

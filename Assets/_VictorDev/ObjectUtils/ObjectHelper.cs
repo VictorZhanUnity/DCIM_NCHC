@@ -98,6 +98,31 @@ namespace _VictorDev.MediatorUtils
             }
             return null;
         }
+
+        /// 依字串設置目標類別實例的參數值
+        public static void SetFieldValueByName<T>(T target, string fieldName, object value)
+        {
+            if (target == null || string.IsNullOrWhiteSpace(fieldName)) return;
+
+            fieldName = fieldName.Trim();
+            FieldInfo fieldInfo = typeof(T).GetField(fieldName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+
+            if (fieldInfo != null)
+            {
+                // 取得欄位原本的類型，並嘗試轉換輸入值
+                Type targetType = fieldInfo.FieldType;
+                try
+                {
+                    object convertedValue = Convert.ChangeType(value, targetType);
+                    fieldInfo.SetValue(target, convertedValue);
+                }
+                catch (InvalidCastException)
+                {
+                    // 處理轉型失敗的邏輯
+                    Debug.LogError($"無法將值轉換為 {targetType.Name}");
+                }
+            }
+        }
         
         /// 設定Target的Scale大小，等於reference的meshRenderer大小
         public static void SetMatchSizeAndPosition(Transform target, Transform reference, float adjustScale = 1.01f)

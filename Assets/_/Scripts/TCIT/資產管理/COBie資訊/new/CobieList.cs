@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using _VictorDev.ApiExtensions;
 using _VictorDev.MediatorUtils;
 using _VictorDev.TextUtils.EditableTextComponent;
 using NaughtyAttributes;
@@ -13,32 +15,60 @@ namespace _VictorDev.TCIT.DCIM
     {
         #region Variables
 
-        [Label("[資料項]"), SerializeField]  private Information informationData;
+        [Label("[資料項]"), SerializeField]  private RevitAssetData revitAssetData;
         
-        [Foldout("[Event]")] public UnityEvent onUpdateUIFinishEvent;
+        [Foldout("[Event]")] public UnityEvent<RevitAssetData, string, string, EditableText> onEditCobieColumnValueEvent;
         [Foldout("[組件]"), SerializeField] private ScrollRect scrollRect;
         [Foldout("[組件]"), SerializeField] private EditableText listItemPrefab;
         [Foldout("[組件]"), SerializeField] private List<EditableText> editableTexts;
 
-        #endregion
+        private List<string> fieldNames;
         
+        #endregion
+
+        private void Start()
+        {
+            foreach (EditableText editableText in editableTexts)
+            {
+                editableText.onClickEditButton.AddListener(OnClickEditButton);
+            }
+        }
+
+        private void OnClickEditButton(EditableText target)
+        {
+          var targetIndex =  editableTexts.FindIndex(0, editableText => editableText == target);
+          onEditCobieColumnValueEvent?.Invoke(revitAssetData, fieldNames[targetIndex], target.Text, target);
+        }
+
+       
+
         public void ReceiveData(RevitAssetData data)
         {
-            informationData = data.Information;
+            revitAssetData = data;
             UpdateUI();
         }
 
         [Button]
-        private void UpdateUI()
+        public void UpdateUI(bool isScrollToTop = true)
         {
-            List<string> fieldNames = ObjectHelper.GetFieldNames<Information>("Watt_limit", "Weight_limit","Length", "Width", "Height", "HeightU", "Watt", "Weight");
+            fieldNames = ObjectHelper.GetFieldNames<Information>("Watt_limit", "Weight_limit","Length", "Width", "Height", "HeightU", "Watt", "Weight");
+            
             for (int i = 0; i < editableTexts.Count; i++)
             {
-                editableTexts[i].SetText(ObjectHelper.GetValueByFiledName(informationData, fieldNames[i]));
+                try
+                {
+                    editableTexts[i]
+                        .SetText(ObjectHelper.GetValueByFiledName(revitAssetData.Information, fieldNames[i]));
+                }
+                catch (Exception e)
+                {
+                    Debug.Log(fieldNames[i] + " : " + e.Message);
+                }
             }
-            scrollRect.verticalNormalizedPosition = 1;
+           if(isScrollToTop) scrollRect.verticalNormalizedPosition = 1;
         }
         
+        [Button]
         private void CreatUI()
         {
             ClearUI();
@@ -48,13 +78,12 @@ namespace _VictorDev.TCIT.DCIM
             {
                 EditableText listItem = ObjectHelper.Instantiate(listItemPrefab, scrollRect.content);
                 string columnName = DcimSysConfig.GetCobieColumnNames(fieldName);
-                string value = informationData != null? ObjectHelper.GetValueByFiledName(informationData, fieldName):string.Empty;
+                string value = revitAssetData.Information != null? ObjectHelper.GetValueByFiledName(revitAssetData.Information, fieldName):string.Empty;
                 listItem.SetTitle(columnName);
                 listItem.SetText(value);
                 editableTexts.Add(listItem);
             }
             scrollRect.verticalNormalizedPosition = 1;
-            onUpdateUIFinishEvent?.Invoke();
         }
 
         private void ClearUI()
