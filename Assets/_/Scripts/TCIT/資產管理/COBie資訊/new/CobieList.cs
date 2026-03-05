@@ -40,8 +40,6 @@ namespace _VictorDev.TCIT.DCIM
           onEditCobieColumnValueEvent?.Invoke(revitAssetData, fieldNames[targetIndex], target.Text, target);
         }
 
-       
-
         public void ReceiveData(RevitAssetData data)
         {
             revitAssetData = data;
